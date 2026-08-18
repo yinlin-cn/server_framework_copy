@@ -1,0 +1,228 @@
+外卖系统框架设计 — 补充说明
+版本: V1 定稿补充 | 日期: 2026-08-15 | 配套: 架构日志 + drawio 设计图
+
+一、总体架构（定稿）
+┌── 网络IO层 ──────────────────────────────┐
+│ 内核 → 唤醒 → Epoll单线程循环              │
+│   ├── Epoll创建连接并绑定                  │
+│   ├── Epoll接收信息并转发 → 封装解析任务    │
+│   └── EPOLLOUT → 发送缓冲 → 写回客户端      │
+└──────────────┬────────────────────────────┘
+               ▼
+┌── 任务解析线程池 ─────────────────────────┐
+│ 工作线程: 拆包解析 + 路由(target_pool_id)  │
+│ 封装业务任务 { conn, 命令, 目标池, 函数 }   │
+└──────────────┬────────────────────────────┘
+               ▼
+┌── 业务工作线程池（按业务类型分池）───────────┐
+│ 登录池 / 订单池 / 配送池 / ...              │
+│   ├── 不需要DB → 直接处理 → 回复            │
+│   └── 需要DB → 协程挂起 → 阻塞任务序列      │
+└──────────────┬────────────────────────────┘
+               ▼
+┌── 数据库访问层 ───────────────────────────┐
+│ 数据库业务逻辑池: 取任务 → 借连接 → SQL      │
+│ → 结果写信箱 → 唤醒协程 → 还连接            │
+│ 数据库连接池: 借/还 MYSQL* 连接             │
+└───────────────────────────────────────────┘
+二、关键设计决策（共识）
+#	决策	原因
+1	协程只在访问数据库时使用	业务代码只有一处挂起点，易读易维护
+2	保留阻塞任务序列	背压限流、可观测性、可控性（排队等DB槽位）
+3	协程恢复 = 重新入队，不走直接调用	避免DB池被业务逻辑污染，避免线程池饥饿/死锁
+4	业务按类型分池 + 解析阶段路由	故障隔离、独立扩缩容
+5	长流程用数据库状态机（order.status）推进	状态持久化，跨服务器、重启不丢
+6	连接身份(conn)随任务传递	业务线程最终要回复正确的客户端
+7	唤醒任务建议高优先级/队首	防止恢复的协程被新任务饿死
+
+
+三、完整数据流（一条需要DB的业务消息）
+客户端 → 内核 → epoll唤醒
+  → 网络IO层 read → 封装解析任务
+  → 解析线程池: 解析 + 路由 → 封装业务任务{conn, cmd, 目标池}
+  → 业务池线程: 执行业务逻辑
+      ├── 不需要DB → 处理 → server->send(conn) → 回复
+      └── 需要DB → 协程挂起
+            ├── 状态保存进协程帧
+            ├── 创建信箱(awaiter) + 封装任务{sql, &box}
+            ├── 插入阻塞任务序列（等DB槽位）
+            └── 业务线程归还
+  → DB池线程: 取任务 → 连接池借连接 → 执行SQL
+      → box.result = 结果 → 还连接
+      → 封装唤醒任务 → 推入业务任务序列（建议队首）
+  → 业务池线程: resume协程 → 读box.result → 继续业务 → send回复
+四、数据库异步访问机制（信箱/awaiter）
+4.1 为什么 query() 不返回值
+query() 只是投递任务，不执行、不赋值。数据由 DB 线程通过"信箱"写入，协程恢复后读取。
+4.2 信箱机制
+struct Box {                    // 信箱（awaiter）
+    std::string result;         // DB线程写入
+    bool ready = false;
+    std::coroutine_handle<> handle;
+};
+
+// 业务协程:
+Box box;                                            // 1. 建信箱（在协程帧里）
+db_pool.enqueue(DbTask{"SELECT ...", &box});        // 2. 投任务，带信箱地址
+co_await box;                                       // 3. 挂起，线程归还
+// 恢复后 box.result 已有数据
+std::string x = box.result;                         // 4. 读取
+
+// DB池线程:
+void db_worker(DbTask task) {
+    auto conn = conn_pool.get();
+    task.box->result = execute_sql(conn, task.sql); // 写信箱
+    conn_pool.release(conn);
+    business_queue.enqueue([h = task.box->handle] { h.resume(); });  // 唤醒
+}
+4.3 要点
+信箱 = 内建的"单消费者队列"，不需要额外的结果队列
+DB线程通过任务携带的 &box 指针写入；协程恢复后读 box
+唤醒信号本身不带数据，数据先入信箱，信号只通知"去读"
+五、线程池 / 连接池 / 协程的分工
+组件	回答的问题	职责
+业务线程池	谁来干业务	执行协程任务；遇到DB挂起，线程归还
+数据库业务逻辑池	谁执行真正的SQL	阻塞等DB结果（数量可控）
+数据库连接池	用什么执行	借/还 MYSQL* 连接
+协程	等待时不占线程	挂起/恢复，状态保存
+阻塞任务序列	谁在等DB槽位	排队 + 背压 + 可观测
+
+
+六、遗留待考虑细节
+唤醒任务优先级: 恢复的协程推入业务队列时给高优先级/队首，防止饿死
+队列上限与超时: 阻塞任务序列设上限，满了拒绝/丢弃；排队超时可取消
+路由表设计: cmd → 目标池的映射表，数据结构与更新方式
+连接生命周期: 任务排队期间客户端可能断开，conn 需引用计数/延迟销毁
+同一连接消息顺序: 同一连接的多条消息可能被不同线程并发处理，需按连接串行或接受乱序
+解析失败处理: 无法解析/无法路由的消息如何响应
+这六条"遗留细节"就是你接下来要慢慢想的部分，正好对应你说的"细节问题再考虑一下"。想清楚哪条了随时来找我讨论。
+
+
+七、连接名册（ConnectionRegistry）— 新增
+7.1 为什么需要
+epoll 专注单连接收发；广播（发给一群连接）需要一份可遍历的连接名单。框架内部虽有 clients_（管生命周期），业务层不应直接碰，需要自己的名册。
+7.2 数据结构
+┌── 连接名册（业务层，mutex保护）─────────────┐
+│ 商家组:  { merchant1→conn_A, merchant2→conn_B } │
+│ 骑手组:  { rider1→conn_C, rider3→conn_D }        │
+│ 顾客组:  { customer5→conn_E, ... }                │
+└──────────────────────────────────────────────┘
+map<角色, map<业务ID, Connection*>>——既支持按角色广播，也支持按业务ID精确发送。
+7.3 接口设计
+class ConnectionRegistry {
+public:
+    // 连接建立、登录成功后注册（on_connect 里调）
+    void register_conn(Connection* conn, const std::string& role, int business_id);
+
+    // 连接断开时注销（on_disconnect 里调）
+    void unregister_conn(Connection* conn);
+
+    // 群发：给某角色的所有连接发消息
+    void broadcast(const std::string& role, const std::string& data);
+
+    // 单发：按业务ID精确找连接发送
+    bool send_to(const std::string& role, int business_id, const std::string& data);
+
+private:
+    std::mutex mutex_;
+    std::map<std::string, std::map<int, Connection*>> groups_;
+};
+7.4 广播执行路径
+业务线程 调 broadcast("merchant", "新订单来了")
+  ├── 遍历商家组，逐个 server->send(conn, data)
+  │     send: 加该连接锁 → 数据入 send_buffer → 注册 EPOLLOUT
+  ▼
+事件循环: EPOLLOUT → try_send() → 写回每个商家
+广播 = 遍历名册 + 每个连接走一次 send（send 线程安全）。
+7.5 两个必防的坑
+名册并发共享必须加锁：事件循环线程注销 vs 业务线程遍历 → 同 map 并发操作崩溃
+遍历时连接可能刚断开：双层防护——框架层 send() 检查 connected 返回 false；业务层 on_disconnect 负责清出名册
+7.6 在外卖系统里的用法
+StatusServer（商家端+骑手端长连接）:
+  on_connect    → 登录后 register(conn, "merchant", merchant_id)
+  on_disconnect → unregister(conn)
+
+  新订单来了      → broadcast("merchant", "new_order...")
+  新单可抢        → broadcast("rider", "new_available...")
+  精确通知        → send_to("merchant", 3, "接单成功")
+7.7 更新后的架构图
+┌── 业务工作线程池（按业务类型分池）───────────┐
+│ 登录池 / 订单池 / 配送池 / ...              │
+│   ├── 不需要DB → 直接处理 → 回复            │
+│   └── 需要DB → 协程挂起 → 阻塞任务序列      │
+├───────────────────────────────────────────┤
+│ 连接名册（新增）:                           │
+│   register / unregister / broadcast / send │
+└──────────────┬────────────────────────────┘
+               ▼
+┌── 数据库访问层 ───────────────────────────┐
+│ 数据库业务逻辑池 + 连接池                    │
+└───────────────────────────────────────────┘
+顺带把"遗留待考虑细节"也补一条：
+连接名册的过期与清理: 心跳超时未活跃的连接需定时检查并注销，避免名册里堆积僵尸连接
+
+
+八、解析层分发机制（注册表 + 闭包任务）— 新增
+8.1 解析层职责
+解析线程池 = 拆包解析 + 路由 + 封装闭包任务
+解析层维护一张业务处理器注册表（cmd → 业务类实例指针），收到消息后：
+收到 "cmd=place_order&..."
+  → Message.parse 得到 cmd
+  → 查注册表: place_order → OrderHandler实例
+  → 封装闭包任务: { 对象指针 + 方法 + conn + msg } 打包进 std::function
+  → 按路由推入对应业务池的任务队列
+8.2 代码示例
+class ParseLayer {
+    std::unordered_map<std::string, BusinessBase*> handlers_;  // 注册表
+
+public:
+    void register_handler(const std::string& cmd, BusinessBase* handler) {
+        handlers_[cmd] = handler;
+    }
+
+    void on_message(Connection* conn, const std::string& raw) {
+        Message msg;
+        msg.parse(raw);
+        auto it = handlers_.find(msg.get_command());
+        if (it == handlers_.end()) return;  // 未知命令
+
+        // 闭包任务：指针+方法+参数 全打包
+        Task task = [handler = it->second, conn, msg]() {
+            handler->handle(conn, msg);
+        };
+        route(msg.get_command())->enqueue(std::move(task));
+    }
+};
+8.3 业务池线程只需一行
+void worker_loop() {
+    while (true) {
+        Task task = queue.pop();
+        task.fn();   // 闭包内部知道调用谁，worker 不需要认识业务类
+    }
+}
+一个业务池的线程可以执行任意业务类的方法——任务自带"该找谁、怎么调、传什么"。
+8.4 与分业务池的关系（两个维度共存）
+维度1（池间隔离）: 登录池 / 订单池 / 配送池 —— 可选
+维度2（池内混合）: 一个池可混跑多个业务类的任务 —— 必须
+
+订单池可以同时处理 place_order 和 query_order；
+登录池处理 login/register；池间隔离、池内混合，两种思想都成立。
+8.5 无状态业务类原则（线程安全红线）
+多个业务池线程会同时调用同一个业务类实例，因此：
+✅ 正确: 所有请求数据放参数（conn, msg, 局部变量）
+❌ 危险: 请求数据存成 handler 成员变量（多线程互相踩）
+
+每连接的状态挂 conn->user_data；
+业务类本身无状态，天然线程安全。
+8.6 补充到架构图
+┌── 任务解析线程池 ─────────────────────────┐
+│ 注册表: cmd → 业务类实例指针               │
+│ 拆包解析 + 路由 + 封装闭包任务              │
+│ 任务 = std::function（对象+方法+参数打包）  │
+└──────────────┬────────────────────────────┘
+               ▼
+┌── 业务工作线程池 ─────────────────────────┐
+│ worker: 只调 task.fn()                    │
+│ 业务类保持无状态，状态挂 conn->user_data    │
+│ 连接名册: register/unregister/broadcast    │
+└───────────────────────────────────────────┘
