@@ -1,0 +1,958 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="第 1 页" id="s65TiFmciQurgf0vYxuu">
+    <mxGraphModel dx="1733" dy="2882" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="1640" width="1830" x="1220" y="-1770" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="2560" width="1050" x="3210" y="-1770" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-62" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="610" width="1660" x="1300" y="-798" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="804" width="1050" x="1300" y="-1688" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="490" width="830" x="3321" y="-450" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="580" width="850" x="3315" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="3747" width="1860" x="6130" y="-1770" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="1000" width="780" x="3350" y="-1510" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-82" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="2530" width="1510" x="4450" y="-1770" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="1150" width="1515.5" x="6314.5" y="734.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-190" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="2387" width="1320" x="6314.5" y="-1700" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-81" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="580" width="1160" x="4580" y="-602.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-79" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="640" width="1290" x="4570" y="17.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-114" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="610" width="1470" x="-370" y="-1770" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-77" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="1040" width="960" x="4580" y="-1682.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-56" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="800" width="1460" x="-360" y="-922.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-44" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="500" width="1490" x="-370" y="147.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="400" width="770" x="-350" y="887.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll单线程循环" vertex="1">
+          <mxGeometry height="80" width="186" x="-36" y="1027.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="内核" vertex="1">
+          <mxGeometry height="60" width="120" x="-3" y="1197.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-3" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-2" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="efSjXBP-w7f2Ln-s5omM-1" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="30" y="1177.5" as="sourcePoint" />
+            <mxPoint x="80" y="1127.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="唤醒" vertex="1">
+          <mxGeometry height="30" width="60" x="50" y="1137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll输出信息" vertex="1">
+          <mxGeometry height="60" width="120" x="-250" y="1047.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-7" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-1" style="endArrow=classic;html=1;rounded=0;exitX=0.004;exitY=0.596;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-110" y="1097.5" as="sourcePoint" />
+            <mxPoint x="-60" y="1047.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll创建连接并绑定" vertex="1">
+          <mxGeometry height="60" width="120" x="240" y="1047.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-12" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-1" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.022;exitY=0.596;exitDx=0;exitDy=0;exitPerimeter=0;" target="efSjXBP-w7f2Ln-s5omM-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="170" y="1117.5" as="sourcePoint" />
+            <mxPoint x="220" y="1067.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-86" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll接收信息并转发" vertex="1">
+          <mxGeometry height="70" width="190" x="-40" y="917.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-15" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.539;entryY=1.051;entryDx=0;entryDy=0;entryPerimeter=0;" target="efSjXBP-w7f2Ln-s5omM-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;网络IO层&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="160" x="-280" y="1167.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-41" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="线程池内工作线程" vertex="1">
+          <mxGeometry height="100" width="227" x="740" y="477.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-30" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="推入任务队列" vertex="1">
+          <mxGeometry height="90" width="226" x="320" y="497.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;工作线程从任务队列中获取任务&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="200" x="530" y="417.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-27" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将Epoll中获取到的信息进行封装变成以解析函数为回调函数的任务" vertex="1">
+          <mxGeometry height="100" width="230" x="-60" y="497.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="将任务推入任务队列" vertex="1">
+          <mxGeometry height="40" width="140" x="70" y="427.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-42" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="执行解析任务" vertex="1">
+          <mxGeometry height="110" width="210" x="748.5" y="237.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-89" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-88">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="解析任务完成后归还工作线程并将解析后得到的执行函数封装成任务" vertex="1">
+          <mxGeometry height="110" width="210" x="-52.25" y="247.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;任务解析线程池&lt;/font&gt;" vertex="1">
+          <mxGeometry height="170" width="225" x="-322.5" y="277.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-51" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-48" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="推入任务序列" vertex="1">
+          <mxGeometry height="100" width="220" x="-56" y="-332.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-55" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-99" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-50" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="线程池工作线程" vertex="1">
+          <mxGeometry height="100" width="216" x="-53" y="-532.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="工作线程从任务队列中获取任务" vertex="1">
+          <mxGeometry height="30" width="180" x="70" y="-392.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-53" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="将任务推入任务队列" vertex="1">
+          <mxGeometry height="30" width="170" x="70" y="-192.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-61" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-69" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-54" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="执行具体的业务逻辑" vertex="1">
+          <mxGeometry height="80" width="203.5" x="-47.75" y="-702.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-57" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;业务工作线程池&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="200" x="310" y="-702.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-120" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-440" y="-662.5" />
+              <mxPoint x="-440" y="1077.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-58" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="网络信息输出" vertex="1">
+          <mxGeometry height="80" width="180" x="-320" y="-702.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-66" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;业务逻辑激活网络层Epoll输出信息&lt;/font&gt;" vertex="1">
+          <mxGeometry height="280" width="130" x="-600" y="-282.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-81" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-93" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-92">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="业务逻辑中涉及到数据库查询等逻辑时，将数据库操作封装成一个任务" vertex="1">
+          <mxGeometry height="80" width="198" x="-46" y="-872.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-102" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-70" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="阻塞任务序列" vertex="1">
+          <mxGeometry height="100" width="230" x="621" y="-332.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-72" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="取出对应阻塞任务" vertex="1">
+          <mxGeometry height="60" width="110" x="580" y="-442.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-78" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="efSjXBP-w7f2Ln-s5omM-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-73" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将工作线程归还并将任务状态保存，封装成一个阻塞任务" vertex="1">
+          <mxGeometry height="80" width="210" x="631" y="-632.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-77" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="插入阻塞任务序列" vertex="1">
+          <mxGeometry height="60" width="220" x="700" y="-472.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-82" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-79" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="采用协程进行编写的业务逻辑" vertex="1">
+          <mxGeometry height="85" width="210" x="631" y="-875" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-86" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-83" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="插入任务序列" vertex="1">
+          <mxGeometry height="73" width="206" x="-50.25" y="-1304" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-91" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-90">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-84" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="线程池工作线程" vertex="1">
+          <mxGeometry height="90" width="210" x="328" y="-1330" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-87" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="工作线程从任务队列里获取任务" vertex="1">
+          <mxGeometry height="40" width="170" x="120" y="-1390" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-93" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-92">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-90" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="数据库业务逻辑" vertex="1">
+          <mxGeometry height="90" width="220" x="700" y="-1348" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-107" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-106">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-92" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="获取数据库连接" vertex="1">
+          <mxGeometry height="90" width="200" x="-45" y="-1510" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-105" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-92">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-94" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="数据库连接池" vertex="1">
+          <mxGeometry height="90" width="200" x="490" y="-1510" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-96" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="访问数据库连接池获取连接&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="170" x="250" y="-1520" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-103" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-98" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="执行唤醒任务逻辑" vertex="1">
+          <mxGeometry height="100" width="240" x="270" y="-532.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-104" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="将取出的阻塞任务重新推入任务序列中" vertex="1">
+          <mxGeometry height="30" width="190" x="280" y="-262.5" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-109" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-108">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-106" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="访问数据库并执行逻辑" vertex="1">
+          <mxGeometry height="110" width="205" x="-47.25" y="-1690" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-123" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-108" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-48">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-320" y="-1642.5" />
+              <mxPoint x="-490" y="-1642.5" />
+              <mxPoint x="-490" y="-282.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-108" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="返回数据库操作结果" vertex="1">
+          <mxGeometry height="100" width="195" x="-320" y="-1685" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-110" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="释放使用的连接到连接池，释放所使用的线程到线程池" vertex="1">
+          <mxGeometry height="90" width="200" x="380" y="-1690" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-111" edge="1" parent="1" source="efSjXBP-w7f2Ln-s5omM-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.004;entryY=0.615;entryDx=0;entryDy=0;entryPerimeter=0;" target="efSjXBP-w7f2Ln-s5omM-110">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-112" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="释放操作" vertex="1">
+          <mxGeometry height="30" width="120" x="200" y="-1680" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-115" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;数据库业务逻辑&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="240" x="660" y="-1670" as="geometry" />
+        </mxCell>
+        <mxCell id="efSjXBP-w7f2Ln-s5omM-117" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;返回数据库操作结果，并将结果封装成线程唤醒任务，唤醒阻塞线程内的任务，推入任务序列队首&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="200" x="-700" y="-1362.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-10" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-15" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-19" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-21" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll单线程循环" vertex="1">
+          <mxGeometry height="70" width="170" x="5241" y="-267.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="使用epoll_wait获取响应的event进行遍历" vertex="1">
+          <mxGeometry height="70" width="210" x="5490" y="-267.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-16" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll接收信息并转发" vertex="1">
+          <mxGeometry height="70" width="180" x="4941" y="-422.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="检测到event的模式为EPOLLIN时，采用handle_read函数进行读取转发" vertex="1">
+          <mxGeometry height="75" width="210" x="4646" y="-425" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-12" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll接收新连接并绑定" vertex="1">
+          <mxGeometry height="70" width="180" x="4941" y="-267.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="当线程检测到event的fd为监听线程的fd时，采用handle_accept函数创建连接" vertex="1">
+          <mxGeometry height="75" width="200" x="4651" y="-270" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-20" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll发送信息" vertex="1">
+          <mxGeometry height="70" width="180" x="4941" y="-562.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="检测到event的模式为EPOLLLOUT时，采用try_send函数从发送缓冲区提取信息发送" vertex="1">
+          <mxGeometry height="65" width="210" x="4641" y="-560" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-69" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-70" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll初始化" vertex="1">
+          <mxGeometry height="60" width="170" x="5241" y="-142.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="创建监听线程并绑定epoll" vertex="1">
+          <mxGeometry height="60" width="210" x="4926" y="-142.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;EPOLL框架状态机设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="180" x="5450" y="-457.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-44" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="网络连接存储结构&lt;div&gt;internalconnection&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="189" x="4631.5" y="-1475" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-42" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;int sock;//连接描述fd&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;string&amp;nbsp; read_buffer;//信息读取缓冲区&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;bool connected;//连接状态确定&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;Handler* handler;//Handler接口&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;queue&amp;lt;string&amp;gt; send_queue;//发送信息队列&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;mutex send_mutex;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;function&amp;lt;void()&amp;gt; send_function;//用于解耦epoll层信息发送&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="185" width="450" x="4900" y="-1532.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-48" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-45" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll接收信息" vertex="1">
+          <mxGeometry height="80" width="230" x="4660" y="512.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-50" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-47" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="采用recv从fd缓冲区读取数据加入到对应internalconnection的read_buffer里" vertex="1">
+          <mxGeometry height="80" width="230" x="4660" y="352.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-52" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-49" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="采用粘包解析算法spilit_message函数对缓冲区内的数据进行解析，获取里面数条完整的信息" vertex="1">
+          <mxGeometry height="80" width="230" x="4660" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-51" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将获取到的完整的信息提交给internalconnection里的Handler接口进行处理" vertex="1">
+          <mxGeometry height="75" width="230" x="4660" y="67.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-55" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="5122.75" y="442.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-53" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll发送信息" vertex="1">
+          <mxGeometry height="85" width="230" x="5007.75" y="507.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-58" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-57">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="5122.75" y="342.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-54" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;" value="业务层调用internalconnection里的function，也就是将会在里面存储的send函数在对应的internalconnection的输出缓冲区send_queue内添加信息,并设置event的模式为EPOLLOUT，并发出信号激活对应event" vertex="1">
+          <mxGeometry height="100" width="255" x="4996.5" y="342.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-60" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-57" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll激活该event后，对该连接的internalconnection里的发送缓冲区内的数据分别采用输出处理算法send_preview函数将其处理成合适的格式" vertex="1">
+          <mxGeometry height="90" width="252.5" x="4996.5" y="202.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-59" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="采用信息发送函数try_send将得到的处理后的数据进行发送" vertex="1">
+          <mxGeometry height="72.5" width="240.75" x="5002.38" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-63" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-61" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll接收新连接并绑定" vertex="1">
+          <mxGeometry height="90" width="230" x="5358" y="507.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-65" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-62" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="采用accept函数获取listen到的连接的fd，并将该fd设置为非阻塞" vertex="1">
+          <mxGeometry height="85" width="231" x="5358" y="357.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-67" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-66">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="创建internalconnection用于存储该连接信息，同时创建对应该连接的events" vertex="1">
+          <mxGeometry height="77.5" width="219" x="5364" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-66" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将该连接加入到epoll的监视名单" vertex="1">
+          <mxGeometry height="70" width="231" x="5358" y="77.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-73" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-71" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll数据结构" vertex="1">
+          <mxGeometry height="70" width="192" x="4630" y="-1242.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-72" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;int epoll_fd;//用于创建epoll实例的文件描述符&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;int listen_fd;//用于监听的套接字&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;int port;//用于设置端口号&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;int N;//用于限制listen_fd的连接数&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;int M;//用于限制epoll实例的最大事件数&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;bool runing = true;//用于控制事件循环的运行状态&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;std::thread event_thread;//用于处理事件循环的线程&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;std::vector&amp;lt;epoll_event&amp;gt; events;//用于存储epoll事件&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;std::vector&amp;lt;std::shared_ptr&amp;lt;InternalConnection&amp;gt;&amp;gt; connections;//用于存储连接对象&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="210" width="440" x="4910" y="-1312.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-76" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-75">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-74" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Epoll函数列表" vertex="1">
+          <mxGeometry height="80" width="198" x="4627" y="-917.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-75" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;void start()；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;int set_nonblocking(int fd)；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;void event_loop()；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;void handle_accept()；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;void handle_read(std::shared_ptr&amp;lt;InternalConnection&amp;gt; conn)；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;bool send(std::shared_ptr&amp;lt;InternalConnection&amp;gt; conn,const char* data, size_t len)；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;void try_send(std::shared_ptr&amp;lt;InternalConnection&amp;gt; conn)；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;void close_client(std::shared_ptr&amp;lt;InternalConnection&amp;gt; conn)；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;string&amp;nbsp; send_preview(string send_message);&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;vector&amp;lt;string&amp;gt; spilit_message(string message);&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="330" width="518.5" x="4920" y="-1042.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-78" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Epoll基本结构&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="210" x="4631.5" y="-1622.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-80" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;具体分支路径解析&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="150" x="5639" y="287.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-83" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;EPOLL层设计框架&lt;/font&gt;" vertex="1">
+          <mxGeometry height="210" width="180" x="5660" y="-1242.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-87" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-96" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="-wRr3w-UZTGYxzREswyB-95">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-85" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Handler接口层&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="770" x="-329.75" y="692.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-91" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-98" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-97">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-88" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Handler接口层&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="770" x="-332.25" y="-72.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-94" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="efSjXBP-w7f2Ln-s5omM-83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-100" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-99">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-92" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Handler接口层&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="770" x="-332.25" y="-1127.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-95" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;继承Handler接口用于对接任务解析线程池，主要功能为将任务推入任务序列，同时该接口需要挂载业务层的解析任务function作为解析任务线程池任务的function&lt;/font&gt;" vertex="1">
+          <mxGeometry height="115" width="520" x="600" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-97" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;继承Handler接口用于对接业务工作线程池，主要功能为将任务推入任务序列&lt;/font&gt;" vertex="1">
+          <mxGeometry height="115" width="520" x="580" y="-60" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-99" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;继承Handler接口用于对接数据库业务逻辑，主要功能为将任务推入任务序列，可在此Handler接口处添加一定处理逻辑对要处理的message进行预处理&lt;/font&gt;" vertex="1">
+          <mxGeometry height="115" width="540" x="550" y="-1115" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-161" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;业务工作线程池状态机设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="190" width="270" x="6398.75" y="769.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-167" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-165" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-166">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-165" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="线程池任务结构Task" vertex="1">
+          <mxGeometry height="70" width="189" x="6459" y="-1458" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-166" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::function&amp;lt;void()&amp;gt; fn;//任务序列中执行的function&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::shared_ptr&amp;lt;internalconnection&amp;gt; conn;//用于存储当前任务中的连接信息&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="120" width="420" x="6739" y="-1483" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-170" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-168" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-169">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-168" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="thread_pool基础线程池结构" vertex="1">
+          <mxGeometry height="80" width="190" x="6457" y="-1053" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-169" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;queue&amp;lt;Task&amp;gt; tasks;//任务队列&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;mutex for_task;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;bool stop = false;//运行状态&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;vector&amp;lt;thread&amp;gt; pool;//线程池内线程句柄&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::condition_variable cv;//条件变量&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;div style=&quot;&quot;&gt;void worker();&lt;/div&gt;&lt;div style=&quot;&quot;&gt;void add_task(Task funtion);&lt;/div&gt;&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="170" width="445" x="6739" y="-1098" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-173" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-171" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-172">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-171" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="阻塞任务结构blockedtask" vertex="1">
+          <mxGeometry height="78" width="191" x="6457" y="-1277" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-172" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;int wait_name;//唤醒标识名&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Task funtion;//存储的阻塞任务&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="90" width="421" x="6739" y="-1283" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-179" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-174" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-175">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-174" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="阻塞任务队列结构blockingqueue" vertex="1">
+          <mxGeometry height="79" width="191" x="6459" y="-811.25" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-175" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;unordered_map&amp;lt;int, vector&amp;lt;blockedtask&amp;gt;&amp;gt;task_queue;//阻塞任务存储桶&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;mutex for_queue;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;using key_type = int;//类型声明以便协程使用&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;using block_type = vector&amp;lt;blockedtask&amp;gt;;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;void insert(blockedtask task)&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;vector&amp;lt;blockedtask&amp;gt; take(int&amp;amp; name)&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="177.5" width="580" x="6740" y="-860.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-182" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-180" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-181">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-180" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="协程结构体Task结构" vertex="1">
+          <mxGeometry height="80" width="191" x="6459" y="-548" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-181" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;struct promise_type {&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;Task get_return_object() { return {}; }&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;std::suspend_never initial_suspend() { return {}; }&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 调用即开始跑&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;std::suspend_never final_suspend() noexcept { return {}; }&amp;nbsp; &amp;nbsp;// 结束自动销毁帧&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;void return_void() {}&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&lt;/span&gt;void unhandled_exception() { std::terminate(); }&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;};&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="212" width="660" x="6739" y="-614" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-186" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-183" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-184">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-183" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="协程控制器EventAwaiter" vertex="1">
+          <mxGeometry height="90" width="202" x="6457" y="-275.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-184" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;typename Queue::key_type wait_key;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Queue* queue;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::share_ptr&amp;lt;Box&amp;gt; box;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::string message;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::coroutine_handle&amp;lt;&amp;gt; handle;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;bool await_ready() { return false; };&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;void await_suspend(std::coroutine_handle&amp;lt;&amp;gt; h);&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::string await_resume() { return box-&amp;gt;result; }; // 恢复后 co_await 求值为这里&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="189.5" width="640" x="6740" y="-325.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-189" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-187" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-188">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-187" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="业务工作线程池work_pool结构" vertex="1">
+          <mxGeometry height="80" width="201.5" x="6459" y="-3" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-188" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;thread_pool pool;//线程池基础设施&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;blockingqueue queue_;//阻塞任务队列&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;blockingqueue&amp;amp; get_queue() { return queue_; }&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;void add_task(std::function&amp;lt;void()&amp;gt; task)；&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;void on_event(int wait_key);&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;void add_blockingtask(blockedtask block);&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="180" width="601" x="6739" y="-53" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-191" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;业务线程池主要结构体结构&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="350" x="7245" y="-1173" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-195" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-192" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-193">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-196" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-192" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-194">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-192" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="服务业务层的接口文件" vertex="1">
+          <mxGeometry height="77" width="223" x="6459" y="347" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-193" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;context.h&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;extern thread_local std::shared_ptr&amp;lt;internalconnection&amp;gt; tls_current_conn;//用于线程池中线程白板的指针&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;bool send(const std::string&amp;amp; data);&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;EventAwaiter query_db(const std::string&amp;amp; sql);&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="125" width="451" x="6772" y="222" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-194" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;context.cpp&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;thread_local std::shared_ptr&amp;lt;internalconnection&amp;gt; tls_current_conn;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;bool send(const std::string&amp;amp; data) {&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&amp;nbsp; &amp;nbsp; if (!tls_current_conn) return false;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&amp;nbsp; &amp;nbsp; return tls_current_conn-&amp;gt;send(data);&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;}&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;EventAwaiter query_db(const std::string\&amp;amp; sql) {&amp;nbsp; &amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 15px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;return EventAwaiter{sql};&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 15px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 16px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="180.5" width="667" x="6772" y="399.75" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-197" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-198" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-201">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-2" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-198" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="yZMk2fQucRA3TGzlEvfK-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-198" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="推入任务序列" vertex="1">
+          <mxGeometry height="100" width="220" x="6752" y="1522" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-199" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-201" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-206">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-200" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-201" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-220">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-231" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-201" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-230">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-201" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="线程池工作线程" vertex="1">
+          <mxGeometry height="100" width="216" x="6755" y="1322" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-204" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-206" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-208">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-205" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-206" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-210">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-16" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-206" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="yZMk2fQucRA3TGzlEvfK-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-27" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-206" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="yZMk2fQucRA3TGzlEvfK-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-206" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="执行具体的业务逻辑" vertex="1">
+          <mxGeometry height="80" width="203.5" x="6760.25" y="1152" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-227" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-208" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-225">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-208" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="网络信息输出" vertex="1">
+          <mxGeometry height="80" width="180" x="6488" y="1152" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-209" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-210" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-218">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-10" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-210" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="yZMk2fQucRA3TGzlEvfK-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-210" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="业务逻辑中涉及到数据库查询等逻辑时，将数据库操作封装成一个任务" vertex="1">
+          <mxGeometry height="80" width="198" x="6762" y="982" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-211" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-212" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-220">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-5" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-212" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="yZMk2fQucRA3TGzlEvfK-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-212" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="阻塞任务序列" vertex="1">
+          <mxGeometry height="100" width="230" x="7429" y="1402" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-214" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-215" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="-wRr3w-UZTGYxzREswyB-212">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-17" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-215" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="yZMk2fQucRA3TGzlEvfK-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-215" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="业务代码中协程触发co_wait挂起" vertex="1">
+          <mxGeometry height="80" width="210" x="7439" y="1222" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-217" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-218" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-215">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-218" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="采用协程进行编写的业务逻辑" vertex="1">
+          <mxGeometry height="85" width="210" x="7439" y="979.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-219" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-220" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-198">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-7" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-220" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="yZMk2fQucRA3TGzlEvfK-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-220" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="执行唤醒任务逻辑" vertex="1">
+          <mxGeometry height="100" width="240" x="7078" y="1402" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-224" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-223" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-198">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-3" edge="1" parent="1" source="-wRr3w-UZTGYxzREswyB-223" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="-wRr3w-UZTGYxzREswyB-228">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-223" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="外部信号唤醒" vertex="1">
+          <mxGeometry height="87" width="190" x="6468" y="1527.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-225" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="业务端在引用接口文件后使用接口文件中的send函数，从而使用任务结构体中自带的发送fuction进行信息发送" vertex="1">
+          <mxGeometry height="95" width="235" x="6460.5" y="969.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-228" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="其他模块完成工作后将结构体中的function，也就是业务工作逻辑里的on_event函数推入任务序列中等待线程池调用并唤醒阻塞队列里的任务" vertex="1">
+          <mxGeometry height="120" width="215" x="6455.5" y="1679.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-wRr3w-UZTGYxzREswyB-230" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="线程池的工作线程从任务序列中取出任务后将任务序列中的连接信息设置为白板，然后执行任务结构体中的function，无论是否完成任务在线程归还时要将白板清空" vertex="1">
+          <mxGeometry height="115" width="270" x="6388" y="1314.5" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="任务序列中的任务采用Task结构进行存储，保存任务的连接信息和function" vertex="1">
+          <mxGeometry height="90" width="216" x="6755" y="1689.5" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="阻塞任务队列是以blockedtask为阻塞任务的阻塞任务队列，主要存储协程挂起时返回的resume()形成的function" vertex="1">
+          <mxGeometry height="90" width="249" x="7419.5" y="1612" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="外部信号唤醒后将on_event的function推入任务队列，线程读取后执行该逻辑熊阻塞任务队列中唤醒响应的阻塞任务，并添加到任务序列中" vertex="1">
+          <mxGeometry height="85" width="230" x="7084" y="1614.5" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="将数据库或其他模块的操作封装成一个推入任务队列的function，业务层在进行相关操作时直接调用该function" vertex="1">
+          <mxGeometry height="80" width="196" x="6764" y="824.5" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="在业务层的业务逻辑中，代码的书写直接调用接口而不接触框架内部，由于function的特性，一个线程池可以处理多项业务" vertex="1">
+          <mxGeometry height="90" width="260" x="7093" y="1099.5" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="将工作线程归还并将任务状态保存，保证线程白板等相关信息清空，将连接信息和协程挂起后的function封装成阻塞任务，推入阻塞任务队列" vertex="1">
+          <mxGeometry height="95.5" width="270" x="7083" y="1242" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-24" edge="1" parent="1" source="yZMk2fQucRA3TGzlEvfK-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="yZMk2fQucRA3TGzlEvfK-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;业务层在代码编写中直接包含该头文件便可直接使用其中的接口进行数据传输等操作而不用理会连接信息问题&lt;/div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;context.h&lt;/font&gt;" vertex="1">
+          <mxGeometry height="92.5" width="211" x="7093" y="852" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-26" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 16px; text-align: left;&quot;&gt;bool send(const std::string&amp;amp; data);&lt;/span&gt;" vertex="1">
+          <mxGeometry height="95" width="360" x="7350" y="850.75" as="geometry" />
+        </mxCell>
+        <mxCell id="yZMk2fQucRA3TGzlEvfK-32" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;业务工作线程池具体设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="420" width="10" x="7830" y="-575.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-2" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="IQS4RsswBqr9AdCzXM4t-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-24" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="IQS4RsswBqr9AdCzXM4t-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="线程池内工作线程" vertex="1">
+          <mxGeometry height="100" width="227" x="3824" y="-910" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-18" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="IQS4RsswBqr9AdCzXM4t-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-22" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="IQS4RsswBqr9AdCzXM4t-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="推入任务队列" vertex="1">
+          <mxGeometry height="90" width="226" x="3825" y="-709.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-21" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="IQS4RsswBqr9AdCzXM4t-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-26" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="IQS4RsswBqr9AdCzXM4t-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="执行解析任务" vertex="1">
+          <mxGeometry height="110" width="210" x="3832.5" y="-1225.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-20" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="IQS4RsswBqr9AdCzXM4t-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="解析任务完成后归还工作线程并将解析后得到的执行函数封装成任务" vertex="1">
+          <mxGeometry height="110" width="210" x="3832.5" y="-1435.5000000000002" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;任务解析线程池具体设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="170" width="540" x="3470" y="-1710.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-16" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="IQS4RsswBqr9AdCzXM4t-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="任务队列内的任务结构为：连接信息internalconnection、接收到的信息message、将要执行的解析任务function，任务由继承后的Handler接口推入任务队列中" vertex="1">
+          <mxGeometry height="110" width="260" x="3449" y="-719.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="将解析后的对应工作任务封装成用于Handler接口提交给业务工作线程池任务序列的任务，结构为连接信息internalconnection+具体业务逻辑function（需要在该层将参数提前初始化）" vertex="1">
+          <mxGeometry height="100" width="270" x="3444" y="-1430.5000000000002" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="业务层在编写代码时应当为任务解析层编写对应的function用于任务解析，解析层会调用该function构造任务用于线程池的工作线程中" vertex="1">
+          <mxGeometry height="120" width="277" x="3440.5" y="-920" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="解析任务应当具有通过任务中传递的message对目标任务进行解析的功能，通过该解析任务返回相应的function用于业务工作线程池的任务封装" vertex="1">
+          <mxGeometry height="120" width="276" x="3444" y="-1230.5" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-27" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;任务解析线程池状态机设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="170" width="187.5" x="3492.5" y="-1100" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-31" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="IQS4RsswBqr9AdCzXM4t-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="通信协议接口&lt;div&gt;agreement&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="230" x="3362" y="491.3800000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;vector&amp;lt;string&amp;gt; spilit_char;//协议划分符&lt;/div&gt;virtual vector&amp;lt;string&amp;gt;&amp;nbsp; spilit(string message)=0；//协议解析提取&lt;div&gt;virtual string&amp;nbsp; transfoprm_message(vector&amp;lt;string&amp;gt;)=0;//协议处理生成&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="131.38" width="440" x="3662" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-7" edge="1" parent="1" source="IQS4RsswBqr9AdCzXM4t-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="4a1aca5fLSbERqLzxbaE-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQS4RsswBqr9AdCzXM4t-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="业务层解析任务入口&lt;div&gt;参数数据：message&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="3363.5" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-6" edge="1" parent="1" source="4a1aca5fLSbERqLzxbaE-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="4a1aca5fLSbERqLzxbaE-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将message作为参数输入通信协议接口agreement里的协议解析提取函数，提取其中的信息列表" vertex="1">
+          <mxGeometry height="70" width="233" x="3845" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-9" edge="1" parent="1" source="4a1aca5fLSbERqLzxbaE-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="4a1aca5fLSbERqLzxbaE-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将返回的参数输入业务层内的任务解析函数中进行任务解析，返回得到的目标任务的回调函数" vertex="1">
+          <mxGeometry height="70" width="233" x="3845" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将得到的回调函数和之前的参数组合得到并返回初始化后的function" vertex="1">
+          <mxGeometry height="70" width="233" x="3363.5" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;业务层对于任务解析任务的设计规范&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="410" x="3531" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-16" edge="1" parent="1" source="4a1aca5fLSbERqLzxbaE-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="4a1aca5fLSbERqLzxbaE-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="线程池任务结构Task" vertex="1">
+          <mxGeometry height="70" width="189" x="3383" y="-315" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::string message;//网络层读取到的信息&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::function&amp;lt;void()&amp;gt; fn;//任务序列中执行的function&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::shared_ptr&amp;lt;internalconnection&amp;gt; conn;//用于存储当前任务中的连接信息&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="120" width="420" x="3663" y="-340" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-17" edge="1" parent="1" source="4a1aca5fLSbERqLzxbaE-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="4a1aca5fLSbERqLzxbaE-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="thread_pool基础线程池结构" vertex="1">
+          <mxGeometry height="80" width="190" x="3383" y="-134.5" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;queue&amp;lt;Task&amp;gt; tasks;//任务队列&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;mutex for_task;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;bool stop = false;//运行状态&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;vector&amp;lt;thread&amp;gt; pool;//线程池内线程句柄&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;std::condition_variable cv;//条件变量&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;div style=&quot;&quot;&gt;void worker();&lt;/div&gt;&lt;div style=&quot;&quot;&gt;void add_task(Task funtion);&lt;/div&gt;&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="170" width="445" x="3661" y="-179.5" as="geometry" />
+        </mxCell>
+        <mxCell id="4a1aca5fLSbERqLzxbaE-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;任务解析层主要结构体结构&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="300" x="3383" y="-400" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-3" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="协程信箱Box" vertex="1">
+          <mxGeometry height="70" width="200" x="6457" y="-1615" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;std::string result;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;bool ready = false;&lt;/div&gt;&lt;div&gt;int wait_name;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="100" width="400" x="6738" y="-1630" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-6" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="数据库任务结构Task" vertex="1">
+          <mxGeometry height="86" width="280" x="1440" y="-1540" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;int wait_name;&lt;/div&gt;&lt;div&gt;share_ptr&amp;lt;Box&amp;gt; box;&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="96.5" width="390" x="1839" y="-1544.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-10" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="数据库连接池结构connect_pool" vertex="1">
+          <mxGeometry height="91" width="280" x="1440" y="-1345" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;std::queue&amp;lt;MYSQL*&amp;gt; conns_;&lt;/div&gt;&lt;div&gt;std::mutex mutex_;&lt;/div&gt;&lt;div&gt;MYSQL* get();&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 借连接&lt;/div&gt;&lt;div&gt;void release(MYSQL*);&amp;nbsp; // 还连接&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="111" width="401" x="1840" y="-1354" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-13" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="数据库业务线程池结构DB_pool" vertex="1">
+          <mxGeometry height="90" width="280" x="1440" y="-1125.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;std::queue&amp;lt;Task&amp;gt; tasks_;&amp;nbsp; &amp;nbsp; // DB任务队列&lt;/div&gt;&lt;div&gt;std::mutex mutex_;&lt;/div&gt;&lt;div&gt;std::condition_variable cv_;&lt;/div&gt;&lt;div&gt;std::vector&amp;lt;std::thread&amp;gt; workers_;&lt;/div&gt;&lt;div&gt;connect_pool conn_pool_;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 连接池&lt;/div&gt;&lt;div&gt;work_pool* business_pool_;&amp;nbsp; &amp;nbsp; &amp;nbsp;// 唤醒业务协程用&lt;/div&gt;&lt;div&gt;void submit(Task task);&amp;nbsp;&lt;/div&gt;&lt;div&gt;void worker_loop();&lt;/div&gt;&lt;div&gt;void wake_up(Task&amp;amp; task);&lt;/div&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="200" width="440" x="1840" y="-1180.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;数据库业务逻辑主要结构体结构&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="370" x="1640" y="-1618" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-39" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-47" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="插入任务序列" vertex="1">
+          <mxGeometry height="73" width="206" x="1410" y="-330.75" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-40" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-53" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="线程池工作线程" vertex="1">
+          <mxGeometry height="90" width="210" x="1740" y="-340.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-41" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-51" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="数据库业务逻辑" vertex="1">
+          <mxGeometry height="90" width="220" x="2080" y="-340.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-43" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-55" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="获取数据库连接" vertex="1">
+          <mxGeometry height="90" width="200" x="2090" y="-538" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-44" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-57" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-32" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="访问数据库并执行逻辑" vertex="1">
+          <mxGeometry height="110" width="205" x="2087.5" y="-747.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-61" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="返回数据库操作结果" vertex="1">
+          <mxGeometry height="100" width="195" x="1415.5" y="-742.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-45" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="08UAQJ6lh_ML4r5Nq8O2-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="释放使用的连接到连接池，释放所使用的线程到线程池" vertex="1">
+          <mxGeometry height="90" width="200" x="1740" y="-737.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-37" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;数据库业务逻辑状态机设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="240" x="2700" y="-543" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-38" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0.3;entryDx=0;entryDy=0;entryPerimeter=0;" target="08UAQJ6lh_ML4r5Nq8O2-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-46" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="业务工作线程池通过Handler接口将数据库业务逻辑任务封装成任务Task后将其插入任务序列" vertex="1">
+          <mxGeometry height="86" width="210" x="1408" y="-475.5" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-48" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="线程池工作线程执行的任务是相同的，不过由于任务序列中的任务不同，具体执行的参数是不一样的" vertex="1">
+          <mxGeometry height="92.5" width="210" x="2427" y="-341.75" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-52" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="线程池中的工作线程从任务序列中取出等待的任务后获取其中的参数用于具体的业务逻辑" vertex="1">
+          <mxGeometry height="89" width="250" x="1720" y="-475" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-54" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="业务逻辑的一开始需要想连接池申请连接占用，只有获取到连接后才可以进行具体的业务逻辑" vertex="1">
+          <mxGeometry height="92" width="228" x="2412" y="-538" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-56" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="调用API等方式对数据库进行访问等业务逻辑" vertex="1">
+          <mxGeometry height="90.75" width="250" x="2400" y="-738.25" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-58" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="完成数据库业务逻辑后将连接归还给连接池。同时将业务逻辑返回的结果写入参数中的信箱Box用于结果返回" vertex="1">
+          <mxGeometry height="86.5" width="250" x="1720" y="-603.25" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-59" edge="1" parent="1" source="08UAQJ6lh_ML4r5Nq8O2-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.476;entryY=0.038;entryDx=0;entryDy=0;entryPerimeter=0;" target="08UAQJ6lh_ML4r5Nq8O2-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-60" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="调用业务工作线程池work_pool的唤醒逻辑，将任务参数中的wait_name作为唤醒名，将他们封装成业务工作线程池的任务并推入到业务工作线程池的任务序列中" vertex="1">
+          <mxGeometry height="82" width="232" x="1397" y="-601" as="geometry" />
+        </mxCell>
+        <mxCell id="08UAQJ6lh_ML4r5Nq8O2-64" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;数据库业务逻辑具体设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="500" x="2450" y="-1330.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
