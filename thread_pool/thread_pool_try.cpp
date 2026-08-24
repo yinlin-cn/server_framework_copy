@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <thread>
 #include <string>
 #include <memory>
@@ -11,11 +11,16 @@
 #include <unordered_map>
 #include <atomic>
 #include <cstdint>
-#include"context.h"
 using namespace std;
 
 class DBHandler;
 
+struct internalconnection {
+    int sock = -1;
+    function<bool(const string&)> send;
+};
+
+thread_local shared_ptr<internalconnection> tls_current_conn;
 
 struct PoolTask {
     function<void()> fn;
@@ -127,7 +132,10 @@ public:
     }
 };
 
-
+bool send(const string& data) {
+    if (!tls_current_conn) return false;
+    return tls_current_conn->send(data);
+}
 
 struct Box {
     string result;
@@ -135,11 +143,16 @@ struct Box {
     uint64_t wait_name = 0;
 };
 
+struct DBTask {
+    uint64_t wait_name;
+    shared_ptr<Box> box;
+    string sql;
+};
 
 class DBHandler {
 public:
     virtual ~DBHandler() = default;
-    virtual void submit(uint64_t wait_key,Box box,std::string message) = 0;
+    virtual void submit(DBTask task) = 0;
 };
 
 struct Task {
@@ -172,14 +185,65 @@ struct EventAwaiter {
 
         if (db_handler && box) {
             box->wait_name = wait_key;
-            db_handler->submit(wait_key, box, message);
+            db_handler->submit(DBTask{ wait_key, box, message });
         }
     }
 
     string await_resume() { return box ? box->result : message; }
 };
 
+template<typename WorkPool>
+class business {
+    shared_ptr<WorkPool> wp;
+    DBHandler* db_handler;
+    atomic<uint64_t> key_alloc{0};
 
+public:
+    using Queue = typename WorkPool::queue_type;
 
+    business(shared_ptr<WorkPool> p, DBHandler* db) : wp(p), db_handler(db) {}
 
+    EventAwaiter<Queue> query_db(const string& sql) {
+        uint64_t key = key_alloc.fetch_add(1);
+        auto box = make_shared<Box>();
+        box->wait_name = key;
+        return EventAwaiter<Queue>{ key, &wp->get_queue(), box, sql, db_handler };
+    }
 
+    Task flow(int order_id) {
+        cout << order_id << " 前段：开始查询...\n";
+        string res = co_await query_db("select * from orders");
+        cout << order_id << " 后段：拿到 " << res << "\n";
+    }
+};
+
+class FakeDBHandler : public DBHandler {
+    work_pool* bp;
+
+public:
+    explicit FakeDBHandler(work_pool* p) : bp(p) {}
+
+    void submit(DBTask task) override {
+        task.box->result = "查询结果@" + task.sql;
+        task.box->ready = true;
+
+        uint64_t key = task.wait_name;
+        auto* pool = bp;
+        pool->add_task([pool, key]{ pool->on_event(key); });
+    }
+};
+
+int main() {
+    auto pool = make_shared<work_pool>();
+    FakeDBHandler db(pool.get());
+    auto b = make_shared<business<work_pool>>(pool, &db);
+
+    auto conn = make_shared<internalconnection>();
+    conn->send = [](const string& s){ cout << "[send] " << s << endl; return true; };
+
+    pool->add_task(PoolTask{ [b]{ b->flow(1); }, conn });
+    pool->add_task(PoolTask{ [b]{ b->flow(2); }, conn });
+
+    this_thread::sleep_for(chrono::seconds(1));
+    return 0;
+}
