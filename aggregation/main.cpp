@@ -1,4 +1,3 @@
-// main.cpp
 #include <chrono>
 #include <iostream>
 #include <memory>
@@ -12,8 +11,8 @@
 #include "divide_task.h"
 #include "work_pool.h"
 #include "work_task.h"
-#include "Handler_epoll.h"
-#include "Handler_divide.h"
+#include "Handler_epoll_make.h"
+#include "Handler_divide_make.h"
 #include "Handler_DB.h"
 #include "Box.h"
 #include "EventAwaiter.h"
@@ -21,8 +20,8 @@
 #include "thread_context.h"
 
 using namespace std;
+using Work = std::function<void()>;
 
-// ===== 业务逻辑：协程查询，DB 由 FakeDBHandler 模拟 =====
 class BusinessLogic {
 public:
     EventTask flow(int id, const string& msg) {
@@ -33,19 +32,6 @@ public:
     }
 };
 
-// ===== 业务分发器：把解析出的业务任务推入 work_pool =====
-class WorkPoolHandler : public Handler_divide {
-    work_pool* pool_;
-public:
-    explicit WorkPoolHandler(work_pool* p) : pool_(p) {}
-
-    void on_work(std::shared_ptr<Internalconnection> conn,
-                 std::function<void()> work) override {
-        pool_->add_task(work_task{work, conn});
-    }
-};
-
-// ===== 假数据库：填 box，再通过 on_event 任务唤醒 =====
 class FakeDBHandler : public Handler_DB {
     work_pool* pool_;
 public:
@@ -53,74 +39,39 @@ public:
 
     void submit(uint64_t key, std::shared_ptr<Box> box,
                 const std::string& message) override {
-        // 模拟真实 DB：换个线程做，让协程先完成挂起
-        std::thread([pool = pool_, key, box, message] {
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
-            box->result = "db(" + message + ")";
-            box->ready = true;
-            pool->add_task([pool, key] {
-                pool->on_event(key);
-            });
-        }).detach();
-    }
-};
-
-// ===== 解析层：epoll 收到消息 → 封装 divide_task =====
-class ParseHandler : public Handler_epoll {
-    divide_pool* divide_pool_;
-    Handler_divide* divide_handler_;
-    std::shared_ptr<BusinessLogic> biz_;
-
-public:
-    ParseHandler(divide_pool* p, Handler_divide* h,
-                 std::shared_ptr<BusinessLogic> b)
-        : divide_pool_(p), divide_handler_(h), biz_(b) {}
-
-    void on_message(std::shared_ptr<Internalconnection> conn,
-                    const std::string& msg) override {
-        auto biz = biz_;
-        std::function<std::function<void()>()> parse = [biz, msg]() {
-            return [biz, msg]() {
-                biz->flow(1, msg);
-            };
-        };
-        divide_pool_->add_task(divide_task{parse, conn, divide_handler_});
-    }
-};
-
-class ParseHandlerFactory : public Handler_epoll_Factory {
-    divide_pool* divide_pool_;
-    Handler_divide* divide_handler_;
-    std::shared_ptr<BusinessLogic> biz_;
-
-public:
-    ParseHandlerFactory(divide_pool* p, Handler_divide* h,
-                        std::shared_ptr<BusinessLogic> b)
-        : divide_pool_(p), divide_handler_(h), biz_(b) {}
-
-    Handler_epoll* create_handler() override {
-        return new ParseHandler(divide_pool_, divide_handler_, biz_);
+        box->result = "db(" + message + ")";
+        box->ready = true;
+        pool_->add_task([pool = pool_, key] {
+            pool->on_event(key);
+        });
     }
 };
 
 int main() {
-    work_pool business_pool;
-    g_work_pool = &business_pool;                  // 注册业务池单例
+    auto business_pool = std::make_shared<work_pool>();
+    g_work_pool = business_pool.get();
 
-    WorkPoolHandler work_handler(&business_pool);
+    auto divide_handler = std::make_shared<Handler_divide_make>(business_pool);
 
-    FakeDBHandler db_handler(&business_pool);
-    g_db_handler = &db_handler;                    // 注册 DB 接口
+    FakeDBHandler db_handler(business_pool.get());
+    g_db_handler = &db_handler;
 
     auto biz = std::make_shared<BusinessLogic>();
 
-    divide_pool parse_pool(4);
-    ParseHandlerFactory factory(&parse_pool, &work_handler, biz);
+    // 外界传入的解析函数：message → 业务任务
+    auto divide_work = [biz](const std::string& msg) -> Work {
+        return [biz, msg]() {
+            biz->flow(1, msg);
+        };
+    };
+
+    auto parse_pool = std::make_shared<divide_pool>(4);
+    Handler_epoll_Factory_make factory(divide_work, parse_pool, divide_handler);
 
     epoll_make server(9001);
     server.start(&factory);
     std::cout << "服务器启动，端口 9001" << std::endl;
 
-    while(true);
-    return 0;
+    for (;;)
+        std::this_thread::sleep_for(std::chrono::hours(1));
 }
