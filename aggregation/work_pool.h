@@ -10,6 +10,7 @@ class work_pool {
     thread_pool pool;
     blockingqueue queue_;
 public:
+    work_pool(int N=8);
     blockingqueue& get_queue();
     void add_task(std::function<void()> task);
     void add_task(work_task task);

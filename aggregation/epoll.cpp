@@ -247,3 +247,12 @@ void epoll_make::start(Handler_epoll_Factory* f) {
         running = true;
         event_thread = thread(&epoll_make::event_loop, this);
     }
+
+    void epoll_make::stop() {
+    running = false;
+    if (wake_fd >= 0) {
+        uint64_t one = 1;
+        write(wake_fd, &one, sizeof(one));   // 唤醒 epoll_wait
+    }
+    if (event_thread.joinable()) event_thread.join();
+}

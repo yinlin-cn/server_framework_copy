@@ -3,6 +3,9 @@
 
 using namespace std;
 
+work_pool::work_pool(int N):pool(N){};
+
+
 blockingqueue& work_pool::get_queue() { return queue_; }
 
 void work_pool::add_task(function<void()> task) {

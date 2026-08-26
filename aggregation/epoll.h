@@ -48,4 +48,5 @@ public:
     epoll_make(int a = 9001, int b = 128, int c = 64);
     ~epoll_make();
     void start(Handler_epoll_Factory* f);
+    void stop();
 };
