@@ -1,9 +1,9 @@
 #include <chrono>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
 #include <thread>
-#include <functional>
 
 #include "context.h"
 #include "epoll.h"
@@ -13,7 +13,9 @@
 #include "work_task.h"
 #include "Handler_epoll_make.h"
 #include "Handler_divide_make.h"
-#include "Handler_DB.h"
+#include "Handler_DB_make.h"
+#include "DB_pool.h"
+#include "connect_pool.h"
 #include "Box.h"
 #include "EventAwaiter.h"
 #include "EventTask.h"
@@ -26,24 +28,13 @@ class BusinessLogic {
 public:
     EventTask flow(int id, const string& msg) {
         cout << "[" << id << "] 前段：准备查询" << endl;
-        string res = co_await query_db("select:" + msg);
+
+        // 真 SQL：从 users 表查 name 等于消息的那一行
+        string sql = "SELECT name FROM users WHERE name='" + msg + "' LIMIT 1";
+        string res = co_await query_db(sql);
+
         cout << "[" << id << "] 后段：拿到 " << res << endl;
         send("reply:" + msg + "|" + res);
-    }
-};
-
-class FakeDBHandler : public Handler_DB {
-    work_pool* pool_;
-public:
-    explicit FakeDBHandler(work_pool* p) : pool_(p) {}
-
-    void submit(uint64_t key, std::shared_ptr<Box> box,
-                const std::string& message) override {
-        box->result = "db(" + message + ")";
-        box->ready = true;
-        pool_->add_task([pool = pool_, key] {
-            pool->on_event(key);
-        });
     }
 };
 
@@ -51,10 +42,13 @@ int main() {
     auto business_pool = std::make_shared<work_pool>();
     g_work_pool = business_pool.get();
 
+    // 解析层 → 业务层
     auto divide_handler = std::make_shared<Handler_divide_make>(business_pool);
 
-    FakeDBHandler db_handler(business_pool.get());
-    g_db_handler = &db_handler;
+    // 业务层 → 数据库
+    auto db_pool = std::make_shared<DB_pool>(4, 4, business_pool.get(),"127.0.0.1", "delivery", "delivery123", "delivery", 3306);
+    auto db_handler = std::make_shared<Handler_DB_make>(db_pool);
+    g_db_handler = db_handler.get();
 
     auto biz = std::make_shared<BusinessLogic>();
 
