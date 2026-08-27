@@ -22,7 +22,13 @@ void thread_pool::worker() {
                 tasks.pop();
             }
             tls_current_conn = f.conn;
-            f.fn();
+            try {
+                f.fn();
+            } catch (const std::exception& e) {
+                if (error_handler_) error_handler_(f.conn, "work", e.what());
+            } catch (...) {
+                if (error_handler_) error_handler_(f.conn, "work", "unknown error");
+            }
             tls_current_conn.reset();
         }
     }

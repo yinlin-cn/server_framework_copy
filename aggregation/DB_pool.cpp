@@ -11,6 +11,7 @@ DB_pool::DB_pool(int conns, int workers, work_pool* business_pool,
 }
 
 DB_pool::~DB_pool() {
+    conn_pool_.shutdown();   
     {
         std::lock_guard<std::mutex> lock(mutex_);
         stop_ = true;
@@ -39,20 +40,29 @@ void DB_pool::worker_loop() {
         }
 
         DBHandle conn = conn_pool_.get();            // 真实版是 MYSQL*
-        if (!conn) continue;
+        if (!conn) {
+            if (stop_) return;   // 停止中且拿不到连接，直接退出，避免空转
+            continue;
+        }
 
-        if (mysql_query(conn, job.sql.c_str()) == 0) {
-            MYSQL_RES* res = mysql_store_result(conn);
-            if (res) {
-                MYSQL_ROW row = mysql_fetch_row(res);
-                if (row && row[0])
-                    job.box->result = row[0];        // 原型先取第一行第一列
-                mysql_free_result(res);
+        try {
+            if (mysql_query(conn, job.sql.c_str()) == 0) {
+                MYSQL_RES* res = mysql_store_result(conn);
+                if (res) {
+                    MYSQL_ROW row = mysql_fetch_row(res);
+                    if (row && row[0])
+                        job.box->result = row[0];
+                    mysql_free_result(res);
+                } else {
+                    job.box->result = "OK";
+                }
             } else {
-                job.box->result = "OK";              // 非 SELECT
+                job.box->result = std::string("ERR: ") + mysql_error(conn);
             }
-        } else {
-            job.box->result = std::string("ERR: ") + mysql_error(conn);
+        } catch (const std::exception& e) {
+            job.box->result = std::string("ERR: ") + e.what();
+        } catch (...) {
+            job.box->result = "ERR: unknown";
         }
         job.box->ready = true;
         conn_pool_.release(conn);

@@ -28,7 +28,7 @@ public:
                  const std::string& database,
                  unsigned int port = 3306);
     ~connect_pool();
-
+    void shutdown(); 
     DBHandle get();          // 池空时阻塞等待
     void release(DBHandle conn);
 };

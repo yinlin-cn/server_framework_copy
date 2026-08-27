@@ -34,10 +34,16 @@ void divide_pool::worker() {
                 tasks.pop();
             }
             // 1. 执行解析函数，得到真正的业务任务
-            std::function<void()> work = funtion.back_funtion();
-            // 2. 交给业务分发器，解析层不关心业务层内部结构
-            if (funtion.handler)
-                funtion.handler->on_work(funtion.connection, work);
+             try {
+                std::function<void()> work = funtion.back_funtion();
+                // 2. 交给业务分发器，解析层不关心业务层内部结构
+                if (funtion.handler)
+                    funtion.handler->on_work(funtion.connection, work);
+            } catch (const std::exception& e) {
+                if (error_handler_) error_handler_(funtion.connection, "divide", e.what());
+            } catch (...) {
+                if (error_handler_) error_handler_(funtion.connection, "divide", "unknown error");
+            }
         }
     }
 

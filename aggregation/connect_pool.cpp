@@ -29,6 +29,10 @@ connect_pool::~connect_pool() {
 DBHandle connect_pool::create_connection() {
     MYSQL* conn = mysql_init(nullptr);
     if (!conn) return nullptr;
+    unsigned int timeout = 5;   // 单位秒
+    mysql_options(conn, MYSQL_OPT_CONNECT_TIMEOUT, &timeout);
+    mysql_options(conn, MYSQL_OPT_READ_TIMEOUT, &timeout);
+    mysql_options(conn, MYSQL_OPT_WRITE_TIMEOUT, &timeout);
     if (!mysql_real_connect(conn, host_.c_str(), user_.c_str(), password_.c_str(),
                             database_.c_str(), port_, nullptr, 0)) {
         mysql_close(conn);
@@ -57,4 +61,12 @@ void connect_pool::release(DBHandle conn) {
         conns_.push(conn);
     }
     cv_.notify_one();
+}
+
+void connect_pool::shutdown() {
+    {
+        std::lock_guard<std::mutex> lock(mutex_);
+        closed_ = true;
+    }
+    cv_.notify_all();
 }
