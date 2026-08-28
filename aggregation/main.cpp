@@ -14,7 +14,10 @@ using namespace std;
 // 业务类：唯一入口是 flow()，通过 context.h 的接口访问框架。
 class BusinessLogic {
 public:
-    EventTask flow(int id, const string& msg) {
+    void echo(int id, const string& msg) {
+            send("echo:" + msg);
+        }
+    EventTask flow(int id, const string msg) {
         cout << "[" << id << "] 前段：准备查询 " << msg << endl;
 
         string sql = "SELECT name FROM users WHERE name='" + msg + "' LIMIT 1";
@@ -47,7 +50,10 @@ int main() {
     // 2. 集成类：divide_work 走构造函数（消息 -> 业务任务）
     Server server(
         [biz](const string& msg) -> function<void()> {
-            return [biz, msg]() { biz->flow(1, msg); };
+        if (msg == "ping") {
+            return [biz, msg]() { biz->echo(1, msg); };
+        }
+        return [biz, msg]() { biz->flow(1, msg); };
         },
         9001,     // 监听端口
         4,        // 解析线程数
@@ -55,8 +61,8 @@ int main() {
 
     // 3. 数据库配置（可选）
     server.set_db_config(Server::DBConfig{
-        4,                       // 连接池大小
-        4,                       // DB worker 线程数
+        20,                       // 连接池大小
+        20,                       // DB worker 线程数
         "127.0.0.1",             // 主机
         "delivery",              // 用户名
         "delivery123",           // 密码

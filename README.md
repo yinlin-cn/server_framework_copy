@@ -2,7 +2,7 @@
 
 > 一个基于 `epoll + 线程池 + 协程` 的短任务服务器框架，目标是为外卖系统（顾客 / 商家 / 骑手三端）提供底层网络、异步业务与数据库支持。
 >
-> 版本：v0.2（设计定稿 + 核心链路已实现）
+> 版本：v0.3（设计定稿 + 核心链路 + 集成类 Server + 错误回调 + 优雅退出 + 结构化查询结果）
 
 ---
 
@@ -57,6 +57,7 @@
 | 解析层 | 协议解析、路由、任务封装 | `divide_pool` / `Handler_divide` |
 | 业务层 | 业务逻辑、等待挂起 | `work_pool` / `Task` / `BlockedTask` / `EventAwaiter` |
 | 数据库层 | SQL 执行、结果返回 | `DB_pool` / `connect_pool` / `Box` |
+| 集成层 | 组装各层、注入配置 | `Server` |
 
 ---
 
@@ -69,9 +70,9 @@
 5. `work_pool` worker 取出任务，设置白板 `tls_current_conn = conn`，执行任务函数，跑完清空白板。
 6. 业务触发数据库协程：`co_await query_db(sql)`，`EventAwaiter` 挂起，把 resume 任务插入阻塞队列，并调用 `Handler_DB::submit(wait_key, box, sql)`。
 7. `Handler_DB_make` 生成 `DBTask{wait_name, sql_message, box}` 推入 `DB_pool`。
-8. DB worker 从连接池借连接，执行 `mysql_query`，把结果写入 `box->result`，归还连接。
+8. DB worker 从连接池借连接，执行 `mysql_query`，把结果写入 `box->result`（错误写入 `box->err`），归还连接。
 9. `DB_pool` 把 `on_event` 任务推入 `work_pool`（不在 DB 线程直接 resume）。
-10. `work_pool` worker 执行 `on_event`，从阻塞队列取出对应任务重新入队，协程恢复，`await_resume()` 返回 `box->result`。
+10. `work_pool` worker 执行 `on_event`，从阻塞队列取出对应任务重新入队，协程恢复，`await_resume()` 返回 `DBResult`。
 11. 业务继续执行，调用 `send()` 回发消息。
 
 ---
@@ -84,11 +85,14 @@
 | `work_task` | 业务任务 | `fn` + `conn` |
 | `divide_task` | 解析任务 | 解析函数 + 连接 + `Handler_divide` |
 | `DBTask` | 数据库任务 | `wait_name` + `sql_message` + `box` |
-| `blockedtask` | 阻塞任务 | `wait_name` + 完整业务任务 |
+| `blockedtask` | 阻塞任务 | `wait_name` + 完整业务任务 + `box` |
 | `blockingqueue` | 阻塞任务队列 | `unordered_map<key, vector<blockedtask>>` |
-| `Box` | 信箱 | `result` / `ready` / `wait_name` |
+| `Box` | 信箱 | `result` / `err` / `ready` / `cancelled` / `wait_name` |
+| `DBResult` | 结构化查询结果 | `ok` / `cancelled` / `err` / `data` |
 | `EventTask` | 协程返回类型 | `promise_type` |
 | `EventAwaiter` | 协程控制器 | `wait_key` / `queue` / `box` / `message` / `db_handler` / `handle` |
+| `ErrorHandler` | 错误回调 | `(conn, stage, err)` |
+| `Server` | 集成类 | 持有各池 / Handler / epoll，负责组装与优雅退出 |
 
 ---
 
@@ -124,12 +128,52 @@ struct Task {
 业务代码只 `include context.h`，不接触框架内部结构：
 
 ```cpp
-bool send(const std::string& data);             // 回复当前连接（协程内可用）
-std::string query_db(const std::string& sql);   // 协程查询（co_await）
-std::string query_db_sync(const std::string& sql); // 同步查询（长任务独立线程）
-void* get_user_data();                          // 业务状态
-void set_user_data(void* data);                 // 业务状态
+void send(const std::string& data);                    // 回复当前连接（协程内可用）
+EventAwaiter query_db(const std::string& sql);         // 协程查询（co_await 返回 DBResult）
+// 后续：query_db_sync / query_db_cb
+void* get_user_data();                                 // 业务状态
+void set_user_data(void* data);                        // 业务状态
 ```
+
+### 5. 结构化查询结果（DBResult）
+
+`co_await query_db(sql)` 返回 `DBResult`，业务层必须显式判断状态，避免把取消/错误当正常结果：
+
+```cpp
+DBResult res = co_await query_db(sql);
+if (res.cancelled) { /* 查询被取消（退出/超时），收尾 */ }
+if (!res.ok)       { /* 查询失败，res.err 有描述 */ }
+/* res.data 才是正常结果 */
+```
+
+DB worker 把成功结果写入 `box->result`，把错误写入 `box->err`，不再用字符串前缀约定。
+
+### 6. 错误回调（ErrorHandler）
+
+业务层可注入错误回调，工作线程捕获到异常时调用，由业务层决定如何记录/响应：
+
+```cpp
+server.set_error_handler([](std::shared_ptr<Internalconnection> conn,
+                            const std::string& stage,
+                            const std::string& err) {
+    // 业务层自己决定：打日志 / 回客户端 / 落库
+});
+```
+
+`thread_pool` / `divide_pool` 的 worker 对任务执行包了 `try/catch`，异常不再导致进程崩溃。
+
+### 7. 优雅退出
+
+`Server::stop()` 按任务流向逐层放水：
+
+```
+关闸（停 accept）→ 解析池关闸 + 排干 → 业务池关闸 → 业务排干（DB 保持可用）
+→ 超时兜底取消挂起协程 → 断开全部连接 → DB 最后关闭 → join 各池 → 清全局
+```
+
+- 每个池支持 `shutdown()` 与 `wait_idle(timeout)`（带在途计数）；
+- `blockingqueue` 提供 `take_all()`，退出时对挂起协程标记 `cancelled` 并重新投递，协程恢复后自己收尾；
+- `DB_pool::shutdown()` 幂等，配合 `joinable()` 防护避免重复 join 崩溃。
 
 ---
 
@@ -176,6 +220,7 @@ void order_lifecycle_loop() {
 - ✅ 短任务需要等待 → `co_await`；长任务需要数据 → `query_db_sync`
 - ✅ 业务状态挂 `user_data`，业务类无状态
 - ✅ 复杂流程拆成多步短任务
+- ✅ **协程函数参数按值传**（`string msg`，不要 `const string&`）——协程会挂起、跨线程恢复，引用在挂起期间可能失效
 - ❌ 业务池线程里 `sleep` / 忙等 / 阻塞锁 / 直接操作网络
 - ❌ 长任务塞进线程池
 
@@ -199,17 +244,18 @@ void order_lifecycle_loop() {
 
 | 接口 | 交付方式 | 适用场景 |
 |---|---|---|
-| `query_db(sql)` | `co_await`（box + 唤醒） | 业务短任务协程 |
-| `query_db_sync(sql)` | `promise` / `future`（阻塞） | 长任务独立线程 |
-| `query_db_cb(sql, cb)` | 直接回调 | 异步通知场景 |
+| `query_db(sql)` | `co_await`（box + 唤醒，返回 DBResult） | 业务短任务协程 |
+| `query_db_sync(sql)` | `promise` / `future`（阻塞，待实现） | 长任务独立线程 |
+| `query_db_cb(sql, cb)` | 直接回调（待实现） | 异步通知场景 |
 
 实现要点：
 
-- 同步版内部用 `std::promise<std::string>`，`future.get()` 阻塞等待。
-- 选择依据：**能不能阻塞**——业务池线程不能阻塞（用协程），独立线程可以（用同步）。
-- `connect_pool`：启动时创建 N 个连接；`get()` 池空时阻塞等待，`release()` 归还并唤醒等待者，析构统一关闭。
-- `DB_pool`：独立 worker 线程池 + 任务队列；worker 借连接、执行 `mysql_query`、把结果写入 `Box`、还连接、推 `on_event` 任务唤醒业务。
+- 连接建立时设置 connect/read/write 超时，防止 `mysql_query` 永久阻塞。
+- `connect_pool`：启动时创建 N 个连接；`get()` 池空时阻塞等待，`release()` 归还并唤醒等待者；`shutdown()` 显式关闭并唤醒阻塞者。
+- `DB_pool`：独立 worker 线程池 + 任务队列；worker 借连接、执行 `mysql_query`、成功写 `box->result` / 失败写 `box->err`、还连接、推 `on_event` 任务唤醒业务。
 - `Handler_DB_make` 在接口层生成 `DBTask{wait_name, sql_message, box}`，DB 本体不依赖业务层类型。
+- 当前 DB 结果只取第一行第一列；多行多列解析、连接池重连、SQL 参数化属于后续细化项。
+- 测试 SQL 使用字符串拼接，接入真实业务前应改为参数化查询或转义，防止 SQL 注入。
 
 ---
 
@@ -228,7 +274,7 @@ Handler_DB.h        接口（submit(wait_key, box, message)）
 Handler_DB_make     实现：持有 DB_pool，生成 DBTask 推入
 ```
 
-接口只负责解耦，make 负责接线。上层只持有接口指针，具体实现由集成体（main）创建并注入。
+接口只负责解耦，make 负责接线。上层只持有接口指针，具体实现由集成体（main / Server）创建并注入。
 
 ---
 
@@ -246,19 +292,24 @@ server_framework/
 ├─ divide_task.h               // 解析任务
 ├─ divide_pool.h/.cpp          // 解析线程池
 ├─ work_task.h                 // 业务任务
-├─ work_pool.h/.cpp            // 业务工作池（线程池 + 阻塞队列 + on_event）
-├─ thread_pool.h/.cpp          // 通用线程池（存 work_task，worker 设白板）
-├─ blockedtask.h               // 阻塞任务
-├─ blockingqueue.h/.cpp        // 阻塞任务队列
-├─ Box.h                       // 信箱
+├─ work_pool.h/.cpp            // 业务工作池（线程池 + 阻塞队列 + on_event + 错误回调透传）
+├─ thread_pool.h/.cpp          // 通用线程池（worker 设白板 + 兜异常 + shutdown/wait_idle）
+├─ blockedtask.h               // 阻塞任务（带 box）
+├─ blockingqueue.h/.cpp        // 阻塞任务队列（take / take_all）
+├─ Box.h                       // 信箱（result / err / cancelled）
+├─ DBResult.h                  // 结构化查询结果
+├─ ErrorHandler.h              // 错误回调类型
 ├─ EventTask.h                 // 协程返回类型
-├─ EventAwaiter.h/.cpp         // 协程控制器
+├─ EventAwaiter.h/.cpp         // 协程控制器（可取消）
 ├─ context.h/.cpp              // 业务唯一接口：send / query_db / 白板
 ├─ thread_context.h            // thread_local 白板与全局单例声明
 ├─ DB_task.h                   // 数据库任务
-├─ connect_pool.h/.cpp         // 数据库连接池
-├─ DB_pool.h/.cpp              // 数据库线程池
-└─ main.cpp                    // 集成与组装
+├─ connect_pool.h/.cpp         // 数据库连接池（超时 + shutdown）
+├─ DB_pool.h/.cpp              // 数据库线程池（显式 shutdown）
+├─ epoll.h/.cpp                // epoll 事件循环（stop_accept / close_all_connections）
+├─ Server.h/.cpp               // 集成类：组装各层 + 优雅退出
+├─ main.cpp                    // 业务演示：集成 + 信号处理
+└─ tools/                      // 压测脚本 + 压测报告
 ```
 
 ---
@@ -274,7 +325,7 @@ sudo apt install libmariadb-dev
 ```
 
 ```bash
-g++ -std=c++20 -fcoroutines main.cpp epoll.cpp divide_pool.cpp work_pool.cpp \
+g++ -std=c++20 -fcoroutines main.cpp Server.cpp epoll.cpp divide_pool.cpp work_pool.cpp \
     thread_pool.cpp blockingqueue.cpp EventAwaiter.cpp context.cpp \
     Handler_epoll_make.cpp Handler_divide_make.cpp Handler_DB_make.cpp \
     DB_pool.cpp connect_pool.cpp \
@@ -297,6 +348,10 @@ nc 127.0.0.1 9001
 
 协议为 `[4位十进制长度][消息体]`。收到完整消息后，框架会依次经过解析层、业务层、协程、数据库，并把结果回发。
 
+### 压测
+
+压测脚本位于 `tools/`，用法见 `tools/PRESSURE_TEST.md`。已覆盖串行 / 流水线 / 混合（不查库 + 查库）三种模式。
+
 ---
 
 ## 十三、设计要点与注意事项
@@ -306,6 +361,9 @@ nc 127.0.0.1 9001
 - 唤醒必须通过 `on_event` 任务重新入队，不在完成线程直接 `resume`，避免协程池污染。
 - 白板是 `thread_local`，不是全局共享变量。
 - `DBTask` 在 `Handler_DB_make` 内部生成，控制器只传参数，不接触数据库层类型。
+- 协程函数参数按值传，避免挂起后引用失效（压测中真实踩过 use-after-free）。
+- `DB_pool::shutdown()` 幂等 + 各池 join 前 `joinable()` 防护，防止重复 join 崩溃。
+- 优雅退出按任务流向逐层放水，挂起协程通过 `cancelled` 结算，不直接泄漏。
 - 当前 DB 结果只取第一行第一列；多行多列解析、连接池重连、SQL 参数化属于后续细化项。
 - 测试 SQL 使用字符串拼接，接入真实业务前应改为参数化查询或转义，防止 SQL 注入。
 
@@ -317,15 +375,36 @@ nc 127.0.0.1 9001
 - ❌ 挂起协程状态在内存中，服务器重启会丢失 → 长流程状态落数据库（订单状态机）
 - ✅ 长任务可借助框架短任务获取数据 / 触发事件
 
-### 后续可能的演进（远期）
+### 后续可能的演进（按优先级）
 
-1. **工作流引擎化**：长任务状态机抽成通用模块（类似 Temporal）——状态持久化到 DB，支持重试、超时、恢复。
-2. **业务可测试性**：`context.h` 接口可 mock，测试业务函数时注入假的 `send` / `query_db`。
-3. **业务模块化**：每种业务一个独立目录（order / login / rider），注册路由时按业务模块注册。
+1. **多 Reactor**：多 epoll 线程 + 连接分流，突破单事件循环约 1 万 QPS 的 syscall 吞吐上限（当前最大性能瓶颈）。
+2. **连接表优化**：`connections` 从线性查找改 `unordered_map`，支持更大连接数。
+3. **有界队列 + 背压**：任务队列加上限，满了拒绝/降级，防止极端负载内存无限增长。
+4. **DB 能力扩展**：多行多列解析、连接池重连、SQL 参数化、读写分离/缓存。
+5. **业务模块化**：每种业务一个独立目录（order / login / rider），注册路由时按业务模块注册。
+6. **工作流引擎化**：长任务状态机抽成通用模块，状态持久化到 DB，支持重试、超时、恢复。
+7. **业务可测试性**：`context.h` 接口可 mock，测试业务函数时注入假的 `send` / `query_db`。
 
 ---
 
 ## 十五、当前状态
 
-- **已跑通全链路**：`epoll → 解析层 → 业务层 → 协程 → 真实数据库 → 唤醒 → 回发`（`hello` / `world` 已从 `users` 表真查成功）。
-- **下一步**：封装集成类 `Server`；DB 结果解析（多行多列）与连接池重连；SQL 参数化；定义外卖三端协议与业务层。
+**已完成**
+
+- 全链路跑通：`epoll → 解析层 → 业务层 → 协程 → 真实数据库 → 唤醒 → 回发`。
+- 集成类 `Server`：封装各层组装、DB 配置、错误回调、优雅退出。
+- 稳定性：worker 兜异常、连接池超时/显式关闭、协程取消结算、DB 幂等关闭。
+- 结构化查询结果 `DBResult`：业务层显式判断 `ok / cancelled / err / data`。
+- 压测脚本与报告：`tools/`。
+
+**压测结论（本机回环）**
+
+| 模式 | 请求量 | 正确率 | QPS |
+|---|---|---|---|
+| 串行 1000×100 | 10 万 | 100% | 5918 |
+| 流水线 500×200 | 10 万 | 100% | 10658 |
+| 混合 500×200（ping+hello） | 10 万 | 100% | 10239 |
+
+- 正确性与稳定性在 10 万请求量级达标（累计 30 万+ 全对、无泄漏、无崩溃）。
+- 吞吐约 1 万 QPS，CPU 0%，瓶颈为单 Reactor 事件循环的 syscall 吞吐上限。
+- 下一步：多 Reactor；DB 结果解析（多行多列）与连接池重连；SQL 参数化；定义外卖三端协议与业务层。
