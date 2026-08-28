@@ -47,6 +47,7 @@ bool Server::start() {
     // 业务工作池。
     work_pool_ = std::make_shared<work_pool>(work_threads_);
     g_work_pool = work_pool_.get();
+    work_pool_->set_error_handler(error_handler_);
 
     // 解析 -> 业务分发器。
     divide_handler_ = std::make_shared<Handler_divide_make>(work_pool_);
@@ -63,6 +64,7 @@ bool Server::start() {
 
     // 解析线程池 + 网络工厂。
     parse_pool_ = std::make_shared<divide_pool>(parse_threads_);
+    parse_pool_->set_error_handler(error_handler_);
     factory_ = std::make_unique<Handler_epoll_Factory_make>(
         divide_work_, parse_pool_, divide_handler_);
 
@@ -75,4 +77,8 @@ bool Server::start() {
 
 void Server::stop() {
     if (server_) server_->stop();
+}
+
+void Server::set_error_handler(ErrorHandler handler) {
+    error_handler_ = std::move(handler);
 }

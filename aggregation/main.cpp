@@ -1,4 +1,5 @@
 #include <chrono>
+#include <csignal>
 #include <functional>
 #include <iostream>
 #include <memory>
@@ -10,6 +11,7 @@
 
 using namespace std;
 
+// 业务类：唯一入口是 flow()，通过 context.h 的接口访问框架。
 class BusinessLogic {
 public:
     EventTask flow(int id, const string& msg) {
@@ -18,30 +20,75 @@ public:
         string sql = "SELECT name FROM users WHERE name='" + msg + "' LIMIT 1";
         string res = co_await query_db(sql);
 
+        // 二阶段会支持 cancelled；这里先处理，保证不会误发空回复。
+        if (res == "cancelled") {
+            cout << "[" << id << "] 已取消" << endl;
+            co_return;
+        }
+
         cout << "[" << id << "] 后段：拿到 " << res << endl;
         send("reply:" + msg + "|" + res);
     }
 };
 
+static volatile sig_atomic_t g_exit_flag = 0;
+
+static void handle_signal(int) {
+    g_exit_flag = 1;   // 信号处理器只置标志，不在信号上下文里做复杂操作
+}
+
 int main() {
+    // 1. 业务对象
     auto biz = std::make_shared<BusinessLogic>();
 
-    // 集成类：divide_work 走构造函数，消息 -> 业务任务。
+    // 2. 集成类：divide_work 走构造函数（消息 -> 业务任务）
     Server server(
         [biz](const string& msg) -> function<void()> {
             return [biz, msg]() { biz->flow(1, msg); };
         },
-        9001, 4, 8);
+        9001,     // 监听端口
+        4,        // 解析线程数
+        8);       // 业务线程数
 
+    // 3. 数据库配置（可选）
     server.set_db_config(Server::DBConfig{
-        4, 4, "127.0.0.1", "delivery", "delivery123", "delivery", 3306,
+        4,                       // 连接池大小
+        4,                       // DB worker 线程数
+        "127.0.0.1",             // 主机
+        "delivery",              // 用户名
+        "delivery123",           // 密码
+        "delivery",              // 数据库
+        3306,                    // 端口
     });
 
+    // 4. 错误回调（可选）：业务层决定怎么记录/响应
+    server.set_error_handler(
+        [](std::shared_ptr<Internalconnection> conn,
+           const string& stage, const string& err) {
+            // 这里只打日志；真实业务可回客户端、落库、上报监控
+            std::cerr << "[" << stage << "] error: " << err << std::endl;
+            if (conn) {
+                conn->send_function("ERROR: " + err);   // 可选：回客户端
+            }
+        });
+
+    // 5. 启动
     if (!server.start()) {
         std::cout << "服务器启动失败" << std::endl;
         return 1;
     }
     std::cout << "服务器启动，端口 9001" << std::endl;
 
-    for (;;) std::this_thread::sleep_for(std::chrono::hours(1));
+    // 6. 注册信号，优雅退出
+    std::signal(SIGINT, handle_signal);
+    std::signal(SIGTERM, handle_signal);
+
+    while (!g_exit_flag) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    }
+
+    std::cout << "收到退出信号，开始停止..." << std::endl;
+    server.stop();
+    std::cout << "已停止" << std::endl;
+    return 0;
 }

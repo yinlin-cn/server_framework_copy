@@ -2,6 +2,7 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include "ErrorHandler.h"
 
 class work_pool;
 class divide_pool;
@@ -50,6 +51,7 @@ public:
     // 停止 epoll 事件循环并回收事件线程。
     void stop();
 
+    void set_error_handler(ErrorHandler handler);   // 业务层错误回调
 private:
     DivideWork divide_work_;          // 消息 -> 业务任务
     int listen_port_;
@@ -68,4 +70,5 @@ private:
     std::unique_ptr<Handler_epoll_Factory_make> factory_;
     std::unique_ptr<epoll_make> server_;
     bool started_ = false;
+    ErrorHandler error_handler_;                    // 业务层可选注入
 };

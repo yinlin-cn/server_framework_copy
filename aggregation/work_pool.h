@@ -3,6 +3,7 @@
 #include"blockingqueue.h"
 #include"blockedtask.h"
 #include"thread_pool.h"
+#include "ErrorHandler.h"
 #include<functional>
 #include<cstdint>
 using namespace std;
@@ -16,4 +17,5 @@ public:
     void add_task(work_task task);
     void on_event(uint64_t key);
     void add_blockingtask(blockedtask b);
+    void set_error_handler(ErrorHandler h) { pool.set_error_handler(std::move(h)); }   // ② 新增透传
 };
