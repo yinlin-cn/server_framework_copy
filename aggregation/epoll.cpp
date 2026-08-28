@@ -256,3 +256,21 @@ void epoll_make::start(Handler_epoll_Factory* f) {
     }
     if (event_thread.joinable()) event_thread.join();
 }
+
+void epoll_make::stop_accept() {
+    if (listen_fd >= 0) {
+        epoll_ctl(epoll_fd, EPOLL_CTL_DEL, listen_fd, nullptr);
+    }
+}
+void epoll_make::close_all_connections() {
+    for (auto& conn : connections) {
+        conn->connected = false;
+        if (conn->handler) {
+            conn->handler->on_disconnect(conn);
+            delete conn->handler;
+            conn->handler = nullptr;
+        }
+        if (conn->sock >= 0) close(conn->sock);
+    }
+    connections.clear();
+}

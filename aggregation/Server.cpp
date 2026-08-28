@@ -76,9 +76,29 @@ bool Server::start() {
 }
 
 void Server::stop() {
-    if (server_) server_->stop();
+    if (!started_) return;
+    server_->stop_accept();                          // 1. 关闸
+    parse_pool_->shutdown();                         // 2. 解析关闸
+    parse_pool_->wait_idle(5s);                      //    解析排干
+    work_pool_->shutdown();                          // 3. 业务关闸
+    work_pool_->wait_idle(5s);                       // 4. 业务排干（DB 保持可用）
+    settle_pending();                                // 5. 兜底取消
+    work_pool_->wait_idle(5s);                       //    等取消任务跑完
+    server_->stop();                                 // 停事件线程
+    server_->close_all_connections();                // 6. 断连接
+    if (db_pool_) db_pool_->shutdown();              // 7. DB 最后关
+    clear_globals();                                 // 8. 清全局
+    started_ = false;
 }
 
 void Server::set_error_handler(ErrorHandler handler) {
     error_handler_ = std::move(handler);
+}
+
+void Server::settle_pending() {
+    auto pending = work_pool_->get_queue().take_all();
+    for (auto& t : pending) {
+        if (t.box) t.box->cancelled = true;
+        work_pool_->add_task(std::move(t.funtion));   // 重新投递，协程恢复后自己收尾
+    }
 }

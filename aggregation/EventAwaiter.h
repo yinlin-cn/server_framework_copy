@@ -5,6 +5,7 @@
 #include"thread_context.h"
 #include"work_task.h"
 #include"Box.h"
+#include"DBResult.h"
 #include<memory>
 #include<string>
 #include<cstdint>
@@ -20,5 +21,5 @@ struct EventAwaiter {
     coroutine_handle<> handle;
     bool await_ready();
     void await_suspend(coroutine_handle<> h);
-    std::string await_resume();
+    DBResult await_resume();
 };

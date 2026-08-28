@@ -18,16 +18,19 @@ public:
         cout << "[" << id << "] 前段：准备查询 " << msg << endl;
 
         string sql = "SELECT name FROM users WHERE name='" + msg + "' LIMIT 1";
-        string res = co_await query_db(sql);
+        DBResult res = co_await query_db(sql);       // 返回结构化结果
 
-        // 二阶段会支持 cancelled；这里先处理，保证不会误发空回复。
-        if (res == "cancelled") {
-            cout << "[" << id << "] 已取消" << endl;
+        if (res.cancelled) {
+            send("查询被取消，请稍后重试");
+            co_return;
+        }
+        if (!res.ok) {
+            send("查询失败: " + res.err);
             co_return;
         }
 
-        cout << "[" << id << "] 后段：拿到 " << res << endl;
-        send("reply:" + msg + "|" + res);
+        cout << "[" << id << "] 后段：拿到 " << res.data << endl;
+        send("reply:" + msg + "|" + res.data);
     }
 };
 

@@ -14,4 +14,5 @@ public:
     blockingqueue();
     void insert(blockedtask task);
     std::vector<blockedtask> take(uint64_t& name);
+    std::vector<blockedtask> take_all();
 };

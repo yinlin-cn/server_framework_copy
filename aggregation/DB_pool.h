@@ -20,7 +20,7 @@ class DB_pool {
     connect_pool conn_pool_;
     work_pool* business_pool_;
     int worker_count_;
-
+    bool stopped_ = false;                 // 新增：防重复 join，shutdown 只执行一次
 public:
     DB_pool(int conns, int workers, work_pool* business_pool,
             const std::string& host, const std::string& user,
@@ -29,7 +29,7 @@ public:
     ~DB_pool();
 
     void submit(DBTask task);
-
+    void shutdown();   // 显式关闭：先关连接池，再停 worker 并 join
 private:
     void worker_loop();
 };

@@ -17,7 +17,10 @@ EventAwaiter query_db(const std::string& sql) {
     uint64_t key = key_alloc.fetch_add(1);
     auto box = std::make_shared<Box>();
     box->wait_name = key;
-
+    if (!g_work_pool || !g_db_handler) {
+        box->cancelled = true;   // 框架未就绪，直接已取消
+        return EventAwaiter{ key, nullptr, box, sql, g_db_handler };
+    }
     return EventAwaiter{
         key,
         &g_work_pool->get_queue(),   // 直接用全局，不用 tls

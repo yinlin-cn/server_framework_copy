@@ -52,6 +52,8 @@ public:
     void stop();
 
     void set_error_handler(ErrorHandler handler);   // 业务层错误回调
+
+    void settle_pending();   // 结算挂起协程：标记取消并重新投递
 private:
     DivideWork divide_work_;          // 消息 -> 业务任务
     int listen_port_;

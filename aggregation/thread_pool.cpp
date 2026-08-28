@@ -8,7 +8,8 @@ thread_pool::thread_pool(int N) {
 thread_pool::~thread_pool() {
         { lock_guard<mutex> lock(for_task); stop = true; }
         cv.notify_all();
-        for (auto& t : pool) t.join();
+        for (auto& t : pool)
+            if (t.joinable()) t.join();
     }
 
 void thread_pool::worker() {
@@ -22,6 +23,7 @@ void thread_pool::worker() {
                 tasks.pop();
             }
             tls_current_conn = f.conn;
+            active_++;            // 取到任务后
             try {
                 f.fn();
             } catch (const std::exception& e) {
@@ -30,6 +32,8 @@ void thread_pool::worker() {
                 if (error_handler_) error_handler_(f.conn, "work", "unknown error");
             }
             tls_current_conn.reset();
+            active_--;            // 跑完（无论成败）
+            if (active_ == 0) idle_cv_.notify_all();
         }
     }
 
@@ -38,3 +42,13 @@ void thread_pool::add_task(work_task f) {
         tasks.push(move(f));
         cv.notify_one();
     }
+
+void thread_pool::shutdown() {
+    { lock_guard<mutex> lock(for_task); stop = true; }
+    cv.notify_all();
+}
+
+bool thread_pool::wait_idle(const std::chrono::milliseconds& timeout) {
+    std::unique_lock<std::mutex> lock(idle_mutex_);
+    return idle_cv_.wait_for(lock, timeout, [this]{ return active_ == 0; });
+}

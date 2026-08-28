@@ -49,4 +49,6 @@ public:
     ~epoll_make();
     void start(Handler_epoll_Factory* f);
     void stop();
+    void stop_accept();                 // 摘除监听事件，不再接受新连接
+    void close_all_connections();        // 遍历关闭所有连接（复用析构里的逻辑）
 };

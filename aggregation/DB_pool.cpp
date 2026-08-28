@@ -11,13 +11,19 @@ DB_pool::DB_pool(int conns, int workers, work_pool* business_pool,
 }
 
 DB_pool::~DB_pool() {
-    conn_pool_.shutdown();   
+    {
+        std::lock_guard<std::mutex> lock(mutex_);
+        if (stopped_) return;              // 已停过就直接返回，避免二次 join
+        stopped_ = true;
+    }
+    conn_pool_.shutdown();                 // 先唤醒卡在 get() 的 worker，避免 join 死锁
     {
         std::lock_guard<std::mutex> lock(mutex_);
         stop_ = true;
     }
     cv_.notify_all();
-    for (auto& t : workers_) t.join();
+    for (auto& t : workers_)
+        if (t.joinable()) t.join();
 }
 
 void DB_pool::submit(DBTask task) {
@@ -51,18 +57,18 @@ void DB_pool::worker_loop() {
                 if (res) {
                     MYSQL_ROW row = mysql_fetch_row(res);
                     if (row && row[0])
-                        job.box->result = row[0];
+                        job.box->result = row[0];             // 正常结果
                     mysql_free_result(res);
                 } else {
-                    job.box->result = "OK";
+                    job.box->result = "OK";                   // 非 SELECT
                 }
             } else {
-                job.box->result = std::string("ERR: ") + mysql_error(conn);
+                job.box->err = mysql_error(conn);             // 错误单独写 err
             }
         } catch (const std::exception& e) {
-            job.box->result = std::string("ERR: ") + e.what();
+            job.box->err = e.what();
         } catch (...) {
-            job.box->result = "ERR: unknown";
+            job.box->err = "unknown";
         }
         job.box->ready = true;
         conn_pool_.release(conn);
@@ -71,4 +77,17 @@ void DB_pool::worker_loop() {
         auto* pool = business_pool_;
         pool->add_task([pool, key]{ pool->on_event(key); });
     }
+}
+
+void DB_pool::shutdown() {
+     {
+        std::lock_guard<std::mutex> lock(mutex_);
+        if (stopped_) return;
+        stopped_ = true;
+    }
+    conn_pool_.shutdown();                 // 唤醒卡在 get() 的 worker
+    { std::lock_guard<std::mutex> lock(mutex_); stop_ = true; }
+    cv_.notify_all();
+        for (auto& t : workers_)
+        if (t.joinable()) t.join();
 }
