@@ -45,7 +45,7 @@ private:
     vector<string> spilit_message(string& message);
     void event_loop();
 public:
-    epoll_make(int a = 9001, int b = 128, int c = 64);
+    epoll_make(int a = 9001, int b = 4096, int c = 4096);
     ~epoll_make();
     void start(Handler_epoll_Factory* f);
     void stop();

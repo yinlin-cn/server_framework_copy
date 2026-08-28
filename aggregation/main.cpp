@@ -14,6 +14,16 @@ using namespace std;
 // 业务类：唯一入口是 flow()，通过 context.h 的接口访问框架。
 class BusinessLogic {
 public:
+    // 压测用：模拟重业务，消息格式 heavy:N，空转 N 毫秒占住业务线程。
+    void heavy(int id, const string& msg) {
+        size_t pos = msg.find(':');
+        int ms = 5;
+        if (pos != string::npos)
+            ms = std::stoi(msg.substr(pos + 1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+        send("done:" + msg);
+    }
+
     void echo(int id, const string& msg) {
             send("echo:" + msg);
         }
@@ -50,14 +60,17 @@ int main() {
     // 2. 集成类：divide_work 走构造函数（消息 -> 业务任务）
     Server server(
         [biz](const string& msg) -> function<void()> {
+        if (msg.rfind("heavy", 0) == 0) {
+            return [biz, msg]() { biz->heavy(1, msg); };
+        }
         if (msg == "ping") {
             return [biz, msg]() { biz->echo(1, msg); };
         }
         return [biz, msg]() { biz->flow(1, msg); };
         },
         9001,     // 监听端口
-        4,        // 解析线程数
-        8);       // 业务线程数
+        8,        // 解析线程数
+        20);       // 业务线程数
 
     // 3. 数据库配置（可选）
     server.set_db_config(Server::DBConfig{
