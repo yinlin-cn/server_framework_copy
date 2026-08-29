@@ -14,6 +14,7 @@ bool NetworkServer::start() {
 
     for (int i = 0; i < reactor_count_; i++) {
         auto r = std::make_shared<Reactor>(max_events_, factory_);
+        r->set_batch_handler(batch_handler_);
         r->start();
         reactors_.push_back(r);
     }
@@ -24,6 +25,10 @@ bool NetworkServer::start() {
 
     started_ = true;
     return true;
+}
+
+void NetworkServer::set_batch_handler(Handler_batch* handler) {
+    batch_handler_ = handler;
 }
 
 void NetworkServer::stop_accept() {

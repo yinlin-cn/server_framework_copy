@@ -9,6 +9,8 @@
 #include "DB_pool.h"
 #include "Handler_epoll_make.h"
 #include "NetworkServer.h"
+#include "BatchSender.h"
+#include "Handler_batch_make.h"
 #include "thread_context.h"
 
 namespace {
@@ -70,9 +72,15 @@ bool Server::start() {
     factory_ = std::make_unique<Handler_epoll_Factory_make>(
         divide_work_, parse_pool_, divide_handler_);
 
+    // 批处理模块：攒 Reactor 待发信号，定时统一唤醒。
+    batch_sender_ = std::make_unique<BatchSender>(2);
+    batch_handler_ = std::make_unique<Handler_batch_make>(batch_sender_.get());
+    batch_sender_->start();
+
     // 网络层：集成类 NetworkServer 内部组装 Acceptor + N 个 Reactor。
     network_ = std::make_unique<NetworkServer>(
         listen_port_, reactor_count_, 4096, 4096, factory_.get());
+    network_->set_batch_handler(batch_handler_.get());
     if (!network_->start()) {
         std::cerr << "[Server] network start failed" << std::endl;
         return false;
@@ -90,6 +98,7 @@ void Server::stop() {
     work_pool_->wait_idle(5s);                       // 4. 业务排干（DB 保持可用）
     settle_pending();                                // 5. 兜底取消
     work_pool_->wait_idle(5s);                       //    等取消任务跑完
+    if (batch_sender_) batch_sender_->flush_and_stop();  // 5.5 排空批处理模块
     if (network_) network_->stop();                  // 6. 停 Reactor 并断连接
     if (db_pool_) db_pool_->shutdown();              // 7. DB 最后关
     clear_globals();                                 // 8. 清全局

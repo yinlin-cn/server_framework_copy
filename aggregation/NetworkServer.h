@@ -15,6 +15,7 @@ public:
     bool start();          // 创建并启动全部 Reactor + Acceptor
     void stop();           // 停 Acceptor 与全部 Reactor，并断开连接
     void stop_accept();    // 只停 Acceptor（优雅退出第一步：关闸）
+    void set_batch_handler(Handler_batch* handler);   // 注入批处理接口给所有 Reactor
 
 private:
     int port_;
@@ -22,6 +23,7 @@ private:
     int max_events_;
     int backlog_;
     Handler_epoll_Factory* factory_;
+    Handler_batch* batch_handler_ = nullptr;
     std::vector<std::shared_ptr<Reactor>> reactors_;
     std::unique_ptr<Acceptor> acceptor_;
     bool started_ = false;

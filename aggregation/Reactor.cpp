@@ -72,7 +72,10 @@ void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
                 lock_guard<mutex> lock(pending_mutex_);
                 pending_send_.push_back(weak);
             }
-            wakeup();
+            if (batch_handler_)
+                batch_handler_->on_need_send(this);   // 走批处理：只标记，不立即唤醒
+            else
+                wakeup();                              // 无批处理时回退直接唤醒
         }
     };
 
@@ -94,6 +97,10 @@ void Reactor::wakeup() {
         uint64_t one = 1;
         write(wake_fd_, &one, sizeof(one));
     }
+}
+
+void Reactor::set_batch_handler(Handler_batch* handler) {
+    batch_handler_ = handler;
 }
 
 void Reactor::handle_read(shared_ptr<Internalconnection> conn) {

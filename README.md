@@ -319,6 +319,9 @@ server_framework/
 ├─ Reactor.h/.cpp              // 多 Reactor：单 epoll + eventfd + 事件线程 + 待发送桶
 ├─ Acceptor.h/.cpp             // 多 Reactor：主线程 accept + 连接轮询分配
 ├─ NetworkServer.h/.cpp        // 网络层集成类：组装 Acceptor + N 个 Reactor
+├─ BatchSender.h/.cpp          // 批处理模块：攒 Reactor 待发信号，定时统一唤醒
+├─ Handler_batch.h             // 批处理接线接口（Reactor 只依赖它）
+├─ Handler_batch_make.h/.cpp   // 批处理接口实现 + 工厂（转发给 BatchSender）
 ├─ Server.h/.cpp               // 集成类：组装各层 + 优雅退出
 ├─ main.cpp                    // 业务演示：集成 + 信号处理
 └─ tools/                      // 压测脚本 + 压测报告
@@ -337,7 +340,7 @@ sudo apt install libmariadb-dev
 ```
 
 ```bash
-g++ -std=c++20 -fcoroutines main.cpp Server.cpp NetworkServer.cpp Reactor.cpp Acceptor.cpp epoll.cpp divide_pool.cpp work_pool.cpp \
+g++ -std=c++20 -fcoroutines main.cpp Server.cpp BatchSender.cpp Handler_batch_make.cpp NetworkServer.cpp Reactor.cpp Acceptor.cpp epoll.cpp divide_pool.cpp work_pool.cpp \
     thread_pool.cpp blockingqueue.cpp EventAwaiter.cpp context.cpp \
     Handler_epoll_make.cpp Handler_divide_make.cpp Handler_DB_make.cpp \
     DB_pool.cpp connect_pool.cpp \
@@ -408,6 +411,7 @@ nc 127.0.0.1 9001
 - 稳定性：worker 兜异常、连接池超时/显式关闭、协程取消结算、DB 幂等关闭。
 - 结构化查询结果 `DBResult`：业务层显式判断 `ok / cancelled / err / data`。
 - 多 Reactor 网络层：`Acceptor` + N 个 `Reactor`，连接表 `unordered_map`（O(1) 查找）。
+- BatchSender 批处理模块：攒 Reactor 待发信号，定时统一唤醒，`Handler_batch` 接口解耦。
 - 压测脚本与报告：`tools/`。
 
 **压测结论（本机回环，累计 100 万+ 请求全部正确）**
@@ -416,6 +420,8 @@ nc 127.0.0.1 9001
 |---|---|---|---|---|
 | 串行 | 1000 连接 × 100 | 10 万 | 100% | 5918 |
 | 流水线（多 Reactor） | 500 连接 × 400 | 20 万 | 100% | 15087 |
+| hello 查库（50/50 + BatchSender） | 500 连接 × 400 | 20 万 | 100% | 12053 |
+| 推送型 broadcast | 500 连接 × 200 条 | 10 万 | 100% | 10699 |
 | 混合（ping + hello） | 500 连接 × 200 | 10 万 | 100% | 10239 |
 | 重业务 5ms | 业务池 20 线程 | 5 万 | 100% | 3870 |
 | 重业务 10ms | 业务池 20 线程 | 5 万 | 100% | 1964 |
@@ -427,9 +433,9 @@ nc 127.0.0.1 9001
 - 累计 100 万+ 请求全部正确，无超时、无崩溃、无泄漏。
 - 多 Reactor 轻任务峰值约 1.5 万 QPS；重业务吞吐符合"线程数 ÷ 单任务耗时"模型（20 线程 / 5ms ≈ 4000 QPS）。
 - 连接承载受测试环境（WSL）限制，已建 2.8 万连接全部正确处理。
-- 当前瓶颈：轻任务为多级队列投递链路；重任务为业务线程数。
+- 当前瓶颈：CPU / DB 查询本身 / 压测客户端；框架层吞吐优化空间已很小。
 - 详细数据见 `tools/PRESSURE_TEST.md`。
 
 **下一步**
 
-队列加背压；每连接内存池；压测客户端升级；DB 结果解析（多行多列）与连接池重连；SQL 参数化；定义外卖三端协议与业务层。
+队列加背压；每连接内存池；日志/指标（连接数、QPS、队列深度）；业务按类型分池隔离；DB 结果解析（多行多列）与连接池重连；SQL 参数化；定义外卖三端协议与业务层。
