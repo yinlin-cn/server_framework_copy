@@ -1,9 +1,21 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6" pages="10">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6" pages="11">
   <diagram name="第 1 页" id="s65TiFmciQurgf0vYxuu">
-    <mxGraphModel dx="4995" dy="4842" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="6037" dy="5468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-47" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="2450" width="1610" x="8120" y="-1770" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-46" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="570" width="1310" x="8315" y="-10" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="418" width="1270" x="8335" y="-459" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="1150" width="1240" x="8350" y="-1640" as="geometry" />
+        </mxCell>
         <mxCell id="hUzvf2VcdmD5hqfa81rr-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
           <mxGeometry height="457" width="1813" x="1387" y="1343" as="geometry" />
         </mxCell>
@@ -1406,6 +1418,123 @@
         </mxCell>
         <mxCell id="hUzvf2VcdmD5hqfa81rr-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;服务器关闭退出流程图&lt;/font&gt;" vertex="1">
           <mxGeometry height="50.5" width="387.5" x="1603.5" y="1603.25" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-5" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-6" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Acceptor结构" vertex="1">
+          <mxGeometry height="114" width="300" x="8440" y="-1430" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-10" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-11" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Reactor结构" vertex="1">
+          <mxGeometry height="125" width="300" x="8433" y="-907.25" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int listen_fd_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int port_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int backlog_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Handler_epoll_Factory* factory_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; vector&amp;lt;shared_ptr&amp;lt;Reactor&amp;gt;&amp;gt; reactors_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; atomic&amp;lt;uint64_t&amp;gt; next_{0};&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 轮询分配游标&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; atomic&amp;lt;bool&amp;gt; running_{false};&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; thread thread_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void run();&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="550" x="8910" y="-1594.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Acceptor(int port, vector&amp;lt;shared_ptr&amp;lt;Reactor&amp;gt;&amp;gt; reactors,&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Handler_epoll_Factory* factory, int backlog = 4096);&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ~Acceptor();&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void start();&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void stop();&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="155" width="570" x="8910" y="-1335" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int epoll_fd_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int wake_fd_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int max_events_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Handler_epoll_Factory* factory_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; atomic&amp;lt;bool&amp;gt; running_{false};&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; thread event_thread_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; vector&amp;lt;epoll_event&amp;gt; events_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; unordered_map&amp;lt;int, shared_ptr&amp;lt;Internalconnection&amp;gt;&amp;gt; connections_;&amp;nbsp; &amp;nbsp;// key = fd，本 reactor 连接组&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; mutex conn_mutex_;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 连接表保护&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; vector&amp;lt;weak_ptr&amp;lt;Internalconnection&amp;gt;&amp;gt; pending_send_;&amp;nbsp; &amp;nbsp; // 待发送桶&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; mutex pending_mutex_;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="211" width="660" x="8880" y="-1098.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Reactor(int max_events, Handler_epoll_Factory* factory);&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ~Reactor();&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void start();&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 创建 epoll/eventfd 并启动事件线程&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void stop();&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 停止事件线程并清理连接&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void add_connection(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&amp;nbsp; &amp;nbsp;// acceptor 调用，登记连接&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void wakeup();&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 跨线程唤醒（业务线程 send 后调用）&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int set_nonblocking(int fd);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void mod_event(shared_ptr&amp;lt;Internalconnection&amp;gt; conn, uint32_t evs);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void del_event(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void handle_read(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; bool enqueue_send(shared_ptr&amp;lt;Internalconnection&amp;gt; conn, const string&amp;amp; msg);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void try_send(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void close_client(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; string send_preview(const string&amp;amp; msg);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; vector&amp;lt;string&amp;gt; spilit_message(string&amp;amp; message);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void event_loop();&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="289" width="670" x="8880" y="-834" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;多Reactor模型结构设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="8475" y="-1142.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-22" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="对Aceeptor进行创建和初始化" vertex="1">
+          <mxGeometry height="100" width="240" x="8440" y="-189" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-17" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="根据需要的Reactor数量创建并启动Reactor" vertex="1">
+          <mxGeometry height="100" width="243" x="8438.5" y="-391.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-20" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="TJ99wPtGy2CaPCEYbrWF-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将创建后的Reactor的指针推入Acceptor的Reactor存储容器中" vertex="1">
+          <mxGeometry height="105" width="240" x="8880" y="-394" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="启动Acceptor进行运行" vertex="1">
+          <mxGeometry height="101.25" width="240" x="9300" y="-391.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;多Reactor情况下的网络层启动流程&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="400" x="8870" y="-176.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-28" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Acceptor循环线程" vertex="1">
+          <mxGeometry height="107" width="240" x="8610" y="384.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-32" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Reactor循环线程" vertex="1">
+          <mxGeometry height="109" width="230" x="8930" y="373.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-30" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="接收到连接请求并执行转发任务" vertex="1">
+          <mxGeometry height="92.5" width="233.5" x="8613.25" y="211.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将得到的连接信息根据分配算法分配给对应的Reator进行epoll监听" vertex="1">
+          <mxGeometry height="98" width="240" x="8610" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-34" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-42" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="接收Reactor监听的event的读写活动" vertex="1">
+          <mxGeometry height="96" width="230" x="8930" y="206.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="当event模式为EPOLLIN时执行Handler_read将信息进行处理" vertex="1">
+          <mxGeometry height="93" width="230" x="8930" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-39" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-40" edge="1" parent="1" source="TJ99wPtGy2CaPCEYbrWF-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="TJ99wPtGy2CaPCEYbrWF-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="当event的fd与设置的event_fd相同时" vertex="1">
+          <mxGeometry height="97.5" width="230" x="9280" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-36" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="查看信息待转发存储桶，将其中的待发送信息进行发送" vertex="1">
+          <mxGeometry height="100.5" width="240" x="9275" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-37" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="执行优雅退出逻辑" vertex="1">
+          <mxGeometry height="107" width="250" x="9270" y="374.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-43" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="当检测到网络层停止时" vertex="1">
+          <mxGeometry height="30" width="125" x="9415" y="326.38" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-44" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="当网络层未停止时" vertex="1">
+          <mxGeometry height="30" width="105" x="9415" y="157.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-45" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Reactor和Acceptor的工作流程图&lt;/font&gt;" vertex="1">
+          <mxGeometry height="122.5" width="190" x="8390" y="196.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TJ99wPtGy2CaPCEYbrWF-48" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;多R&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;e&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;a&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;c&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;t&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;o&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;r网络结构具体设计&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="710" width="10" x="8250" y="-1281" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -2881,6 +3010,143 @@
         </mxCell>
         <mxCell id="hGLvrJmwv4jCzYxW1Ouz-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;服务器关闭退出流程图&lt;/font&gt;" vertex="1">
           <mxGeometry height="50.5" width="387.5" x="496.5" y="510.25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="x5tzFgNJ0IW--4gQ3lb1" name="第 11 页">
+    <mxGraphModel dx="4168" dy="2504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="2450" width="1610" x="430" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="570" width="1310" x="625" y="2010" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="418" width="1270" x="645" y="1561" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="1150" width="1240" x="660" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-5" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-6" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Acceptor结构" vertex="1">
+          <mxGeometry height="114" width="300" x="750" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-8" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-9" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Reactor结构" vertex="1">
+          <mxGeometry height="125" width="300" x="743" y="1112.75" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int listen_fd_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int port_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int backlog_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Handler_epoll_Factory* factory_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; vector&amp;lt;shared_ptr&amp;lt;Reactor&amp;gt;&amp;gt; reactors_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; atomic&amp;lt;uint64_t&amp;gt; next_{0};&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 轮询分配游标&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; atomic&amp;lt;bool&amp;gt; running_{false};&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; thread thread_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void run();&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="550" x="1220" y="425.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Acceptor(int port, vector&amp;lt;shared_ptr&amp;lt;Reactor&amp;gt;&amp;gt; reactors,&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Handler_epoll_Factory* factory, int backlog = 4096);&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ~Acceptor();&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void start();&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void stop();&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="155" width="570" x="1220" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int epoll_fd_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int wake_fd_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int max_events_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Handler_epoll_Factory* factory_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; atomic&amp;lt;bool&amp;gt; running_{false};&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; thread event_thread_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; vector&amp;lt;epoll_event&amp;gt; events_;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; unordered_map&amp;lt;int, shared_ptr&amp;lt;Internalconnection&amp;gt;&amp;gt; connections_;&amp;nbsp; &amp;nbsp;// key = fd，本 reactor 连接组&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; mutex conn_mutex_;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 连接表保护&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; vector&amp;lt;weak_ptr&amp;lt;Internalconnection&amp;gt;&amp;gt; pending_send_;&amp;nbsp; &amp;nbsp; // 待发送桶&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; mutex pending_mutex_;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="211" width="660" x="1190" y="921.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Reactor(int max_events, Handler_epoll_Factory* factory);&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ~Reactor();&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void start();&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; // 创建 epoll/eventfd 并启动事件线程&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void stop();&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 停止事件线程并清理连接&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void add_connection(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&amp;nbsp; &amp;nbsp;// acceptor 调用，登记连接&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void wakeup();&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// 跨线程唤醒（业务线程 send 后调用）&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; int set_nonblocking(int fd);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void mod_event(shared_ptr&amp;lt;Internalconnection&amp;gt; conn, uint32_t evs);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void del_event(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void handle_read(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; bool enqueue_send(shared_ptr&amp;lt;Internalconnection&amp;gt; conn, const string&amp;amp; msg);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void try_send(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void close_client(shared_ptr&amp;lt;Internalconnection&amp;gt; conn);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; string send_preview(const string&amp;amp; msg);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; vector&amp;lt;string&amp;gt; spilit_message(string&amp;amp; message);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; void event_loop();&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="289" width="670" x="1190" y="1186" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;多Reactor模型结构设计&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="785" y="877.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-16" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="对Aceeptor进行创建和初始化" vertex="1">
+          <mxGeometry height="100" width="240" x="750" y="1831" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-18" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="根据需要的Reactor数量创建并启动Reactor" vertex="1">
+          <mxGeometry height="100" width="243" x="748.5" y="1628.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-20" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="E1fMCaPsSv0FxE8M9wD_-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将创建后的Reactor的指针推入Acceptor的Reactor存储容器中" vertex="1">
+          <mxGeometry height="105" width="240" x="1190" y="1626" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="启动Acceptor进行运行" vertex="1">
+          <mxGeometry height="101.25" width="240" x="1610" y="1628.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-23" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;多Reactor情况下的网络层启动流程&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="400" x="1180" y="1843.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-24" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Acceptor循环线程" vertex="1">
+          <mxGeometry height="107" width="240" x="920" y="2404.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-26" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Reactor循环线程" vertex="1">
+          <mxGeometry height="109" width="230" x="1240" y="2393.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-28" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="接收到连接请求并执行转发任务" vertex="1">
+          <mxGeometry height="92.5" width="233.5" x="923.25" y="2231.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-30" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="将得到的连接信息根据分配算法分配给对应的Reator进行epoll监听" vertex="1">
+          <mxGeometry height="98" width="240" x="920" y="2056" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-31" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-32" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="接收Reactor监听的event的读写活动" vertex="1">
+          <mxGeometry height="96" width="230" x="1240" y="2226.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="当event模式为EPOLLIN时执行Handler_read将信息进行处理" vertex="1">
+          <mxGeometry height="93" width="230" x="1240" y="2056" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-35" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-36" edge="1" parent="1" source="E1fMCaPsSv0FxE8M9wD_-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="E1fMCaPsSv0FxE8M9wD_-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-37" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="当event的fd与设置的event_fd相同时" vertex="1">
+          <mxGeometry height="97.5" width="230" x="1590" y="2225" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-38" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="查看信息待转发存储桶，将其中的待发送信息进行发送" vertex="1">
+          <mxGeometry height="100.5" width="240" x="1585" y="2056" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="执行优雅退出逻辑" vertex="1">
+          <mxGeometry height="107" width="250" x="1580" y="2394.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-40" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="当检测到网络层停止时" vertex="1">
+          <mxGeometry height="30" width="125" x="1725" y="2346.38" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-41" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="当网络层未停止时" vertex="1">
+          <mxGeometry height="30" width="105" x="1725" y="2177.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-42" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Reactor和Acceptor的工作流程图&lt;/font&gt;" vertex="1">
+          <mxGeometry height="122.5" width="190" x="700" y="2216.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E1fMCaPsSv0FxE8M9wD_-43" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;多R&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;e&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;a&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;c&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;t&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;o&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 36px;&quot;&gt;r网络结构具体设计&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="710" width="10" x="560" y="739" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
