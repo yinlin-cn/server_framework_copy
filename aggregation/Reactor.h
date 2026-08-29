@@ -1,0 +1,55 @@
+#pragma once
+#include <sys/epoll.h>
+#include <sys/eventfd.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <cstring>
+#include <cerrno>
+#include <thread>
+#include <mutex>
+#include <vector>
+#include <memory>
+#include <atomic>
+#include <string>
+#include <algorithm>
+#include <unordered_map>
+#include "Internalconnection.h"
+#include "Handler_epoll.h"
+using namespace std;
+
+// 一个 Reactor = 一个 epoll + 一个 eventfd + 一个事件循环线程。
+// 它只负责自己那一组连接的读/写/关闭，内部单线程处理。
+class Reactor {
+public:
+    Reactor(int max_events, Handler_epoll_Factory* factory);
+    ~Reactor();
+
+    void start();                          // 创建 epoll/eventfd 并启动事件线程
+    void stop();                           // 停止事件线程并清理连接
+    void add_connection(shared_ptr<Internalconnection> conn);   // acceptor 调用，登记连接
+    void wakeup();                         // 跨线程唤醒（业务线程 send 后调用）
+
+private:
+    int epoll_fd_;
+    int wake_fd_;
+    int max_events_;
+    Handler_epoll_Factory* factory_;
+    atomic<bool> running_{false};
+    thread event_thread_;
+    vector<epoll_event> events_;
+    unordered_map<int, shared_ptr<Internalconnection>> connections_;   // key = fd，本 reactor 连接组
+    mutex conn_mutex_;                                     // 连接表保护
+    vector<weak_ptr<Internalconnection>> pending_send_;    // 待发送桶
+    mutex pending_mutex_;
+
+    int set_nonblocking(int fd);
+    void mod_event(shared_ptr<Internalconnection> conn, uint32_t evs);
+    void del_event(shared_ptr<Internalconnection> conn);
+    void handle_read(shared_ptr<Internalconnection> conn);
+    bool enqueue_send(shared_ptr<Internalconnection> conn, const string& msg);
+    void try_send(shared_ptr<Internalconnection> conn);
+    void close_client(shared_ptr<Internalconnection> conn);
+    string send_preview(const string& msg);
+    vector<string> spilit_message(string& message);
+    void event_loop();
+};

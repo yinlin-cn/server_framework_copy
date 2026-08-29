@@ -2,6 +2,7 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include <vector>
 #include "ErrorHandler.h"
 
 class work_pool;
@@ -10,7 +11,7 @@ class Handler_divide_make;
 class DB_pool;
 class Handler_DB_make;
 class Handler_epoll_Factory_make;
-class epoll_make;
+class NetworkServer;
 
 // 集成类：负责把网络层 / 解析层 / 业务层 / 数据库层组装起来。
 // 业务代码只需传入 divide_work（消息 -> 业务任务）与可选的数据库配置。
@@ -35,7 +36,8 @@ public:
     Server(DivideWork divide_work,
            int listen_port = 9001,
            int parse_threads = 4,
-           int work_threads = 8);
+           int work_threads = 8,
+           int reactor_count = 4);
     ~Server();
 
     Server(const Server&) = delete;
@@ -59,6 +61,7 @@ private:
     int listen_port_;
     int parse_threads_;
     int work_threads_;
+    int reactor_count_;
 
     bool has_db_ = false;
     DBConfig db_cfg_;
@@ -70,7 +73,7 @@ private:
     std::shared_ptr<Handler_DB_make> db_handler_;
     std::shared_ptr<divide_pool> parse_pool_;
     std::unique_ptr<Handler_epoll_Factory_make> factory_;
-    std::unique_ptr<epoll_make> server_;
+    std::unique_ptr<NetworkServer> network_;
     bool started_ = false;
     ErrorHandler error_handler_;                    // 业务层可选注入
 };

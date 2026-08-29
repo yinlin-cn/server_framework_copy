@@ -8,7 +8,7 @@
 #include "Handler_DB_make.h"
 #include "DB_pool.h"
 #include "Handler_epoll_make.h"
-#include "epoll.h"
+#include "NetworkServer.h"
 #include "thread_context.h"
 
 namespace {
@@ -21,11 +21,13 @@ void clear_globals() {
 Server::Server(DivideWork divide_work,
                int listen_port,
                int parse_threads,
-               int work_threads)
+               int work_threads,
+               int reactor_count)
     : divide_work_(std::move(divide_work)),
       listen_port_(listen_port),
       parse_threads_(parse_threads),
-      work_threads_(work_threads) {}
+      work_threads_(work_threads),
+      reactor_count_(reactor_count) {}
 
 Server::~Server() {
     stop();
@@ -68,24 +70,27 @@ bool Server::start() {
     factory_ = std::make_unique<Handler_epoll_Factory_make>(
         divide_work_, parse_pool_, divide_handler_);
 
-    // epoll 事件循环。
-    server_ = std::make_unique<epoll_make>(listen_port_);
-    server_->start(factory_.get());
+    // 网络层：集成类 NetworkServer 内部组装 Acceptor + N 个 Reactor。
+    network_ = std::make_unique<NetworkServer>(
+        listen_port_, reactor_count_, 4096, 4096, factory_.get());
+    if (!network_->start()) {
+        std::cerr << "[Server] network start failed" << std::endl;
+        return false;
+    }
     started_ = true;
     return true;
 }
 
 void Server::stop() {
     if (!started_) return;
-    server_->stop_accept();                          // 1. 关闸
+    if (network_) network_->stop_accept();           // 1. 关闸：停 accept
     parse_pool_->shutdown();                         // 2. 解析关闸
     parse_pool_->wait_idle(5s);                      //    解析排干
     work_pool_->shutdown();                          // 3. 业务关闸
     work_pool_->wait_idle(5s);                       // 4. 业务排干（DB 保持可用）
     settle_pending();                                // 5. 兜底取消
     work_pool_->wait_idle(5s);                       //    等取消任务跑完
-    server_->stop();                                 // 停事件线程
-    server_->close_all_connections();                // 6. 断连接
+    if (network_) network_->stop();                  // 6. 停 Reactor 并断连接
     if (db_pool_) db_pool_->shutdown();              // 7. DB 最后关
     clear_globals();                                 // 8. 清全局
     started_ = false;
