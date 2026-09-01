@@ -11,6 +11,9 @@
 #include "NetworkServer.h"
 #include "BatchSender.h"
 #include "Handler_batch_make.h"
+#include "LoggerStderr.h"
+#include "Metrics.h"
+#include "MetricsConfig.h"
 #include "thread_context.h"
 
 namespace {
@@ -77,10 +80,19 @@ bool Server::start() {
     batch_handler_ = std::make_unique<Handler_batch_make>(batch_sender_.get());
     batch_sender_->start();
 
+    // 指标模块：创建后注入各层，采样线程每秒输出。
+    logger_ = std::make_unique<LoggerStderr>();
+    metrics_ = std::make_unique<Metrics>(MetricsConfig{}, logger_.get());
+    metrics_->start_sampler(1000);
+    work_pool_->set_metrics(metrics_.get());
+    parse_pool_->set_metrics(metrics_.get());
+    if (db_pool_) db_pool_->set_metrics(metrics_.get());
+
     // 网络层：集成类 NetworkServer 内部组装 Acceptor + N 个 Reactor。
     network_ = std::make_unique<NetworkServer>(
         listen_port_, reactor_count_, 4096, 4096, factory_.get());
     network_->set_batch_handler(batch_handler_.get());
+    network_->set_metrics(metrics_.get());
     if (!network_->start()) {
         std::cerr << "[Server] network start failed" << std::endl;
         return false;
@@ -101,6 +113,7 @@ void Server::stop() {
     if (batch_sender_) batch_sender_->flush_and_stop();  // 5.5 排空批处理模块
     if (network_) network_->stop();                  // 6. 停 Reactor 并断连接
     if (db_pool_) db_pool_->shutdown();              // 7. DB 最后关
+    if (metrics_) metrics_->stop_sampler();          // 7.5 停指标采样线程
     clear_globals();                                 // 8. 清全局
     started_ = false;
 }

@@ -14,6 +14,8 @@ class Handler_epoll_Factory_make;
 class NetworkServer;
 class BatchSender;
 class Handler_batch_make;
+class Metrics;
+class LoggerStderr;
 
 // 集成类：负责把网络层 / 解析层 / 业务层 / 数据库层组装起来。
 // 业务代码只需传入 divide_work（消息 -> 业务任务）与可选的数据库配置。
@@ -78,6 +80,8 @@ private:
     std::unique_ptr<NetworkServer> network_;
     std::unique_ptr<BatchSender> batch_sender_;
     std::unique_ptr<Handler_batch_make> batch_handler_;
+    std::unique_ptr<LoggerStderr> logger_;
+    std::unique_ptr<Metrics> metrics_;
     bool started_ = false;
     ErrorHandler error_handler_;                    // 业务层可选注入
 };

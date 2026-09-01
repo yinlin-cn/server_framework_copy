@@ -90,6 +90,7 @@ void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
     epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, conn->sock, &ev);
 
     if (conn->handler) conn->handler->on_connect(conn);
+    if (metrics_) metrics_->on_conn_open();
 }
 
 void Reactor::wakeup() {
@@ -153,6 +154,7 @@ void Reactor::close_client(shared_ptr<Internalconnection> conn) {
     }
     del_event(conn);
     close(conn->sock);
+    if (metrics_) metrics_->on_conn_close();
     lock_guard<mutex> lock(conn_mutex_);
     connections_.erase(conn->sock);
 }

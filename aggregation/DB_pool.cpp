@@ -1,4 +1,5 @@
 #include "DB_pool.h"
+#include "Metrics.h"
 
 DB_pool::DB_pool(int conns, int workers, work_pool* business_pool,
                  const std::string& host, const std::string& user,
@@ -31,6 +32,7 @@ void DB_pool::submit(DBTask task) {
         std::lock_guard<std::mutex> lock(mutex_);
         tasks_.push(std::move(task));
     }
+    if (metrics_) metrics_->on_task_enqueued(PoolId::DB);
     cv_.notify_one();
 }
 
@@ -44,6 +46,7 @@ void DB_pool::worker_loop() {
             job = std::move(tasks_.front());
             tasks_.pop();
         }
+        if (metrics_) metrics_->on_task_dequeued(PoolId::DB);
 
         DBHandle conn = conn_pool_.get();            // 真实版是 MYSQL*
         if (!conn) {
@@ -51,6 +54,7 @@ void DB_pool::worker_loop() {
             continue;
         }
 
+        uint64_t db_start_us = Metrics::now_us();
         try {
             if (mysql_query(conn, job.sql.c_str()) == 0) {
                 MYSQL_RES* res = mysql_store_result(conn);
@@ -67,9 +71,12 @@ void DB_pool::worker_loop() {
             }
         } catch (const std::exception& e) {
             job.box->err = e.what();
+            if (metrics_) metrics_->on_error(ErrorStage::DB);
         } catch (...) {
             job.box->err = "unknown";
+            if (metrics_) metrics_->on_error(ErrorStage::DB);
         }
+        if (metrics_) metrics_->on_db_query_done(Metrics::now_us() - db_start_us);
         job.box->ready = true;
         conn_pool_.release(conn);
 

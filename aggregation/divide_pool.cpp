@@ -35,6 +35,7 @@ void divide_pool::worker() {
                 tasks.pop();
             }
             // 1. 执行解析函数，得到真正的业务任务
+            if (metrics_) metrics_->on_task_dequeued(PoolId::Divide);
             active_++;  
              try {
                 std::function<void()> work = funtion.back_funtion();
@@ -43,8 +44,10 @@ void divide_pool::worker() {
                     funtion.handler->on_work(funtion.connection, work);
             } catch (const std::exception& e) {
                 if (error_handler_) error_handler_(funtion.connection, "divide", e.what());
+                if (metrics_) metrics_->on_error(ErrorStage::Divide);
             } catch (...) {
                 if (error_handler_) error_handler_(funtion.connection, "divide", "unknown error");
+                if (metrics_) metrics_->on_error(ErrorStage::Divide);
             }
             if (active_ == 0) idle_cv_.notify_all();
         }
@@ -53,6 +56,7 @@ void divide_pool::worker() {
 void divide_pool::add_task(divide_task funtion) {
         lock_guard<mutex> lock(for_task);
         tasks.push(move(funtion));
+        if (metrics_) metrics_->on_task_enqueued(PoolId::Divide);
         cv.notify_one();
     }
 

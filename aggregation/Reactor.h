@@ -16,6 +16,7 @@
 #include "Internalconnection.h"
 #include "Handler_epoll.h"
 #include "Handler_batch.h"
+#include "Handler_metrics.h"
 using namespace std;
 
 // 一个 Reactor = 一个 epoll + 一个 eventfd + 一个事件循环线程。
@@ -30,6 +31,7 @@ public:
     void add_connection(shared_ptr<Internalconnection> conn);   // acceptor 调用，登记连接
     void wakeup();                         // 跨线程唤醒（业务线程 send 后调用）
     void set_batch_handler(Handler_batch* handler);   // 注入批处理接线接口
+    void set_metrics(Handler_metrics* m) { metrics_ = m; }
 
 private:
     int epoll_fd_;
@@ -44,6 +46,7 @@ private:
     vector<weak_ptr<Internalconnection>> pending_send_;    // 待发送桶
     mutex pending_mutex_;
     Handler_batch* batch_handler_ = nullptr;               // 批处理接口，可空
+    Handler_metrics* metrics_ = nullptr;                   // 指标埋点接口，可空
 
     int set_nonblocking(int fd);
     void mod_event(shared_ptr<Internalconnection> conn, uint32_t evs);
