@@ -1,5 +1,7 @@
 #include "DB_pool.h"
 #include "Metrics.h"
+#include <cstring>
+#include <vector>
 
 DB_pool::DB_pool(int conns, int workers, work_pool* business_pool,
                  const std::string& host, const std::string& user,
@@ -56,18 +58,60 @@ void DB_pool::worker_loop() {
 
         uint64_t db_start_us = Metrics::now_us();
         try {
-            if (mysql_query(conn, job.sql.c_str()) == 0) {
-                MYSQL_RES* res = mysql_store_result(conn);
-                if (res) {
-                    MYSQL_ROW row = mysql_fetch_row(res);
-                    if (row && row[0])
-                        job.box->result = row[0];             // 正常结果
-                    mysql_free_result(res);
-                } else {
-                    job.box->result = "OK";                   // 非 SELECT
-                }
+            MYSQL_STMT* stmt = mysql_stmt_init(conn);
+            if (!stmt) {
+                job.box->err = "stmt init failed";
+            } else if (mysql_stmt_prepare(stmt, job.sql.c_str(), job.sql.size()) != 0) {
+                job.box->err = mysql_stmt_error(stmt);
+                if (log_) log_->error("db prepare failed: " + job.box->err);
+                mysql_stmt_close(stmt);
             } else {
-                job.box->err = mysql_error(conn);             // 错误单独写 err
+                // 绑定参数：全部按字符串处理，MySQL 自动转换
+                std::vector<MYSQL_BIND> binds(job.params.size());
+                std::vector<std::string> data = job.params;   // 保证 buffer 存活到执行结束
+                for (size_t i = 0; i < job.params.size(); i++) {
+                    binds[i].buffer_type = MYSQL_TYPE_STRING;
+                    binds[i].buffer = (void*)data[i].data();
+                    binds[i].buffer_length = data[i].size();
+                }
+                if (mysql_stmt_bind_param(stmt, binds.data()) != 0) {
+                    job.box->err = mysql_stmt_error(stmt);
+                    if (log_) log_->error("db bind failed: " + job.box->err);
+                } else if (mysql_stmt_execute(stmt) != 0) {
+                    job.box->err = mysql_stmt_error(stmt);
+                    if (log_) log_->error("db execute failed: " + job.box->err);
+                } else {
+                    MYSQL_RES* res = mysql_stmt_result_metadata(stmt);
+                    if (res) {
+                        unsigned int cols = mysql_num_fields(res);
+                        std::vector<MYSQL_BIND> rb(cols);
+                        std::vector<std::vector<char>> bufs(
+                            cols, std::vector<char>(256));
+                        std::vector<unsigned long> lengths(cols);
+                        std::vector<my_bool> is_null(cols);
+                        for (unsigned int c = 0; c < cols; c++) {
+                            rb[c].buffer_type = MYSQL_TYPE_STRING;
+                            rb[c].buffer = bufs[c].data();
+                            rb[c].buffer_length = bufs[c].size();
+                            rb[c].length = &lengths[c];
+                            rb[c].is_null = &is_null[c];
+                        }
+                        mysql_stmt_store_result(stmt);
+                        mysql_stmt_bind_result(stmt, rb.data());
+                        while (mysql_stmt_fetch(stmt) == 0) {
+                            std::vector<std::string> line;
+                            for (unsigned int c = 0; c < cols; c++)
+                                line.push_back(std::string(bufs[c].data(), lengths[c]));
+                            job.box->rows.push_back(std::move(line));
+                        }
+                        if (!job.box->rows.empty() && !job.box->rows[0].empty())
+                            job.box->result = job.box->rows[0][0];
+                        mysql_free_result(res);
+                    } else {
+                        job.box->result = "OK";               // 非 SELECT
+                    }
+                }
+                mysql_stmt_close(stmt);
             }
         } catch (const std::exception& e) {
             job.box->err = e.what();

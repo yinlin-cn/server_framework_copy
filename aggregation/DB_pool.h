@@ -11,6 +11,7 @@
 #include "connect_pool.h"
 #include "work_pool.h"
 #include "Handler_metrics.h"
+#include "Handler_log.h"
 
 class DB_pool {
     std::queue<DBTask> tasks_;
@@ -23,6 +24,7 @@ class DB_pool {
     int worker_count_;
     bool stopped_ = false;                 // 新增：防重复 join，shutdown 只执行一次
     Handler_metrics* metrics_ = nullptr;   // 指标埋点接口，可空
+    Handler_log* log_ = nullptr;           // 日志接口，可空
 public:
     DB_pool(int conns, int workers, work_pool* business_pool,
             const std::string& host, const std::string& user,
@@ -33,6 +35,7 @@ public:
     void submit(DBTask task);
     void shutdown();   // 显式关闭：先关连接池，再停 worker 并 join
     void set_metrics(Handler_metrics* m) { metrics_ = m; }
+    void set_log(Handler_log* l) { log_ = l; }
 private:
     void worker_loop();
 };

@@ -16,6 +16,7 @@ bool NetworkServer::start() {
         auto r = std::make_shared<Reactor>(max_events_, factory_);
         r->set_batch_handler(batch_handler_);
         r->set_metrics(metrics_);
+        r->set_log(log_);
         r->start();
         reactors_.push_back(r);
     }

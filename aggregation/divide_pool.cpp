@@ -46,9 +46,11 @@ void divide_pool::worker() {
                     funtion.handler->on_work(funtion.connection, work);
             } catch (const std::exception& e) {
                 if (error_handler_) error_handler_(funtion.connection, "divide", e.what());
+                if (log_) log_->error("divide failed: " + std::string(e.what()));
                 if (metrics_) metrics_->on_error(ErrorStage::Divide);
             } catch (...) {
                 if (error_handler_) error_handler_(funtion.connection, "divide", "unknown error");
+                if (log_) log_->error("divide failed: unknown error");
                 if (metrics_) metrics_->on_error(ErrorStage::Divide);
             }
             if (metrics_) metrics_->on_module_task_done(PoolId::Divide, Metrics::now_us() - start_us);

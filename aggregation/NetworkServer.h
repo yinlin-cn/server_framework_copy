@@ -17,6 +17,7 @@ public:
     void stop_accept();    // 只停 Acceptor（优雅退出第一步：关闸）
     void set_batch_handler(Handler_batch* handler);   // 注入批处理接口给所有 Reactor
     void set_metrics(Handler_metrics* m) { metrics_ = m; }
+    void set_log(Handler_log* l) { log_ = l; }
 
 private:
     int port_;
@@ -26,6 +27,7 @@ private:
     Handler_epoll_Factory* factory_;
     Handler_batch* batch_handler_ = nullptr;
     Handler_metrics* metrics_ = nullptr;
+    Handler_log* log_ = nullptr;
     std::vector<std::shared_ptr<Reactor>> reactors_;
     std::unique_ptr<Acceptor> acceptor_;
     bool started_ = false;

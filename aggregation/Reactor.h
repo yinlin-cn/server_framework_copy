@@ -17,13 +17,15 @@
 #include "Handler_epoll.h"
 #include "Handler_batch.h"
 #include "Handler_metrics.h"
+#include "Handler_log.h"
 using namespace std;
 
 // 一个 Reactor = 一个 epoll + 一个 eventfd + 一个事件循环线程。
 // 它只负责自己那一组连接的读/写/关闭，内部单线程处理。
 class Reactor {
 public:
-    Reactor(int max_events, Handler_epoll_Factory* factory);
+    Reactor(int max_events, Handler_epoll_Factory* factory,
+            uint64_t idle_timeout_us = 60000000);   // 默认 60 秒空闲超时
     ~Reactor();
 
     void start();                          // 创建 epoll/eventfd 并启动事件线程
@@ -32,11 +34,13 @@ public:
     void wakeup();                         // 跨线程唤醒（业务线程 send 后调用）
     void set_batch_handler(Handler_batch* handler);   // 注入批处理接线接口
     void set_metrics(Handler_metrics* m) { metrics_ = m; }
+    void set_log(Handler_log* l) { log_ = l; }
 
 private:
     int epoll_fd_;
     int wake_fd_;
     int max_events_;
+    uint64_t idle_timeout_us_;
     Handler_epoll_Factory* factory_;
     atomic<bool> running_{false};
     thread event_thread_;
@@ -47,6 +51,7 @@ private:
     mutex pending_mutex_;
     Handler_batch* batch_handler_ = nullptr;               // 批处理接口，可空
     Handler_metrics* metrics_ = nullptr;                   // 指标埋点接口，可空
+    Handler_log* log_ = nullptr;                           // 日志接口，可空
 
     int set_nonblocking(int fd);
     void mod_event(shared_ptr<Internalconnection> conn, uint32_t evs);

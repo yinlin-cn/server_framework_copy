@@ -1,9 +1,11 @@
 #include "Reactor.h"
+#include "Metrics.h"
 
 using namespace std;
 
-Reactor::Reactor(int max_events, Handler_epoll_Factory* factory)
-    : max_events_(max_events), factory_(factory),
+Reactor::Reactor(int max_events, Handler_epoll_Factory* factory,
+                 uint64_t idle_timeout_us)
+    : max_events_(max_events), idle_timeout_us_(idle_timeout_us), factory_(factory),
       epoll_fd_(-1), wake_fd_(-1) {
     events_.resize(max_events_);
 }
@@ -65,9 +67,9 @@ void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
     conn->owner_reactor = this;
 
     // 业务线程跨线程发送：入队 + 登记待发送桶 + 唤醒本 reactor
-    conn->send_function = [this, weak = weak_ptr<Internalconnection>(conn)](const string& msg) {
+    conn->send_function = [this, weak = weak_ptr<Internalconnection>(conn)](const string& msg) -> bool {
         if (auto c = weak.lock()) {
-            if (!enqueue_send(c, msg)) return;
+            if (!enqueue_send(c, msg)) return false;   // 连接已断开，入队失败
             {
                 lock_guard<mutex> lock(pending_mutex_);
                 pending_send_.push_back(weak);
@@ -76,7 +78,9 @@ void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
                 batch_handler_->on_need_send(this);   // 走批处理：只标记，不立即唤醒
             else
                 wakeup();                              // 无批处理时回退直接唤醒
+            return true;
         }
+        return false;                                  // 连接对象已销毁
     };
 
     {
@@ -90,6 +94,7 @@ void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
     epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, conn->sock, &ev);
 
     if (conn->handler) conn->handler->on_connect(conn);
+    if (log_) log_->info("conn=" + std::to_string(conn->sock) + " opened");
     if (metrics_) metrics_->on_conn_open();
 }
 
@@ -116,6 +121,7 @@ void Reactor::handle_read(shared_ptr<Internalconnection> conn) {
         if (count == 0) { close_client(conn); return; }
 
         conn->read_buffer.append(buffer, count);
+        conn->last_active_us = Metrics::now_us();   // 收到数据即视为活跃
         for (auto& msg : spilit_message(conn->read_buffer))
             if (conn->handler) conn->handler->on_message(conn, msg);
     }
@@ -154,14 +160,17 @@ void Reactor::close_client(shared_ptr<Internalconnection> conn) {
     }
     del_event(conn);
     close(conn->sock);
+    if (log_) log_->info("conn=" + std::to_string(conn->sock) + " closed");
     if (metrics_) metrics_->on_conn_close();
     lock_guard<mutex> lock(conn_mutex_);
     connections_.erase(conn->sock);
 }
 
 void Reactor::event_loop() {
+    uint64_t last_scan_us = 0;
     while (running_) {
-        int n = epoll_wait(epoll_fd_, events_.data(), events_.size(), -1);
+        // 带超时：定期醒来扫描空闲超时连接（心跳检测）。
+        int n = epoll_wait(epoll_fd_, events_.data(), events_.size(), 5000);
         if (n < 0) { if (errno == EINTR) continue; break; }
 
         for (int i = 0; i < n; i++) {
@@ -198,6 +207,21 @@ void Reactor::event_loop() {
                 handle_read(conn);
             if (conn->connected && (events_[i].events & EPOLLOUT))
                 try_send(conn);
+        }
+
+        // 每 5 秒节流扫描一次：空闲超过 idle_timeout_us_ 的连接直接关闭。
+        uint64_t now = Metrics::now_us();
+        if (now - last_scan_us >= 5000000) {
+            last_scan_us = now;
+            vector<shared_ptr<Internalconnection>> snapshot;
+            {
+                lock_guard<mutex> lock(conn_mutex_);
+                for (auto& [fd, c] : connections_)
+                    snapshot.push_back(c);
+            }
+            for (auto& c : snapshot)
+                if (c->connected && now - c->last_active_us > idle_timeout_us_)
+                    close_client(c);
         }
     }
 }

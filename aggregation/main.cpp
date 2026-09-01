@@ -40,8 +40,9 @@ public:
     EventTask flow(int id, const string msg) {
         cout << "[" << id << "] 前段：准备查询 " << msg << endl;
 
-        string sql = "SELECT name FROM users WHERE name='" + msg + "' LIMIT 1";
-        DBResult res = co_await query_db(sql);       // 返回结构化结果
+        // 参数化查询：SQL 模板 + 参数分离，杜绝注入
+        string sql = "SELECT name FROM users WHERE name = ? LIMIT 1";
+        DBResult res = co_await query_db(sql, { msg });
 
         if (res.cancelled) {
             send("查询被取消，请稍后重试");
@@ -52,8 +53,11 @@ public:
             co_return;
         }
 
-        cout << "[" << id << "] 后段：拿到 " << res.data << endl;
-        send("reply:" + msg + "|" + res.data);
+        // 业务层自己做限制：从完整结果里取第一行第一列
+        std::string name = res.rows.empty() || res.rows[0].empty()
+            ? "" : res.rows[0][0];
+        cout << "[" << id << "] 后段：拿到 " << name << endl;
+        send("reply:" + msg + "|" + name);
     }
 };
 

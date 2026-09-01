@@ -32,9 +32,10 @@ void epoll_make::handle_accept() {
             auto conn = make_shared<Internalconnection>(client_fd);
             conn->handler = factory->create_handler();   // 每连接一个专属handler
             // 修复1：捕获 weak_ptr，避免 conn 自己持有自己形成循环
-            conn->send_function = [this, weak = weak_ptr<Internalconnection>(conn)](const string& msg) {
+            conn->send_function = [this, weak = weak_ptr<Internalconnection>(conn)](const string& msg) -> bool {
                 if (auto c = weak.lock())
-                    this->send(c, msg.data(), msg.size());
+                    return this->send(c, msg.data(), msg.size());
+                return false;
             };
 
             connections.push_back(conn);

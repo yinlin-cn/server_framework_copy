@@ -33,9 +33,11 @@ void thread_pool::worker() {
                 f.fn();
             } catch (const std::exception& e) {
                 if (error_handler_) error_handler_(f.conn, "work", e.what());
+                if (log_) log_->error("work failed: " + std::string(e.what()));
                 if (metrics_ && business) metrics_->on_error(ErrorStage::Work);
             } catch (...) {
                 if (error_handler_) error_handler_(f.conn, "work", "unknown error");
+                if (log_) log_->error("work failed: unknown error");
                 if (metrics_ && business) metrics_->on_error(ErrorStage::Work);
             }
             uint64_t done_us = Metrics::now_us() - start_us;

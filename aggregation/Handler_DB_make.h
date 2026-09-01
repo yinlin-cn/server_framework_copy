@@ -12,7 +12,8 @@ public:
     explicit Handler_DB_make(std::shared_ptr<DB_pool> p) : db_pool_(p) {}
 
     void submit(uint64_t wait_key, std::shared_ptr<Box> box,
-                const std::string& message) override;
+                const std::string& sql,
+                const std::vector<std::string>& params) override;
 };
 
 class Handler_DB_Factory_make : public Handler_DB_Factory {
