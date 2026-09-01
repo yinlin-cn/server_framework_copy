@@ -24,13 +24,12 @@ public:
     // 埋点实现
     void on_request_started() override;
     void on_request_done(uint64_t latency_us) override;
-    void on_work_task_done(uint64_t latency_us) override;
+    void on_module_task_done(PoolId pool, uint64_t latency_us) override;
     void on_error(ErrorStage stage) override;
     void on_conn_open() override;
     void on_conn_close() override;
     void on_task_enqueued(PoolId pool) override;
     void on_task_dequeued(PoolId pool) override;
-    void on_db_query_done(uint64_t latency_us) override;
 
     static uint64_t now_us();   // 模块埋点计时用
 
@@ -44,10 +43,13 @@ private:
     // 请求 / 延迟
     std::atomic<uint64_t> total_requests_{0};
     std::atomic<uint64_t> total_latency_us_{0};
-    std::atomic<uint64_t> total_work_tasks_{0};        // 框架任务完成数（含 on_event）
-    std::atomic<uint64_t> total_work_latency_us_{0};   // 框架任务总耗时
     std::atomic<int64_t> inflight_{0};
     std::array<std::atomic<uint64_t>, BUCKET_COUNT> lat_buckets_{};
+
+    // 模块级任务统计（divide / work / db 各自）
+    std::array<std::atomic<uint64_t>, POOL_COUNT> module_done_{};
+    std::array<std::atomic<uint64_t>, POOL_COUNT> module_latency_us_{};
+    std::array<std::array<std::atomic<uint64_t>, BUCKET_COUNT>, POOL_COUNT> module_buckets_{};
 
     // 错误（按阶段）
     std::array<std::atomic<uint64_t>, STAGE_COUNT> errors_{};
@@ -56,19 +58,14 @@ private:
     std::atomic<int> conns_{0};
     std::array<std::atomic<int64_t>, POOL_COUNT> queue_depth_{};
 
-    // DB 延迟
-    std::atomic<uint64_t> db_query_count_{0};
-    std::atomic<uint64_t> total_db_latency_us_{0};
-
     // 窗口采样需要的"上次"值
     uint64_t last_requests_ = 0;
     uint64_t last_latency_us_ = 0;
-    uint64_t last_work_tasks_ = 0;
-    uint64_t last_work_latency_us_ = 0;
     std::array<uint64_t, STAGE_COUNT> last_errors_{};
     std::array<uint64_t, BUCKET_COUNT> last_buckets_{};
-    uint64_t last_db_count_ = 0;
-    uint64_t last_db_latency_us_ = 0;
+    std::array<uint64_t, POOL_COUNT> last_module_done_{};
+    std::array<uint64_t, POOL_COUNT> last_module_latency_us_{};
+    std::array<std::array<uint64_t, BUCKET_COUNT>, POOL_COUNT> last_module_buckets_{};
 
     // 系统指标
     uint64_t last_cpu_ns_ = 0;
@@ -81,5 +78,6 @@ private:
     void snapshot();
     static int bucket_index(uint64_t us);
     uint64_t calc_window_p99();
+    uint64_t calc_module_p99(int pool);
     void read_system(uint64_t& cpu_percent, uint64_t& rss_kb);
 };

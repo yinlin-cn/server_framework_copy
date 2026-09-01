@@ -1,5 +1,6 @@
 #include"divide_pool.h"
 #include"divide_task.h"
+#include "Metrics.h"
 #include <iostream>
 #include <thread>
 #include <string>
@@ -36,6 +37,7 @@ void divide_pool::worker() {
             }
             // 1. 执行解析函数，得到真正的业务任务
             if (metrics_) metrics_->on_task_dequeued(PoolId::Divide);
+            uint64_t start_us = Metrics::now_us();
             active_++;  
              try {
                 std::function<void()> work = funtion.back_funtion();
@@ -49,6 +51,7 @@ void divide_pool::worker() {
                 if (error_handler_) error_handler_(funtion.connection, "divide", "unknown error");
                 if (metrics_) metrics_->on_error(ErrorStage::Divide);
             }
+            if (metrics_) metrics_->on_module_task_done(PoolId::Divide, Metrics::now_us() - start_us);
             if (active_ == 0) idle_cv_.notify_all();
         }
     }

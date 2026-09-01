@@ -25,11 +25,10 @@ public:
 
     virtual void on_request_started() = 0;                  // 业务任务开始
     virtual void on_request_done(uint64_t latency_us) = 0;  // 业务任务完成
-    virtual void on_work_task_done(uint64_t latency_us) = 0; // 框架任务完成（含 on_event 恢复）
+    virtual void on_module_task_done(PoolId pool, uint64_t latency_us) = 0;  // 模块任务完成（divide/work/db 各自统计）
     virtual void on_error(ErrorStage stage) = 0;            // 出错（分阶段）
     virtual void on_conn_open() = 0;                        // 连接建立
     virtual void on_conn_close() = 0;                       // 连接断开
     virtual void on_task_enqueued(PoolId pool) = 0;         // 某池入队
     virtual void on_task_dequeued(PoolId pool) = 0;         // 某池出队
-    virtual void on_db_query_done(uint64_t latency_us) = 0; // DB 查询完成
 };

@@ -76,7 +76,7 @@ void DB_pool::worker_loop() {
             job.box->err = "unknown";
             if (metrics_) metrics_->on_error(ErrorStage::DB);
         }
-        if (metrics_) metrics_->on_db_query_done(Metrics::now_us() - db_start_us);
+        if (metrics_) metrics_->on_module_task_done(PoolId::DB, Metrics::now_us() - db_start_us);
         job.box->ready = true;
         conn_pool_.release(conn);
 

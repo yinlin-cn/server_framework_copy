@@ -40,7 +40,7 @@ void thread_pool::worker() {
             }
             uint64_t done_us = Metrics::now_us() - start_us;
             if (metrics_) {
-                metrics_->on_work_task_done(done_us);   // 框架任务级
+                metrics_->on_module_task_done(PoolId::Work, done_us);   // work 模块
                 if (business) metrics_->on_request_done(done_us);   // 业务请求级
             }
             tls_current_conn.reset();

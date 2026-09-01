@@ -314,7 +314,7 @@ Handler_batch_make  实现：持有 BatchSender，转发待发信号
 
 - **错误处理**：worker 兜异常 + `ErrorHandler` 回调；DB 超时、连接池显式关闭；
 - **优雅退出**：按任务流向逐层放水，挂起协程可取消结算，重复 join 有防护；
-- **指标（已落地）**：`Metrics` 原子计数器 + 每秒采样线程；双 QPS（业务请求 `req_qps` / 框架任务 `task_qps`）+ 60 秒滚动平均 `req_avg60`；延迟（avg / P99 直方图）、错误率（分阶段）、队列深度（分池）、连接数、DB 延迟、CPU / RSS；模块通过 `Handler_metrics` 接口埋点。
+- **指标（已落地）**：`Metrics` 原子计数器 + 每秒采样线程；业务请求级 `req_qps`（含 60 秒滚动平均 `req_avg60`）；divide / work / db 三模块各一组 `qps / avg / p99`；错误率（分阶段）、队列深度（分池）、连接数、CPU / RSS；模块通过 `Handler_metrics` 接口埋点。
 - **日志（设计）**：业务线程提交 + 后台线程批量写文件的队列模式，`Handler_log` 接口解耦，支持级别过滤与优雅退出排空；日志格式可升级为 JSON 行（固定键名）便于指标解析。
 
 ---
@@ -371,7 +371,7 @@ server_framework/
 ├─ MetricsConfig.h             // 指标配置（开关）
 ├─ Handler_metrics.h           // 指标埋点接口（模块只依赖它）
 ├─ Handler_log.h               // 日志接口（Metrics 快照出口）
-├─ Metrics.h/.cpp              // 指标实现：原子计数器 + 采样线程 + 双 QPS + 滚动平均
+├─ Metrics.h/.cpp              // 指标实现：原子计数器 + 采样线程 + 分模块 QPS/P99 + 滚动平均
 ├─ LoggerStderr.h              // 最简单日志实现（stderr）
 ├─ Server.h/.cpp               // 集成类：组装各层 + 优雅退出
 ├─ main.cpp                    // 业务演示：集成 + 信号处理
@@ -412,7 +412,7 @@ server_framework/
 - 集成类 `Server` + 网络层集成类 `NetworkServer`；
 - 多 Reactor + 哈希连接表 + BatchSender 批处理；
 - 错误回调、优雅退出、协程取消结算、结构化查询结果；
-- 指标系统：`Metrics` + 采样线程，双 QPS / 滚动平均 / P99 / 错误 / 队列 / 连接 / DB / CPU / RSS；
+- 指标系统：`Metrics` + 采样线程，业务请求级 QPS / 分模块（divide/work/db）QPS·P99 / 错误 / 队列 / 连接 / CPU / RSS；
 - 压测脚本与报告：`tools/`。
 
 **下一步（按优先级）**
