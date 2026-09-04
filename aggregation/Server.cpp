@@ -3,6 +3,8 @@
 #include <iostream>
 
 #include "work_pool.h"
+#include "connect_book.h"
+#include "FrameworkCall.h"
 #include "divide_pool.h"
 #include "Handler_divide_make.h"
 #include "Handler_DB_make.h"
@@ -20,6 +22,7 @@ namespace {
 void clear_globals() {
     g_work_pool = nullptr;
     g_db_handler = nullptr;
+    g_framework_call = nullptr;
 }
 }  // namespace
 
@@ -56,6 +59,14 @@ bool Server::start() {
     g_work_pool = work_pool_.get();
     work_pool_->set_error_handler(error_handler_);
 
+    // 连接名册 + 框架调用入口。
+    connect_book_ = std::make_shared<connect_book>();
+    work_pool_->set_connect_book(connect_book_);
+    framework_call_ = std::make_shared<FrameworkCall>(work_pool_);
+    framework_call_->set_conn_provider(
+        []() { return tls_current_conn; });
+    g_framework_call = framework_call_.get();
+
     // 解析 -> 业务分发器。
     divide_handler_ = std::make_shared<Handler_divide_make>(work_pool_);
 
@@ -73,7 +84,7 @@ bool Server::start() {
     parse_pool_ = std::make_shared<divide_pool>(parse_threads_);
     parse_pool_->set_error_handler(error_handler_);
     factory_ = std::make_unique<Handler_epoll_Factory_make>(
-        divide_work_, parse_pool_, divide_handler_);
+        divide_work_, parse_pool_, divide_handler_, connect_book_);
 
     // 批处理模块：攒 Reactor 待发信号，定时统一唤醒。
     batch_sender_ = std::make_unique<BatchSender>(2);
@@ -98,6 +109,11 @@ bool Server::start() {
     network_->set_batch_handler(batch_handler_.get());
     network_->set_metrics(metrics_.get());
     network_->set_log(logger_.get());
+    framework_call_->set_close_handler(
+        [this](std::shared_ptr<Internalconnection> conn,
+               const std::string& reason) {
+            if (network_) network_->request_close(conn, reason);
+        });
     if (!network_->start()) {
         std::cerr << "[Server] network start failed" << std::endl;
         return false;
@@ -117,6 +133,7 @@ void Server::stop() {
     work_pool_->wait_idle(5s);                       //    等取消任务跑完
     if (batch_sender_) batch_sender_->flush_and_stop();  // 5.5 排空批处理模块
     if (network_) network_->stop();                  // 6. 停 Reactor 并断连接
+    if (connect_book_) connect_book_->shutdown();    // 唤醒可能的版本等待者
     if (db_pool_) db_pool_->shutdown();              // 7. DB 最后关
     if (metrics_) metrics_->stop_sampler();          // 7.5 停指标采样线程
     if (logger_) logger_->flush_and_stop();          // 7.6 排空日志

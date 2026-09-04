@@ -15,6 +15,8 @@ public:
     bool start();          // 创建并启动全部 Reactor + Acceptor
     void stop();           // 停 Acceptor 与全部 Reactor，并断开连接
     void stop_accept();    // 只停 Acceptor（优雅退出第一步：关闸）
+    void request_close(std::shared_ptr<Internalconnection> conn,
+                       const std::string& reason = "");
     void set_batch_handler(Handler_batch* handler);   // 注入批处理接口给所有 Reactor
     void set_metrics(Handler_metrics* m) { metrics_ = m; }
     void set_log(Handler_log* l) { log_ = l; }

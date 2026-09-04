@@ -11,6 +11,8 @@ class Handler_divide_make;
 class DB_pool;
 class Handler_DB_make;
 class Handler_epoll_Factory_make;
+class connect_book;
+class FrameworkCall;
 class NetworkServer;
 class BatchSender;
 class Handler_batch_make;
@@ -75,6 +77,8 @@ private:
     std::shared_ptr<Handler_divide_make> divide_handler_;
     std::shared_ptr<DB_pool> db_pool_;
     std::shared_ptr<Handler_DB_make> db_handler_;
+    std::shared_ptr<connect_book> connect_book_;       // 连接名册
+    std::shared_ptr<FrameworkCall> framework_call_;    // 框架调用入口
     std::shared_ptr<divide_pool> parse_pool_;
     std::unique_ptr<Handler_epoll_Factory_make> factory_;
     std::unique_ptr<NetworkServer> network_;

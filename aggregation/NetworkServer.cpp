@@ -37,6 +37,13 @@ void NetworkServer::stop_accept() {
     if (acceptor_) acceptor_->stop();
 }
 
+void NetworkServer::request_close(
+    std::shared_ptr<Internalconnection> conn, const std::string& reason) {
+    if (!conn) return;
+    if (conn->owner_reactor)
+        conn->owner_reactor->request_close(conn, reason);
+}
+
 void NetworkServer::stop() {
     stop_accept();
     for (auto& r : reactors_) r->stop();

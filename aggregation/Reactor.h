@@ -32,6 +32,8 @@ public:
     void stop();                           // 停止事件线程并清理连接
     void add_connection(shared_ptr<Internalconnection> conn);   // acceptor 调用，登记连接
     void wakeup();                         // 跨线程唤醒（业务线程 send 后调用）
+    void request_close(shared_ptr<Internalconnection> conn,
+                       const std::string& reason = "");   // 跨线程请求关闭，事件线程统一处理
     void set_batch_handler(Handler_batch* handler);   // 注入批处理接线接口
     void set_metrics(Handler_metrics* m) { metrics_ = m; }
     void set_log(Handler_log* l) { log_ = l; }
@@ -49,6 +51,8 @@ private:
     mutex conn_mutex_;                                     // 连接表保护
     vector<weak_ptr<Internalconnection>> pending_send_;    // 待发送桶
     mutex pending_mutex_;
+    vector<weak_ptr<Internalconnection>> pending_close_;   // 待关闭桶
+    mutex pending_close_mutex_;
     Handler_batch* batch_handler_ = nullptr;               // 批处理接口，可空
     Handler_metrics* metrics_ = nullptr;                   // 指标埋点接口，可空
     Handler_log* log_ = nullptr;                           // 日志接口，可空
@@ -59,6 +63,7 @@ private:
     void handle_read(shared_ptr<Internalconnection> conn);
     bool enqueue_send(shared_ptr<Internalconnection> conn, const string& msg);
     void try_send(shared_ptr<Internalconnection> conn);
+    void process_pending_close();
     void close_client(shared_ptr<Internalconnection> conn);
     string send_preview(const string& msg);
     vector<string> spilit_message(string& message);

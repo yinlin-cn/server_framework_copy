@@ -1,0 +1,1196 @@
+[2026-09-04 13:06:59.323] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=0% rss=12824KB
+[2026-09-04 13:07:00.323] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:01.324] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:02.324] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:03.324] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:04.325] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:05.325] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:06.325] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:07.326] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:08.326] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12896KB
+[2026-09-04 13:07:09.326] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12896KB
+[2026-09-04 13:07:10.327] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12896KB
+[2026-09-04 13:07:11.327] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:12.327] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:13.328] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:14.328] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:15.328] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12900KB
+[2026-09-04 13:07:16.328] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12900KB
+[2026-09-04 13:07:17.329] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12900KB
+[2026-09-04 13:07:18.329] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12900KB
+[2026-09-04 13:07:19.329] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:20.330] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12900KB
+[2026-09-04 13:07:21.330] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:22.330] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:23.330] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12900KB
+[2026-09-04 13:07:24.331] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:25.331] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:26.331] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12900KB
+[2026-09-04 13:07:27.331] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=12900KB
+[2026-09-04 13:07:28.332] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:29.332] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=12900KB
+[2026-09-04 13:07:29.890] [INFO] conn=64 opened
+[2026-09-04 13:07:29.890] [INFO] conn=65 opened
+[2026-09-04 13:07:29.890] [INFO] conn=66 opened
+[2026-09-04 13:07:29.891] [INFO] conn=67 opened
+[2026-09-04 13:07:29.891] [INFO] conn=68 opened
+[2026-09-04 13:07:29.891] [INFO] conn=69 opened
+[2026-09-04 13:07:29.892] [INFO] conn=70 opened
+[2026-09-04 13:07:29.893] [INFO] conn=71 opened
+[2026-09-04 13:07:29.895] [INFO] conn=72 opened
+[2026-09-04 13:07:29.895] [INFO] conn=73 opened
+[2026-09-04 13:07:29.895] [INFO] conn=74 opened
+[2026-09-04 13:07:29.895] [INFO] conn=75 opened
+[2026-09-04 13:07:29.897] [INFO] conn=76 opened
+[2026-09-04 13:07:29.899] [INFO] conn=77 opened
+[2026-09-04 13:07:29.900] [INFO] conn=78 opened
+[2026-09-04 13:07:29.901] [INFO] conn=79 opened
+[2026-09-04 13:07:29.902] [INFO] conn=80 opened
+[2026-09-04 13:07:29.904] [INFO] conn=81 opened
+[2026-09-04 13:07:29.906] [INFO] conn=82 opened
+[2026-09-04 13:07:29.907] [INFO] conn=83 opened
+[2026-09-04 13:07:29.907] [INFO] conn=84 opened
+[2026-09-04 13:07:29.908] [INFO] conn=85 opened
+[2026-09-04 13:07:29.910] [INFO] conn=86 opened
+[2026-09-04 13:07:29.912] [INFO] conn=87 opened
+[2026-09-04 13:07:29.912] [INFO] conn=88 opened
+[2026-09-04 13:07:29.913] [INFO] conn=89 opened
+[2026-09-04 13:07:29.914] [INFO] conn=90 opened
+[2026-09-04 13:07:29.916] [INFO] conn=91 opened
+[2026-09-04 13:07:29.920] [INFO] conn=92 opened
+[2026-09-04 13:07:29.920] [INFO] conn=93 opened
+[2026-09-04 13:07:29.921] [INFO] conn=94 opened
+[2026-09-04 13:07:29.925] [INFO] conn=95 opened
+[2026-09-04 13:07:29.926] [INFO] conn=96 opened
+[2026-09-04 13:07:29.926] [INFO] conn=97 opened
+[2026-09-04 13:07:29.927] [INFO] conn=98 opened
+[2026-09-04 13:07:29.931] [INFO] conn=99 opened
+[2026-09-04 13:07:29.933] [INFO] conn=100 opened
+[2026-09-04 13:07:29.934] [INFO] conn=101 opened
+[2026-09-04 13:07:29.938] [INFO] conn=102 opened
+[2026-09-04 13:07:29.939] [INFO] conn=103 opened
+[2026-09-04 13:07:29.944] [INFO] conn=104 opened
+[2026-09-04 13:07:29.946] [INFO] conn=105 opened
+[2026-09-04 13:07:29.946] [INFO] conn=106 opened
+[2026-09-04 13:07:29.952] [INFO] conn=107 opened
+[2026-09-04 13:07:29.953] [INFO] conn=108 opened
+[2026-09-04 13:07:29.953] [INFO] conn=109 opened
+[2026-09-04 13:07:29.957] [INFO] conn=110 opened
+[2026-09-04 13:07:29.963] [INFO] conn=111 opened
+[2026-09-04 13:07:29.963] [INFO] conn=112 opened
+[2026-09-04 13:07:29.966] [INFO] conn=113 opened
+[2026-09-04 13:07:29.968] [INFO] conn=114 opened
+[2026-09-04 13:07:29.968] [INFO] conn=115 opened
+[2026-09-04 13:07:29.975] [INFO] conn=116 opened
+[2026-09-04 13:07:29.978] [INFO] conn=117 opened
+[2026-09-04 13:07:29.988] [INFO] conn=118 opened
+[2026-09-04 13:07:29.989] [INFO] conn=119 opened
+[2026-09-04 13:07:29.992] [INFO] conn=120 opened
+[2026-09-04 13:07:30.4] [INFO] conn=121 opened
+[2026-09-04 13:07:30.5] [INFO] conn=122 opened
+[2026-09-04 13:07:30.5] [INFO] conn=123 opened
+[2026-09-04 13:07:30.31] [INFO] conn=124 opened
+[2026-09-04 13:07:30.31] [INFO] conn=125 opened
+[2026-09-04 13:07:30.33] [INFO] conn=126 opened
+[2026-09-04 13:07:30.33] [INFO] conn=127 opened
+[2026-09-04 13:07:30.57] [INFO] conn=128 opened
+[2026-09-04 13:07:30.57] [INFO] conn=129 opened
+[2026-09-04 13:07:30.57] [INFO] conn=130 opened
+[2026-09-04 13:07:30.57] [INFO] conn=131 opened
+[2026-09-04 13:07:30.57] [INFO] conn=132 opened
+[2026-09-04 13:07:30.57] [INFO] conn=133 opened
+[2026-09-04 13:07:30.57] [INFO] conn=134 opened
+[2026-09-04 13:07:30.57] [INFO] conn=135 opened
+[2026-09-04 13:07:30.57] [INFO] conn=136 opened
+[2026-09-04 13:07:30.57] [INFO] conn=137 opened
+[2026-09-04 13:07:30.61] [INFO] conn=138 opened
+[2026-09-04 13:07:30.66] [INFO] conn=139 opened
+[2026-09-04 13:07:30.68] [INFO] conn=140 opened
+[2026-09-04 13:07:30.72] [INFO] conn=141 opened
+[2026-09-04 13:07:30.78] [INFO] conn=142 opened
+[2026-09-04 13:07:30.80] [INFO] conn=143 opened
+[2026-09-04 13:07:30.90] [INFO] conn=144 opened
+[2026-09-04 13:07:30.95] [INFO] conn=145 opened
+[2026-09-04 13:07:30.101] [INFO] conn=146 opened
+[2026-09-04 13:07:30.103] [INFO] conn=147 opened
+[2026-09-04 13:07:30.104] [INFO] conn=148 opened
+[2026-09-04 13:07:30.111] [INFO] conn=149 opened
+[2026-09-04 13:07:30.113] [INFO] conn=150 opened
+[2026-09-04 13:07:30.125] [INFO] conn=151 opened
+[2026-09-04 13:07:30.126] [INFO] conn=152 opened
+[2026-09-04 13:07:30.134] [INFO] conn=153 opened
+[2026-09-04 13:07:30.137] [INFO] conn=154 opened
+[2026-09-04 13:07:30.146] [INFO] conn=155 opened
+[2026-09-04 13:07:30.156] [INFO] conn=156 opened
+[2026-09-04 13:07:30.156] [INFO] conn=157 opened
+[2026-09-04 13:07:30.158] [INFO] conn=158 opened
+[2026-09-04 13:07:30.166] [INFO] conn=159 opened
+[2026-09-04 13:07:30.166] [INFO] conn=160 opened
+[2026-09-04 13:07:30.170] [INFO] conn=161 opened
+[2026-09-04 13:07:30.177] [INFO] conn=162 opened
+[2026-09-04 13:07:30.185] [INFO] conn=163 opened
+[2026-09-04 13:07:30.187] [INFO] conn=164 opened
+[2026-09-04 13:07:30.204] [INFO] conn=165 opened
+[2026-09-04 13:07:30.213] [INFO] conn=166 opened
+[2026-09-04 13:07:30.225] [INFO] conn=167 opened
+[2026-09-04 13:07:30.228] [INFO] conn=168 opened
+[2026-09-04 13:07:30.228] [INFO] conn=169 opened
+[2026-09-04 13:07:30.239] [INFO] conn=170 opened
+[2026-09-04 13:07:30.242] [INFO] conn=171 opened
+[2026-09-04 13:07:30.256] [INFO] conn=172 opened
+[2026-09-04 13:07:30.266] [INFO] conn=173 opened
+[2026-09-04 13:07:30.277] [INFO] conn=174 opened
+[2026-09-04 13:07:30.278] [INFO] conn=175 opened
+[2026-09-04 13:07:30.281] [INFO] conn=176 opened
+[2026-09-04 13:07:30.297] [INFO] conn=177 opened
+[2026-09-04 13:07:30.303] [INFO] conn=178 opened
+[2026-09-04 13:07:30.320] [INFO] conn=179 opened
+[2026-09-04 13:07:30.327] [INFO] conn=180 opened
+[2026-09-04 13:07:30.331] [INFO] conn=181 opened
+[2026-09-04 13:07:30.331] [INFO] conn=182 opened
+[2026-09-04 13:07:30.332] [INFO] req_qps=4576 req_avg60=143 req_avg=0.031059ms req_p99=1.000000ms inflight=0 conns=119 [divide] qps=4576 avg=0.143194ms p99=1.000000ms [work] qps=9152 avg=0.047652ms p99=1.000000ms [db] qps=2288 avg=0.294574ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=122% rss=16324KB
+[2026-09-04 13:07:30.339] [INFO] conn=183 opened
+[2026-09-04 13:07:30.339] [INFO] conn=184 opened
+[2026-09-04 13:07:30.356] [INFO] conn=185 opened
+[2026-09-04 13:07:30.356] [INFO] conn=186 opened
+[2026-09-04 13:07:30.366] [INFO] conn=187 opened
+[2026-09-04 13:07:30.386] [INFO] conn=188 opened
+[2026-09-04 13:07:30.389] [INFO] conn=189 opened
+[2026-09-04 13:07:30.404] [INFO] conn=190 opened
+[2026-09-04 13:07:30.404] [INFO] conn=191 opened
+[2026-09-04 13:07:30.422] [INFO] conn=192 opened
+[2026-09-04 13:07:30.439] [INFO] conn=193 opened
+[2026-09-04 13:07:30.444] [INFO] conn=194 opened
+[2026-09-04 13:07:30.447] [INFO] conn=195 opened
+[2026-09-04 13:07:30.461] [INFO] conn=196 opened
+[2026-09-04 13:07:30.472] [INFO] conn=197 opened
+[2026-09-04 13:07:30.477] [INFO] conn=198 opened
+[2026-09-04 13:07:30.488] [INFO] conn=199 opened
+[2026-09-04 13:07:30.488] [INFO] conn=200 opened
+[2026-09-04 13:07:30.494] [INFO] conn=201 opened
+[2026-09-04 13:07:30.504] [INFO] conn=202 opened
+[2026-09-04 13:07:30.508] [INFO] conn=203 opened
+[2026-09-04 13:07:30.535] [INFO] conn=204 opened
+[2026-09-04 13:07:30.536] [INFO] conn=205 opened
+[2026-09-04 13:07:30.547] [INFO] conn=206 opened
+[2026-09-04 13:07:30.553] [INFO] conn=207 opened
+[2026-09-04 13:07:30.564] [INFO] conn=208 opened
+[2026-09-04 13:07:30.572] [INFO] conn=209 opened
+[2026-09-04 13:07:30.583] [INFO] conn=210 opened
+[2026-09-04 13:07:30.587] [INFO] conn=211 opened
+[2026-09-04 13:07:30.599] [INFO] conn=212 opened
+[2026-09-04 13:07:30.611] [INFO] conn=213 opened
+[2026-09-04 13:07:30.624] [INFO] conn=214 opened
+[2026-09-04 13:07:30.624] [INFO] conn=215 opened
+[2026-09-04 13:07:30.633] [INFO] conn=216 opened
+[2026-09-04 13:07:30.637] [INFO] conn=217 opened
+[2026-09-04 13:07:30.659] [INFO] conn=218 opened
+[2026-09-04 13:07:30.664] [INFO] conn=219 opened
+[2026-09-04 13:07:30.669] [INFO] conn=220 opened
+[2026-09-04 13:07:30.677] [INFO] conn=221 opened
+[2026-09-04 13:07:30.708] [INFO] conn=222 opened
+[2026-09-04 13:07:30.733] [INFO] conn=223 opened
+[2026-09-04 13:07:30.737] [INFO] conn=224 opened
+[2026-09-04 13:07:30.743] [INFO] conn=225 opened
+[2026-09-04 13:07:30.755] [INFO] conn=226 opened
+[2026-09-04 13:07:30.765] [INFO] conn=227 opened
+[2026-09-04 13:07:30.793] [INFO] conn=228 opened
+[2026-09-04 13:07:30.811] [INFO] conn=229 opened
+[2026-09-04 13:07:30.811] [INFO] conn=230 opened
+[2026-09-04 13:07:30.815] [INFO] conn=231 opened
+[2026-09-04 13:07:30.816] [INFO] conn=232 opened
+[2026-09-04 13:07:30.821] [INFO] conn=233 opened
+[2026-09-04 13:07:30.849] [INFO] conn=234 opened
+[2026-09-04 13:07:30.849] [INFO] conn=235 opened
+[2026-09-04 13:07:30.866] [INFO] conn=236 opened
+[2026-09-04 13:07:30.870] [INFO] conn=237 opened
+[2026-09-04 13:07:30.885] [INFO] conn=238 opened
+[2026-09-04 13:07:30.889] [INFO] conn=239 opened
+[2026-09-04 13:07:30.890] [INFO] conn=240 opened
+[2026-09-04 13:07:30.910] [INFO] conn=241 opened
+[2026-09-04 13:07:30.914] [INFO] conn=242 opened
+[2026-09-04 13:07:30.919] [INFO] conn=243 opened
+[2026-09-04 13:07:30.924] [INFO] conn=244 opened
+[2026-09-04 13:07:30.944] [INFO] conn=245 opened
+[2026-09-04 13:07:30.968] [INFO] conn=246 opened
+[2026-09-04 13:07:30.979] [INFO] conn=247 opened
+[2026-09-04 13:07:30.988] [INFO] conn=248 opened
+[2026-09-04 13:07:30.988] [INFO] conn=249 opened
+[2026-09-04 13:07:31.7] [INFO] conn=250 opened
+[2026-09-04 13:07:31.7] [INFO] conn=251 opened
+[2026-09-04 13:07:31.23] [INFO] conn=252 opened
+[2026-09-04 13:07:31.33] [INFO] conn=253 opened
+[2026-09-04 13:07:31.37] [INFO] conn=254 opened
+[2026-09-04 13:07:31.38] [INFO] conn=255 opened
+[2026-09-04 13:07:31.61] [INFO] conn=256 opened
+[2026-09-04 13:07:31.63] [INFO] conn=257 opened
+[2026-09-04 13:07:31.68] [INFO] conn=258 opened
+[2026-09-04 13:07:31.68] [INFO] conn=259 opened
+[2026-09-04 13:07:31.73] [INFO] conn=260 opened
+[2026-09-04 13:07:31.73] [INFO] conn=261 opened
+[2026-09-04 13:07:31.93] [INFO] conn=262 opened
+[2026-09-04 13:07:31.103] [INFO] conn=263 opened
+[2026-09-04 13:07:31.133] [INFO] conn=264 opened
+[2026-09-04 13:07:31.144] [INFO] conn=265 opened
+[2026-09-04 13:07:31.149] [INFO] conn=266 opened
+[2026-09-04 13:07:31.159] [INFO] conn=267 opened
+[2026-09-04 13:07:31.159] [INFO] conn=268 opened
+[2026-09-04 13:07:31.160] [INFO] conn=269 opened
+[2026-09-04 13:07:31.171] [INFO] conn=270 opened
+[2026-09-04 13:07:31.177] [INFO] conn=271 opened
+[2026-09-04 13:07:31.185] [INFO] conn=272 opened
+[2026-09-04 13:07:31.192] [INFO] conn=273 opened
+[2026-09-04 13:07:31.222] [INFO] conn=274 opened
+[2026-09-04 13:07:31.228] [INFO] conn=275 opened
+[2026-09-04 13:07:31.233] [INFO] conn=276 opened
+[2026-09-04 13:07:31.238] [INFO] conn=277 opened
+[2026-09-04 13:07:31.273] [INFO] conn=278 opened
+[2026-09-04 13:07:31.279] [INFO] conn=279 opened
+[2026-09-04 13:07:31.294] [INFO] conn=280 opened
+[2026-09-04 13:07:31.315] [INFO] conn=281 opened
+[2026-09-04 13:07:31.320] [INFO] conn=282 opened
+[2026-09-04 13:07:31.321] [INFO] conn=283 opened
+[2026-09-04 13:07:31.332] [INFO] conn=284 opened
+[2026-09-04 13:07:31.332] [INFO] req_qps=9264 req_avg60=419 req_avg=0.024116ms req_p99=1.000000ms inflight=0 conns=221 [divide] qps=9264 avg=0.164806ms p99=5.000000ms [work] qps=18528 avg=0.046425ms p99=1.000000ms [db] qps=4632 avg=0.286088ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=260% rss=16924KB
+[2026-09-04 13:07:31.336] [INFO] conn=285 opened
+[2026-09-04 13:07:31.382] [INFO] conn=286 opened
+[2026-09-04 13:07:31.403] [INFO] conn=287 opened
+[2026-09-04 13:07:31.413] [INFO] conn=288 opened
+[2026-09-04 13:07:31.414] [INFO] conn=289 opened
+[2026-09-04 13:07:31.449] [INFO] conn=290 opened
+[2026-09-04 13:07:31.480] [INFO] conn=291 opened
+[2026-09-04 13:07:31.480] [INFO] conn=292 opened
+[2026-09-04 13:07:31.496] [INFO] conn=293 opened
+[2026-09-04 13:07:31.496] [INFO] conn=294 opened
+[2026-09-04 13:07:31.507] [INFO] conn=295 opened
+[2026-09-04 13:07:31.553] [INFO] conn=296 opened
+[2026-09-04 13:07:31.568] [INFO] conn=297 opened
+[2026-09-04 13:07:31.579] [INFO] conn=298 opened
+[2026-09-04 13:07:31.610] [INFO] conn=299 opened
+[2026-09-04 13:07:31.636] [INFO] conn=300 opened
+[2026-09-04 13:07:31.637] [INFO] conn=301 opened
+[2026-09-04 13:07:31.638] [INFO] conn=302 opened
+[2026-09-04 13:07:31.667] [INFO] conn=303 opened
+[2026-09-04 13:07:31.673] [INFO] conn=304 opened
+[2026-09-04 13:07:31.679] [INFO] conn=305 opened
+[2026-09-04 13:07:31.679] [INFO] conn=306 opened
+[2026-09-04 13:07:31.688] [INFO] conn=307 opened
+[2026-09-04 13:07:31.730] [INFO] conn=308 opened
+[2026-09-04 13:07:31.772] [INFO] conn=309 opened
+[2026-09-04 13:07:31.777] [INFO] conn=310 opened
+[2026-09-04 13:07:31.783] [INFO] conn=311 opened
+[2026-09-04 13:07:31.789] [INFO] conn=312 opened
+[2026-09-04 13:07:31.824] [INFO] conn=313 opened
+[2026-09-04 13:07:31.830] [INFO] conn=314 opened
+[2026-09-04 13:07:31.843] [INFO] conn=315 opened
+[2026-09-04 13:07:31.851] [INFO] conn=316 opened
+[2026-09-04 13:07:31.858] [INFO] conn=317 opened
+[2026-09-04 13:07:31.897] [INFO] conn=318 opened
+[2026-09-04 13:07:31.913] [INFO] conn=319 opened
+[2026-09-04 13:07:31.922] [INFO] conn=320 opened
+[2026-09-04 13:07:31.934] [INFO] conn=321 opened
+[2026-09-04 13:07:31.939] [INFO] conn=322 opened
+[2026-09-04 13:07:31.940] [INFO] conn=323 opened
+[2026-09-04 13:07:31.943] [INFO] conn=324 opened
+[2026-09-04 13:07:31.965] [INFO] conn=325 opened
+[2026-09-04 13:07:31.991] [INFO] conn=326 opened
+[2026-09-04 13:07:31.996] [INFO] conn=327 opened
+[2026-09-04 13:07:31.997] [INFO] conn=328 opened
+[2026-09-04 13:07:31.997] [INFO] conn=329 opened
+[2026-09-04 13:07:32.39] [INFO] conn=330 opened
+[2026-09-04 13:07:32.53] [INFO] conn=331 opened
+[2026-09-04 13:07:32.54] [INFO] conn=332 opened
+[2026-09-04 13:07:32.115] [INFO] conn=333 opened
+[2026-09-04 13:07:32.130] [INFO] conn=334 opened
+[2026-09-04 13:07:32.161] [INFO] conn=335 opened
+[2026-09-04 13:07:32.186] [INFO] conn=336 opened
+[2026-09-04 13:07:32.203] [INFO] conn=337 opened
+[2026-09-04 13:07:32.207] [INFO] conn=338 opened
+[2026-09-04 13:07:32.248] [INFO] conn=339 opened
+[2026-09-04 13:07:32.258] [INFO] conn=340 opened
+[2026-09-04 13:07:32.263] [INFO] conn=341 opened
+[2026-09-04 13:07:32.289] [INFO] conn=342 opened
+[2026-09-04 13:07:32.305] [INFO] conn=343 opened
+[2026-09-04 13:07:32.332] [INFO] req_qps=9392 req_avg60=683 req_avg=0.026213ms req_p99=1.000000ms inflight=0 conns=280 [divide] qps=9392 avg=0.175552ms p99=5.000000ms [work] qps=18784 avg=0.049678ms p99=1.000000ms [db] qps=4696 avg=0.309826ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=278% rss=17160KB
+[2026-09-04 13:07:32.346] [INFO] conn=344 opened
+[2026-09-04 13:07:32.362] [INFO] conn=345 opened
+[2026-09-04 13:07:32.378] [INFO] conn=346 opened
+[2026-09-04 13:07:32.409] [INFO] conn=347 opened
+[2026-09-04 13:07:32.414] [INFO] conn=348 opened
+[2026-09-04 13:07:32.466] [INFO] conn=349 opened
+[2026-09-04 13:07:32.470] [INFO] conn=350 opened
+[2026-09-04 13:07:32.481] [INFO] conn=351 opened
+[2026-09-04 13:07:32.487] [INFO] conn=352 opened
+[2026-09-04 13:07:32.513] [INFO] conn=353 opened
+[2026-09-04 13:07:32.554] [INFO] conn=354 opened
+[2026-09-04 13:07:32.575] [INFO] conn=355 opened
+[2026-09-04 13:07:32.580] [INFO] conn=356 opened
+[2026-09-04 13:07:32.606] [INFO] conn=357 opened
+[2026-09-04 13:07:32.616] [INFO] conn=358 opened
+[2026-09-04 13:07:32.647] [INFO] conn=359 opened
+[2026-09-04 13:07:32.664] [INFO] conn=360 opened
+[2026-09-04 13:07:32.700] [INFO] conn=361 opened
+[2026-09-04 13:07:32.705] [INFO] conn=362 opened
+[2026-09-04 13:07:32.721] [INFO] conn=363 opened
+[2026-09-04 13:07:32.726] [INFO] conn=364 opened
+[2026-09-04 13:07:32.774] [INFO] conn=365 opened
+[2026-09-04 13:07:32.784] [INFO] conn=366 opened
+[2026-09-04 13:07:32.795] [INFO] conn=367 opened
+[2026-09-04 13:07:32.805] [INFO] conn=368 opened
+[2026-09-04 13:07:32.871] [INFO] conn=369 opened
+[2026-09-04 13:07:32.873] [INFO] conn=370 opened
+[2026-09-04 13:07:32.877] [INFO] conn=371 opened
+[2026-09-04 13:07:32.914] [INFO] conn=372 opened
+[2026-09-04 13:07:32.923] [INFO] conn=373 opened
+[2026-09-04 13:07:32.939] [INFO] conn=374 opened
+[2026-09-04 13:07:32.960] [INFO] conn=375 opened
+[2026-09-04 13:07:32.960] [INFO] conn=376 opened
+[2026-09-04 13:07:32.976] [INFO] conn=377 opened
+[2026-09-04 13:07:32.985] [INFO] conn=378 opened
+[2026-09-04 13:07:33.8] [INFO] conn=379 opened
+[2026-09-04 13:07:33.28] [INFO] conn=380 opened
+[2026-09-04 13:07:33.49] [INFO] conn=381 opened
+[2026-09-04 13:07:33.69] [INFO] conn=382 opened
+[2026-09-04 13:07:33.70] [INFO] conn=383 opened
+[2026-09-04 13:07:33.80] [INFO] conn=384 opened
+[2026-09-04 13:07:33.90] [INFO] conn=385 opened
+[2026-09-04 13:07:33.105] [INFO] conn=386 opened
+[2026-09-04 13:07:33.111] [INFO] conn=387 opened
+[2026-09-04 13:07:33.115] [INFO] conn=388 opened
+[2026-09-04 13:07:33.117] [INFO] conn=389 opened
+[2026-09-04 13:07:33.138] [INFO] conn=390 opened
+[2026-09-04 13:07:33.162] [INFO] conn=391 opened
+[2026-09-04 13:07:33.194] [INFO] conn=392 opened
+[2026-09-04 13:07:33.194] [INFO] conn=393 opened
+[2026-09-04 13:07:33.230] [INFO] conn=394 opened
+[2026-09-04 13:07:33.241] [INFO] conn=395 opened
+[2026-09-04 13:07:33.255] [INFO] conn=396 opened
+[2026-09-04 13:07:33.266] [INFO] conn=397 opened
+[2026-09-04 13:07:33.293] [INFO] conn=398 opened
+[2026-09-04 13:07:33.308] [INFO] conn=399 opened
+[2026-09-04 13:07:33.329] [INFO] conn=400 opened
+[2026-09-04 13:07:33.333] [INFO] req_qps=9552 req_avg60=936 req_avg=0.028555ms req_p99=1.000000ms inflight=0 conns=337 [divide] qps=9552 avg=0.177023ms p99=5.000000ms [work] qps=19104 avg=0.052134ms p99=1.000000ms [db] qps=4776 avg=0.324600ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=287% rss=17348KB
+[2026-09-04 13:07:33.339] [INFO] conn=401 opened
+[2026-09-04 13:07:33.347] [INFO] conn=401 closed
+[2026-09-04 13:07:33.356] [INFO] conn=400 closed
+[2026-09-04 13:07:33.359] [INFO] conn=399 closed
+[2026-09-04 13:07:33.359] [INFO] conn=399 opened
+[2026-09-04 13:07:33.360] [INFO] conn=400 opened
+[2026-09-04 13:07:33.439] [INFO] conn=401 opened
+[2026-09-04 13:07:33.450] [INFO] conn=402 opened
+[2026-09-04 13:07:33.454] [INFO] conn=403 opened
+[2026-09-04 13:07:33.475] [INFO] conn=404 opened
+[2026-09-04 13:07:33.522] [INFO] conn=405 opened
+[2026-09-04 13:07:33.604] [INFO] conn=406 opened
+[2026-09-04 13:07:33.639] [INFO] conn=407 opened
+[2026-09-04 13:07:33.656] [INFO] conn=408 opened
+[2026-09-04 13:07:33.677] [INFO] conn=409 opened
+[2026-09-04 13:07:33.677] [INFO] conn=410 opened
+[2026-09-04 13:07:33.681] [INFO] conn=411 opened
+[2026-09-04 13:07:33.682] [INFO] conn=412 opened
+[2026-09-04 13:07:33.754] [INFO] conn=413 opened
+[2026-09-04 13:07:33.781] [INFO] conn=414 opened
+[2026-09-04 13:07:33.843] [INFO] conn=415 opened
+[2026-09-04 13:07:33.894] [INFO] conn=416 opened
+[2026-09-04 13:07:33.944] [INFO] conn=417 opened
+[2026-09-04 13:07:33.985] [INFO] conn=418 opened
+[2026-09-04 13:07:33.996] [INFO] conn=419 opened
+[2026-09-04 13:07:34.18] [INFO] conn=420 opened
+[2026-09-04 13:07:34.38] [INFO] conn=421 opened
+[2026-09-04 13:07:34.54] [INFO] conn=422 opened
+[2026-09-04 13:07:34.81] [INFO] conn=423 opened
+[2026-09-04 13:07:34.96] [INFO] conn=424 opened
+[2026-09-04 13:07:34.112] [INFO] conn=425 opened
+[2026-09-04 13:07:34.169] [INFO] conn=426 opened
+[2026-09-04 13:07:34.231] [INFO] conn=427 opened
+[2026-09-04 13:07:34.246] [INFO] conn=428 opened
+[2026-09-04 13:07:34.246] [INFO] conn=429 opened
+[2026-09-04 13:07:34.251] [INFO] conn=430 opened
+[2026-09-04 13:07:34.268] [INFO] conn=431 opened
+[2026-09-04 13:07:34.294] [INFO] conn=432 opened
+[2026-09-04 13:07:34.303] [INFO] conn=433 opened
+[2026-09-04 13:07:34.313] [INFO] conn=434 opened
+[2026-09-04 13:07:34.333] [INFO] req_qps=9712 req_avg60=1180 req_avg=0.026942ms req_p99=1.000000ms inflight=0 conns=371 [divide] qps=9712 avg=0.182769ms p99=5.000000ms [work] qps=19424 avg=0.050582ms p99=1.000000ms [db] qps=4856 avg=0.321121ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=285% rss=17508KB
+[2026-09-04 13:07:34.335] [INFO] conn=435 opened
+[2026-09-04 13:07:34.349] [INFO] conn=436 opened
+[2026-09-04 13:07:34.350] [INFO] conn=437 opened
+[2026-09-04 13:07:34.392] [INFO] conn=438 opened
+[2026-09-04 13:07:34.397] [INFO] conn=439 opened
+[2026-09-04 13:07:34.429] [INFO] conn=440 opened
+[2026-09-04 13:07:34.485] [INFO] conn=441 opened
+[2026-09-04 13:07:34.524] [INFO] conn=442 opened
+[2026-09-04 13:07:34.536] [INFO] conn=443 opened
+[2026-09-04 13:07:34.572] [INFO] conn=444 opened
+[2026-09-04 13:07:34.598] [INFO] conn=445 opened
+[2026-09-04 13:07:34.722] [INFO] conn=446 opened
+[2026-09-04 13:07:34.727] [INFO] conn=447 opened
+[2026-09-04 13:07:34.753] [INFO] conn=448 opened
+[2026-09-04 13:07:34.784] [INFO] conn=449 opened
+[2026-09-04 13:07:34.790] [INFO] conn=450 opened
+[2026-09-04 13:07:34.857] [INFO] conn=451 opened
+[2026-09-04 13:07:34.887] [INFO] conn=452 opened
+[2026-09-04 13:07:34.897] [INFO] conn=453 opened
+[2026-09-04 13:07:34.949] [INFO] conn=454 opened
+[2026-09-04 13:07:34.956] [INFO] conn=455 opened
+[2026-09-04 13:07:34.976] [INFO] conn=456 opened
+[2026-09-04 13:07:34.992] [INFO] conn=457 opened
+[2026-09-04 13:07:35.48] [INFO] conn=458 opened
+[2026-09-04 13:07:35.64] [INFO] conn=459 opened
+[2026-09-04 13:07:35.96] [INFO] conn=460 opened
+[2026-09-04 13:07:35.116] [INFO] conn=461 opened
+[2026-09-04 13:07:35.179] [INFO] conn=462 opened
+[2026-09-04 13:07:35.215] [INFO] conn=463 opened
+[2026-09-04 13:07:35.220] [INFO] conn=464 opened
+[2026-09-04 13:07:35.224] [INFO] conn=465 opened
+[2026-09-04 13:07:35.225] [INFO] conn=466 opened
+[2026-09-04 13:07:35.272] [INFO] conn=467 opened
+[2026-09-04 13:07:35.272] [INFO] conn=468 opened
+[2026-09-04 13:07:35.277] [INFO] conn=469 opened
+[2026-09-04 13:07:35.298] [INFO] conn=470 opened
+[2026-09-04 13:07:35.304] [INFO] conn=471 opened
+[2026-09-04 13:07:35.333] [INFO] req_qps=9678 req_avg60=1410 req_avg=0.027716ms req_p99=1.000000ms inflight=0 conns=408 [divide] qps=9678 avg=0.179109ms p99=5.000000ms [work] qps=19332 avg=0.050901ms p99=1.000000ms [db] qps=4839 avg=0.320399ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=288% rss=17628KB
+[2026-09-04 13:07:35.344] [INFO] conn=472 opened
+[2026-09-04 13:07:35.416] [INFO] conn=473 opened
+[2026-09-04 13:07:35.438] [INFO] conn=474 opened
+[2026-09-04 13:07:35.443] [INFO] conn=475 opened
+[2026-09-04 13:07:35.453] [INFO] conn=476 opened
+[2026-09-04 13:07:35.458] [INFO] conn=477 opened
+[2026-09-04 13:07:35.510] [INFO] conn=478 opened
+[2026-09-04 13:07:35.547] [INFO] conn=479 opened
+[2026-09-04 13:07:35.603] [INFO] conn=480 opened
+[2026-09-04 13:07:35.629] [INFO] conn=481 opened
+[2026-09-04 13:07:35.680] [INFO] conn=482 opened
+[2026-09-04 13:07:35.701] [INFO] conn=483 opened
+[2026-09-04 13:07:35.722] [INFO] conn=484 opened
+[2026-09-04 13:07:35.737] [INFO] conn=485 opened
+[2026-09-04 13:07:35.752] [INFO] conn=486 opened
+[2026-09-04 13:07:35.779] [INFO] conn=487 opened
+[2026-09-04 13:07:35.805] [INFO] conn=488 opened
+[2026-09-04 13:07:35.820] [INFO] conn=489 opened
+[2026-09-04 13:07:35.836] [INFO] conn=490 opened
+[2026-09-04 13:07:35.852] [INFO] conn=491 opened
+[2026-09-04 13:07:35.862] [INFO] conn=492 opened
+[2026-09-04 13:07:35.913] [INFO] conn=493 opened
+[2026-09-04 13:07:35.934] [INFO] conn=494 opened
+[2026-09-04 13:07:35.976] [INFO] conn=495 opened
+[2026-09-04 13:07:36.43] [INFO] conn=496 opened
+[2026-09-04 13:07:36.48] [INFO] conn=497 opened
+[2026-09-04 13:07:36.79] [INFO] conn=498 opened
+[2026-09-04 13:07:36.84] [INFO] conn=499 opened
+[2026-09-04 13:07:36.151] [INFO] conn=500 opened
+[2026-09-04 13:07:36.162] [INFO] conn=501 opened
+[2026-09-04 13:07:36.187] [INFO] conn=502 opened
+[2026-09-04 13:07:36.223] [INFO] conn=503 opened
+[2026-09-04 13:07:36.234] [INFO] conn=504 opened
+[2026-09-04 13:07:36.260] [INFO] conn=505 opened
+[2026-09-04 13:07:36.297] [INFO] conn=506 opened
+[2026-09-04 13:07:36.322] [INFO] conn=507 opened
+[2026-09-04 13:07:36.323] [INFO] conn=508 opened
+[2026-09-04 13:07:36.333] [INFO] req_qps=10114 req_avg60=1639 req_avg=0.025675ms req_p99=1.000000ms inflight=0 conns=445 [divide] qps=10114 avg=0.194214ms p99=5.000000ms [work] qps=20252 avg=0.048992ms p99=1.000000ms [db] qps=5057 avg=0.315739ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=293% rss=17736KB
+[2026-09-04 13:07:36.354] [INFO] conn=509 opened
+[2026-09-04 13:07:36.373] [INFO] conn=510 opened
+[2026-09-04 13:07:36.406] [INFO] conn=511 opened
+[2026-09-04 13:07:36.453] [INFO] conn=512 opened
+[2026-09-04 13:07:36.478] [INFO] conn=513 opened
+[2026-09-04 13:07:36.498] [INFO] conn=514 opened
+[2026-09-04 13:07:36.535] [INFO] conn=515 opened
+[2026-09-04 13:07:36.540] [INFO] conn=516 opened
+[2026-09-04 13:07:36.546] [INFO] conn=517 opened
+[2026-09-04 13:07:36.556] [INFO] conn=518 opened
+[2026-09-04 13:07:36.603] [INFO] conn=519 opened
+[2026-09-04 13:07:36.633] [INFO] conn=520 opened
+[2026-09-04 13:07:36.639] [INFO] conn=521 opened
+[2026-09-04 13:07:36.670] [INFO] conn=522 opened
+[2026-09-04 13:07:36.701] [INFO] conn=523 opened
+[2026-09-04 13:07:36.717] [INFO] conn=524 opened
+[2026-09-04 13:07:36.717] [INFO] conn=525 opened
+[2026-09-04 13:07:36.729] [INFO] conn=526 opened
+[2026-09-04 13:07:36.795] [INFO] conn=527 opened
+[2026-09-04 13:07:36.804] [INFO] conn=528 opened
+[2026-09-04 13:07:36.893] [INFO] conn=529 opened
+[2026-09-04 13:07:36.924] [INFO] conn=530 opened
+[2026-09-04 13:07:36.940] [INFO] conn=531 opened
+[2026-09-04 13:07:36.961] [INFO] conn=532 opened
+[2026-09-04 13:07:36.993] [INFO] conn=533 opened
+[2026-09-04 13:07:37.3] [INFO] conn=534 opened
+[2026-09-04 13:07:37.9] [INFO] conn=535 opened
+[2026-09-04 13:07:37.9] [INFO] conn=536 opened
+[2026-09-04 13:07:37.28] [INFO] conn=537 opened
+[2026-09-04 13:07:37.39] [INFO] conn=538 opened
+[2026-09-04 13:07:37.54] [INFO] conn=539 opened
+[2026-09-04 13:07:37.106] [INFO] conn=540 opened
+[2026-09-04 13:07:37.106] [INFO] conn=541 opened
+[2026-09-04 13:07:37.133] [INFO] conn=542 opened
+[2026-09-04 13:07:37.163] [INFO] conn=543 opened
+[2026-09-04 13:07:37.179] [INFO] conn=544 opened
+[2026-09-04 13:07:37.210] [INFO] conn=545 opened
+[2026-09-04 13:07:37.236] [INFO] conn=546 opened
+[2026-09-04 13:07:37.319] [INFO] conn=547 opened
+[2026-09-04 13:07:37.333] [INFO] req_qps=9856 req_avg60=1849 req_avg=0.030094ms req_p99=1.000000ms inflight=0 conns=484 [divide] qps=9856 avg=0.177024ms p99=5.000000ms [work] qps=19712 avg=0.050297ms p99=1.000000ms [db] qps=4928 avg=0.335720ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=281% rss=17860KB
+[2026-09-04 13:07:37.340] [INFO] conn=548 opened
+[2026-09-04 13:07:37.398] [INFO] conn=549 opened
+[2026-09-04 13:07:37.402] [INFO] conn=550 opened
+[2026-09-04 13:07:37.434] [INFO] conn=551 opened
+[2026-09-04 13:07:37.506] [INFO] conn=552 opened
+[2026-09-04 13:07:37.516] [INFO] conn=553 opened
+[2026-09-04 13:07:37.533] [INFO] conn=554 opened
+[2026-09-04 13:07:37.543] [INFO] conn=555 opened
+[2026-09-04 13:07:37.595] [INFO] conn=556 opened
+[2026-09-04 13:07:37.599] [INFO] conn=557 opened
+[2026-09-04 13:07:37.610] [INFO] conn=558 opened
+[2026-09-04 13:07:37.651] [INFO] conn=559 opened
+[2026-09-04 13:07:37.708] [INFO] conn=560 opened
+[2026-09-04 13:07:38.333] [INFO] req_qps=9897 req_avg60=2051 req_avg=0.028945ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9905 avg=0.178444ms p99=5.000000ms [work] qps=19786 avg=0.050963ms p99=1.000000ms [db] qps=4945 avg=0.334791ms p99=1.000000ms queue(d/w/db)=0/7/0 err(d/w/db)=0/0/0 cpu=289% rss=17916KB
+[2026-09-04 13:07:39.334] [INFO] req_qps=9863 req_avg60=2241 req_avg=0.026904ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9855 avg=0.180611ms p99=5.000000ms [work] qps=19732 avg=0.048993ms p99=1.000000ms [db] qps=4934 avg=0.319560ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=278% rss=17972KB
+[2026-09-04 13:07:40.334] [INFO] req_qps=10350 req_avg60=2434 req_avg=0.027677ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=10350 avg=0.179899ms p99=5.000000ms [work] qps=20690 avg=0.048241ms p99=1.000000ms [db] qps=5173 avg=0.327345ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=295% rss=18012KB
+[2026-09-04 13:07:41.334] [INFO] req_qps=10258 req_avg60=2616 req_avg=0.027792ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=10258 avg=0.187366ms p99=5.000000ms [work] qps=20525 avg=0.048999ms p99=1.000000ms [db] qps=5131 avg=0.321260ms p99=1.000000ms queue(d/w/db)=4/0/0 err(d/w/db)=0/0/0 cpu=289% rss=18056KB
+[2026-09-04 13:07:42.334] [INFO] req_qps=9968 req_avg60=2783 req_avg=0.027712ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9966 avg=0.178628ms p99=5.000000ms [work] qps=19936 avg=0.050140ms p99=1.000000ms [db] qps=4984 avg=0.329085ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=287% rss=18088KB
+[2026-09-04 13:07:43.334] [INFO] req_qps=9754 req_avg60=2938 req_avg=0.028292ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9756 avg=0.183354ms p99=5.000000ms [work] qps=19499 avg=0.049664ms p99=1.000000ms [db] qps=4872 avg=0.338987ms p99=1.000000ms queue(d/w/db)=0/2/0 err(d/w/db)=0/0/0 cpu=285% rss=18124KB
+[2026-09-04 13:07:44.335] [INFO] req_qps=10055 req_avg60=3093 req_avg=0.027715ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=10055 avg=0.181828ms p99=5.000000ms [work] qps=20105 avg=0.049136ms p99=1.000000ms [db] qps=5025 avg=0.319781ms p99=1.000000ms queue(d/w/db)=1/0/1 err(d/w/db)=0/0/0 cpu=287% rss=18144KB
+[2026-09-04 13:07:45.335] [INFO] req_qps=10159 req_avg60=3243 req_avg=0.030084ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=10151 avg=0.182007ms p99=5.000000ms [work] qps=20329 avg=0.050759ms p99=1.000000ms [db] qps=5085 avg=0.328225ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=291% rss=18180KB
+[2026-09-04 13:07:46.335] [INFO] req_qps=9920 req_avg60=3382 req_avg=0.028075ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9920 avg=0.172413ms p99=5.000000ms [work] qps=19832 avg=0.049223ms p99=1.000000ms [db] qps=4960 avg=0.328983ms p99=1.000000ms queue(d/w/db)=0/2/0 err(d/w/db)=0/0/0 cpu=288% rss=18200KB
+[2026-09-04 13:07:47.335] [INFO] req_qps=9504 req_avg60=3507 req_avg=0.030514ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9504 avg=0.183694ms p99=5.000000ms [work] qps=19014 avg=0.052647ms p99=1.000000ms [db] qps=4752 avg=0.348005ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=283% rss=18232KB
+[2026-09-04 13:07:48.336] [INFO] req_qps=9786 req_avg60=3633 req_avg=0.029548ms req_p99=1.000000ms inflight=3 conns=497 [divide] qps=9792 avg=0.190029ms p99=5.000000ms [work] qps=19552 avg=0.051437ms p99=1.000000ms [db] qps=4890 avg=0.349375ms p99=1.000000ms queue(d/w/db)=0/7/0 err(d/w/db)=0/0/0 cpu=290% rss=18268KB
+[2026-09-04 13:07:49.336] [INFO] req_qps=9798 req_avg60=3754 req_avg=0.027367ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9792 avg=0.176867ms p99=5.000000ms [work] qps=19592 avg=0.048900ms p99=1.000000ms [db] qps=4900 avg=0.321179ms p99=1.000000ms queue(d/w/db)=3/2/0 err(d/w/db)=0/0/0 cpu=283% rss=18320KB
+[2026-09-04 13:07:50.336] [INFO] req_qps=9824 req_avg60=3870 req_avg=0.028067ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9824 avg=0.179497ms p99=5.000000ms [work] qps=19663 avg=0.050723ms p99=1.000000ms [db] qps=4914 avg=0.326771ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=283% rss=18348KB
+[2026-09-04 13:07:51.336] [INFO] req_qps=10317 req_avg60=3992 req_avg=0.028712ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=10319 avg=0.173988ms p99=5.000000ms [work] qps=20613 avg=0.048981ms p99=1.000000ms [db] qps=5155 avg=0.328907ms p99=1.000000ms queue(d/w/db)=0/2/0 err(d/w/db)=0/0/0 cpu=290% rss=18368KB
+[2026-09-04 13:07:52.337] [INFO] req_qps=9955 req_avg60=4102 req_avg=0.029640ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9953 avg=0.184140ms p99=5.000000ms [work] qps=19930 avg=0.051981ms p99=1.000000ms [db] qps=4980 avg=0.333324ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=296% rss=18392KB
+[2026-09-04 13:07:53.337] [INFO] req_qps=9691 req_avg60=4204 req_avg=0.031291ms req_p99=1.000000ms inflight=4 conns=497 [divide] qps=9695 avg=0.179717ms p99=5.000000ms [work] qps=19373 avg=0.052781ms p99=1.000000ms [db] qps=4840 avg=0.339916ms p99=1.000000ms queue(d/w/db)=0/0/1 err(d/w/db)=0/0/0 cpu=293% rss=18436KB
+[2026-09-04 13:07:54.337] [INFO] req_qps=8718 req_avg60=4285 req_avg=0.035405ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=8714 avg=0.202861ms p99=5.000000ms [work] qps=17434 avg=0.056545ms p99=1.000000ms [db] qps=4360 avg=0.385532ms p99=5.000000ms queue(d/w/db)=4/1/0 err(d/w/db)=0/0/0 cpu=286% rss=18460KB
+[2026-09-04 13:07:55.337] [INFO] req_qps=9047 req_avg60=4368 req_avg=0.033880ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9049 avg=0.185628ms p99=5.000000ms [work] qps=18104 avg=0.055911ms p99=1.000000ms [db] qps=4527 avg=0.377545ms p99=5.000000ms queue(d/w/db)=5/4/0 err(d/w/db)=0/0/0 cpu=280% rss=18476KB
+[2026-09-04 13:07:56.337] [INFO] req_qps=9315 req_avg60=4453 req_avg=0.031308ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9313 avg=0.175538ms p99=5.000000ms [work] qps=18628 avg=0.052636ms p99=1.000000ms [db] qps=4656 avg=0.355035ms p99=1.000000ms queue(d/w/db)=1/0/1 err(d/w/db)=0/0/0 cpu=282% rss=18488KB
+[2026-09-04 13:07:57.338] [INFO] req_qps=9645 req_avg60=4541 req_avg=0.029756ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9641 avg=0.181575ms p99=5.000000ms [work] qps=19290 avg=0.050899ms p99=1.000000ms [db] qps=4824 avg=0.339452ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=289% rss=18496KB
+[2026-09-04 13:07:58.338] [INFO] req_qps=9757 req_avg60=4628 req_avg=0.031005ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9757 avg=0.182126ms p99=5.000000ms [work] qps=19502 avg=0.054321ms p99=1.000000ms [db] qps=4874 avg=0.336962ms p99=1.000000ms queue(d/w/db)=1/2/0 err(d/w/db)=0/0/0 cpu=285% rss=18500KB
+[2026-09-04 13:07:59.338] [INFO] req_qps=9938 req_avg60=4794 req_avg=0.027327ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9937 avg=0.182564ms p99=5.000000ms [work] qps=19880 avg=0.049334ms p99=1.000000ms [db] qps=4974 avg=0.334903ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=290% rss=18500KB
+[2026-09-04 13:08:00.338] [INFO] req_qps=9230 req_avg60=4948 req_avg=0.030654ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9233 avg=0.185583ms p99=5.000000ms [work] qps=18466 avg=0.052902ms p99=1.000000ms [db] qps=4613 avg=0.357591ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=291% rss=18504KB
+[2026-09-04 13:08:01.339] [INFO] req_qps=9650 req_avg60=5109 req_avg=0.030333ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9647 avg=0.186677ms p99=5.000000ms [work] qps=19284 avg=0.054011ms p99=1.000000ms [db] qps=4817 avg=0.349782ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=291% rss=18512KB
+[2026-09-04 13:08:02.339] [INFO] req_qps=9553 req_avg60=5268 req_avg=0.031817ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9553 avg=0.183512ms p99=5.000000ms [work] qps=19123 avg=0.052255ms p99=1.000000ms [db] qps=4783 avg=0.353944ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=286% rss=18532KB
+[2026-09-04 13:08:03.339] [INFO] req_qps=9948 req_avg60=5434 req_avg=0.030127ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9949 avg=0.181654ms p99=5.000000ms [work] qps=19883 avg=0.050470ms p99=1.000000ms [db] qps=4970 avg=0.340770ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=290% rss=18536KB
+[2026-09-04 13:08:04.339] [INFO] req_qps=8964 req_avg60=5583 req_avg=0.035691ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=8963 avg=0.184823ms p99=5.000000ms [work] qps=17941 avg=0.055957ms p99=1.000000ms [db] qps=4486 avg=0.389248ms p99=5.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=280% rss=18552KB
+[2026-09-04 13:08:05.340] [INFO] req_qps=9088 req_avg60=5734 req_avg=0.029947ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9088 avg=0.185213ms p99=5.000000ms [work] qps=18153 avg=0.052296ms p99=1.000000ms [db] qps=4541 avg=0.362133ms p99=5.000000ms queue(d/w/db)=0/2/0 err(d/w/db)=0/0/0 cpu=279% rss=18560KB
+[2026-09-04 13:08:06.340] [INFO] req_qps=9856 req_avg60=5899 req_avg=0.029411ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9856 avg=0.187586ms p99=5.000000ms [work] qps=19734 avg=0.052155ms p99=1.000000ms [db] qps=4931 avg=0.338183ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=291% rss=18568KB
+[2026-09-04 13:08:07.340] [INFO] req_qps=9713 req_avg60=6061 req_avg=0.029058ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9715 avg=0.188062ms p99=5.000000ms [work] qps=19426 avg=0.052364ms p99=1.000000ms [db] qps=4856 avg=0.338620ms p99=1.000000ms queue(d/w/db)=1/2/0 err(d/w/db)=0/0/0 cpu=288% rss=18572KB
+[2026-09-04 13:08:08.340] [INFO] req_qps=9679 req_avg60=6222 req_avg=0.030825ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9676 avg=0.193002ms p99=5.000000ms [work] qps=19358 avg=0.052941ms p99=1.000000ms [db] qps=4840 avg=0.344656ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=288% rss=18584KB
+[2026-09-04 13:08:09.340] [INFO] req_qps=9679 req_avg60=6383 req_avg=0.030751ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9680 avg=0.187984ms p99=5.000000ms [work] qps=19352 avg=0.054330ms p99=1.000000ms [db] qps=4839 avg=0.351482ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=295% rss=18592KB
+[2026-09-04 13:08:10.341] [INFO] req_qps=9503 req_avg60=6542 req_avg=0.031556ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9503 avg=0.189791ms p99=5.000000ms [work] qps=19002 avg=0.053270ms p99=1.000000ms [db] qps=4750 avg=0.350360ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=288% rss=18600KB
+[2026-09-04 13:08:11.341] [INFO] req_qps=9538 req_avg60=6701 req_avg=0.029838ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9537 avg=0.182867ms p99=5.000000ms [work] qps=19084 avg=0.052833ms p99=1.000000ms [db] qps=4770 avg=0.341044ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=287% rss=18604KB
+[2026-09-04 13:08:12.341] [INFO] req_qps=9520 req_avg60=6859 req_avg=0.028903ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9520 avg=0.182681ms p99=5.000000ms [work] qps=19040 avg=0.053098ms p99=1.000000ms [db] qps=4760 avg=0.343824ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=287% rss=18608KB
+[2026-09-04 13:08:13.341] [INFO] req_qps=9711 req_avg60=7021 req_avg=0.032097ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9711 avg=0.186477ms p99=5.000000ms [work] qps=19415 avg=0.054005ms p99=1.000000ms [db] qps=4854 avg=0.351550ms p99=1.000000ms queue(d/w/db)=0/3/0 err(d/w/db)=0/0/0 cpu=290% rss=18624KB
+[2026-09-04 13:08:14.341] [INFO] req_qps=9645 req_avg60=7182 req_avg=0.029862ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9644 avg=0.178743ms p99=5.000000ms [work] qps=19289 avg=0.050587ms p99=1.000000ms [db] qps=4823 avg=0.347638ms p99=1.000000ms queue(d/w/db)=0/2/0 err(d/w/db)=0/0/0 cpu=286% rss=18624KB
+[2026-09-04 13:08:15.342] [INFO] req_qps=9109 req_avg60=7334 req_avg=0.031491ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9116 avg=0.197102ms p99=5.000000ms [work] qps=18229 avg=0.055480ms p99=1.000000ms [db] qps=4555 avg=0.357899ms p99=1.000000ms queue(d/w/db)=0/2/0 err(d/w/db)=0/0/0 cpu=288% rss=18624KB
+[2026-09-04 13:08:16.342] [INFO] req_qps=9743 req_avg60=7496 req_avg=0.031593ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9731 avg=0.178087ms p99=5.000000ms [work] qps=19474 avg=0.052040ms p99=1.000000ms [db] qps=4872 avg=0.351280ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=287% rss=18632KB
+[2026-09-04 13:08:17.342] [INFO] req_qps=9566 req_avg60=7655 req_avg=0.029777ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9572 avg=0.187682ms p99=5.000000ms [work] qps=19134 avg=0.052715ms p99=1.000000ms [db] qps=4780 avg=0.342757ms p99=1.000000ms queue(d/w/db)=0/0/1 err(d/w/db)=0/0/0 cpu=288% rss=18636KB
+[2026-09-04 13:08:18.343] [INFO] req_qps=9180 req_avg60=7808 req_avg=0.030406ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9174 avg=0.196533ms p99=5.000000ms [work] qps=18349 avg=0.054724ms p99=1.000000ms [db] qps=4590 avg=0.359366ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=281% rss=18644KB
+[2026-09-04 13:08:19.343] [INFO] req_qps=10209 req_avg60=7979 req_avg=0.030612ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=10208 avg=0.190660ms p99=5.000000ms [work] qps=20410 avg=0.053757ms p99=1.000000ms [db] qps=5103 avg=0.341295ms p99=1.000000ms queue(d/w/db)=11/1/0 err(d/w/db)=0/0/0 cpu=303% rss=18644KB
+[2026-09-04 13:08:20.343] [INFO] req_qps=8501 req_avg60=8120 req_avg=0.034058ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=8500 avg=0.195050ms p99=5.000000ms [work] qps=17015 avg=0.059037ms p99=1.000000ms [db] qps=4253 avg=0.401377ms p99=5.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=282% rss=18652KB
+[2026-09-04 13:08:21.343] [INFO] req_qps=9408 req_avg60=8277 req_avg=0.031586ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9408 avg=0.191497ms p99=5.000000ms [work] qps=18812 avg=0.054448ms p99=1.000000ms [db] qps=4704 avg=0.360955ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=288% rss=18656KB
+[2026-09-04 13:08:22.343] [INFO] req_qps=9472 req_avg60=8435 req_avg=0.028828ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9472 avg=0.174357ms p99=5.000000ms [work] qps=18947 avg=0.050705ms p99=1.000000ms [db] qps=4736 avg=0.342469ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=288% rss=18660KB
+[2026-09-04 13:08:23.344] [INFO] req_qps=9760 req_avg60=8598 req_avg=0.032224ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9760 avg=0.180148ms p99=5.000000ms [work] qps=19520 avg=0.054613ms p99=1.000000ms [db] qps=4880 avg=0.350661ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=287% rss=18672KB
+[2026-09-04 13:08:24.344] [INFO] req_qps=9199 req_avg60=8751 req_avg=0.028823ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9200 avg=0.194353ms p99=5.000000ms [work] qps=18376 avg=0.052189ms p99=1.000000ms [db] qps=4590 avg=0.344189ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=278% rss=18672KB
+[2026-09-04 13:08:25.344] [INFO] req_qps=9009 req_avg60=8901 req_avg=0.035744ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9008 avg=0.186702ms p99=5.000000ms [work] qps=18040 avg=0.059943ms p99=1.000000ms [db] qps=4512 avg=0.389765ms p99=5.000000ms queue(d/w/db)=1/2/0 err(d/w/db)=0/0/0 cpu=290% rss=18676KB
+[2026-09-04 13:08:26.344] [INFO] req_qps=9520 req_avg60=9060 req_avg=0.030203ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9518 avg=0.187277ms p99=5.000000ms [work] qps=19040 avg=0.054131ms p99=1.000000ms [db] qps=4760 avg=0.354261ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=291% rss=18676KB
+[2026-09-04 13:08:27.344] [INFO] req_qps=9281 req_avg60=9214 req_avg=0.030044ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9281 avg=0.191666ms p99=5.000000ms [work] qps=18561 avg=0.053088ms p99=1.000000ms [db] qps=4640 avg=0.351319ms p99=1.000000ms queue(d/w/db)=7/0/0 err(d/w/db)=0/0/0 cpu=283% rss=18684KB
+[2026-09-04 13:08:28.345] [INFO] req_qps=9507 req_avg60=9373 req_avg=0.030402ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9507 avg=0.186625ms p99=5.000000ms [work] qps=19012 avg=0.052674ms p99=1.000000ms [db] qps=4752 avg=0.354659ms p99=1.000000ms queue(d/w/db)=2/0/1 err(d/w/db)=0/0/0 cpu=288% rss=18696KB
+[2026-09-04 13:08:29.345] [INFO] req_qps=9564 req_avg60=9532 req_avg=0.030511ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9562 avg=0.186927ms p99=5.000000ms [work] qps=19130 avg=0.053052ms p99=1.000000ms [db] qps=4784 avg=0.356020ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=285% rss=18700KB
+[2026-09-04 13:08:30.345] [INFO] req_qps=9294 req_avg60=9611 req_avg=0.031125ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9296 avg=0.195096ms p99=5.000000ms [work] qps=18575 avg=0.053972ms p99=1.000000ms [db] qps=4640 avg=0.360956ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=291% rss=18716KB
+[2026-09-04 13:08:31.345] [INFO] req_qps=9746 req_avg60=9619 req_avg=0.030185ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9744 avg=0.187169ms p99=5.000000ms [work] qps=19505 avg=0.054212ms p99=1.000000ms [db] qps=4879 avg=0.342091ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=290% rss=18736KB
+[2026-09-04 13:08:32.346] [INFO] req_qps=9409 req_avg60=9619 req_avg=0.029240ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9409 avg=0.184202ms p99=5.000000ms [work] qps=18817 avg=0.053194ms p99=1.000000ms [db] qps=4704 avg=0.349677ms p99=1.000000ms queue(d/w/db)=2/1/0 err(d/w/db)=0/0/0 cpu=288% rss=18740KB
+[2026-09-04 13:08:33.346] [INFO] req_qps=9470 req_avg60=9618 req_avg=0.029048ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9470 avg=0.185173ms p99=5.000000ms [work] qps=18927 avg=0.052233ms p99=1.000000ms [db] qps=4729 avg=0.342378ms p99=1.000000ms queue(d/w/db)=0/1/1 err(d/w/db)=0/0/0 cpu=288% rss=18744KB
+[2026-09-04 13:08:34.346] [INFO] req_qps=10093 req_avg60=9624 req_avg=0.029051ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=10095 avg=0.181048ms p99=5.000000ms [work] qps=20190 avg=0.052375ms p99=1.000000ms [db] qps=5045 avg=0.337648ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=299% rss=18756KB
+[2026-09-04 13:08:35.346] [INFO] req_qps=9380 req_avg60=9619 req_avg=0.031201ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9382 avg=0.181197ms p99=5.000000ms [work] qps=18772 avg=0.052617ms p99=1.000000ms [db] qps=4696 avg=0.358609ms p99=1.000000ms queue(d/w/db)=1/4/1 err(d/w/db)=0/0/0 cpu=285% rss=18760KB
+[2026-09-04 13:08:36.346] [INFO] req_qps=9568 req_avg60=9610 req_avg=0.031220ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9561 avg=0.194132ms p99=5.000000ms [work] qps=19133 avg=0.052927ms p99=1.000000ms [db] qps=4784 avg=0.355626ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=298% rss=18780KB
+[2026-09-04 13:08:37.347] [INFO] req_qps=9472 req_avg60=9604 req_avg=0.029843ms req_p99=1.000000ms inflight=2 conns=497 [divide] qps=9474 avg=0.184971ms p99=5.000000ms [work] qps=18932 avg=0.053819ms p99=1.000000ms [db] qps=4734 avg=0.352726ms p99=1.000000ms queue(d/w/db)=1/0/0 err(d/w/db)=0/0/0 cpu=291% rss=18780KB
+[2026-09-04 13:08:38.347] [INFO] req_qps=9644 req_avg60=9600 req_avg=0.030456ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9644 avg=0.187757ms p99=5.000000ms [work] qps=19284 avg=0.051821ms p99=1.000000ms [db] qps=4820 avg=0.341668ms p99=1.000000ms queue(d/w/db)=0/2/1 err(d/w/db)=0/0/0 cpu=286% rss=18780KB
+[2026-09-04 13:08:39.347] [INFO] req_qps=9572 req_avg60=9595 req_avg=0.029043ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9570 avg=0.187614ms p99=5.000000ms [work] qps=19136 avg=0.051956ms p99=1.000000ms [db] qps=4789 avg=0.338518ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=290% rss=18788KB
+[2026-09-04 13:08:40.347] [INFO] req_qps=9440 req_avg60=9580 req_avg=0.030114ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9440 avg=0.180088ms p99=5.000000ms [work] qps=18901 avg=0.052988ms p99=1.000000ms [db] qps=4720 avg=0.350435ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=288% rss=18788KB
+[2026-09-04 13:08:41.347] [INFO] req_qps=9916 req_avg60=9574 req_avg=0.030225ms req_p99=1.000000ms inflight=2 conns=497 [divide] qps=9920 avg=0.186657ms p99=5.000000ms [work] qps=19803 avg=0.052996ms p99=1.000000ms [db] qps=4943 avg=0.334840ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=295% rss=18800KB
+[2026-09-04 13:08:42.348] [INFO] req_qps=9492 req_avg60=9566 req_avg=0.030698ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9488 avg=0.187130ms p99=5.000000ms [work] qps=19011 avg=0.051985ms p99=1.000000ms [db] qps=4759 avg=0.348532ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=285% rss=18800KB
+[2026-09-04 13:08:43.348] [INFO] req_qps=9631 req_avg60=9564 req_avg=0.029603ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9632 avg=0.190164ms p99=5.000000ms [work] qps=19248 avg=0.052488ms p99=1.000000ms [db] qps=4812 avg=0.343862ms p99=1.000000ms queue(d/w/db)=0/2/0 err(d/w/db)=0/0/0 cpu=287% rss=18808KB
+[2026-09-04 13:08:44.348] [INFO] req_qps=9952 req_avg60=9562 req_avg=0.029676ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9953 avg=0.179652ms p99=5.000000ms [work] qps=19914 avg=0.053982ms p99=1.000000ms [db] qps=4976 avg=0.341611ms p99=1.000000ms queue(d/w/db)=1/2/0 err(d/w/db)=0/0/0 cpu=295% rss=18820KB
+[2026-09-04 13:08:45.348] [INFO] req_qps=9457 req_avg60=9550 req_avg=0.029631ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9455 avg=0.184974ms p99=5.000000ms [work] qps=18918 avg=0.053048ms p99=1.000000ms [db] qps=4731 avg=0.346372ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=283% rss=18828KB
+[2026-09-04 13:08:46.349] [INFO] req_qps=8640 req_avg60=9529 req_avg=0.035840ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=8640 avg=0.204252ms p99=5.000000ms [work] qps=17280 avg=0.060568ms p99=1.000000ms [db] qps=4320 avg=0.396653ms p99=5.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=280% rss=18828KB
+[2026-09-04 13:08:47.349] [INFO] req_qps=9024 req_avg60=9521 req_avg=0.032262ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9026 avg=0.191644ms p99=5.000000ms [work] qps=18044 avg=0.055139ms p99=1.000000ms [db] qps=4509 avg=0.368587ms p99=5.000000ms queue(d/w/db)=2/0/0 err(d/w/db)=0/0/0 cpu=277% rss=18836KB
+[2026-09-04 13:08:48.349] [INFO] req_qps=9632 req_avg60=9519 req_avg=0.030834ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9630 avg=0.191143ms p99=5.000000ms [work] qps=19260 avg=0.054078ms p99=1.000000ms [db] qps=4818 avg=0.350471ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=291% rss=18844KB
+[2026-09-04 13:08:49.349] [INFO] req_qps=9719 req_avg60=9517 req_avg=0.031656ms req_p99=1.000000ms inflight=2 conns=497 [divide] qps=9726 avg=0.184390ms p99=5.000000ms [work] qps=19446 avg=0.053381ms p99=1.000000ms [db] qps=4858 avg=0.343606ms p99=1.000000ms queue(d/w/db)=0/2/0 err(d/w/db)=0/0/0 cpu=284% rss=18856KB
+[2026-09-04 13:08:50.350] [INFO] req_qps=9545 req_avg60=9513 req_avg=0.031785ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9536 avg=0.196306ms p99=5.000000ms [work] qps=19085 avg=0.053557ms p99=1.000000ms [db] qps=4774 avg=0.349258ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=291% rss=18872KB
+[2026-09-04 13:08:51.350] [INFO] req_qps=9549 req_avg60=9500 req_avg=0.030960ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9551 avg=0.192135ms p99=5.000000ms [work] qps=19092 avg=0.053033ms p99=1.000000ms [db] qps=4772 avg=0.352719ms p99=1.000000ms queue(d/w/db)=0/1/0 err(d/w/db)=0/0/0 cpu=299% rss=18872KB
+[2026-09-04 13:08:52.350] [INFO] req_qps=9691 req_avg60=9495 req_avg=0.029067ms req_p99=1.000000ms inflight=1 conns=497 [divide] qps=9693 avg=0.188284ms p99=5.000000ms [work] qps=19368 avg=0.052903ms p99=1.000000ms [db] qps=4841 avg=0.343492ms p99=1.000000ms queue(d/w/db)=0/3/0 err(d/w/db)=0/0/0 cpu=289% rss=18876KB
+[2026-09-04 13:08:53.350] [INFO] req_qps=9465 req_avg60=9492 req_avg=0.029994ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9462 avg=0.190702ms p99=5.000000ms [work] qps=18945 avg=0.055170ms p99=1.000000ms [db] qps=4735 avg=0.350083ms p99=1.000000ms queue(d/w/db)=1/1/0 err(d/w/db)=0/0/0 cpu=288% rss=18884KB
+[2026-09-04 13:08:54.350] [INFO] req_qps=9439 req_avg60=9504 req_avg=0.031431ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9437 avg=0.179862ms p99=5.000000ms [work] qps=18878 avg=0.052927ms p99=1.000000ms [db] qps=4720 avg=0.352384ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=276% rss=18892KB
+[2026-09-04 13:08:55.351] [INFO] req_qps=9349 req_avg60=9509 req_avg=0.033251ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9352 avg=0.189606ms p99=5.000000ms [work] qps=18689 avg=0.055787ms p99=1.000000ms [db] qps=4674 avg=0.369571ms p99=1.000000ms queue(d/w/db)=1/4/0 err(d/w/db)=0/0/0 cpu=295% rss=18892KB
+[2026-09-04 13:08:56.351] [INFO] req_qps=9355 req_avg60=9509 req_avg=0.030191ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9352 avg=0.193074ms p99=5.000000ms [work] qps=18709 avg=0.053770ms p99=1.000000ms [db] qps=4678 avg=0.349743ms p99=1.000000ms queue(d/w/db)=1/1/0 err(d/w/db)=0/0/0 cpu=288% rss=18900KB
+[2026-09-04 13:08:57.351] [INFO] req_qps=9077 req_avg60=9500 req_avg=0.031165ms req_p99=1.000000ms inflight=2 conns=497 [divide] qps=9094 avg=0.179942ms p99=5.000000ms [work] qps=18148 avg=0.054083ms p99=1.000000ms [db] qps=4534 avg=0.356184ms p99=1.000000ms queue(d/w/db)=10/2/1 err(d/w/db)=0/0/0 cpu=281% rss=18908KB
+[2026-09-04 13:08:58.351] [INFO] req_qps=9803 req_avg60=9501 req_avg=0.031334ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9785 avg=0.186271ms p99=5.000000ms [work] qps=19607 avg=0.053718ms p99=1.000000ms [db] qps=4906 avg=0.352410ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=295% rss=18912KB
+[2026-09-04 13:08:59.352] [INFO] req_qps=9429 req_avg60=9492 req_avg=0.029070ms req_p99=1.000000ms inflight=0 conns=497 [divide] qps=9431 avg=0.177453ms p99=5.000000ms [work] qps=18850 avg=0.051948ms p99=1.000000ms [db] qps=4712 avg=0.342077ms p99=1.000000ms queue(d/w/db)=1/2/0 err(d/w/db)=0/0/0 cpu=288% rss=18912KB
+[2026-09-04 13:08:59.886] [INFO] conn=521 closed
+[2026-09-04 13:08:59.896] [INFO] conn=294 closed
+[2026-09-04 13:08:59.896] [INFO] conn=235 closed
+[2026-09-04 13:08:59.899] [INFO] conn=408 closed
+[2026-09-04 13:08:59.907] [INFO] conn=228 closed
+[2026-09-04 13:08:59.909] [INFO] conn=189 closed
+[2026-09-04 13:08:59.909] [INFO] conn=532 closed
+[2026-09-04 13:08:59.911] [INFO] conn=207 closed
+[2026-09-04 13:08:59.912] [INFO] conn=85 closed
+[2026-09-04 13:08:59.912] [INFO] conn=380 closed
+[2026-09-04 13:08:59.914] [INFO] conn=366 closed
+[2026-09-04 13:08:59.916] [INFO] conn=181 closed
+[2026-09-04 13:08:59.916] [INFO] conn=274 closed
+[2026-09-04 13:08:59.917] [INFO] conn=111 closed
+[2026-09-04 13:08:59.918] [INFO] conn=415 closed
+[2026-09-04 13:08:59.919] [INFO] conn=141 closed
+[2026-09-04 13:08:59.920] [INFO] conn=300 closed
+[2026-09-04 13:08:59.920] [INFO] conn=516 closed
+[2026-09-04 13:08:59.921] [INFO] conn=455 closed
+[2026-09-04 13:08:59.921] [INFO] conn=251 closed
+[2026-09-04 13:08:59.922] [INFO] conn=257 closed
+[2026-09-04 13:08:59.925] [INFO] conn=328 closed
+[2026-09-04 13:08:59.927] [INFO] conn=460 closed
+[2026-09-04 13:08:59.928] [INFO] conn=177 closed
+[2026-09-04 13:08:59.935] [INFO] conn=533 closed
+[2026-09-04 13:08:59.936] [INFO] conn=216 closed
+[2026-09-04 13:08:59.941] [INFO] conn=83 closed
+[2026-09-04 13:08:59.943] [INFO] conn=188 closed
+[2026-09-04 13:08:59.945] [INFO] conn=393 closed
+[2026-09-04 13:08:59.948] [INFO] conn=485 closed
+[2026-09-04 13:08:59.954] [INFO] conn=267 closed
+[2026-09-04 13:08:59.955] [INFO] conn=434 closed
+[2026-09-04 13:08:59.955] [INFO] conn=556 closed
+[2026-09-04 13:08:59.955] [INFO] conn=124 closed
+[2026-09-04 13:08:59.956] [INFO] conn=325 closed
+[2026-09-04 13:08:59.960] [INFO] conn=502 closed
+[2026-09-04 13:08:59.963] [INFO] conn=240 closed
+[2026-09-04 13:08:59.964] [INFO] conn=213 closed
+[2026-09-04 13:08:59.965] [INFO] conn=335 closed
+[2026-09-04 13:08:59.966] [INFO] conn=198 closed
+[2026-09-04 13:08:59.966] [INFO] conn=390 closed
+[2026-09-04 13:08:59.967] [INFO] conn=331 closed
+[2026-09-04 13:08:59.970] [INFO] conn=127 closed
+[2026-09-04 13:08:59.970] [INFO] conn=120 closed
+[2026-09-04 13:08:59.970] [INFO] conn=537 closed
+[2026-09-04 13:08:59.971] [INFO] conn=510 closed
+[2026-09-04 13:08:59.972] [INFO] conn=178 closed
+[2026-09-04 13:08:59.974] [INFO] conn=209 closed
+[2026-09-04 13:08:59.974] [INFO] conn=227 closed
+[2026-09-04 13:08:59.974] [INFO] conn=118 closed
+[2026-09-04 13:08:59.974] [INFO] conn=148 closed
+[2026-09-04 13:08:59.975] [INFO] conn=507 closed
+[2026-09-04 13:08:59.980] [INFO] conn=465 closed
+[2026-09-04 13:08:59.980] [INFO] conn=334 closed
+[2026-09-04 13:08:59.981] [INFO] conn=341 closed
+[2026-09-04 13:08:59.981] [INFO] conn=370 closed
+[2026-09-04 13:08:59.981] [INFO] conn=545 closed
+[2026-09-04 13:08:59.982] [INFO] conn=180 closed
+[2026-09-04 13:08:59.982] [INFO] conn=242 closed
+[2026-09-04 13:08:59.983] [INFO] conn=66 closed
+[2026-09-04 13:08:59.985] [INFO] conn=164 closed
+[2026-09-04 13:08:59.985] [INFO] conn=553 closed
+[2026-09-04 13:08:59.987] [INFO] conn=215 closed
+[2026-09-04 13:08:59.987] [INFO] conn=547 closed
+[2026-09-04 13:08:59.988] [INFO] conn=115 closed
+[2026-09-04 13:08:59.991] [INFO] conn=454 closed
+[2026-09-04 13:08:59.991] [INFO] conn=477 closed
+[2026-09-04 13:08:59.995] [INFO] conn=275 closed
+[2026-09-04 13:08:59.995] [INFO] conn=291 closed
+[2026-09-04 13:08:59.995] [INFO] conn=303 closed
+[2026-09-04 13:08:59.995] [INFO] conn=306 closed
+[2026-09-04 13:08:59.995] [INFO] conn=70 closed
+[2026-09-04 13:08:59.996] [INFO] conn=254 closed
+[2026-09-04 13:08:59.998] [INFO] conn=137 closed
+[2026-09-04 13:08:59.998] [INFO] conn=183 closed
+[2026-09-04 13:09:00.0] [INFO] conn=338 closed
+[2026-09-04 13:09:00.0] [INFO] conn=101 closed
+[2026-09-04 13:09:00.1] [INFO] conn=289 closed
+[2026-09-04 13:09:00.2] [INFO] conn=458 closed
+[2026-09-04 13:09:00.3] [INFO] conn=514 closed
+[2026-09-04 13:09:00.4] [INFO] conn=518 closed
+[2026-09-04 13:09:00.6] [INFO] conn=413 closed
+[2026-09-04 13:09:00.8] [INFO] conn=522 closed
+[2026-09-04 13:09:00.10] [INFO] conn=440 closed
+[2026-09-04 13:09:00.12] [INFO] conn=497 closed
+[2026-09-04 13:09:00.13] [INFO] conn=128 closed
+[2026-09-04 13:09:00.13] [INFO] conn=384 closed
+[2026-09-04 13:09:00.14] [INFO] conn=234 closed
+[2026-09-04 13:09:00.14] [INFO] conn=107 closed
+[2026-09-04 13:09:00.15] [INFO] conn=554 closed
+[2026-09-04 13:09:00.16] [INFO] conn=411 closed
+[2026-09-04 13:09:00.18] [INFO] conn=457 closed
+[2026-09-04 13:09:00.19] [INFO] conn=263 closed
+[2026-09-04 13:09:00.22] [INFO] conn=312 closed
+[2026-09-04 13:09:00.23] [INFO] conn=157 closed
+[2026-09-04 13:09:00.28] [INFO] conn=425 closed
+[2026-09-04 13:09:00.28] [INFO] conn=99 closed
+[2026-09-04 13:09:00.28] [INFO] conn=225 closed
+[2026-09-04 13:09:00.29] [INFO] conn=191 closed
+[2026-09-04 13:09:00.32] [INFO] conn=447 closed
+[2026-09-04 13:09:00.33] [INFO] conn=433 closed
+[2026-09-04 13:09:00.36] [INFO] conn=268 closed
+[2026-09-04 13:09:00.37] [INFO] conn=256 closed
+[2026-09-04 13:09:00.38] [INFO] conn=444 closed
+[2026-09-04 13:09:00.39] [INFO] conn=330 closed
+[2026-09-04 13:09:00.39] [INFO] conn=347 closed
+[2026-09-04 13:09:00.44] [INFO] conn=349 closed
+[2026-09-04 13:09:00.45] [INFO] conn=352 closed
+[2026-09-04 13:09:00.45] [INFO] conn=280 closed
+[2026-09-04 13:09:00.46] [INFO] conn=86 closed
+[2026-09-04 13:09:00.46] [INFO] conn=102 closed
+[2026-09-04 13:09:00.47] [INFO] conn=475 closed
+[2026-09-04 13:09:00.49] [INFO] conn=238 closed
+[2026-09-04 13:09:00.50] [INFO] conn=363 closed
+[2026-09-04 13:09:00.52] [INFO] conn=282 closed
+[2026-09-04 13:09:00.52] [INFO] conn=513 closed
+[2026-09-04 13:09:00.52] [INFO] conn=350 closed
+[2026-09-04 13:09:00.53] [INFO] conn=546 closed
+[2026-09-04 13:09:00.53] [INFO] conn=523 closed
+[2026-09-04 13:09:00.55] [INFO] conn=105 closed
+[2026-09-04 13:09:00.56] [INFO] conn=449 closed
+[2026-09-04 13:09:00.56] [INFO] conn=558 closed
+[2026-09-04 13:09:00.57] [INFO] conn=358 closed
+[2026-09-04 13:09:00.59] [INFO] conn=108 closed
+[2026-09-04 13:09:00.63] [INFO] conn=196 closed
+[2026-09-04 13:09:00.64] [INFO] conn=270 closed
+[2026-09-04 13:09:00.67] [INFO] conn=552 closed
+[2026-09-04 13:09:00.71] [INFO] conn=446 closed
+[2026-09-04 13:09:00.74] [INFO] conn=479 closed
+[2026-09-04 13:09:00.76] [INFO] conn=526 closed
+[2026-09-04 13:09:00.77] [INFO] conn=313 closed
+[2026-09-04 13:09:00.78] [INFO] conn=326 closed
+[2026-09-04 13:09:00.79] [INFO] conn=237 closed
+[2026-09-04 13:09:00.79] [INFO] conn=140 closed
+[2026-09-04 13:09:00.80] [INFO] conn=185 closed
+[2026-09-04 13:09:00.81] [INFO] conn=462 closed
+[2026-09-04 13:09:00.81] [INFO] conn=340 closed
+[2026-09-04 13:09:00.85] [INFO] conn=538 closed
+[2026-09-04 13:09:00.87] [INFO] conn=112 closed
+[2026-09-04 13:09:00.88] [INFO] conn=525 closed
+[2026-09-04 13:09:00.88] [INFO] conn=476 closed
+[2026-09-04 13:09:00.89] [INFO] conn=382 closed
+[2026-09-04 13:09:00.90] [INFO] conn=470 closed
+[2026-09-04 13:09:00.90] [INFO] conn=392 closed
+[2026-09-04 13:09:00.90] [INFO] conn=174 closed
+[2026-09-04 13:09:00.92] [INFO] conn=555 closed
+[2026-09-04 13:09:00.92] [INFO] conn=499 closed
+[2026-09-04 13:09:00.92] [INFO] conn=249 closed
+[2026-09-04 13:09:00.94] [INFO] conn=144 closed
+[2026-09-04 13:09:00.94] [INFO] conn=491 closed
+[2026-09-04 13:09:00.95] [INFO] conn=466 closed
+[2026-09-04 13:09:00.95] [INFO] conn=279 closed
+[2026-09-04 13:09:00.95] [INFO] conn=302 closed
+[2026-09-04 13:09:00.96] [INFO] conn=406 closed
+[2026-09-04 13:09:00.97] [INFO] conn=383 closed
+[2026-09-04 13:09:00.98] [INFO] conn=217 closed
+[2026-09-04 13:09:00.99] [INFO] conn=292 closed
+[2026-09-04 13:09:00.101] [INFO] conn=170 closed
+[2026-09-04 13:09:00.101] [INFO] conn=431 closed
+[2026-09-04 13:09:00.103] [INFO] conn=255 closed
+[2026-09-04 13:09:00.104] [INFO] conn=94 closed
+[2026-09-04 13:09:00.105] [INFO] conn=246 closed
+[2026-09-04 13:09:00.106] [INFO] conn=531 closed
+[2026-09-04 13:09:00.111] [INFO] conn=484 closed
+[2026-09-04 13:09:00.112] [INFO] conn=163 closed
+[2026-09-04 13:09:00.113] [INFO] conn=126 closed
+[2026-09-04 13:09:00.114] [INFO] conn=262 closed
+[2026-09-04 13:09:00.116] [INFO] conn=71 closed
+[2026-09-04 13:09:00.116] [INFO] conn=400 closed
+[2026-09-04 13:09:00.117] [INFO] conn=147 closed
+[2026-09-04 13:09:00.118] [INFO] conn=77 closed
+[2026-09-04 13:09:00.120] [INFO] conn=467 closed
+[2026-09-04 13:09:00.121] [INFO] conn=88 closed
+[2026-09-04 13:09:00.121] [INFO] conn=114 closed
+[2026-09-04 13:09:00.122] [INFO] conn=548 closed
+[2026-09-04 13:09:00.122] [INFO] conn=226 closed
+[2026-09-04 13:09:00.124] [INFO] conn=171 closed
+[2026-09-04 13:09:00.126] [INFO] conn=395 closed
+[2026-09-04 13:09:00.130] [INFO] conn=265 closed
+[2026-09-04 13:09:00.130] [INFO] conn=389 closed
+[2026-09-04 13:09:00.132] [INFO] conn=500 closed
+[2026-09-04 13:09:00.134] [INFO] conn=297 closed
+[2026-09-04 13:09:00.135] [INFO] conn=104 closed
+[2026-09-04 13:09:00.136] [INFO] conn=75 closed
+[2026-09-04 13:09:00.139] [INFO] conn=438 closed
+[2026-09-04 13:09:00.139] [INFO] conn=427 closed
+[2026-09-04 13:09:00.140] [INFO] conn=436 closed
+[2026-09-04 13:09:00.141] [INFO] conn=173 closed
+[2026-09-04 13:09:00.142] [INFO] conn=317 closed
+[2026-09-04 13:09:00.144] [INFO] conn=490 closed
+[2026-09-04 13:09:00.145] [INFO] conn=81 closed
+[2026-09-04 13:09:00.145] [INFO] conn=252 closed
+[2026-09-04 13:09:00.146] [INFO] conn=426 closed
+[2026-09-04 13:09:00.146] [INFO] conn=259 closed
+[2026-09-04 13:09:00.147] [INFO] conn=82 closed
+[2026-09-04 13:09:00.148] [INFO] conn=203 closed
+[2026-09-04 13:09:00.150] [INFO] conn=464 closed
+[2026-09-04 13:09:00.150] [INFO] conn=489 closed
+[2026-09-04 13:09:00.152] [INFO] conn=388 closed
+[2026-09-04 13:09:00.152] [INFO] conn=450 closed
+[2026-09-04 13:09:00.153] [INFO] conn=468 closed
+[2026-09-04 13:09:00.156] [INFO] conn=528 closed
+[2026-09-04 13:09:00.156] [INFO] conn=504 closed
+[2026-09-04 13:09:00.157] [INFO] conn=511 closed
+[2026-09-04 13:09:00.157] [INFO] conn=133 closed
+[2026-09-04 13:09:00.158] [INFO] conn=367 closed
+[2026-09-04 13:09:00.159] [INFO] conn=515 closed
+[2026-09-04 13:09:00.159] [INFO] conn=322 closed
+[2026-09-04 13:09:00.159] [INFO] conn=539 closed
+[2026-09-04 13:09:00.161] [INFO] conn=315 closed
+[2026-09-04 13:09:00.162] [INFO] conn=423 closed
+[2026-09-04 13:09:00.162] [INFO] conn=290 closed
+[2026-09-04 13:09:00.162] [INFO] conn=272 closed
+[2026-09-04 13:09:00.166] [INFO] conn=512 closed
+[2026-09-04 13:09:00.166] [INFO] conn=494 closed
+[2026-09-04 13:09:00.166] [INFO] conn=439 closed
+[2026-09-04 13:09:00.167] [INFO] conn=295 closed
+[2026-09-04 13:09:00.167] [INFO] conn=288 closed
+[2026-09-04 13:09:00.169] [INFO] conn=250 closed
+[2026-09-04 13:09:00.171] [INFO] conn=549 closed
+[2026-09-04 13:09:00.172] [INFO] conn=361 closed
+[2026-09-04 13:09:00.172] [INFO] conn=194 closed
+[2026-09-04 13:09:00.172] [INFO] conn=218 closed
+[2026-09-04 13:09:00.173] [INFO] conn=339 closed
+[2026-09-04 13:09:00.174] [INFO] conn=396 closed
+[2026-09-04 13:09:00.174] [INFO] conn=64 closed
+[2026-09-04 13:09:00.174] [INFO] conn=162 closed
+[2026-09-04 13:09:00.175] [INFO] conn=305 closed
+[2026-09-04 13:09:00.176] [INFO] conn=540 closed
+[2026-09-04 13:09:00.176] [INFO] conn=96 closed
+[2026-09-04 13:09:00.177] [INFO] conn=89 closed
+[2026-09-04 13:09:00.177] [INFO] conn=245 closed
+[2026-09-04 13:09:00.177] [INFO] conn=202 closed
+[2026-09-04 13:09:00.178] [INFO] conn=253 closed
+[2026-09-04 13:09:00.180] [INFO] conn=287 closed
+[2026-09-04 13:09:00.181] [INFO] conn=69 closed
+[2026-09-04 13:09:00.181] [INFO] conn=166 closed
+[2026-09-04 13:09:00.181] [INFO] conn=211 closed
+[2026-09-04 13:09:00.182] [INFO] conn=136 closed
+[2026-09-04 13:09:00.183] [INFO] conn=451 closed
+[2026-09-04 13:09:00.183] [INFO] conn=492 closed
+[2026-09-04 13:09:00.184] [INFO] conn=159 closed
+[2026-09-04 13:09:00.186] [INFO] conn=374 closed
+[2026-09-04 13:09:00.186] [INFO] conn=373 closed
+[2026-09-04 13:09:00.186] [INFO] conn=351 closed
+[2026-09-04 13:09:00.187] [INFO] conn=559 closed
+[2026-09-04 13:09:00.187] [INFO] conn=130 closed
+[2026-09-04 13:09:00.187] [INFO] conn=277 closed
+[2026-09-04 13:09:00.191] [INFO] conn=524 closed
+[2026-09-04 13:09:00.191] [INFO] conn=333 closed
+[2026-09-04 13:09:00.192] [INFO] conn=498 closed
+[2026-09-04 13:09:00.193] [INFO] conn=117 closed
+[2026-09-04 13:09:00.193] [INFO] conn=377 closed
+[2026-09-04 13:09:00.194] [INFO] conn=281 closed
+[2026-09-04 13:09:00.194] [INFO] conn=412 closed
+[2026-09-04 13:09:00.195] [INFO] conn=307 closed
+[2026-09-04 13:09:00.197] [INFO] conn=369 closed
+[2026-09-04 13:09:00.197] [INFO] conn=92 closed
+[2026-09-04 13:09:00.197] [INFO] conn=72 closed
+[2026-09-04 13:09:00.198] [INFO] conn=442 closed
+[2026-09-04 13:09:00.198] [INFO] conn=486 closed
+[2026-09-04 13:09:00.198] [INFO] conn=208 closed
+[2026-09-04 13:09:00.200] [INFO] conn=422 closed
+[2026-09-04 13:09:00.200] [INFO] conn=318 closed
+[2026-09-04 13:09:00.200] [INFO] conn=73 closed
+[2026-09-04 13:09:00.202] [INFO] conn=420 closed
+[2026-09-04 13:09:00.203] [INFO] conn=416 closed
+[2026-09-04 13:09:00.203] [INFO] conn=184 closed
+[2026-09-04 13:09:00.203] [INFO] conn=448 closed
+[2026-09-04 13:09:00.205] [INFO] conn=212 closed
+[2026-09-04 13:09:00.205] [INFO] conn=321 closed
+[2026-09-04 13:09:00.205] [INFO] conn=247 closed
+[2026-09-04 13:09:00.206] [INFO] conn=469 closed
+[2026-09-04 13:09:00.207] [INFO] conn=298 closed
+[2026-09-04 13:09:00.207] [INFO] conn=441 closed
+[2026-09-04 13:09:00.208] [INFO] conn=550 closed
+[2026-09-04 13:09:00.210] [INFO] conn=310 closed
+[2026-09-04 13:09:00.211] [INFO] conn=336 closed
+[2026-09-04 13:09:00.212] [INFO] conn=481 closed
+[2026-09-04 13:09:00.212] [INFO] conn=509 closed
+[2026-09-04 13:09:00.213] [INFO] conn=206 closed
+[2026-09-04 13:09:00.213] [INFO] conn=135 closed
+[2026-09-04 13:09:00.216] [INFO] conn=248 closed
+[2026-09-04 13:09:00.218] [INFO] conn=320 closed
+[2026-09-04 13:09:00.218] [INFO] conn=353 closed
+[2026-09-04 13:09:00.220] [INFO] conn=190 closed
+[2026-09-04 13:09:00.220] [INFO] conn=437 closed
+[2026-09-04 13:09:00.222] [INFO] conn=461 closed
+[2026-09-04 13:09:00.222] [INFO] conn=129 closed
+[2026-09-04 13:09:00.222] [INFO] conn=143 closed
+[2026-09-04 13:09:00.223] [INFO] conn=445 closed
+[2026-09-04 13:09:00.223] [INFO] conn=87 closed
+[2026-09-04 13:09:00.223] [INFO] conn=156 closed
+[2026-09-04 13:09:00.223] [INFO] conn=138 closed
+[2026-09-04 13:09:00.224] [INFO] conn=483 closed
+[2026-09-04 13:09:00.225] [INFO] conn=214 closed
+[2026-09-04 13:09:00.225] [INFO] conn=276 closed
+[2026-09-04 13:09:00.227] [INFO] conn=197 closed
+[2026-09-04 13:09:00.228] [INFO] conn=167 closed
+[2026-09-04 13:09:00.231] [INFO] conn=154 closed
+[2026-09-04 13:09:00.232] [INFO] conn=113 closed
+[2026-09-04 13:09:00.232] [INFO] conn=158 closed
+[2026-09-04 13:09:00.233] [INFO] conn=205 closed
+[2026-09-04 13:09:00.234] [INFO] conn=119 closed
+[2026-09-04 13:09:00.235] [INFO] conn=398 closed
+[2026-09-04 13:09:00.235] [INFO] conn=443 closed
+[2026-09-04 13:09:00.236] [INFO] conn=316 closed
+[2026-09-04 13:09:00.236] [INFO] conn=432 closed
+[2026-09-04 13:09:00.237] [INFO] conn=314 closed
+[2026-09-04 13:09:00.239] [INFO] conn=161 closed
+[2026-09-04 13:09:00.240] [INFO] conn=527 closed
+[2026-09-04 13:09:00.242] [INFO] conn=506 closed
+[2026-09-04 13:09:00.242] [INFO] conn=471 closed
+[2026-09-04 13:09:00.242] [INFO] conn=543 closed
+[2026-09-04 13:09:00.243] [INFO] conn=365 closed
+[2026-09-04 13:09:00.244] [INFO] conn=186 closed
+[2026-09-04 13:09:00.244] [INFO] conn=319 closed
+[2026-09-04 13:09:00.245] [INFO] conn=403 closed
+[2026-09-04 13:09:00.245] [INFO] conn=165 closed
+[2026-09-04 13:09:00.246] [INFO] conn=150 closed
+[2026-09-04 13:09:00.246] [INFO] conn=271 closed
+[2026-09-04 13:09:00.247] [INFO] conn=220 closed
+[2026-09-04 13:09:00.248] [INFO] conn=204 closed
+[2026-09-04 13:09:00.248] [INFO] conn=503 closed
+[2026-09-04 13:09:00.251] [INFO] conn=359 closed
+[2026-09-04 13:09:00.253] [INFO] conn=121 closed
+[2026-09-04 13:09:00.253] [INFO] conn=501 closed
+[2026-09-04 13:09:00.254] [INFO] conn=106 closed
+[2026-09-04 13:09:00.256] [INFO] conn=285 closed
+[2026-09-04 13:09:00.257] [INFO] conn=379 closed
+[2026-09-04 13:09:00.257] [INFO] conn=84 closed
+[2026-09-04 13:09:00.257] [INFO] conn=221 closed
+[2026-09-04 13:09:00.258] [INFO] conn=187 closed
+[2026-09-04 13:09:00.258] [INFO] conn=480 closed
+[2026-09-04 13:09:00.258] [INFO] conn=79 closed
+[2026-09-04 13:09:00.259] [INFO] conn=421 closed
+[2026-09-04 13:09:00.259] [INFO] conn=542 closed
+[2026-09-04 13:09:00.259] [INFO] conn=456 closed
+[2026-09-04 13:09:00.261] [INFO] conn=110 closed
+[2026-09-04 13:09:00.261] [INFO] conn=418 closed
+[2026-09-04 13:09:00.261] [INFO] conn=195 closed
+[2026-09-04 13:09:00.262] [INFO] conn=419 closed
+[2026-09-04 13:09:00.264] [INFO] conn=311 closed
+[2026-09-04 13:09:00.264] [INFO] conn=342 closed
+[2026-09-04 13:09:00.264] [INFO] conn=152 closed
+[2026-09-04 13:09:00.266] [INFO] conn=362 closed
+[2026-09-04 13:09:00.267] [INFO] conn=224 closed
+[2026-09-04 13:09:00.269] [INFO] conn=478 closed
+[2026-09-04 13:09:00.269] [INFO] conn=435 closed
+[2026-09-04 13:09:00.269] [INFO] conn=67 closed
+[2026-09-04 13:09:00.270] [INFO] conn=149 closed
+[2026-09-04 13:09:00.271] [INFO] conn=78 closed
+[2026-09-04 13:09:00.271] [INFO] conn=223 closed
+[2026-09-04 13:09:00.272] [INFO] conn=146 closed
+[2026-09-04 13:09:00.272] [INFO] conn=284 closed
+[2026-09-04 13:09:00.273] [INFO] conn=258 closed
+[2026-09-04 13:09:00.273] [INFO] conn=296 closed
+[2026-09-04 13:09:00.274] [INFO] conn=323 closed
+[2026-09-04 13:09:00.274] [INFO] conn=496 closed
+[2026-09-04 13:09:00.275] [INFO] conn=473 closed
+[2026-09-04 13:09:00.275] [INFO] conn=409 closed
+[2026-09-04 13:09:00.276] [INFO] conn=560 closed
+[2026-09-04 13:09:00.276] [INFO] conn=122 closed
+[2026-09-04 13:09:00.276] [INFO] conn=293 closed
+[2026-09-04 13:09:00.277] [INFO] conn=123 closed
+[2026-09-04 13:09:00.277] [INFO] conn=493 closed
+[2026-09-04 13:09:00.277] [INFO] conn=278 closed
+[2026-09-04 13:09:00.278] [INFO] conn=109 closed
+[2026-09-04 13:09:00.278] [INFO] conn=327 closed
+[2026-09-04 13:09:00.280] [INFO] conn=529 closed
+[2026-09-04 13:09:00.280] [INFO] conn=360 closed
+[2026-09-04 13:09:00.281] [INFO] conn=232 closed
+[2026-09-04 13:09:00.282] [INFO] conn=93 closed
+[2026-09-04 13:09:00.283] [INFO] conn=80 closed
+[2026-09-04 13:09:00.283] [INFO] conn=430 closed
+[2026-09-04 13:09:00.283] [INFO] conn=222 closed
+[2026-09-04 13:09:00.284] [INFO] conn=534 closed
+[2026-09-04 13:09:00.285] [INFO] conn=74 closed
+[2026-09-04 13:09:00.285] [INFO] conn=535 closed
+[2026-09-04 13:09:00.287] [INFO] conn=231 closed
+[2026-09-04 13:09:00.287] [INFO] conn=229 closed
+[2026-09-04 13:09:00.287] [INFO] conn=376 closed
+[2026-09-04 13:09:00.288] [INFO] conn=132 closed
+[2026-09-04 13:09:00.289] [INFO] conn=428 closed
+[2026-09-04 13:09:00.289] [INFO] conn=354 closed
+[2026-09-04 13:09:00.290] [INFO] conn=155 closed
+[2026-09-04 13:09:00.290] [INFO] conn=530 closed
+[2026-09-04 13:09:00.291] [INFO] conn=472 closed
+[2026-09-04 13:09:00.291] [INFO] conn=90 closed
+[2026-09-04 13:09:00.292] [INFO] conn=407 closed
+[2026-09-04 13:09:00.293] [INFO] conn=399 closed
+[2026-09-04 13:09:00.293] [INFO] conn=405 closed
+[2026-09-04 13:09:00.293] [INFO] conn=329 closed
+[2026-09-04 13:09:00.294] [INFO] conn=424 closed
+[2026-09-04 13:09:00.294] [INFO] conn=346 closed
+[2026-09-04 13:09:00.294] [INFO] conn=286 closed
+[2026-09-04 13:09:00.295] [INFO] conn=508 closed
+[2026-09-04 13:09:00.295] [INFO] conn=453 closed
+[2026-09-04 13:09:00.296] [INFO] conn=100 closed
+[2026-09-04 13:09:00.296] [INFO] conn=199 closed
+[2026-09-04 13:09:00.296] [INFO] conn=452 closed
+[2026-09-04 13:09:00.296] [INFO] conn=368 closed
+[2026-09-04 13:09:00.296] [INFO] conn=417 closed
+[2026-09-04 13:09:00.296] [INFO] conn=200 closed
+[2026-09-04 13:09:00.296] [INFO] conn=386 closed
+[2026-09-04 13:09:00.297] [INFO] conn=381 closed
+[2026-09-04 13:09:00.297] [INFO] conn=76 closed
+[2026-09-04 13:09:00.298] [INFO] conn=414 closed
+[2026-09-04 13:09:00.298] [INFO] conn=264 closed
+[2026-09-04 13:09:00.301] [INFO] conn=404 closed
+[2026-09-04 13:09:00.301] [INFO] conn=269 closed
+[2026-09-04 13:09:00.301] [INFO] conn=192 closed
+[2026-09-04 13:09:00.302] [INFO] conn=482 closed
+[2026-09-04 13:09:00.302] [INFO] conn=182 closed
+[2026-09-04 13:09:00.305] [INFO] conn=95 closed
+[2026-09-04 13:09:00.305] [INFO] conn=134 closed
+[2026-09-04 13:09:00.306] [INFO] conn=332 closed
+[2026-09-04 13:09:00.306] [INFO] conn=402 closed
+[2026-09-04 13:09:00.307] [INFO] conn=179 closed
+[2026-09-04 13:09:00.307] [INFO] conn=397 closed
+[2026-09-04 13:09:00.307] [INFO] conn=519 closed
+[2026-09-04 13:09:00.307] [INFO] conn=309 closed
+[2026-09-04 13:09:00.308] [INFO] conn=116 closed
+[2026-09-04 13:09:00.308] [INFO] conn=337 closed
+[2026-09-04 13:09:00.308] [INFO] conn=145 closed
+[2026-09-04 13:09:00.309] [INFO] conn=375 closed
+[2026-09-04 13:09:00.310] [INFO] conn=172 closed
+[2026-09-04 13:09:00.310] [INFO] conn=299 closed
+[2026-09-04 13:09:00.310] [INFO] conn=356 closed
+[2026-09-04 13:09:00.311] [INFO] conn=429 closed
+[2026-09-04 13:09:00.312] [INFO] conn=474 closed
+[2026-09-04 13:09:00.312] [INFO] conn=176 closed
+[2026-09-04 13:09:00.312] [INFO] conn=463 closed
+[2026-09-04 13:09:00.313] [INFO] conn=230 closed
+[2026-09-04 13:09:00.313] [INFO] conn=210 closed
+[2026-09-04 13:09:00.313] [INFO] conn=401 closed
+[2026-09-04 13:09:00.315] [INFO] conn=169 closed
+[2026-09-04 13:09:00.315] [INFO] conn=244 closed
+[2026-09-04 13:09:00.315] [INFO] conn=343 closed
+[2026-09-04 13:09:00.315] [INFO] conn=153 closed
+[2026-09-04 13:09:00.316] [INFO] conn=103 closed
+[2026-09-04 13:09:00.317] [INFO] conn=394 closed
+[2026-09-04 13:09:00.317] [INFO] conn=241 closed
+[2026-09-04 13:09:00.317] [INFO] conn=517 closed
+[2026-09-04 13:09:00.317] [INFO] conn=357 closed
+[2026-09-04 13:09:00.317] [INFO] conn=488 closed
+[2026-09-04 13:09:00.318] [INFO] conn=557 closed
+[2026-09-04 13:09:00.319] [INFO] conn=505 closed
+[2026-09-04 13:09:00.320] [INFO] conn=551 closed
+[2026-09-04 13:09:00.320] [INFO] conn=520 closed
+[2026-09-04 13:09:00.320] [INFO] conn=68 closed
+[2026-09-04 13:09:00.320] [INFO] conn=364 closed
+[2026-09-04 13:09:00.320] [INFO] conn=236 closed
+[2026-09-04 13:09:00.320] [INFO] conn=410 closed
+[2026-09-04 13:09:00.321] [INFO] conn=372 closed
+[2026-09-04 13:09:00.322] [INFO] conn=131 closed
+[2026-09-04 13:09:00.322] [INFO] conn=193 closed
+[2026-09-04 13:09:00.323] [INFO] conn=125 closed
+[2026-09-04 13:09:00.323] [INFO] conn=324 closed
+[2026-09-04 13:09:00.323] [INFO] conn=344 closed
+[2026-09-04 13:09:00.323] [INFO] conn=160 closed
+[2026-09-04 13:09:00.324] [INFO] conn=261 closed
+[2026-09-04 13:09:00.324] [INFO] conn=97 closed
+[2026-09-04 13:09:00.324] [INFO] conn=308 closed
+[2026-09-04 13:09:00.324] [INFO] conn=385 closed
+[2026-09-04 13:09:00.325] [INFO] conn=345 closed
+[2026-09-04 13:09:00.325] [INFO] conn=175 closed
+[2026-09-04 13:09:00.325] [INFO] conn=304 closed
+[2026-09-04 13:09:00.326] [INFO] conn=378 closed
+[2026-09-04 13:09:00.326] [INFO] conn=201 closed
+[2026-09-04 13:09:00.326] [INFO] conn=495 closed
+[2026-09-04 13:09:00.326] [INFO] conn=266 closed
+[2026-09-04 13:09:00.326] [INFO] conn=283 closed
+[2026-09-04 13:09:00.326] [INFO] conn=348 closed
+[2026-09-04 13:09:00.326] [INFO] conn=301 closed
+[2026-09-04 13:09:00.327] [INFO] conn=541 closed
+[2026-09-04 13:09:00.327] [INFO] conn=151 closed
+[2026-09-04 13:09:00.327] [INFO] conn=142 closed
+[2026-09-04 13:09:00.327] [INFO] conn=260 closed
+[2026-09-04 13:09:00.328] [INFO] conn=387 closed
+[2026-09-04 13:09:00.328] [INFO] conn=243 closed
+[2026-09-04 13:09:00.328] [INFO] conn=371 closed
+[2026-09-04 13:09:00.328] [INFO] conn=65 closed
+[2026-09-04 13:09:00.328] [INFO] conn=91 closed
+[2026-09-04 13:09:00.329] [INFO] conn=98 closed
+[2026-09-04 13:09:00.329] [INFO] conn=219 closed
+[2026-09-04 13:09:00.329] [INFO] conn=239 closed
+[2026-09-04 13:09:00.329] [INFO] conn=459 closed
+[2026-09-04 13:09:00.329] [INFO] conn=273 closed
+[2026-09-04 13:09:00.329] [INFO] conn=233 closed
+[2026-09-04 13:09:00.330] [INFO] conn=168 closed
+[2026-09-04 13:09:00.330] [INFO] conn=536 closed
+[2026-09-04 13:09:00.330] [INFO] conn=355 closed
+[2026-09-04 13:09:00.330] [INFO] conn=487 closed
+[2026-09-04 13:09:00.330] [INFO] conn=544 closed
+[2026-09-04 13:09:00.330] [INFO] conn=139 closed
+[2026-09-04 13:09:00.330] [INFO] conn=391 closed
+[2026-09-04 13:09:00.352] [INFO] req_qps=5211 req_avg60=9425 req_avg=0.031559ms req_p99=1.000000ms inflight=0 conns=0 [divide] qps=5209 avg=0.194286ms p99=5.000000ms [work] qps=10430 avg=0.053464ms p99=1.000000ms [db] qps=2608 avg=0.360972ms p99=1.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=168% rss=18916KB
+[2026-09-04 13:09:01.352] [INFO] req_qps=0 req_avg60=9264 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=18916KB
+[2026-09-04 13:09:02.352] [INFO] req_qps=0 req_avg60=9105 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:03.353] [INFO] req_qps=0 req_avg60=8939 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:04.353] [INFO] req_qps=0 req_avg60=8790 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:05.353] [INFO] req_qps=0 req_avg60=8638 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:06.353] [INFO] req_qps=0 req_avg60=8474 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:07.354] [INFO] req_qps=0 req_avg60=8312 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:08.354] [INFO] req_qps=0 req_avg60=8151 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:09.354] [INFO] req_qps=0 req_avg60=7990 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:10.355] [INFO] req_qps=0 req_avg60=7831 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:11.355] [INFO] req_qps=0 req_avg60=7672 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=18916KB
+[2026-09-04 13:09:12.355] [INFO] req_qps=0 req_avg60=7514 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:13.355] [INFO] req_qps=0 req_avg60=7352 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:14.356] [INFO] req_qps=0 req_avg60=7191 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:15.356] [INFO] req_qps=0 req_avg60=7039 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:16.356] [INFO] req_qps=0 req_avg60=6877 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:17.356] [INFO] req_qps=0 req_avg60=6717 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:18.357] [INFO] req_qps=0 req_avg60=6564 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:19.357] [INFO] req_qps=0 req_avg60=6394 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:20.357] [INFO] req_qps=0 req_avg60=6253 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:21.357] [INFO] req_qps=0 req_avg60=6096 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:22.358] [INFO] req_qps=0 req_avg60=5938 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:23.358] [INFO] req_qps=0 req_avg60=5775 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:24.358] [INFO] req_qps=0 req_avg60=5622 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:25.359] [INFO] req_qps=0 req_avg60=5472 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:26.359] [INFO] req_qps=0 req_avg60=5313 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:27.359] [INFO] req_qps=0 req_avg60=5158 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:28.360] [INFO] req_qps=0 req_avg60=5000 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:29.360] [INFO] req_qps=0 req_avg60=4841 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:30.360] [INFO] req_qps=0 req_avg60=4686 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:31.360] [INFO] req_qps=0 req_avg60=4523 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:32.361] [INFO] req_qps=0 req_avg60=4366 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:33.361] [INFO] req_qps=0 req_avg60=4209 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:34.361] [INFO] req_qps=0 req_avg60=4040 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:35.361] [INFO] req_qps=0 req_avg60=3884 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:36.362] [INFO] req_qps=0 req_avg60=3725 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:37.362] [INFO] req_qps=0 req_avg60=3567 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:38.362] [INFO] req_qps=0 req_avg60=3406 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:39.362] [INFO] req_qps=0 req_avg60=3246 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:40.363] [INFO] req_qps=0 req_avg60=3089 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:41.363] [INFO] req_qps=0 req_avg60=2924 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:42.363] [INFO] req_qps=0 req_avg60=2766 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:43.363] [INFO] req_qps=0 req_avg60=2605 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:44.364] [INFO] req_qps=0 req_avg60=2439 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:45.364] [INFO] req_qps=0 req_avg60=2282 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:46.364] [INFO] req_qps=0 req_avg60=2138 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:47.365] [INFO] req_qps=0 req_avg60=1987 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=18916KB
+[2026-09-04 13:09:48.365] [INFO] req_qps=0 req_avg60=1827 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:49.365] [INFO] req_qps=0 req_avg60=1665 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:50.365] [INFO] req_qps=0 req_avg60=1506 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:51.366] [INFO] req_qps=0 req_avg60=1346 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:52.366] [INFO] req_qps=0 req_avg60=1185 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:53.366] [INFO] req_qps=0 req_avg60=1027 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:54.366] [INFO] req_qps=0 req_avg60=870 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:55.367] [INFO] req_qps=0 req_avg60=714 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=18916KB
+[2026-09-04 13:09:56.367] [INFO] req_qps=0 req_avg60=558 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=18916KB
+[2026-09-04 13:09:57.367] [INFO] req_qps=0 req_avg60=407 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:58.367] [INFO] req_qps=0 req_avg60=244 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:09:59.368] [INFO] req_qps=0 req_avg60=86 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:10:00.368] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:10:01.368] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:10:02.369] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=18916KB
+[2026-09-04 13:10:03.369] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:10:04.369] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:10:05.369] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:10:06.369] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=18916KB
+[2026-09-04 13:10:07.370] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:10:08.370] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=2% rss=18916KB
+[2026-09-04 13:10:09.370] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=1% rss=18916KB
+[2026-09-04 13:10:10.371] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=0% rss=18916KB
+[2026-09-04 13:10:11.371] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=0% rss=18916KB
+[2026-09-04 13:10:12.371] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=0% rss=18916KB
+[2026-09-04 13:10:13.372] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=0% rss=18916KB
+[2026-09-04 13:10:14.372] [INFO] req_qps=0 req_avg60=0 req_avg=0.000000ms req_p99=0.000000ms inflight=0 conns=0 [divide] qps=0 avg=0.000000ms p99=0.000000ms [work] qps=0 avg=0.000000ms p99=0.000000ms [db] qps=0 avg=0.000000ms p99=0.000000ms queue(d/w/db)=0/0/0 err(d/w/db)=0/0/0 cpu=0% rss=18480KB

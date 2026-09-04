@@ -11,6 +11,21 @@
 
 using namespace std;
 
+static vector<string> split(const string& s, char sep) {
+    vector<string> parts;
+    size_t pos = 0;
+    while (true) {
+        size_t next = s.find(sep, pos);
+        if (next == string::npos) {
+            parts.push_back(s.substr(pos));
+            break;
+        }
+        parts.push_back(s.substr(pos, next - pos));
+        pos = next + 1;
+    }
+    return parts;
+}
+
 // 业务类：唯一入口是 flow()，通过 context.h 的接口访问框架。
 class BusinessLogic {
 public:
@@ -39,6 +54,43 @@ public:
         }
     EventTask flow(int id, const string msg) {
         cout << "[" << id << "] 前段：准备查询 " << msg << endl;
+
+        // 临时集成测试命令：验证业务层能否触发框架调用
+        if (msg.rfind("fwbind:", 0) == 0) {
+            auto p = split(msg, ':');
+            bool ok = p.size() >= 3
+                && framework_call("bind", {p[1], p[2]});
+            send(ok ? "fwbind-ok" : "fwbind-fail");
+            co_return;
+        }
+        if (msg.rfind("fwsend:", 0) == 0) {
+            auto p = split(msg, ':');
+            bool ok = p.size() >= 3
+                && framework_call("send_to_sb", {p[1], "fw:to:" + p[2]});
+            send(ok ? "fwsend-ok" : "fwsend-fail");
+            co_return;
+        }
+        if (msg.rfind("fwgroup:", 0) == 0) {
+            auto p = split(msg, ':');
+            bool ok = p.size() >= 3
+                && framework_call("send_to_gp", {p[1], "fw:group:" + p[2]});
+            send(ok ? "fwgroup-ok" : "fwgroup-fail");
+            co_return;
+        }
+        if (msg.rfind("fwdivide:", 0) == 0) {
+            auto p = split(msg, ':');
+            bool ok = p.size() >= 3
+                && framework_call("divide_gp", {p[1], p[2]});
+            send(ok ? "fwdivide-ok" : "fwdivide-fail");
+            co_return;
+        }
+        if (msg.rfind("fwclose:", 0) == 0) {
+            auto p = split(msg, ':');
+            bool ok = p.size() >= 2
+                && framework_call("close_conn", {p[1], "framework-test"});
+            send(ok ? "fwclose-ok" : "fwclose-fail");
+            co_return;
+        }
 
         // 参数化查询：SQL 模板 + 参数分离，杜绝注入
         string sql = "SELECT name FROM users WHERE name = ? LIMIT 1";
@@ -86,7 +138,7 @@ int main() {
         return [biz, msg]() { biz->flow(1, msg); };
         },
         9001,     // 监听端口
-        8,        // 解析线程数
+        16,       // 解析线程数
         20);       // 业务线程数
 
     // 3. 数据库配置（可选）

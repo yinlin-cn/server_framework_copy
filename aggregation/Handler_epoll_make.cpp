@@ -1,5 +1,14 @@
 #include"Handler_epoll_make.h"
 using namespace std;
+
+void Handler_epoll_make::on_connect(std::shared_ptr<Internalconnection> conn) {
+    if (book_) book_->on_connection(conn);
+}
+
+void Handler_epoll_make::on_disconnect(std::shared_ptr<Internalconnection> conn) {
+    if (book_) book_->dis_connection(conn);
+}
+
 void Handler_epoll_make::on_message(std::shared_ptr<Internalconnection> conn,
                                     const std::string& msg) {
     auto parse = [this, msg]() -> std::function<void()> {
@@ -9,5 +18,6 @@ void Handler_epoll_make::on_message(std::shared_ptr<Internalconnection> conn,
 }
 
 Handler_epoll* Handler_epoll_Factory_make::create_handler() {
-    return new Handler_epoll_make(divide_work, divide_pool_, divide_handler_);
+    return new Handler_epoll_make(
+        divide_work, divide_pool_, divide_handler_, book_);
 }

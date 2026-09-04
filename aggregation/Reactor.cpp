@@ -65,6 +65,8 @@ bool Reactor::enqueue_send(shared_ptr<Internalconnection> conn, const string& ms
 void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
     set_nonblocking(conn->sock);
     conn->owner_reactor = this;
+    // 连接刚登记就算活跃，避免 last_active_us=0 被心跳扫描误判。
+    conn->last_active_us = Metrics::now_us();
 
     // 业务线程跨线程发送：入队 + 登记待发送桶 + 唤醒本 reactor
     conn->send_function = [this, weak = weak_ptr<Internalconnection>(conn)](const string& msg) -> bool {
@@ -103,6 +105,28 @@ void Reactor::wakeup() {
         uint64_t one = 1;
         write(wake_fd_, &one, sizeof(one));
     }
+}
+
+void Reactor::request_close(shared_ptr<Internalconnection> conn,
+                            const string& reason) {
+    (void)reason;   // 当前关闭原因只做记录用，后续可对接日志
+    if (!conn) return;
+    {
+        lock_guard<mutex> lock(pending_close_mutex_);
+        pending_close_.push_back(conn);
+    }
+    wakeup();
+}
+
+void Reactor::process_pending_close() {
+    vector<weak_ptr<Internalconnection>> bucket;
+    {
+        lock_guard<mutex> lock(pending_close_mutex_);
+        bucket.swap(pending_close_);
+    }
+    for (auto& wk : bucket)
+        if (auto c = wk.lock())
+            close_client(c);
 }
 
 void Reactor::set_batch_handler(Handler_batch* handler) {
@@ -178,6 +202,8 @@ void Reactor::event_loop() {
                 uint64_t one = 0;
                 read(wake_fd_, &one, sizeof(one));
                 if (!running_) break;                 // 停机信号优先，不再处理发送
+
+                process_pending_close();              // 先处理跨线程关闭请求
 
                 vector<weak_ptr<Internalconnection>> bucket;
                 {
