@@ -65,6 +65,14 @@ void Metrics::on_task_dequeued(PoolId pool) {
         queue_depth_[static_cast<int>(pool)]--;
 }
 
+void Metrics::register_queue_sampler(PoolId pool, QueueSampler sampler) {
+    queue_samplers_[static_cast<int>(pool)] = std::move(sampler);
+}
+
+void Metrics::register_db_sampler(DbSampler sampler) {
+    db_sampler_ = std::move(sampler);
+}
+
 // ============ 直方图 / P99 ============
 
 int Metrics::bucket_index(uint64_t us) {
@@ -198,6 +206,39 @@ void Metrics::snapshot() {
             msg += " queue(d/w/db)=" + std::to_string(queue_depth_[0].load())
                  + "/" + std::to_string(queue_depth_[1].load())
                  + "/" + std::to_string(queue_depth_[2].load());
+
+        if (cfg_.queue_depth) {
+            static const char* bp_names[POOL_COUNT] = {"d", "w", "db"};
+            msg += " bp(";
+            for (int p = 0; p < POOL_COUNT; p++) {
+                if (p) msg += "/";
+                msg += bp_names[p];
+            }
+            msg += ")=";
+            for (int p = 0; p < POOL_COUNT; p++) {
+                if (p) msg += "|";
+                if (queue_samplers_[p]) {
+                    auto q = queue_samplers_[p]();
+                    msg += std::to_string(q.size) + "/"
+                         + std::to_string(q.high) + "/"
+                         + std::to_string(q.full);
+                } else {
+                    msg += "0/0/0";
+                }
+            }
+
+            if (db_sampler_) {
+                auto d = db_sampler_();
+                msg += " db(queue=" + std::to_string(d.queue_size)
+                     + "/" + std::to_string(d.queue_high)
+                     + "/" + std::to_string(d.queue_low)
+                     + "/" + std::to_string(d.queue_full)
+                     + " wait=" + std::to_string(d.waiting)
+                     + " credit=" + std::to_string(d.credit_available)
+                     + "/" + std::to_string(d.credit_limit)
+                     + " active=" + std::to_string(d.active) + ")";
+            }
+        }
 
         if (cfg_.errors)
             msg += " err(d/w/db)=" + std::to_string(errors_[0].load())

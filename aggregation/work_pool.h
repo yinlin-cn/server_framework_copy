@@ -29,4 +29,8 @@ public:
     bool wait_idle(const std::chrono::milliseconds& timeout) { return pool.wait_idle(timeout); }   // 透传：等待在途业务任务完成
     void set_connect_book(std::shared_ptr<connect_book> b) { book_ = std::move(b); }
     std::shared_ptr<connect_book> connection_book() const { return book_; }
+    std::size_t queue_size() const { return pool.queue_size(); }
+    std::size_t queue_high() const { return pool.queue_high(); }
+    std::size_t queue_low() const { return pool.queue_low(); }
+    uint64_t queue_full_count() const { return pool.queue_full_count(); }
 };

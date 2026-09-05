@@ -11,6 +11,7 @@
 #include "DB_pool.h"
 #include "Handler_epoll_make.h"
 #include "NetworkServer.h"
+#include "Reactor.h"
 #include "BatchSender.h"
 #include "Handler_batch_make.h"
 #include "Logger.h"
@@ -35,7 +36,9 @@ Server::Server(DivideWork divide_work,
       listen_port_(listen_port),
       parse_threads_(parse_threads),
       work_threads_(work_threads),
-      reactor_count_(reactor_count) {}
+      reactor_count_(reactor_count),
+      route_(std::make_unique<RouteClassifier>()),
+      db_gate_(std::make_unique<DbCreditGate>(4096)) {}
 
 Server::~Server() {
     stop();
@@ -47,12 +50,25 @@ void Server::set_db_config(const DBConfig& cfg) {
     has_db_ = true;
 }
 
+void Server::mark_fast_prefix(const std::string& prefix) {
+    route_->add_fast(prefix);
+}
+
+void Server::mark_db_prefix(const std::string& prefix) {
+    route_->add_db(prefix);
+}
+
 bool Server::start() {
     if (started_) return false;
     if (!divide_work_) {
         std::cerr << "[Server] divide_work is not set" << std::endl;
         return false;
     }
+
+    // DB 额度按真实连接池容量收紧，触发 pending 等待路径。
+    if (has_db_)
+        db_gate_ = std::make_unique<DbCreditGate>(
+            std::max(4, db_cfg_.connections));
 
     // 业务工作池。
     work_pool_ = std::make_shared<work_pool>(work_threads_);
@@ -78,13 +94,29 @@ bool Server::start() {
             db_cfg_.database, db_cfg_.port);
         db_handler_ = std::make_shared<Handler_DB_make>(db_pool_);
         g_db_handler = db_handler_.get();
+        db_pool_->set_db_credit_gate(db_gate_.get());
     }
 
     // 解析线程池 + 网络工厂。
     parse_pool_ = std::make_shared<divide_pool>(parse_threads_);
     parse_pool_->set_error_handler(error_handler_);
+    reactor_control_ = std::make_unique<ReactorControl>();
+    db_waiting_ = std::make_shared<DbWaitingAdmission>(
+        db_gate_.get(),
+        [this](std::shared_ptr<Internalconnection> conn,
+               const std::string& msg) {
+            auto parse = [this, msg]() -> std::function<void()> {
+                return divide_work_(msg);
+            };
+            parse_pool_->add_task(
+                divide_task{parse, conn, divide_handler_});
+            if (reactor_control_ && conn)
+                reactor_control_->schedule_resume(conn);
+        });
     factory_ = std::make_unique<Handler_epoll_Factory_make>(
-        divide_work_, parse_pool_, divide_handler_, connect_book_);
+        divide_work_, parse_pool_, divide_handler_, connect_book_,
+        route_.get(), db_gate_.get(), db_waiting_.get(),
+        reactor_control_.get());
 
     // 批处理模块：攒 Reactor 待发信号，定时统一唤醒。
     batch_sender_ = std::make_unique<BatchSender>(2);
@@ -95,7 +127,41 @@ bool Server::start() {
     logger_ = std::make_unique<Logger>("server.log", LogLevel::Info);
     logger_->start();
     metrics_ = std::make_unique<Metrics>(MetricsConfig{}, logger_.get());
-    metrics_->start_sampler(1000);
+
+    // 背压指标采样：队列真实 size/high/full + DB 专用计数器
+    metrics_->register_queue_sampler(
+        PoolId::Divide, [p = parse_pool_.get()]() {
+            return QueueMetricsSnapshot{
+                p->queue_size(), p->queue_high(), p->queue_low(),
+                p->queue_full_count()};
+        });
+    metrics_->register_queue_sampler(
+        PoolId::Work, [w = work_pool_.get()]() {
+            return QueueMetricsSnapshot{
+                w->queue_size(), w->queue_high(), w->queue_low(),
+                w->queue_full_count()};
+        });
+    if (db_pool_) {
+        metrics_->register_queue_sampler(
+            PoolId::DB, [d = db_pool_.get()]() {
+                return QueueMetricsSnapshot{
+                    d->queue_size(), d->queue_high(), d->queue_low(),
+                    d->queue_full_count()};
+            });
+        metrics_->register_db_sampler([this]() {
+            return DbMetricsSnapshot{
+                db_pool_ ? db_pool_->queue_size() : 0,
+                db_pool_ ? db_pool_->queue_high() : 0,
+                db_pool_ ? db_pool_->queue_low() : 0,
+                db_pool_ ? db_pool_->queue_full_count() : 0,
+                db_waiting_ ? db_waiting_->size() : 0,
+                db_gate_ ? db_gate_->available() : 0,
+                db_gate_ ? db_gate_->limit() : 0,
+                db_pool_ ? db_pool_->active_queries() : 0};
+        });
+    }
+
+    metrics_->start_sampler(1000);   // 注册完成后再启动采样线程
     work_pool_->set_metrics(metrics_.get());
     parse_pool_->set_metrics(metrics_.get());
     if (db_pool_) db_pool_->set_metrics(metrics_.get());

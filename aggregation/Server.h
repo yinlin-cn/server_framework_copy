@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include "ErrorHandler.h"
+#include "backpressure.h"
+#include "ReactorControl.h"
 
 class work_pool;
 class divide_pool;
@@ -52,6 +54,10 @@ public:
     // 配置数据库连接池（可选；不配置则 query_db 不会真正投递任务）。
     void set_db_config(const DBConfig& cfg);
 
+    // 声明消息前缀的 DB 属性，供协议层准入判断使用
+    void mark_fast_prefix(const std::string& prefix);
+    void mark_db_prefix(const std::string& prefix);
+
     // 组装并启动各线程池与 epoll 循环（epoll 运行在独立事件线程）。
     // 返回是否启动成功。
     bool start();
@@ -79,6 +85,10 @@ private:
     std::shared_ptr<Handler_DB_make> db_handler_;
     std::shared_ptr<connect_book> connect_book_;       // 连接名册
     std::shared_ptr<FrameworkCall> framework_call_;    // 框架调用入口
+    std::unique_ptr<RouteClassifier> route_;           // 协议层路由分类
+    std::unique_ptr<DbCreditGate> db_gate_;            // DB 准入额度
+    std::shared_ptr<DbWaitingAdmission> db_waiting_;   // DB 等待队列
+    std::unique_ptr<ReactorControl> reactor_control_;  // Reactor 控制适配
     std::shared_ptr<divide_pool> parse_pool_;
     std::unique_ptr<Handler_epoll_Factory_make> factory_;
     std::unique_ptr<NetworkServer> network_;

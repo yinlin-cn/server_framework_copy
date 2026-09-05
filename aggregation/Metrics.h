@@ -1,11 +1,31 @@
 #pragma once
 #include <array>
 #include <atomic>
+#include <cstddef>
+#include <functional>
 #include <thread>
 #include "Handler_metrics.h"
 #include "MetricsConfig.h"
 
 class Handler_log;
+
+struct QueueMetricsSnapshot {
+    std::size_t size = 0;
+    std::size_t high = 0;
+    std::size_t low = 0;
+    uint64_t full = 0;
+};
+
+struct DbMetricsSnapshot {
+    std::size_t queue_size = 0;
+    std::size_t queue_high = 0;
+    std::size_t queue_low = 0;
+    uint64_t queue_full = 0;
+    std::size_t waiting = 0;
+    std::size_t credit_available = 0;
+    std::size_t credit_limit = 0;
+    int active = 0;
+};
 
 // 指标实现：模块埋点 + 原子计数器 + 独立采样线程。
 class Metrics : public Handler_metrics {
@@ -30,6 +50,12 @@ public:
     void on_conn_close() override;
     void on_task_enqueued(PoolId pool) override;
     void on_task_dequeued(PoolId pool) override;
+
+    using QueueSampler = std::function<QueueMetricsSnapshot()>;
+    using DbSampler = std::function<DbMetricsSnapshot()>;
+
+    void register_queue_sampler(PoolId pool, QueueSampler sampler);
+    void register_db_sampler(DbSampler sampler);
 
     static uint64_t now_us();   // 模块埋点计时用
 
@@ -57,6 +83,8 @@ private:
     // 连接 / 队列（队列按池）
     std::atomic<int> conns_{0};
     std::array<std::atomic<int64_t>, POOL_COUNT> queue_depth_{};
+    std::array<QueueSampler, POOL_COUNT> queue_samplers_{};
+    DbSampler db_sampler_;
 
     // 窗口采样需要的"上次"值
     uint64_t last_requests_ = 0;

@@ -67,8 +67,7 @@ void epoll_make::handle_read(shared_ptr<Internalconnection> conn) {
                 vector<string> messages = spilit_message(conn->read_buffer);
                 for (auto& message : messages) {
                     if (conn->handler)
-                        conn->handler->on_message(conn,
-                                                  message);
+                        (void)conn->handler->on_message(conn, message);
                 }
             }
         }

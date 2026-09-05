@@ -7,6 +7,7 @@
 #include <condition_variable>
 #include <atomic>
 #include <cstdint>
+#include "bounded_task_queue.h"
 #include "thread_context.h"
 #include"work_task.h"
 #include "ErrorHandler.h"
@@ -16,11 +17,8 @@
 using namespace std;
 class thread_pool {
 private:
-    queue<work_task> tasks;
-    mutex for_task;
-    bool stop = false;
+    bounded_task_queue<work_task> tasks_;
     vector<thread> pool;
-    condition_variable cv;
     ErrorHandler error_handler_;   // 业务层可选注入，默认空
     Handler_metrics* metrics_ = nullptr;   // 指标埋点接口，可空
     Handler_log* log_ = nullptr;           // 日志接口，可空
@@ -38,4 +36,8 @@ public:
     void set_log(Handler_log* l) { log_ = l; }
     void shutdown();                                                      // 置 stop + notify
     bool wait_idle(const std::chrono::milliseconds& timeout);             // 等 active 归零
+    std::size_t queue_size() const { return tasks_.size(); }
+    std::size_t queue_high() const { return tasks_.high_water(); }
+    std::size_t queue_low() const { return tasks_.low_water(); }
+    uint64_t queue_full_count() const { return tasks_.full_count(); }
 };

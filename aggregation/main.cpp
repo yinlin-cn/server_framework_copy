@@ -141,6 +141,12 @@ int main() {
         16,       // 解析线程数
         20);       // 业务线程数
 
+    // 路由分类：协议层据此决定 fast/db 准入路径
+    server.mark_fast_prefix("ping");
+    server.mark_fast_prefix("broadcast");
+    server.mark_fast_prefix("heavy");
+    server.mark_db_prefix("hello");
+
     // 3. 数据库配置（可选）
     server.set_db_config(Server::DBConfig{
         50,                       // 连接池大小

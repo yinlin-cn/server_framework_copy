@@ -31,6 +31,15 @@
 | `pressure_heavy.py` | 重业务流水线 | `heavy:N` 模拟计算型任务，测业务线程池上限 |
 | `pressure_broadcast.py` | 推送型 | 一条请求触发 N 次主动 send，测服务器攒批收益 |
 | `pressure_conns.py` | 连接承载 | asyncio 分批建连，测服务器连接承载 |
+| `pressure_continuous.py` | 持续流水线 | 固定连接/深度持续跑 N 秒，适合长稳 |
+| `pressure_preconnect.py` | 预建连固定批量 | 先建连再批量灌请求，适合吞吐回归 |
+| `pressure_client_latency.py` | 客户端延迟 | 单请求在途，测客户端视角 RTT |
+| `pressure_churn.py` | 连接抖动 | 持续建连/发请求/断开 |
+| `pressure_cycle.py` | 循环批量 | 每轮整批建连/断开并重连 |
+| `pressure_pipeline_churn.py` | 随机流水线抖动 | 随机 N×M 且 N×M≥100000，错峰建连/断开 |
+| `framework_call_test.py` | 框架调用 | bind/单发/组播/分组/关闭端到端 |
+| `connect_book_test.cpp` | 单测 | connect_book 登记/rebind/分组/断连 |
+| `parse_metrics.py` | 指标解析 | 从 server.log 汇总 QPS/队列/DB 指标 |
 
 ---
 
@@ -320,3 +329,93 @@ BatchSender 把"每条消息一次 eventfd 唤醒"合并成"每批一次"，在�
 - 冷启动第一轮 20 连接 × 10：200/200，broken=0；
 - 紧接着 200 连接 × 100：20,000/20,000，broken=0；
 - 优雅停机正常。
+
+---
+
+## 八、v0.7/v0.8 持续与并发回归（2026-09-05）
+
+### 8.1 v0.7 背压 30 分钟连续混合
+
+500 连接 × 16 深流水线，ping/hello 混合：
+
+| 指标 | 值 |
+|---|---:|
+| 总请求 | 16,925,776 |
+| 客户端 QPS | 9,401 |
+| bad / timeout / broken | 0 |
+| 服务端 req_qps 平均 | 9,398 |
+| req_p99 | 基本 1ms |
+| CPU 平均 / 峰值 | 314% / 336% |
+| RSS 平均 / 峰值 | 20.2MB / 20.7MB |
+| work 队列峰值 | 58 |
+| full 次数 | 0 |
+
+### 8.2 1 小时随机流水线连接抖动
+
+随机 `N×M≥100000`，每 12 秒一批，错峰连接/断开：
+
+| 指标 | 值 |
+|---|---:|
+| 总请求 | 34,169,909 |
+| 平均 QPS | 9,477 |
+| 连接建立 | 104,633 |
+| 正常关闭 | 104,607 |
+| timeout | 26（约 0.000076%） |
+| 服务端错误 | 0 |
+| RSS 峰值 | 21.0MB |
+| DB credit 最低 | 10/50 |
+| DB wait | 0 |
+
+### 8.3 2000×16 并发修复回归
+
+修复 Metrics 注册、DB wake_guard、on_connect 可见性后：
+
+| 场景 | 总请求 | 正确率 | QPS | conn_fail |
+|---|---:|---:|---:|---:|
+| 普通版 2000×16，139s | 1,058,896 | 100% | 7,614 | 0 |
+| 普通版 2000×16，3 分钟 | 1,492,192 | 100% | 8,192 | 0 |
+| TSAN 2000×16 | 1,062,432 | 100% | 7,469 | 0 |
+
+TSAN 无 data race 报告。
+
+### 8.4 超载灌压
+
+流水线间隔 1.5 秒，30 秒内灌入约 200 万请求：
+
+| 指标 | 值 |
+|---|---:|
+| 总完成 | 2,311,333 |
+| 整体 QPS | 27,505 |
+| 前 31 秒峰值 QPS | 71,693 |
+| timeout | 4 |
+| work 队列峰值 | 113 |
+| divide 队列峰值 | 36 |
+| DB 队列峰值 | 8 |
+| DB wait 峰值 | 26 |
+| DB credit 最低 | 0/50 |
+| DB active 峰值 | 45 |
+| CPU 平均 / 峰值 | 768% / 832% |
+| RSS 峰值 | 19.7MB |
+| 服务端错误 | 0 |
+
+说明：该场景是“批量灌入突发”，不代表请求-响应常态；稳定运营窗口约 1 万 QPS。
+
+### 8.5 指标日志字段
+
+```text
+bp(d/w/db)=size/high/full|size/high/full|size/high/full
+db(queue=size/high/low/full wait=N credit=available/limit active=N)
+```
+
+示例：
+
+```text
+bp(d/w/db)=3/512/0|10/640/0|2/1600/0
+db(queue=1/1600/800/0 wait=0 credit=38/50 active=4)
+```
+
+压测结束后可用：
+
+```bash
+python3 tools/parse_metrics.py server.log
+```

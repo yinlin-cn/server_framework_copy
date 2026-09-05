@@ -55,6 +55,30 @@ vector<string> Reactor::spilit_message(string& message) {
     return messages;
 }
 
+bool Reactor::take_one_message(std::string& buffer, std::string& out) {
+    if (!peek_one_message(buffer, out))
+        return false;
+    buffer.erase(0, 4 + out.size());
+    return true;
+}
+
+bool Reactor::peek_one_message(const std::string& buffer,
+                               std::string& out) const {
+    if (buffer.size() < 4)
+        return false;
+
+    for (int i = 0; i < 4; i++)
+        if (buffer[i] < '0' || buffer[i] > '9')
+            return false;
+
+    size_t len = static_cast<size_t>(stoi(buffer.substr(0, 4)));
+    if (buffer.size() < 4 + len)
+        return false;
+
+    out = buffer.substr(4, len);
+    return true;
+}
+
 bool Reactor::enqueue_send(shared_ptr<Internalconnection> conn, const string& msg) {
     lock_guard<mutex> lock(conn->send_mutex);
     if (!conn->connected) return false;
@@ -85,6 +109,10 @@ void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
         return false;                                  // 连接对象已销毁
     };
 
+    // on_connect 必须在连接对事件线程可见之前执行，否则客户端立即断开时
+    // close_client 可能并发 delete handler，和 add_connection 产生数据竞争。
+    if (conn->handler) conn->handler->on_connect(conn);
+
     {
         lock_guard<mutex> lock(conn_mutex_);
         connections_[conn->sock] = conn;
@@ -95,7 +123,6 @@ void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
     ev.data.ptr = conn.get();
     epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, conn->sock, &ev);
 
-    if (conn->handler) conn->handler->on_connect(conn);
     if (log_) log_->info("conn=" + std::to_string(conn->sock) + " opened");
     if (metrics_) metrics_->on_conn_open();
 }
@@ -104,6 +131,54 @@ void Reactor::wakeup() {
     if (wake_fd_ >= 0) {
         uint64_t one = 1;
         write(wake_fd_, &one, sizeof(one));
+    }
+}
+
+void Reactor::pause_reading(shared_ptr<Internalconnection> conn) {
+    if (!conn || conn->reading_paused)
+        return;
+    conn->reading_paused = true;
+    mod_event(conn, 0);   // 关闭 EPOLLIN，保留连接本身
+}
+
+void Reactor::schedule_resume(shared_ptr<Internalconnection> conn) {
+    if (!conn)
+        return;
+    {
+        lock_guard<mutex> lock(pending_resume_mutex_);
+        pending_resume_.push_back(conn);
+    }
+    wakeup();
+}
+
+void Reactor::process_pending_resume() {
+    vector<weak_ptr<Internalconnection>> bucket;
+    {
+        lock_guard<mutex> lock(pending_resume_mutex_);
+        bucket.swap(pending_resume_);
+    }
+
+    vector<shared_ptr<Internalconnection>> conns;
+    for (auto& wk : bucket)
+        if (auto c = wk.lock())
+            conns.push_back(std::move(c));
+
+    // 同一条连接可能积累多个恢复请求，先去重再恢复，避免重复清 reading_paused。
+    sort(conns.begin(), conns.end(),
+         [](const auto& a, const auto& b) { return a.get() < b.get(); });
+    conns.erase(unique(conns.begin(), conns.end(),
+                       [](const auto& a, const auto& b) {
+                           return a.get() == b.get();
+                       }),
+                conns.end());
+
+    for (auto& c : conns) {
+        bool resume_signal = c->flow.consume_resume();
+        bool db_signal = c->reading_paused.exchange(false);
+        if ((resume_signal || db_signal) && c->connected) {
+            mod_event(c, EPOLLIN | EPOLLET);
+            handle_read(c);
+        }
     }
 }
 
@@ -135,19 +210,38 @@ void Reactor::set_batch_handler(Handler_batch* handler) {
 
 void Reactor::handle_read(shared_ptr<Internalconnection> conn) {
     char buffer[1024];
-    while (conn->connected) {
-        ssize_t count = read(conn->sock, buffer, sizeof(buffer));
-        if (count == -1) {
-            if (errno == EAGAIN || errno == EWOULDBLOCK) break;
-            close_client(conn);
-            return;
-        }
-        if (count == 0) { close_client(conn); return; }
+    while (conn->connected && !conn->reading_paused) {
+        std::string msg;
+        if (!peek_one_message(conn->read_buffer, msg)) {
+            ssize_t count = read(conn->sock, buffer, sizeof(buffer));
+            if (count == -1) {
+                if (errno == EAGAIN || errno == EWOULDBLOCK) break;
+                close_client(conn);
+                return;
+            }
+            if (count == 0) { close_client(conn); return; }
 
-        conn->read_buffer.append(buffer, count);
-        conn->last_active_us = Metrics::now_us();   // 收到数据即视为活跃
-        for (auto& msg : spilit_message(conn->read_buffer))
-            if (conn->handler) conn->handler->on_message(conn, msg);
+            conn->read_buffer.append(buffer, count);
+            conn->last_active_us = Metrics::now_us();
+            continue;
+        }
+
+        if (!conn->flow.try_take())
+            break;   // 窗口满：消息留在 read_buffer，等后续恢复读取
+
+        if (conn->handler) {
+            PushResult r = conn->handler->on_message(conn, msg);
+            if (r == PushResult::Full) {
+                conn->flow.release_slot();   // 未真正消费，窗口位归还
+                break;                       // 消息留在 read_buffer，等 divide 空位
+            }
+            if (r == PushResult::Closed) {
+                close_client(conn);
+                return;
+            }
+        }
+
+        conn->read_buffer.erase(0, 4 + msg.size());
     }
 }
 
@@ -204,6 +298,7 @@ void Reactor::event_loop() {
                 if (!running_) break;                 // 停机信号优先，不再处理发送
 
                 process_pending_close();              // 先处理跨线程关闭请求
+                process_pending_resume();             // 再恢复因背压暂停的连接
 
                 vector<weak_ptr<Internalconnection>> bucket;
                 {

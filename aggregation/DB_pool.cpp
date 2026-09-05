@@ -1,5 +1,6 @@
 #include "DB_pool.h"
 #include "Metrics.h"
+#include "backpressure.h"
 #include <cstring>
 #include <vector>
 
@@ -8,51 +9,39 @@ DB_pool::DB_pool(int conns, int workers, work_pool* business_pool,
                  const std::string& password, const std::string& database,
                  unsigned int port)
     : conn_pool_(conns, host, user, password, database, port),
-      business_pool_(business_pool), worker_count_(workers) {
+      business_pool_(business_pool), worker_count_(workers),
+      tasks_(static_cast<size_t>(workers * 32)) {
     for (int i = 0; i < worker_count_; i++)
         workers_.emplace_back(&DB_pool::worker_loop, this);
 }
 
 DB_pool::~DB_pool() {
-    {
-        std::lock_guard<std::mutex> lock(mutex_);
-        if (stopped_) return;              // 已停过就直接返回，避免二次 join
-        stopped_ = true;
-    }
+    bool expected = false;
+    if (!stopped_.compare_exchange_strong(expected, true))
+        return;
     conn_pool_.shutdown();                 // 先唤醒卡在 get() 的 worker，避免 join 死锁
-    {
-        std::lock_guard<std::mutex> lock(mutex_);
-        stop_ = true;
-    }
-    cv_.notify_all();
+    tasks_.close();
     for (auto& t : workers_)
         if (t.joinable()) t.join();
 }
 
 void DB_pool::submit(DBTask task) {
-    {
-        std::lock_guard<std::mutex> lock(mutex_);
-        tasks_.push(std::move(task));
-    }
+    tasks_.push(std::move(task));
     if (metrics_) metrics_->on_task_enqueued(PoolId::DB);
-    cv_.notify_one();
 }
 
 void DB_pool::worker_loop() {
     while (true) {
         DBTask job;
-        {
-            std::unique_lock<std::mutex> lock(mutex_);
-            cv_.wait(lock, [this]{ return stop_ || !tasks_.empty(); });
-            if (stop_ && tasks_.empty()) return;
-            job = std::move(tasks_.front());
-            tasks_.pop();
-        }
+        if (!tasks_.pop(job))
+            return;
         if (metrics_) metrics_->on_task_dequeued(PoolId::DB);
+        db_active_++;
 
         DBHandle conn = conn_pool_.get();            // 真实版是 MYSQL*
         if (!conn) {
-            if (stop_) return;   // 停止中且拿不到连接，直接退出，避免空转
+            db_active_--;
+            if (stopped_.load()) return;   // 停止中且拿不到连接，直接退出
             continue;
         }
 
@@ -123,6 +112,16 @@ void DB_pool::worker_loop() {
         if (metrics_) metrics_->on_module_task_done(PoolId::DB, Metrics::now_us() - db_start_us);
         job.box->ready = true;
         conn_pool_.release(conn);
+        db_active_--;
+        if (db_gate_) db_gate_->release();   // 释放一个 DB 准入额度，唤醒等待者
+
+        // 等待发起协程的业务任务返回后再 resume，避免同一协程被两个线程访问。
+        if (job.box && job.box->wake_guard) {
+            auto guard = job.box->wake_guard;
+            int spins = 0;
+            while (guard->load() && spins++ < 1000000)
+                std::this_thread::yield();
+        }
 
         uint64_t key = job.wait_name;
         auto* pool = business_pool_;
@@ -131,14 +130,11 @@ void DB_pool::worker_loop() {
 }
 
 void DB_pool::shutdown() {
-     {
-        std::lock_guard<std::mutex> lock(mutex_);
-        if (stopped_) return;
-        stopped_ = true;
-    }
+    bool expected = false;
+    if (!stopped_.compare_exchange_strong(expected, true))
+        return;
     conn_pool_.shutdown();                 // 唤醒卡在 get() 的 worker
-    { std::lock_guard<std::mutex> lock(mutex_); stop_ = true; }
-    cv_.notify_all();
-        for (auto& t : workers_)
+    tasks_.close();
+    for (auto& t : workers_)
         if (t.joinable()) t.join();
 }

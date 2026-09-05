@@ -4,10 +4,8 @@
 #include <string>
 #include <memory>
 #include <vector>
-#include <queue>
 #include <functional>
-#include <mutex>
-#include <condition_variable>
+#include "bounded_task_queue.h"
 #include "divide_task.h"
 #include "ErrorHandler.h"
 #include "Handler_metrics.h"
@@ -16,11 +14,8 @@
 using namespace std;
 class divide_pool {
 private:
-    queue<divide_task> tasks;
-    mutex for_task;
-    bool stop = false;
+    bounded_task_queue<divide_task> tasks_;
     vector<thread> pool;
-    condition_variable cv;
     ErrorHandler error_handler_;   // 业务层可选注入，默认空
     Handler_metrics* metrics_ = nullptr;   // 指标埋点接口，可空
     Handler_log* log_ = nullptr;           // 日志接口，可空
@@ -33,9 +28,14 @@ public:
     ~divide_pool();
     void worker();
     void add_task(divide_task funtion);
+    PushResult try_add_task(divide_task funtion);
     void set_error_handler(ErrorHandler h) { error_handler_ = std::move(h); }
     void set_metrics(Handler_metrics* m) { metrics_ = m; }
     void set_log(Handler_log* l) { log_ = l; }
     void shutdown();                                                      // 置 stop + notify
     bool wait_idle(const std::chrono::milliseconds& timeout);             // 等 active 归零
+    std::size_t queue_size() const { return tasks_.size(); }
+    std::size_t queue_high() const { return tasks_.high_water(); }
+    std::size_t queue_low() const { return tasks_.low_water(); }
+    uint64_t queue_full_count() const { return tasks_.full_count(); }
 };
