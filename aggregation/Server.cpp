@@ -37,8 +37,8 @@ Server::Server(DivideWork divide_work,
       parse_threads_(parse_threads),
       work_threads_(work_threads),
       reactor_count_(reactor_count),
-      route_(std::make_unique<RouteClassifier>()),
-      db_gate_(std::make_unique<DbCreditGate>(4096)) {}
+      db_gate_(std::make_unique<DbCreditGate>(4096)),
+      route_(std::make_unique<RouteClassifier>()) {}
 
 Server::~Server() {
     stop();
@@ -94,7 +94,6 @@ bool Server::start() {
             db_cfg_.database, db_cfg_.port);
         db_handler_ = std::make_shared<Handler_DB_make>(db_pool_);
         g_db_handler = db_handler_.get();
-        db_pool_->set_db_credit_gate(db_gate_.get());
     }
 
     // 解析线程池 + 网络工厂。
@@ -108,8 +107,10 @@ bool Server::start() {
             auto parse = [this, msg]() -> std::function<void()> {
                 return divide_work_(msg);
             };
+            // drain() 里已经 try_acquire 成功，这里用令牌持有到业务流程结束。
+            auto credit = std::make_shared<DbCreditToken>(db_gate_.get());
             parse_pool_->add_task(
-                divide_task{parse, conn, divide_handler_});
+                divide_task{parse, conn, divide_handler_, credit});
             if (reactor_control_ && conn)
                 reactor_control_->schedule_resume(conn);
         });

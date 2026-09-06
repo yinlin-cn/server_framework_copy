@@ -32,7 +32,8 @@ void divide_pool::worker() {
                 std::function<void()> work = funtion.back_funtion();
                 // 2. 交给业务分发器，解析层不关心业务层内部结构
                 if (funtion.handler)
-                    funtion.handler->on_work(funtion.connection, work);
+                    funtion.handler->on_work(funtion.connection, work,
+                                             funtion.db_credit);
             } catch (const std::exception& e) {
                 if (error_handler_) error_handler_(funtion.connection, "divide", e.what());
                 if (log_) log_->error("divide failed: " + std::string(e.what()));

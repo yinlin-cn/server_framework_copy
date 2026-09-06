@@ -79,6 +79,8 @@ private:
     DBConfig db_cfg_;
 
     // 持有各组件所有权，保证生命周期超出事件线程。
+    // db_gate_ 先声明：析构时最后销毁，业务池线程（可能仍持有 DbCreditToken）先 join。
+    std::unique_ptr<DbCreditGate> db_gate_;            // DB 准入额度
     std::shared_ptr<work_pool> work_pool_;
     std::shared_ptr<Handler_divide_make> divide_handler_;
     std::shared_ptr<DB_pool> db_pool_;
@@ -86,7 +88,6 @@ private:
     std::shared_ptr<connect_book> connect_book_;       // 连接名册
     std::shared_ptr<FrameworkCall> framework_call_;    // 框架调用入口
     std::unique_ptr<RouteClassifier> route_;           // 协议层路由分类
-    std::unique_ptr<DbCreditGate> db_gate_;            // DB 准入额度
     std::shared_ptr<DbWaitingAdmission> db_waiting_;   // DB 等待队列
     std::unique_ptr<ReactorControl> reactor_control_;  // Reactor 控制适配
     std::shared_ptr<divide_pool> parse_pool_;

@@ -8,7 +8,9 @@ class Handler_divide_make:public Handler_divide{
         std::shared_ptr<work_pool> wp;
     public:
         Handler_divide_make(std::shared_ptr<work_pool> a):wp(a){};
-        void on_work(std::shared_ptr<Internalconnection> conn,std::function<void()> work) override;
+        void on_work(std::shared_ptr<Internalconnection> conn,
+                     std::function<void()> work,
+                     std::shared_ptr<DbCreditToken> db_credit) override;
 };
 
 class Handler_divide_Factory_make:public Handler_divide_Factory {

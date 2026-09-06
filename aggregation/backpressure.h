@@ -1,5 +1,6 @@
 #pragma once
 
+#include <atomic>
 #include <algorithm>
 #include <condition_variable>
 #include <cstddef>
@@ -94,6 +95,26 @@ private:
     size_t available_;
     mutable std::mutex mutex_;
     std::vector<std::function<void()>> listeners_;
+};
+
+// 一个 DB 业务流程只占一个准入额度；令牌随任务挂起/恢复传递，
+// 整个业务流程真正结束时才释放（防止一次业务多次查库导致额度提前归还）。
+class DbCreditToken {
+public:
+    explicit DbCreditToken(DbCreditGate* gate) : gate_(gate) {}
+
+    DbCreditToken(const DbCreditToken&) = delete;
+    DbCreditToken& operator=(const DbCreditToken&) = delete;
+
+    void release() {
+        bool expected = false;
+        if (released_.compare_exchange_strong(expected, true))
+            if (gate_) gate_->release();
+    }
+
+private:
+    DbCreditGate* gate_;
+    std::atomic<bool> released_{false};
 };
 
 // DB 等待队列：额度不足时先在这里停放完整消息，等额度释放后补投。

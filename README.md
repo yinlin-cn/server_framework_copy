@@ -251,7 +251,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
                     ▼
 ┌─ 数据库层（DB_pool + connect_pool）───────────────────────┐
 │ prepared statement 参数化执行 → 结果写 Box(rows/err)      │
-│ → release DB credit → 等 wake_guard=false 再投唤醒任务    │
+│ → 等 wake_guard=false 再投唤醒任务；额度等业务流程结束归还│
 └───────────────────────────────────────────────────────────┘
 ```
 
@@ -311,7 +311,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 | `EventTask.h` / `EventAwaiter.*` | 协程 | TLS 挂起标志；await_suspend 登记 + submit DB；await_resume 转 DBResult |
 | `context.h/.cpp` | 业务接口 | send / framework_call / query_db；TLS 白板与全局入口 |
 | `thread_context.h` | 共享 | tls_current_conn、g_work_pool、g_db_handler、g_framework_call |
-| `DB_pool.h/.cpp` | DB | worker 循环、连接池借还、参数化执行、写 Box、credit release |
+| `DB_pool.h/.cpp` | DB | worker 循环、连接池借还、参数化执行、写 Box、投 resume（额度由业务 worker 归还） |
 | `connect_pool.h/.cpp` | DB | N 条 MariaDB 连接借/还/显式 shutdown |
 | `Handler_DB.h` | 接口 | submit(wait_key, box, sql, params) |
 | `Handler_DB_make.h/.cpp` | 接线 | EventAwaiter → DBTask → DB_pool |
@@ -394,13 +394,14 @@ work worker 执行业务协程（is_business = true）
       4. db_handler->submit(wait_key, box, sql, params)
   → worker 返回（线程归还）
 
-DB worker 执行 SQL → 写 box.rows/err → 还连接 → release credit
+DB worker 执行 SQL → 写 box.rows/err → 还连接
   → 等 wake_guard 变成 false（防止协程帧还在被业务 worker 使用）
   → work_pool::on_event(wait_key)：从 blockingqueue 取回 blockedtask
   → resume 任务重新进入 work 队列
 
 work worker 再取到该任务 → 白板恢复 → handle.resume()
   → await_resume() 返回 DBResult → 业务继续 → send 回包
+  → 整个业务流程结束（不再挂起）才归还 DB 额度
 ```
 
 关键规则：**完成方绝不直接 resume，恢复必须重新入队**，避免协程池污染 / 业务池饥饿。
@@ -519,7 +520,7 @@ Handler::on_disconnect  → connect_book::dis_connection(conn)   // 反查并清
 - **每连接窗口状态机 ConnectionFlow**：同一连接最多 8 条在途消息；窗口计数、暂停/恢复标志在同一把锁内完成；
 - **三层有界任务队列 bounded_task_queue**：divide / work / DB 各自队列有容量与高低水位；
 - **Handler PushResult**：网络入口能知道 divide 队列是否可投递，Full 时消息留在 read_buffer，不丢；
-- **DB 准入/等待队列**：DB 额度不足时消息进入等待区并暂停该连接读取；SQL 完成后释放额度并补投；
+- **DB 准入/等待队列**：DB 额度不足时消息进入等待区并暂停该连接读取；一个业务流程（可能含多次查库）全部结束后才释放额度并补投；
 - **业务池结算窗口位**：业务任务没挂起则 worker 返回后归还窗口；协程挂起则等续体真正结束后归还（当前通过 resume 任务再走一遍 worker 归还逻辑）。
 
 背压层级：
@@ -597,7 +598,7 @@ Reactor 拿到 `Full` 时：归还窗口位、消息留在 read_buffer、不再�
 要点：
 
 - `connect_pool`：N 条 MariaDB 连接，借/还阻塞队列实现；`shutdown()` 先关连接、再唤醒等待者（先关连接池后 join 的顺序是优雅退出正确的关键）；
-- `DB_pool`：独立 worker 线程池 + 有界队列；借连接 → prepared statement 参数化执行 → 完整结果写 rows/err → 还连接 → release credit → 等 wake_guard → 投 resume；
+- `DB_pool`：独立 worker 线程池 + 有界队列；借连接 → prepared statement 参数化执行 → 完整结果写 rows/err → 还连接 → 等 wake_guard → 投 resume；准入额度由业务 worker 在流程结束时归还（DbCreditToken 随挂起/恢复传递）；
 - 连接建立时设置 connect/read/write 超时；
 - DB 结果不做行数限制，限制归业务层；连接池重连、慢查询统计属后续细化项；
 - 参数化只针对“值”。表名/列名/排序方向等结构不能参数化，业务层必须用白名单校验。

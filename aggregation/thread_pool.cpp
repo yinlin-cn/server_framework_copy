@@ -1,6 +1,7 @@
 #include"thread_pool.h"
 #include "Metrics.h"
 #include "EventTask.h"
+#include "backpressure.h"
 #include "Reactor.h"
 
 using namespace std;
@@ -24,6 +25,7 @@ void thread_pool::worker() {
             g_coroutine_suspended = false;
             auto active = std::make_shared<std::atomic<bool>>(true);
             g_current_task_active = active;
+            g_current_task_db_credit = f.db_credit;   // await_suspend 需要知道额度归属
             if (metrics_) metrics_->on_task_dequeued(PoolId::Work);
             bool business = f.is_business;   // 业务请求任务才计入请求级 QPS
             if (metrics_ && business) metrics_->on_request_started();
@@ -43,6 +45,10 @@ void thread_pool::worker() {
             if (active)
                 active->store(false);   // 当前 fn 已返回，DB 可以唤醒协程
             g_current_task_active.reset();
+            // DB 额度按“业务流程”持有：任务没再挂起，说明整个流程已结束，才归还。
+            if (f.db_credit && !g_coroutine_suspended)
+                f.db_credit->release();
+            g_current_task_db_credit.reset();
             // 没有挂起说明任务已经跑到头：归还窗口。
             if (!g_coroutine_suspended && f.conn) {
                 bool need_resume = f.conn->flow.finish_one();

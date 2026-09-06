@@ -1,6 +1,5 @@
 #include "DB_pool.h"
 #include "Metrics.h"
-#include "backpressure.h"
 #include <cstring>
 #include <vector>
 
@@ -113,7 +112,6 @@ void DB_pool::worker_loop() {
         job.box->ready = true;
         conn_pool_.release(conn);
         db_active_--;
-        if (db_gate_) db_gate_->release();   // 释放一个 DB 准入额度，唤醒等待者
 
         // 等待发起协程的业务任务返回后再 resume，避免同一协程被两个线程访问。
         if (job.box && job.box->wake_guard) {
