@@ -82,7 +82,7 @@ bool Reactor::peek_one_message(const std::string& buffer,
 bool Reactor::enqueue_send(shared_ptr<Internalconnection> conn, const string& msg) {
     lock_guard<mutex> lock(conn->send_mutex);
     if (!conn->connected) return false;
-    conn->send_queue.push(send_preview(msg));
+    conn->send_queue.push_back(send_preview(msg));
     return true;
 }
 
@@ -248,22 +248,49 @@ void Reactor::handle_read(shared_ptr<Internalconnection> conn) {
 void Reactor::try_send(shared_ptr<Internalconnection> conn) {
     if (!conn->connected) return;
     bool write_error = false;
+    bool blocked = false;
     {
         unique_lock<mutex> lock(conn->send_mutex);
         while (!conn->send_queue.empty()) {
-            auto& data = conn->send_queue.front();
-            ssize_t n = write(conn->sock, data.data(), data.size());
+            // 攒批：一次性把多条已封好长度头的消息合成一个 string 再写，
+            // 减少每个连接多次 write() 的系统调用。
+            constexpr size_t kSendBatchBytes = 64 * 1024;
+            string batch;
+            batch.reserve(kSendBatchBytes);
+            while (!conn->send_queue.empty()) {
+                const string& front = conn->send_queue.front();
+                if (!batch.empty() &&
+                    batch.size() + front.size() > kSendBatchBytes)
+                    break;   // 本批已够大，留在队列里下一轮再发
+                batch += front;
+                conn->send_queue.pop_front();
+            }
+
+            ssize_t n = write(conn->sock, batch.data(), batch.size());
             if (n > 0) {
-                if ((size_t)n == data.size()) conn->send_queue.pop();
-                else { data.erase(0, n); break; }
+                if ((size_t)n < batch.size()) {
+                    // 半截写走：剩余部分整体放回队首，等 EPOLLOUT 继续。
+                    conn->send_queue.push_front(batch.substr(n));
+                    blocked = true;
+                    break;
+                }
+                continue;
             } else {
-                if (errno == EAGAIN || errno == EWOULDBLOCK) break;
+                if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                    conn->send_queue.push_front(std::move(batch));
+                    blocked = true;
+                    break;
+                }
                 write_error = true;
                 break;
             }
         }
-        if (!write_error && conn->send_queue.empty() && conn->connected)
-            mod_event(conn, EPOLLIN | EPOLLET);
+        if (!write_error && conn->connected) {
+            if (blocked && !conn->send_queue.empty())
+                mod_event(conn, EPOLLIN | EPOLLET | EPOLLOUT);   // 等可写再发
+            else if (conn->send_queue.empty())
+                mod_event(conn, EPOLLIN | EPOLLET);              // 发完关闭 EPOLLOUT
+        }
     }
     if (write_error) close_client(conn);
 }

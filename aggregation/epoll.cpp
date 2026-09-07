@@ -77,7 +77,7 @@ bool epoll_make::send(shared_ptr<Internalconnection> conn, const char* data, siz
         string message = send_preview(string(data, len));   // 加长度头
         lock_guard<mutex> lock(conn->send_mutex);
         if (!conn->connected) return false;
-        conn->send_queue.push(message);
+        conn->send_queue.push_back(message);
         mod_event(conn, EPOLLIN | EPOLLET | EPOLLOUT);      // 请求可写通知
         return true;
     }
@@ -91,7 +91,7 @@ void epoll_make::try_send(shared_ptr<Internalconnection> conn) {
                 auto& data = conn->send_queue.front();
                 ssize_t n = write(conn->sock, data.data(), data.size());
                 if (n > 0) {
-                    if ((size_t)n == data.size()) conn->send_queue.pop();   // 发完
+                    if ((size_t)n == data.size()) conn->send_queue.pop_front();   // 发完
                     else { data.erase(0, n); break; }                        // 部分发送
                 }
                 else {

@@ -3,6 +3,85 @@
 #include <cstring>
 #include <vector>
 
+namespace {
+
+// 读取 prepared statement 的完整结果集。列缓冲从 256 字节起步，
+// 遇到 MYSQL_DATA_TRUNCATED 时按实际长度扩容，再取回完整列数据。
+bool read_all_rows(MYSQL_STMT* stmt, MYSQL_RES* res,
+                   std::vector<std::vector<std::string>>& rows,
+                   std::string& err) {
+    const unsigned int cols = mysql_num_fields(res);
+    if (cols == 0)
+        return true;
+
+    if (mysql_stmt_store_result(stmt) != 0) {
+        err = mysql_stmt_error(stmt);
+        return false;
+    }
+
+    constexpr size_t kInitColumnBytes = 256;
+    std::vector<MYSQL_BIND> rb(cols);
+    std::vector<std::vector<char>> bufs(cols);
+    std::vector<unsigned long> lengths(cols, 0);
+    std::vector<my_bool> is_null(cols, 0);
+
+    for (unsigned int c = 0; c < cols; c++) {
+        bufs[c].assign(kInitColumnBytes, '\0');
+        rb[c].buffer_type = MYSQL_TYPE_STRING;
+        rb[c].buffer = bufs[c].data();
+        rb[c].buffer_length = bufs[c].size();
+        rb[c].length = &lengths[c];
+        rb[c].is_null = &is_null[c];
+    }
+    if (mysql_stmt_bind_result(stmt, rb.data()) != 0) {
+        err = mysql_stmt_error(stmt);
+        return false;
+    }
+
+    while (true) {
+        int rc = mysql_stmt_fetch(stmt);
+        if (rc == MYSQL_NO_DATA)
+            break;
+        if (rc != 0 && rc != MYSQL_DATA_TRUNCATED) {
+            err = mysql_stmt_error(stmt);
+            if (err.empty()) err = "mysql_stmt_fetch failed";
+            return false;
+        }
+
+        if (rc == MYSQL_DATA_TRUNCATED) {
+            std::vector<unsigned char> refetch(cols, 0);
+            for (unsigned int c = 0; c < cols; c++) {
+                if (is_null[c])
+                    continue;
+                unsigned long need = lengths[c];
+                if (need >= bufs[c].size()) {
+                    bufs[c].resize(need + 1);
+                    rb[c].buffer = bufs[c].data();
+                    rb[c].buffer_length = static_cast<unsigned long>(bufs[c].size());
+                    refetch[c] = 1;
+                }
+            }
+            for (unsigned int c = 0; c < cols; c++) {
+                if (!refetch[c])
+                    continue;
+                if (mysql_stmt_fetch_column(stmt, &rb[c], c, 0) != 0) {
+                    err = mysql_stmt_error(stmt);
+                    return false;
+                }
+            }
+        }
+
+        std::vector<std::string> line;
+        line.reserve(cols);
+        for (unsigned int c = 0; c < cols; c++)
+            line.push_back(std::string(bufs[c].data(), lengths[c]));
+        rows.push_back(std::move(line));
+    }
+    return true;
+}
+
+}  // namespace
+
 DB_pool::DB_pool(int conns, int workers, work_pool* business_pool,
                  const std::string& host, const std::string& user,
                  const std::string& password, const std::string& database,
@@ -71,27 +150,8 @@ void DB_pool::worker_loop() {
                 } else {
                     MYSQL_RES* res = mysql_stmt_result_metadata(stmt);
                     if (res) {
-                        unsigned int cols = mysql_num_fields(res);
-                        std::vector<MYSQL_BIND> rb(cols);
-                        std::vector<std::vector<char>> bufs(
-                            cols, std::vector<char>(256));
-                        std::vector<unsigned long> lengths(cols);
-                        std::vector<my_bool> is_null(cols);
-                        for (unsigned int c = 0; c < cols; c++) {
-                            rb[c].buffer_type = MYSQL_TYPE_STRING;
-                            rb[c].buffer = bufs[c].data();
-                            rb[c].buffer_length = bufs[c].size();
-                            rb[c].length = &lengths[c];
-                            rb[c].is_null = &is_null[c];
-                        }
-                        mysql_stmt_store_result(stmt);
-                        mysql_stmt_bind_result(stmt, rb.data());
-                        while (mysql_stmt_fetch(stmt) == 0) {
-                            std::vector<std::string> line;
-                            for (unsigned int c = 0; c < cols; c++)
-                                line.push_back(std::string(bufs[c].data(), lengths[c]));
-                            job.box->rows.push_back(std::move(line));
-                        }
+                        if (!read_all_rows(stmt, res, job.box->rows, job.box->err))
+                            if (log_) log_->error("db fetch failed: " + job.box->err);
                         if (!job.box->rows.empty() && !job.box->rows[0].empty())
                             job.box->result = job.box->rows[0][0];
                         mysql_free_result(res);
