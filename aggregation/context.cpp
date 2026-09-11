@@ -1,5 +1,6 @@
 #include <atomic>
 #include "context.h"
+#include "connect_book.h"
 #include "FrameworkCall.h"
 #include "work_pool.h"
 #include "Box.h"
@@ -21,6 +22,26 @@ bool framework_call(const std::string& cmd,
     if (!g_framework_call)
         return false;
     return g_framework_call->call(cmd, args).success;
+}
+
+virtual_conn_info get_current_virtual_conn() {
+    virtual_conn_info result;
+    if (!g_framework_call)
+        return result;
+    auto book = g_framework_call->connection_book();
+    if (!book)
+        return result;
+    result.valid = book->connection_info(
+        tls_current_conn, result.virtual_fd, result.group_name);
+    return result;
+}
+
+std::vector<uint64_t> get_group_info(int group_name) {
+    if (!g_framework_call)
+        return {};
+    auto book = g_framework_call->connection_book();
+    return book ? book->group_virtual_fds(group_name)
+                : std::vector<uint64_t>{};
 }
 
 EventAwaiter query_db(const std::string& sql, std::vector<std::string> params) {

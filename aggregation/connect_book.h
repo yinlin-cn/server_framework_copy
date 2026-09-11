@@ -45,7 +45,10 @@ public:
     bool assign_group(int group_name, const std::vector<uint64_t>& fds);
 
     Conn find(uint64_t virtual_fd) const;
+    bool connection_info(Conn conn, uint64_t& virtual_fd,
+                         int& group_name) const;
     std::vector<Conn> group_snapshot(int group_name) const;
+    std::vector<uint64_t> group_virtual_fds(int group_name) const;
     std::vector<uint64_t> all_virtual_fds() const;
 
     bool send_to(uint64_t virtual_fd, const std::string& msg);

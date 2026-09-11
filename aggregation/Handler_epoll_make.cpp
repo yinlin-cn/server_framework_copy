@@ -35,8 +35,12 @@ push_result Handler_epoll_make::on_message(
         divide_task{parse, conn, divide_handler_, credit});
 
     // Full 时不阻塞 Reactor：消息留在 read_buffer，由低水位回调触发重试。
-    if (r == push_result::Full)
+    // 但 DB 额度已经在前面领取，任务没投进去时必须立即归还。
+    if (r == push_result::Full) {
+        if (credit)
+            credit->release();
         return r;
+    }
     if (r == push_result::Closed && credit)
         credit->release();   // 池已关闭，任务没投进去，额度立即还回
     return r;

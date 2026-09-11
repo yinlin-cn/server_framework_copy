@@ -147,6 +147,27 @@ connect_book::Conn connect_book::find(uint64_t virtual_fd) const {
     return it->second.conn.lock();
 }
 
+bool connect_book::connection_info(Conn conn, uint64_t& virtual_fd,
+                                   int& group_name) const {
+    if (!conn)
+        return false;
+    lock_guard<mutex> lock(mutex_);
+    auto sit = sock_to_virtual_.find(conn->sock);
+    if (sit == sock_to_virtual_.end())
+        return false;
+
+    auto vit = virtual_map_.find(sit->second);
+    if (vit == virtual_map_.end())
+        return false;
+    auto current = vit->second.conn.lock();
+    if (!current || current.get() != conn.get())
+        return false;
+
+    virtual_fd = sit->second;
+    group_name = vit->second.group;
+    return true;
+}
+
 std::vector<connect_book::Conn> connect_book::group_snapshot(
     int group_name) const {
     std::vector<Conn> result;
@@ -160,6 +181,25 @@ std::vector<connect_book::Conn> connect_book::group_snapshot(
             continue;
         if (auto c = vit->second.conn.lock())
             result.push_back(std::move(c));
+    }
+    return result;
+}
+
+std::vector<uint64_t> connect_book::group_virtual_fds(
+    int group_name) const {
+    std::vector<uint64_t> result;
+    lock_guard<mutex> lock(mutex_);
+    auto it = group_map_.find(group_name);
+    if (it == group_map_.end())
+        return result;
+
+    result.reserve(it->second.size());
+    for (uint64_t fd : it->second) {
+        auto vit = virtual_map_.find(fd);
+        if (vit == virtual_map_.end() || vit->second.group != group_name)
+            continue;
+        if (vit->second.conn.lock())
+            result.push_back(fd);
     }
     return result;
 }
