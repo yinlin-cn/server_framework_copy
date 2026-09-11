@@ -18,8 +18,8 @@ class work_pool {
 public:
     work_pool(int N=8);
     blockingqueue& get_queue();
-    void add_task(std::function<void()> task);
-    void add_task(work_task task);
+    push_result add_task(std::function<void()> task);
+    push_result add_task(work_task task);
     void on_event(uint64_t key);
     void add_blockingtask(blockedtask b);
     void set_error_handler(ErrorHandler h) { pool.set_error_handler(std::move(h)); }   // ② 新增透传

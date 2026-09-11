@@ -3,7 +3,7 @@
 > A short-task server framework for food delivery systems based on
 > `epoll + thread pools + coroutines`.
 >
-> Version: v0.8
+> Version: v0.9
 
 ---
 
@@ -96,7 +96,7 @@ DB pool (parameterized SQL)
 
 ### Multi Reactor
 
-- Acceptor accepts connections and distributes them round-robin to Reactors
+- Acceptor uses its own epoll + eventfd, accepts connections, and distributes them round-robin to Reactors
 - Every Reactor owns one epoll instance and one event-loop thread
 - Connection table uses `unordered_map<int, shared_ptr<Internalconnection>>`
 - BatchSender coalesces cross-thread wakeups
@@ -128,9 +128,8 @@ Each connection has its own window:
 
 - Default window: 8
 - Window count, pause/resume state are protected by one mutex
-- Reactor peeks one complete message before taking a window slot
-- If a full message exists but no window slot is free, the message stays in
-  `read_buffer`
+- Reactor takes one complete message, then tries to reserve a window slot
+- If no window slot is free, the message is placed back in `read_buffer`
 
 ### Bounded Task Queues
 
@@ -141,6 +140,7 @@ divide/work/DB queues use `bounded_task_queue<T>`:
 - Producers can use blocking push
 - Reactor-facing paths can use `try_push`
 - Queue drains to low water before waking all blocked producers
+- A low-water callback is wired from divide_pool to NetworkServer and Reactor retry
 
 ### DB Admission
 
@@ -148,23 +148,24 @@ DB-related requests are classified before entering business:
 
 - fast request: normal path
 - db request: tries to acquire DB credit first
-- no credit: message waits in `DbWaitingAdmission`, connection stops reading
+- no credit: message waits in `DB_waiting_queue`, connection stops reading
 - DB completion releases credit and resumes pending messages
 
-### Handler PushResult
+### Handler push_result
 
-`Handler_epoll_make::on_message()` returns `PushResult`:
+`Handler_epoll_make::on_message()` returns `push_result`:
 
 ```cpp
-enum class PushResult {
+enum class push_result {
     Ok,
     Full,
     Closed,
 };
 ```
 
-On `Full`, Reactor returns the window slot and keeps the message in the
-connection read buffer.
+On `Full`, Reactor returns the window slot, keeps the message in the connection
+read buffer, pauses that connection, and retries after the divide queue reaches
+its low-water mark.
 
 ---
 
@@ -274,7 +275,7 @@ Three concurrency issues were found with ThreadSanitizer:
 1. Metrics samplers were registered after the sampler thread started
    - fixed by registering all samplers before `start_sampler()`
 2. DB could resume a coroutine before `await_suspend()` returned
-   - fixed by adding a `wake_guard` barrier to `Box`
+   - fixed with a condition-variable `coroutine_suspend_guard` in `Box`
 3. `on_connect` could run after a connection was visible to the Reactor
    event loop
    - fixed by invoking `on_connect` before inserting into `connections_`
@@ -327,6 +328,7 @@ The stable operating window is around 10k QPS for request-response traffic.
 
 - WSL numbers are useful for relative comparisons only
 - Sustained latency needs native Linux validation
-- Backpressure low-water external callbacks are not fully wired to Reactor
+- Backpressure low-water callbacks are wired to Reactor retry; broader overload
+  policy still needs native-Linux validation
 - Long-lived independent-thread sessions need real business validation
 - Operations management dashboard is not implemented yet

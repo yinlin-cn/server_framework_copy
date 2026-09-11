@@ -8,7 +8,7 @@ using namespace std;
 class Handler_epoll {
 public:
     virtual ~Handler_epoll() = default;
-    virtual PushResult on_message(std::shared_ptr<Internalconnection> conn,
+    virtual push_result on_message(std::shared_ptr<Internalconnection> conn,
                                   const std::string& msg) = 0;
     virtual void on_connect(std::shared_ptr<Internalconnection> conn) {}
     virtual void on_disconnect(std::shared_ptr<Internalconnection> conn) {}

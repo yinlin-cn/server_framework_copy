@@ -2,7 +2,8 @@
 
 > 一个基于 `epoll + 线程池 + 协程` 的短任务服务器框架，目标是为外卖系统（顾客 / 商家 / 骑手三端）提供底层网络、异步业务与数据库支持。
 >
-> 版本：v0.8（v0.7 全功能 + 三处并发生命周期竞态修复）
+> 版本：v0.9（多 Reactor 双 epoll + 第二阶段背压/协程稳定性修复）
+> 变更细节：[docs/v0.9-第二阶段实现说明.md](docs/v0.9-第二阶段实现说明.md)
 >
 > English version: [README_EN.md](README_EN.md)
 
@@ -229,7 +230,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 
 ```text
 ┌─ 网络IO层（Acceptor + N 个 Reactor）──────────────────────┐
-│ Acceptor（主线程 accept）→ 轮询分给某个 Reactor            │
+│ Acceptor（epoll + eventfd）→ 轮询分给某个 Reactor           │
 │ Reactor = 1 epoll + 1 eventfd + 1 事件线程                │
 │   读 → 长度头拆包 → 每连接窗口 try_take                   │
 │   Handler_epoll_make：路由分类 / DB 准入 / 投 divide      │
@@ -251,7 +252,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
                     ▼
 ┌─ 数据库层（DB_pool + connect_pool）───────────────────────┐
 │ prepared statement 参数化执行 → 结果写 Box(rows/err)      │
-│ → 等 wake_guard=false 再投唤醒任务；额度等业务流程结束归还│
+│ → 等真实挂起完成后投唤醒任务；额度等业务流程结束归还       │
 └───────────────────────────────────────────────────────────┘
 ```
 
@@ -272,7 +273,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 
 | 线程/角色 | 数量 | 在跑什么 | 关键约束 |
 |---|---|---|---|
-| Acceptor 线程 | 1 | accept + 轮询分配连接 | 只碰 listen_fd，不处理业务 |
+| Acceptor 线程 | 1 | epoll 监听 + accept + 轮询分配连接 | 只碰 listen_fd，不处理业务 |
 | Reactor 事件线程 | N（默认 4） | 本组连接读/写/心跳/关闭 | 每 Reactor 单线程；跨线程只经 pending 桶 + eventfd |
 | divide worker | parse_threads（默认 16） | `divide_work(msg)` | 不碰连接、不查库 |
 | work worker | work_threads（默认 20） | 业务闭包 / 协程 resume | 白板是 TLS；查库会挂起归还线程 |
@@ -295,7 +296,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 |---|---|---|
 | `Internalconnection.h` | 网络 | sock、read_buffer、send_queue、send_function、owner_reactor、last_active_us、reading_paused、ConnectionFlow |
 | `Reactor.h/.cpp` | 网络 | epoll 循环、拆包、读写、心跳、pending_send/close/resume 桶 |
-| `Acceptor.h/.cpp` | 网络 | accept + 轮询分配，不持有连接 |
+| `Acceptor.h/.cpp` | 网络 | epoll + eventfd 监听，accept 后轮询分配，不持有连接 |
 | `NetworkServer.h/.cpp` | 集成 | Acceptor + N Reactor 组装 |
 | `ReactorControl.h/.cpp` | 背压 | 实现 IReactorControl：pause/schedule_resume 适配到 Reactor |
 | `Handler_epoll.h` | 接口 | on_message/on_connect/on_disconnect |
@@ -315,8 +316,8 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 | `connect_pool.h/.cpp` | DB | N 条 MariaDB 连接借/还/显式 shutdown |
 | `Handler_DB.h` | 接口 | submit(wait_key, box, sql, params) |
 | `Handler_DB_make.h/.cpp` | 接线 | EventAwaiter → DBTask → DB_pool |
-| `DB_task.h` / `Box.h` / `DBResult.h` | DB | 任务/信箱；Box 含 wake_guard 防提前 resume |
-| `backpressure.h` | 背压 | RouteClassifier / DbCreditGate / DbWaitingAdmission |
+| `DB_task.h` / `Box.h` / `DBResult.h` | DB | 任务/信箱；Box 含 coroutine_suspend_guard 防提前 resume |
+| `backpressure.h` | 背压 | RouteClassifier / DB_credit_gate / DB_waiting_queue |
 | `bounded_task_queue.h` | 背压 | 有界队列：push/try_push、高低水位、Full 计数、close |
 | `ConnectionFlow.h` | 背压 | 每连接窗口状态机 |
 | `connect_book.h/.cpp` | 框架调用 | virtual_fd/组/版本号/变更缓存/条件变量等待 |
@@ -336,11 +337,12 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 
 ```text
                  ┌─ Reactor 0（epoll + eventfd + 事件线程）→ 连接组 0
-Acceptor（主线程）┼─ Reactor 1（epoll + eventfd + 事件线程）→ 连接组 1
-  accept 轮询分配 └─ Reactor N（epoll + eventfd + 事件线程）→ 连接组 N
+Acceptor（epoll + eventfd）┼─ Reactor 1（epoll + eventfd + 事件线程）→ 连接组 1
+  accept 轮询分配          └─ Reactor N（epoll + eventfd + 事件线程）→ 连接组 N
 ```
 
 - `Acceptor` 只 accept，新连接按 `next_.fetch_add(1) % reactor_count` 轮询分配；
+- `Acceptor` 自己持有 `epoll_fd_ + wake_fd_`，不再用 accept 轮询和 sleep(1ms)；
 - 每个 `Reactor` 一个 epoll + 一个事件线程，连接表 `unordered_map<int, shared_ptr<Internalconnection>>`（O(1) 查找）；
 - 跨线程发送：业务线程入队 + 加入待发送桶 + 标记 BatchSender，Reactor 统一写出；
 - **心跳**：连接记录最后活跃时间，事件循环每 5 秒节流扫描，空闲超过 60 秒自动关闭；
@@ -360,13 +362,14 @@ Acceptor（主线程）┼─ Reactor 1（epoll + eventfd + 事件线程）→ �
 
 动机：请求-响应下“每条消息一次 eventfd 唤醒”成本高；批处理后同一 Reactor 的多条待发数据一次唤醒、一次写完。退出时 `flush_and_stop()` 会把剩余待发 Reactor 全部唤醒，避免关 socket 前丢消息。
 
-### 4.4 Reactor 内部三个 pending 桶
+### 4.4 Reactor 内部 pending 桶
 
 | 桶 | 谁写入 | 事件线程处理 |
 |---|---|---|
 | `pending_send_` | 业务线程（send_function） | `try_send()` 写 socket |
 | `pending_resume_` | 业务/DB 侧（schedule_resume） | 去重后恢复 EPOLLIN |
 | `pending_close_` | 任何线程（request_close） | `close_client()` 统一关闭 |
+| `pending_divide_retry_` | Reactor（divide Full） | 低水位后重试暂停连接 |
 
 桶由 mutex 保护；跨线程只往桶里放指针，再写 eventfd；具体 epoll 操作都在 Reactor 线程内完成。`process_pending_resume` 会对同一连接按指针排序 + unique 去重，防止一次恢复被重复处理。
 
@@ -389,13 +392,13 @@ work worker 执行业务协程（is_business = true）
   → co_await query_db(...)
   → EventAwaiter::await_suspend(h)：
       1. 置 g_coroutine_suspended = true（本业务任务真正挂起，窗口暂不归还）
-      2. box->wake_guard = g_current_task_active（DB 等它清掉才允许 resume）
+      2. box->suspend_guard = g_current_task_suspend_guard（DB 等它完成才允许 resume）
       3. blockingqueue.insert(blockedtask{ wait_key, resume 闭包, box })
       4. db_handler->submit(wait_key, box, sql, params)
   → worker 返回（线程归还）
 
 DB worker 执行 SQL → 写 box.rows/err → 还连接
-  → 等 wake_guard 变成 false（防止协程帧还在被业务 worker 使用）
+  → 等 coroutine_suspend_guard::wait_finished()（防止协程帧还在被业务 worker 使用）
   → work_pool::on_event(wait_key)：从 blockingqueue 取回 blockedtask
   → resume 任务重新进入 work 队列
 
@@ -413,6 +416,7 @@ work worker 再取到该任务 → 白板恢复 → handle.resume()
 - 业务 worker 跑完任务后：若 `g_coroutine_suspended == false`，说明任务已彻底结束，调 `flow.finish_one()`；
 - 若任务挂起，worker 先归还线程；窗口位由后续 resume 任务执行者按同样规则归还；
 - `finish_one()` 在窗口曾满时会置 `resume_pending_` 并通知 Reactor 恢复读取。
+- `release_slot()` 只归还窗口位，不再制造无人消费的 `resume_pending_`。
 
 ### 5.5 结构化查询结果
 
@@ -519,7 +523,7 @@ Handler::on_disconnect  → connect_book::dis_connection(conn)   // 反查并清
 
 - **每连接窗口状态机 ConnectionFlow**：同一连接最多 8 条在途消息；窗口计数、暂停/恢复标志在同一把锁内完成；
 - **三层有界任务队列 bounded_task_queue**：divide / work / DB 各自队列有容量与高低水位；
-- **Handler PushResult**：网络入口能知道 divide 队列是否可投递，Full 时消息留在 read_buffer，不丢；
+- **Handler push_result**：网络入口能知道 divide 队列是否可投递，Full 时消息留在 read_buffer，不丢；
 - **DB 准入/等待队列**：DB 额度不足时消息进入等待区并暂停该连接读取；一个业务流程（可能含多次查库）全部结束后才释放额度并补投；
 - **业务池结算窗口位**：业务任务没挂起则 worker 返回后归还窗口；协程挂起则等续体真正结束后归还（当前通过 resume 任务再走一遍 worker 归还逻辑）。
 
@@ -535,7 +539,7 @@ Handler::on_disconnect  → connect_book::dis_connection(conn)   // 反查并清
 
 核心语义：
 
-- fast 任务走主任务队列；db 任务先进 DB 准入，额度不足进 DbWaitingAdmission 且暂停读；
+- fast 任务走主任务队列；db 任务先进 DB 准入，额度不足进 DB_waiting_queue 且暂停读；
 - 队列到达高水位时上游生产者阻塞/暂停；排到低水位时批量唤醒等待生产者；
 - Reactor 只读“有完整消息且窗口有空位”的连接；投递失败消息不取走，窗口位归还；
 - 指标 `bp(d/w/db)=size/high/full` 就是三个队列的当前大小/高水位/累计 Full 次数；DB 另有 `db(queue/wait/credit/active)` 采样。
@@ -546,26 +550,26 @@ Handler::on_disconnect  → connect_book::dis_connection(conn)   // 反查并清
 
 ```text
 RouteClassifier         判断 fast / db
-DbCreditGate            DB 是否还有准入额度
-DbWaitingAdmission      DB 额度不足时的等待区
+DB_credit_gate            DB 是否还有准入额度
+DB_waiting_queue      DB 额度不足时的等待区
 IReactorControl         pause_reading / schedule_resume
 divide_pool / Handler_divide   正常任务投递链
 connect_book            连接名册生命周期回调
 ```
 
-`on_message` 不再无脑投递，而是返回 PushResult：
+`on_message` 不再无脑投递，而是返回 push_result：
 
 ```cpp
-PushResult Handler_epoll_make::on_message(conn, msg) {
-    WorkClass cls = route_->classify(msg);   // 前缀匹配，默认 Fast
-    if (cls == WorkClass::Db && !db_gate_->try_acquire()) {
-        waiting_->add(conn, msg);              // 进 DB 等待区
+push_result Handler_epoll_make::on_message(conn, msg) {
+    work_type cls = route_->classify(msg);   // 前缀匹配，默认 Fast
+    if (cls == work_type::DB && !db_credit_gate_->try_acquire()) {
+        db_waiting_queue_->add_waiting_task(conn, msg); // 进 DB 等待区
         reactor_control_->pause_reading(conn); // 暂停读该连接
-        return PushResult::Ok;                 // 消息已被 waiting 收下
+        return push_result::Ok;                 // 消息已被 waiting 收下
     }
-    PushResult r = divide_pool_->try_add_task(divide_task{...});
-    if (r == PushResult::Full)
-        divide_pool_->add_task(divide_task{...});   // 阻塞投递兜底，不丢消息
+    push_result r = divide_pool_->try_add_task(divide_task{...});
+    if (r == push_result::Full)
+        return r;   // 交给 Reactor 暂停当前连接，低水位后重试
     return r;   // Ok / Full / Closed
 }
 ```
@@ -575,14 +579,14 @@ Reactor 拿到 `Full` 时：归还窗口位、消息留在 read_buffer、不再�
 ### 7.2 队列容量与水位来源（当前取值）
 
 - divide 队列容量 = 解析线程数 × 32；work 队列容量 = 业务线程数 × 32；DB 队列容量 = DB worker 数 × 32（见 divide_pool / thread_pool / DB_pool 构造）；
-- DB 额度 limit = max(4, DB 连接池大小)，由 Server::start 创建 DbCreditGate 时收紧；
+- DB 额度 limit = max(4, DB 连接池大小)，由 Server::start 创建 DB_credit_gate 时收紧；
 - ConnectionFlow 默认 window = 8；
 - 这些是设计参数，正式接入业务后应按“排队深度 × 单请求内存”重新计算；压测目标是在高水位以下运行。
 
 ### 7.3 已发现并修复的背压竞态（v0.8）
 
 1. **Metrics 采样器注册竞态**：必须所有 register_queue_sampler / register_db_sampler 完成后再 start_sampler；
-2. **DB 提前 resume**：Box 加 `wake_guard`（shared_ptr<atomic<bool>>），DB worker 完成 SQL 后循环等待 wake_guard 为 false 再投递 resume，防止协程帧还没真正挂起就被并发 resume；
+2. **DB 提前 resume**：Box 使用 `coroutine_suspend_guard`，业务 worker 返回时调用 `finish()`，DB worker 用条件变量等待 `wait_finished()`，不在自旋超时后继续 resume；
 3. **on_connect 可见性竞态**：Reactor::add_connection 先执行 conn->handler->on_connect()，再插入 connections_ 和 epoll，防止客户端立即断开时事件线程与登记线程并发。
 
 ---
@@ -598,7 +602,7 @@ Reactor 拿到 `Full` 时：归还窗口位、消息留在 read_buffer、不再�
 要点：
 
 - `connect_pool`：N 条 MariaDB 连接，借/还阻塞队列实现；`shutdown()` 先关连接、再唤醒等待者（先关连接池后 join 的顺序是优雅退出正确的关键）；
-- `DB_pool`：独立 worker 线程池 + 有界队列；借连接 → prepared statement 参数化执行 → 完整结果写 rows/err → 还连接 → 等 wake_guard → 投 resume；准入额度由业务 worker 在流程结束时归还（DbCreditToken 随挂起/恢复传递）；
+- `DB_pool`：独立 worker 线程池 + 有界队列；借连接 → prepared statement 参数化执行 → 完整结果写 rows/err → 还连接 → 等 coroutine_suspend_guard → 投 resume；准入额度由业务 worker 在流程结束时归还（DB_credit_token 随挂起/恢复传递）；
 - 连接建立时设置 connect/read/write 超时；
 - DB 结果不做行数限制，限制归业务层；连接池重连、慢查询统计属后续细化项；
 - 参数化只针对“值”。表名/列名/排序方向等结构不能参数化，业务层必须用白名单校验。
@@ -623,7 +627,7 @@ Reactor 拿到 `Full` 时：归还窗口位、消息留在 read_buffer、不再�
 | `[divide/work/db] avg/p99` | 模块任务平均延迟 / P99；work 约为业务 fn 执行耗时，divide 为解析耗时，db 为 SQL 执行耗时 |
 | `queue(d/w/db)` | 入队/出队计数差值（queue_depth_ 原子加减）。注意 resume/on_event 任务也走 work 队列，work 的 queue 含恢复任务 |
 | `bp(d/w/db)=size/high/full` | 采样器读真实有界队列：当前长度 / 高水位 / 累计 Full 次数 |
-| `db(queue=size/high/low/full wait=.. credit=.. active=..)` | DB 队列真实水位 + DbWaitingAdmission 长度 + DbCreditGate 可用/上限 + DB worker 正在执行的 SQL 数 |
+| `db(queue=size/high/low/full wait=.. credit=.. active=..)` | DB 队列真实水位 + DB_waiting_queue 长度 + DB_credit_gate 可用/上限 + DB worker 正在执行的 SQL 数 |
 | `err(d/w/db)` | 分阶段累计错误（ErrorStage::Divide/Work/DB） |
 | `cpu` | 进程 CPU 时间差值 ÷ 墙钟窗口 × 100；>100% 表示多核合计 |
 | `rss` | /proc/self/statm 第 2 字段 × 4KB |
@@ -654,7 +658,7 @@ cpu=568% rss=20500KB
 
 - 长度头协议解决粘包半包；非法头部逐字节跳过重新同步；
 - epoll 使用 ET 模式，读到 EAGAIN/EWOULDBLOCK 才停；发送也走非阻塞；
-- 唤醒必须通过任务重新入队，不在完成线程直接 resume；DB worker 完成 SQL 后还必须等 wake_guard=false；
+- 唤醒必须通过任务重新入队，不在完成线程直接 resume；DB worker 完成 SQL 后还必须等 coroutine_suspend_guard=false；
 - 白板是 thread_local；协程恢复时 resume 任务带 conn，白板会重设；
 - `DB_pool::shutdown()` 幂等 + joinable 防护；connect_pool 必须先 shutdown 再让 DB worker join；
 - SQL 已参数化（prepared statement），表名/列名需业务层白名单校验；
@@ -664,7 +668,7 @@ cpu=568% rss=20500KB
 - 增加新池/新指标时：PoolId / ErrorStage 枚举加项要插在 Count 前面；Handler_metrics 加埋点方法时所有实现同步更新；
 - 增加新 Handler 时保持“接口 + make 接线 + 工厂”模式，业务/网络层不要反向依赖实现；
 - 现在有三个全局单例：g_work_pool / g_db_handler / g_framework_call（context.h 靠它们工作）。单进程只应创建一个 Server；
-- EventTask 的 unhandled_exception 直接 terminate；协程业务里能处理的错误要自己 try/catch 或依赖框架 worker 层兜底，不要抛到协程外面。
+- EventTask 的 `unhandled_exception` 会把异常暂存到 `tls_coroutine_exception`，再由 work worker 重新抛出；业务仍应优先在业务层处理可预期错误。
 
 ---
 
@@ -697,13 +701,13 @@ aggregation/
 ├─ ConnectionSession.h/.cpp    // 框架外长连接会话句柄
 ├─ ConnectionFlow.h            // 每连接窗口状态机
 ├─ bounded_task_queue.h        // 通用有界任务队列
-├─ backpressure.h              // RouteClassifier / DbCreditGate / DbWaitingAdmission
+├─ backpressure.h              // RouteClassifier / DB_credit_gate / DB_waiting_queue
 ├─ ReactorControl.h/.cpp       // Reactor 控制接口适配
 ├─ connect_pool.h/.cpp         // 数据库连接池
 ├─ DB_pool.h/.cpp              // 数据库线程池
 ├─ epoll.h/.cpp                // 单 Reactor 旧实现（参考）
 ├─ Reactor.h/.cpp              // 多 Reactor（含心跳）
-├─ Acceptor.h/.cpp             // 主线程 accept
+├─ Acceptor.h/.cpp             // epoll + eventfd + accept
 ├─ NetworkServer.h/.cpp        // 网络层集成类
 ├─ BatchSender.h/.cpp          // 批处理模块
 ├─ MetricsConfig.h / Metrics.h/.cpp  // 指标系统
@@ -761,14 +765,14 @@ aggregation/
 - 错误回调、优雅退出、协程取消结算、结构化多行多列结果；
 - 指标系统（请求级 + 分模块 QPS/P99 + 队列/DB/系统指标）+ 正式日志；
 - 框架调用层：连接名册 + FrameworkCall + ConnectionSession，业务层可单发/组播/分组/主动关闭；
-- v0.7 背压：ConnectionFlow 窗口状态机、三层有界队列、高低水位、DB 准入/等待、Handler PushResult；
-- v0.8 并发修复：Metrics 注册顺序、DB wake_guard、on_connect 可见性；
+- v0.7 背压：ConnectionFlow 窗口状态机、三层有界队列、高低水位、DB 准入/等待、Handler push_result；
+- v0.8 并发修复：Metrics 注册顺序、DB coroutine_suspend_guard、on_connect 可见性；
 - 压测脚本与报告、中文 README（本文件）。
 
 ### 下一步（按“为什么还没做 / 回来先做哪件”排优先级）
 
 1. **退出机制的挂起协程登记/取消协议**：现在 settle_pending 依赖 blockingqueue.take_all 与 wait_idle，关闭后重新投递可能不执行。要做成“业务任务开始时登记协程帧/Box，退出时显式取消所有挂起并把 resume 强制排到队首”，而不是关闭后再投。先给 Box/EventAwaiter 加全局登记表，再改 Server::stop 顺序（对应 5.8 节）；
-2. **队列低水位信号外接 Reactor**：bounded_task_queue 的低水位只 notify 本队列的阻塞 push 等待者；当前 divide 排空后依赖 resume/下一事件恢复暂停连接，没有“divide 空位了主动告诉 Reactor”的回调。v0.7 目标是把低水位回调接到 DbWaitingAdmission / Reactor 的 schedule_resume；
+2. **队列低水位信号外接 Reactor（v0.9 已完成）**：bounded_task_queue 的低水位回调已接到 divide_pool，再经 NetworkServer 通知 Reactor 重试暂停连接；
 3. **业务按类型分池隔离**：重任务（heavy）与轻任务同池会互相排队。解析层 RouteClassifier 已有前缀，可扩展为“业务池路由”，按消息类型投不同 work_pool；
 4. **运维/管理系统**：设计图最右侧的规划：实时监控指标/日志/模块状态，并可通过 FrameworkCall 下发指令的管理端。前置条件是框架调用层稳定、指标字段冻结；
 5. **框架外独立长连接线程真实业务接入**：ConnectionSession / connect_book 已能编译并过端到端冒烟，但还没接真实长连接业务（如订单状态机独立线程 + send + wait_version_change）；

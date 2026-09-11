@@ -9,14 +9,15 @@
 #include <memory>
 #include <mutex>
 #include <string>
+#include <thread>
 #include <vector>
 
 #include "Internalconnection.h"
 
 // 消息类型：fast 不查 DB，db 需要 DB 准入额度。
-enum class WorkClass {
+enum class work_type {
     Fast,
-    Db,
+    DB,
 };
 
 class IReactorControl {
@@ -37,14 +38,14 @@ public:
         db_.push_back(prefix);
     }
 
-    WorkClass classify(const std::string& msg) const {
+    work_type classify(const std::string& msg) const {
         for (const auto& prefix : db_)
             if (msg.rfind(prefix, 0) == 0)
-                return WorkClass::Db;
+                return work_type::DB;
         for (const auto& prefix : fast_)
             if (msg.rfind(prefix, 0) == 0)
-                return WorkClass::Fast;
-        return WorkClass::Fast;
+                return work_type::Fast;
+        return work_type::Fast;
     }
 
 private:
@@ -53,14 +54,25 @@ private:
 };
 
 // DB 准入额度：背压第一道闸，后续接入 pending 等待队列。
-class DbCreditGate {
+class DB_credit_gate {
 public:
-    explicit DbCreditGate(size_t limit)
+    explicit DB_credit_gate(size_t limit)
         : limit_(limit), available_(limit) {}
 
     bool try_acquire() {
         std::lock_guard<std::mutex> lock(mutex_);
-        if (available_ == 0)
+        if (closed_ || available_ == 0)
+            return false;
+        available_--;
+        return true;
+    }
+
+    bool acquire() {
+        std::unique_lock<std::mutex> lock(mutex_);
+        cv_.wait(lock, [this] {
+            return closed_ || available_ > 0;
+        });
+        if (closed_)
             return false;
         available_--;
         return true;
@@ -69,15 +81,18 @@ public:
     void release() {
         {
             std::lock_guard<std::mutex> lock(mutex_);
-            if (available_ < limit_)
+            if (!closed_ && available_ < limit_)
                 available_++;
         }
-        for (auto& cb : listeners_)
-            cb();
+        cv_.notify_one();
     }
 
-    void subscribe(std::function<void()> cb) {
-        listeners_.push_back(std::move(cb));
+    void shutdown() {
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            closed_ = true;
+        }
+        cv_.notify_all();
     }
 
     size_t available() const {
@@ -93,80 +108,120 @@ public:
 private:
     size_t limit_;
     size_t available_;
+    bool closed_ = false;
     mutable std::mutex mutex_;
-    std::vector<std::function<void()>> listeners_;
+    std::condition_variable cv_;
 };
 
 // 一个 DB 业务流程只占一个准入额度；令牌随任务挂起/恢复传递，
 // 整个业务流程真正结束时才释放（防止一次业务多次查库导致额度提前归还）。
-class DbCreditToken {
+class DB_credit_token {
 public:
-    explicit DbCreditToken(DbCreditGate* gate) : gate_(gate) {}
+    explicit DB_credit_token(DB_credit_gate* db_credit_gate)
+        : db_credit_gate_(db_credit_gate) {}
 
-    DbCreditToken(const DbCreditToken&) = delete;
-    DbCreditToken& operator=(const DbCreditToken&) = delete;
+    DB_credit_token(const DB_credit_token&) = delete;
+    DB_credit_token& operator=(const DB_credit_token&) = delete;
 
     void release() {
         bool expected = false;
         if (released_.compare_exchange_strong(expected, true))
-            if (gate_) gate_->release();
+            if (db_credit_gate_) db_credit_gate_->release();
     }
 
 private:
-    DbCreditGate* gate_;
+    DB_credit_gate* db_credit_gate_;
     std::atomic<bool> released_{false};
 };
 
 // DB 等待队列：额度不足时先在这里停放完整消息，等额度释放后补投。
-class DbWaitingAdmission {
+class DB_waiting_queue {
 public:
     using Conn = std::shared_ptr<Internalconnection>;
-    using Dispatch = std::function<void(Conn, const std::string&)>;
+    using Dispatch = std::function<bool(
+        Conn, const std::string&, std::shared_ptr<DB_credit_token>)>;
 
-    DbWaitingAdmission(DbCreditGate* gate, Dispatch dispatch)
-        : gate_(gate), dispatch_(std::move(dispatch)) {
-        gate_->subscribe([this] { drain(); });
+    DB_waiting_queue(DB_credit_gate* db_credit_gate, Dispatch dispatch)
+        : db_credit_gate_(db_credit_gate), dispatch_(std::move(dispatch)),
+          drain_thread_(&DB_waiting_queue::dispatch_waiting_tasks, this) {}
+
+    ~DB_waiting_queue() {
+        shutdown();
     }
 
-    void add(Conn conn, const std::string& msg) {
-        std::lock_guard<std::mutex> lock(mutex_);
-        pending_.push_back({std::move(conn), msg});
+    bool add_waiting_task(Conn conn, const std::string& msg) {
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            if (stopped_)
+                return false;
+            waiting_tasks_.push_back({std::move(conn), msg});
+        }
+        cv_.notify_one();
+        return true;
     }
 
-    size_t size() const {
+    size_t waiting_task_count() const {
         std::lock_guard<std::mutex> lock(mutex_);
-        return pending_.size();
+        return waiting_tasks_.size();
+    }
+
+    void shutdown() {
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            if (stopped_)
+                return;
+            stopped_ = true;
+        }
+        if (db_credit_gate_)
+            db_credit_gate_->shutdown();   // 唤醒可能卡在 acquire() 的 drain 线程
+        cv_.notify_all();
+        if (drain_thread_.joinable())
+            drain_thread_.join();
     }
 
 private:
-    struct Pending {
+    struct waiting_task {
         Conn conn;
         std::string msg;
     };
 
-    void drain() {
+    void dispatch_waiting_tasks() {
         while (true) {
-            Pending p;
+            waiting_task p;
             {
-                std::lock_guard<std::mutex> lock(mutex_);
-                if (pending_.empty())
+                std::unique_lock<std::mutex> lock(mutex_);
+                cv_.wait(lock, [this] {
+                    return stopped_ || !waiting_tasks_.empty();
+                });
+                if (stopped_)
                     return;
-                p = std::move(pending_.front());
-                pending_.pop_front();
+                p = std::move(waiting_tasks_.front());
+                waiting_tasks_.pop_front();
             }
 
-            if (!gate_->try_acquire()) {
+            if (!db_credit_gate_->acquire()) {
                 std::lock_guard<std::mutex> lock(mutex_);
-                pending_.push_front(std::move(p));
+                waiting_tasks_.push_front(std::move(p));
                 return;
             }
 
-            dispatch_(p.conn, p.msg);
+            auto token = std::make_shared<DB_credit_token>(db_credit_gate_);
+            bool dispatched = false;
+            try {
+                dispatched = dispatch_(p.conn, p.msg, token);
+            } catch (...) {
+                dispatched = false;
+            }
+            if (!dispatched)
+                token->release();
         }
     }
 
-    DbCreditGate* gate_;
+    DB_credit_gate* db_credit_gate_;
     Dispatch dispatch_;
     mutable std::mutex mutex_;
-    std::deque<Pending> pending_;
+    std::condition_variable cv_;
+    bool stopped_ = false;
+    std::deque<waiting_task> waiting_tasks_;
+    std::thread drain_thread_;
 };

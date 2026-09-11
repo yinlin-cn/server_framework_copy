@@ -8,9 +8,9 @@ work_pool::work_pool(int N):pool(N){};
 
 blockingqueue& work_pool::get_queue() { return queue_; }
 
-void work_pool::add_task(function<void()> task) {
+push_result work_pool::add_task(function<void()> task) {
     auto conn = tls_current_conn;          // 提交线程当前连接
-    pool.add_task(work_task{
+    return pool.add_task(work_task{
         [task] {
             task();                        // 白板已由 worker 设置好
         },
@@ -18,8 +18,8 @@ void work_pool::add_task(function<void()> task) {
     });
 }
 
-void work_pool::add_task(work_task task) {
-    pool.add_task(move(task));
+push_result work_pool::add_task(work_task task) {
+    return pool.add_task(move(task));
 }
 
 void work_pool::on_event(uint64_t key) {

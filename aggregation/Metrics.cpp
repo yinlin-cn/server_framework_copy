@@ -69,7 +69,7 @@ void Metrics::register_queue_sampler(PoolId pool, QueueSampler sampler) {
     queue_samplers_[static_cast<int>(pool)] = std::move(sampler);
 }
 
-void Metrics::register_db_sampler(DbSampler sampler) {
+void Metrics::register_db_sampler(DB_sampler sampler) {
     db_sampler_ = std::move(sampler);
 }
 

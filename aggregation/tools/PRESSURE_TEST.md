@@ -246,7 +246,7 @@ BatchSender 把"每条消息一次 eventfd 唤醒"合并成"每批一次"，在�
 
 - 事件循环已多 Reactor 化，连接表已改 `unordered_map`；
 - 发送已支持 BatchSender 攒批（减少 eventfd 唤醒次数）；
-- 无界队列缺少背压，极端负载下内存可能持续增长；
+- “无界队列缺少背压”是该阶段的历史结论；v0.7 起已引入有界队列和 DB 准入，v0.9 已把低水位回调接到 Reactor；
 - 每连接/每任务仍有较多系统调用，可进一步用 readv/writev、recvmmsg/sendmmsg；
 - 压测客户端（Python 多线程）在高并发下成为新瓶颈，需更强压测工具验证服务器上限。
 
@@ -368,7 +368,7 @@ BatchSender 把"每条消息一次 eventfd 唤醒"合并成"每批一次"，在�
 
 ### 8.3 2000×16 并发修复回归
 
-修复 Metrics 注册、DB wake_guard、on_connect 可见性后：
+修复 Metrics 注册、DB coroutine_suspend_guard、on_connect 可见性后：
 
 | 场景 | 总请求 | 正确率 | QPS | conn_fail |
 |---|---:|---:|---:|---:|
@@ -419,3 +419,13 @@ db(queue=1/1600/800/0 wait=0 credit=38/50 active=4)
 ```bash
 python3 tools/parse_metrics.py server.log
 ```
+
+### 8.6 v0.9 背压回归补充（2026-09-11）
+
+| 场景 | 总请求 | 正确 | timeout | elapsed | QPS |
+|---|---:|---:|---:|---:|---:|
+| `heavy:5`，200 连接 × 50 | 10,000 | 10,000 | 0 | 2.59s | 3,860 |
+| `heavy:0`，200 连接 × 50 | 10,000 | 10,000 | 0 | 1.13s | 8,872 |
+| ping/hello 冒烟 + 2000 连接 | 2,002 | 2,002 | 0 | - | - |
+
+修复前同场景 `heavy:5` 曾出现 108 个 timeout 和约 30.67 秒耗时；根因是 `ConnectionFlow::release_slot()` 留下无人消费的 `resume_pending_`。

@@ -4,10 +4,11 @@
 #include <condition_variable>
 #include <cstddef>
 #include <deque>
+#include <functional>
 #include <mutex>
 #include <utility>
 
-enum class PushResult {
+enum class push_result {
     Ok,
     Full,
     Closed,
@@ -27,32 +28,38 @@ public:
         low_ = std::min(low, high_);
     }
 
-    PushResult try_push(T task) {
+    void set_low_water_callback(std::function<void()> callback) {
+        std::lock_guard<std::mutex> lock(mutex_);
+        low_water_callback_ = std::move(callback);
+    }
+
+    push_result try_push(T task) {
         std::lock_guard<std::mutex> lock(mutex_);
         if (closed_)
-            return PushResult::Closed;
+            return push_result::Closed;
         if (queue_.size() >= high_) {
             full_count_++;
-            return PushResult::Full;
+            return push_result::Full;
         }
         queue_.push_back(std::move(task));
         not_empty_.notify_one();
         if (queue_.size() > low_ && queue_.size() < high_)
             not_full_.notify_one();   // 有空位即可补一个
-        return PushResult::Ok;
+        return push_result::Ok;
     }
 
-    void push(T task) {
+    push_result push(T task) {
         std::unique_lock<std::mutex> lock(mutex_);
         if (queue_.size() >= high_)
             full_count_++;
         not_full_.wait(lock, [&] { return closed_ || queue_.size() < high_; });
         if (closed_)
-            return;
+            return push_result::Closed;
         queue_.push_back(std::move(task));
         not_empty_.notify_one();
         if (queue_.size() <= low_)
             not_full_.notify_all();   // 排到低水位，批量唤醒等待者
+        return push_result::Ok;
     }
 
     bool pop(T& out) {
@@ -62,10 +69,16 @@ public:
             return false;
         out = std::move(queue_.front());
         queue_.pop_front();
-        if (queue_.size() <= low_)
+        const bool low_water_reached = queue_.size() <= low_;
+        std::function<void()> callback;
+        if (low_water_reached)
             not_full_.notify_all();   // 低水位：一次让一批生产者恢复
         else if (queue_.size() < high_)
             not_full_.notify_one();
+        callback = low_water_callback_;
+        lock.unlock();
+        if (low_water_reached && callback)
+            callback();
         return true;
     }
 
@@ -104,4 +117,5 @@ private:
     std::condition_variable not_full_;
     bool closed_ = false;
     std::atomic<uint64_t> full_count_{0};
+    std::function<void()> low_water_callback_;
 };

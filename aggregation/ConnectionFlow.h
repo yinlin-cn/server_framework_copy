@@ -45,10 +45,8 @@ public:
         std::lock_guard<std::mutex> lock(mutex_);
         if (in_flight_ > 0)
             in_flight_--;
-        if (full_ && in_flight_ < window_) {
+        if (full_ && in_flight_ < window_)
             full_ = false;
-            resume_pending_ = true;
-        }
     }
 
     int in_flight() const {

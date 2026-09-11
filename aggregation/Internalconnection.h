@@ -13,9 +13,11 @@ class Reactor;
 struct Internalconnection : enable_shared_from_this<Internalconnection> {
     int sock;
     std::string read_buffer;                       // 半包暂存
-    bool connected;
+    std::atomic<bool> connected;
+    uint64_t reactor_conn_id = 0;                      // Reactor 内部事件身份，避免裸指针悬垂
     Handler_epoll* handler;                         // 本连接专属
     deque<string> send_queue;                 // 发送缓冲（批发送后剩余部分可插回队首）
+    size_t queued_send_bytes = 0;              // 发送队列中的总字节数
     mutex send_mutex;
     function<bool(const string&)> send_function;   // 业务发送入口，返回是否真正入队
     Reactor* owner_reactor = nullptr;              // 这个连接归哪个 Reactor 管

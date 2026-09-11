@@ -5,9 +5,9 @@
 using namespace std;
 void Handler_divide_make::on_work(std::shared_ptr<Internalconnection> conn,
                                   std::function<void()> work,
-                                  std::shared_ptr<DbCreditToken> db_credit){
+                                  std::shared_ptr<DB_credit_token> db_credit_token){
         work_task task{work, conn, true};
-        task.db_credit = std::move(db_credit);   // 解析产出的业务请求沿用准入令牌
+        task.db_credit_token = std::move(db_credit_token);   // 解析产出的业务请求沿用准入令牌
         wp->add_task(std::move(task));
 }
 

@@ -19,14 +19,14 @@ bool read_all_rows(MYSQL_STMT* stmt, MYSQL_RES* res,
         return false;
     }
 
-    constexpr size_t kInitColumnBytes = 256;
+    constexpr size_t init_column_bytes = 256;
     std::vector<MYSQL_BIND> rb(cols);
     std::vector<std::vector<char>> bufs(cols);
     std::vector<unsigned long> lengths(cols, 0);
     std::vector<my_bool> is_null(cols, 0);
 
     for (unsigned int c = 0; c < cols; c++) {
-        bufs[c].assign(kInitColumnBytes, '\0');
+        bufs[c].assign(init_column_bytes, '\0');
         rb[c].buffer_type = MYSQL_TYPE_STRING;
         rb[c].buffer = bufs[c].data();
         rb[c].buffer_length = bufs[c].size();
@@ -94,18 +94,32 @@ DB_pool::DB_pool(int conns, int workers, work_pool* business_pool,
 }
 
 DB_pool::~DB_pool() {
-    bool expected = false;
-    if (!stopped_.compare_exchange_strong(expected, true))
-        return;
-    conn_pool_.shutdown();                 // 先唤醒卡在 get() 的 worker，避免 join 死锁
-    tasks_.close();
-    for (auto& t : workers_)
-        if (t.joinable()) t.join();
+    shutdown();
 }
 
-void DB_pool::submit(DBTask task) {
-    tasks_.push(std::move(task));
+push_result DB_pool::submit(DBTask task) {
+    record_task_enqueued();
+    push_result result = tasks_.push(std::move(task));
+    if (result != push_result::Ok) {
+        finish_task();
+        return result;
+    }
     if (metrics_) metrics_->on_task_enqueued(PoolId::DB);
+    return push_result::Ok;
+}
+
+void DB_pool::record_task_enqueued() {
+    std::lock_guard<std::mutex> lock(idle_mutex_);
+    ++unfinished_task_count_;
+}
+
+void DB_pool::finish_task() {
+    {
+        std::lock_guard<std::mutex> lock(idle_mutex_);
+        if (unfinished_task_count_ > 0)
+            --unfinished_task_count_;
+    }
+    idle_cv_.notify_all();
 }
 
 void DB_pool::worker_loop() {
@@ -114,12 +128,23 @@ void DB_pool::worker_loop() {
         if (!tasks_.pop(job))
             return;
         if (metrics_) metrics_->on_task_dequeued(PoolId::DB);
-        db_active_++;
+        active_query_count_++;
 
         DBHandle conn = conn_pool_.get();            // 真实版是 MYSQL*
         if (!conn) {
-            db_active_--;
-            if (stopped_.load()) return;   // 停止中且拿不到连接，直接退出
+            if (job.box) {
+                job.box->err = "database pool stopped";
+                job.box->ready = true;
+            }
+            if (business_pool_ && job.box) {
+                auto* pool = business_pool_;
+                push_result result = pool->add_task(
+                    [pool, key = job.wait_name] { pool->on_event(key); });
+                if (result == push_result::Closed && log_)
+                    log_->error("db resume drop: work pool closed");
+            }
+            active_query_count_--;
+            finish_task();
             continue;
         }
 
@@ -171,19 +196,18 @@ void DB_pool::worker_loop() {
         if (metrics_) metrics_->on_module_task_done(PoolId::DB, Metrics::now_us() - db_start_us);
         job.box->ready = true;
         conn_pool_.release(conn);
-        db_active_--;
+        active_query_count_--;
 
         // 等待发起协程的业务任务返回后再 resume，避免同一协程被两个线程访问。
-        if (job.box && job.box->wake_guard) {
-            auto guard = job.box->wake_guard;
-            int spins = 0;
-            while (guard->load() && spins++ < 1000000)
-                std::this_thread::yield();
-        }
+        if (job.box && job.box->suspend_guard)
+            job.box->suspend_guard->wait_finished();
 
         uint64_t key = job.wait_name;
         auto* pool = business_pool_;
-        pool->add_task([pool, key]{ pool->on_event(key); });
+        push_result result = pool->add_task([pool, key]{ pool->on_event(key); });
+        if (result == push_result::Closed && log_)
+            log_->error("db resume drop: work pool closed");
+        finish_task();
     }
 }
 
@@ -191,8 +215,15 @@ void DB_pool::shutdown() {
     bool expected = false;
     if (!stopped_.compare_exchange_strong(expected, true))
         return;
-    conn_pool_.shutdown();                 // 唤醒卡在 get() 的 worker
     tasks_.close();
+    conn_pool_.shutdown();                 // 唤醒可能卡在 get() 的 worker
     for (auto& t : workers_)
         if (t.joinable()) t.join();
+}
+
+bool DB_pool::wait_idle(const std::chrono::milliseconds& timeout) {
+    std::unique_lock<std::mutex> lock(idle_mutex_);
+    return idle_cv_.wait_for(lock, timeout, [this] {
+        return unfinished_task_count_ == 0;
+    });
 }

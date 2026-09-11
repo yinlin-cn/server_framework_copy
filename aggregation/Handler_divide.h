@@ -4,14 +4,14 @@
 #include"Internalconnection.h"
 #include"work_task.h"
 using namespace std;
-class DbCreditToken;
+class DB_credit_token;
 
 class Handler_divide{
 public:
     virtual ~Handler_divide() = default;
     virtual void on_work(std::shared_ptr<Internalconnection> conn,
                          std::function<void()> work,
-                         std::shared_ptr<DbCreditToken> db_credit = nullptr) = 0;
+                         std::shared_ptr<DB_credit_token> db_credit_token = nullptr) = 0;
 };
 
 class Handler_divide_Factory {

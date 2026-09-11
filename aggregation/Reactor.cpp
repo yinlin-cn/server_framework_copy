@@ -22,7 +22,7 @@ int Reactor::set_nonblocking(int fd) {
 void Reactor::mod_event(shared_ptr<Internalconnection> conn, uint32_t evs) {
     epoll_event ev{};
     ev.events = evs;
-    ev.data.ptr = conn.get();
+    ev.data.u64 = conn->reactor_conn_id;
     epoll_ctl(epoll_fd_, EPOLL_CTL_MOD, conn->sock, &ev);
 }
 
@@ -56,10 +56,42 @@ vector<string> Reactor::spilit_message(string& message) {
 }
 
 bool Reactor::take_one_message(std::string& buffer, std::string& out) {
-    if (!peek_one_message(buffer, out))
-        return false;
-    buffer.erase(0, 4 + out.size());
-    return true;
+    size_t pos = 0;
+    while (pos + 4 <= buffer.size()) {
+        bool valid = true;
+        for (size_t i = 0; i < 4; ++i) {
+            char c = buffer[pos + i];
+            if (c < '0' || c > '9') {
+                valid = false;
+                break;
+            }
+        }
+
+        if (!valid) {
+            ++pos;
+            continue;
+        }
+
+        size_t len = static_cast<size_t>(stoi(buffer.substr(pos, 4)));
+        if (len > max_frame_bytes) {
+            buffer.erase(0, pos + 1);
+            return false;
+        }
+
+        if (buffer.size() < pos + 4 + len) {
+            if (pos > 0)
+                buffer.erase(0, pos);
+            return false;
+        }
+
+        out = buffer.substr(pos + 4, len);
+        buffer.erase(0, pos + 4 + len);
+        return true;
+    }
+
+    if (pos > 0)
+        buffer.erase(0, pos);
+    return false;
 }
 
 bool Reactor::peek_one_message(const std::string& buffer,
@@ -82,13 +114,18 @@ bool Reactor::peek_one_message(const std::string& buffer,
 bool Reactor::enqueue_send(shared_ptr<Internalconnection> conn, const string& msg) {
     lock_guard<mutex> lock(conn->send_mutex);
     if (!conn->connected) return false;
-    conn->send_queue.push_back(send_preview(msg));
+    string frame = send_preview(msg);
+    if (conn->queued_send_bytes + frame.size() > max_send_queue_bytes)
+        return false;
+    conn->queued_send_bytes += frame.size();
+    conn->send_queue.push_back(std::move(frame));
     return true;
 }
 
 void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
     set_nonblocking(conn->sock);
     conn->owner_reactor = this;
+    conn->reactor_conn_id = next_reactor_conn_id_++;
     // 连接刚登记就算活跃，避免 last_active_us=0 被心跳扫描误判。
     conn->last_active_us = Metrics::now_us();
 
@@ -115,12 +152,12 @@ void Reactor::add_connection(shared_ptr<Internalconnection> conn) {
 
     {
         lock_guard<mutex> lock(conn_mutex_);
-        connections_[conn->sock] = conn;
+        connections_[conn->reactor_conn_id] = conn;
     }
 
     epoll_event ev{};
     ev.events = EPOLLIN | EPOLLET;
-    ev.data.ptr = conn.get();
+    ev.data.u64 = conn->reactor_conn_id;
     epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, conn->sock, &ev);
 
     if (log_) log_->info("conn=" + std::to_string(conn->sock) + " opened");
@@ -148,6 +185,10 @@ void Reactor::schedule_resume(shared_ptr<Internalconnection> conn) {
         lock_guard<mutex> lock(pending_resume_mutex_);
         pending_resume_.push_back(conn);
     }
+    wakeup();
+}
+
+void Reactor::retry_pending() {
     wakeup();
 }
 
@@ -182,6 +223,47 @@ void Reactor::process_pending_resume() {
     }
 }
 
+void Reactor::schedule_divide_retry(shared_ptr<Internalconnection> conn) {
+    if (!conn)
+        return;
+    {
+        lock_guard<mutex> lock(pending_divide_retry_mutex_);
+        pending_divide_retry_.push_back(conn);
+    }
+    conn->reading_paused = true;
+    mod_event(conn, 0);
+    wakeup();
+}
+
+void Reactor::process_divide_retry() {
+    vector<weak_ptr<Internalconnection>> bucket;
+    {
+        lock_guard<mutex> lock(pending_divide_retry_mutex_);
+        bucket.swap(pending_divide_retry_);
+    }
+
+    vector<shared_ptr<Internalconnection>> conns;
+    for (auto& wk : bucket)
+        if (auto c = wk.lock())
+            conns.push_back(std::move(c));
+
+    sort(conns.begin(), conns.end(),
+         [](const auto& a, const auto& b) { return a.get() < b.get(); });
+    conns.erase(unique(conns.begin(), conns.end(),
+                       [](const auto& a, const auto& b) {
+                           return a.get() == b.get();
+                       }),
+                conns.end());
+
+    for (auto& c : conns) {
+        if (!c->connected)
+            continue;
+        c->reading_paused = false;
+        mod_event(c, EPOLLIN | EPOLLET);
+        handle_read(c);
+    }
+}
+
 void Reactor::request_close(shared_ptr<Internalconnection> conn,
                             const string& reason) {
     (void)reason;   // 当前关闭原因只做记录用，后续可对接日志
@@ -212,7 +294,7 @@ void Reactor::handle_read(shared_ptr<Internalconnection> conn) {
     char buffer[1024];
     while (conn->connected && !conn->reading_paused) {
         std::string msg;
-        if (!peek_one_message(conn->read_buffer, msg)) {
+        if (!take_one_message(conn->read_buffer, msg)) {
             ssize_t count = read(conn->sock, buffer, sizeof(buffer));
             if (count == -1) {
                 if (errno == EAGAIN || errno == EWOULDBLOCK) break;
@@ -222,26 +304,32 @@ void Reactor::handle_read(shared_ptr<Internalconnection> conn) {
             if (count == 0) { close_client(conn); return; }
 
             conn->read_buffer.append(buffer, count);
+            if (conn->read_buffer.size() > max_read_buffer_bytes) {
+                close_client(conn);
+                return;
+            }
             conn->last_active_us = Metrics::now_us();
             continue;
         }
 
-        if (!conn->flow.try_take())
-            break;   // 窗口满：消息留在 read_buffer，等后续恢复读取
+        if (!conn->flow.try_take()) {
+            conn->read_buffer.insert(0, send_preview(msg));
+            break;   // 窗口满：消息放回 read_buffer，等后续恢复读取
+        }
 
         if (conn->handler) {
-            PushResult r = conn->handler->on_message(conn, msg);
-            if (r == PushResult::Full) {
+            push_result r = conn->handler->on_message(conn, msg);
+            if (r == push_result::Full) {
                 conn->flow.release_slot();   // 未真正消费，窗口位归还
-                break;                       // 消息留在 read_buffer，等 divide 空位
+                conn->read_buffer.insert(0, send_preview(msg));
+                schedule_divide_retry(conn);
+                break;
             }
-            if (r == PushResult::Closed) {
+            if (r == push_result::Closed) {
                 close_client(conn);
                 return;
             }
         }
-
-        conn->read_buffer.erase(0, 4 + msg.size());
     }
 }
 
@@ -254,29 +342,34 @@ void Reactor::try_send(shared_ptr<Internalconnection> conn) {
         while (!conn->send_queue.empty()) {
             // 攒批：一次性把多条已封好长度头的消息合成一个 string 再写，
             // 减少每个连接多次 write() 的系统调用。
-            constexpr size_t kSendBatchBytes = 64 * 1024;
+            constexpr size_t send_batch_bytes = 64 * 1024;
             string batch;
-            batch.reserve(kSendBatchBytes);
+            batch.reserve(send_batch_bytes);
             while (!conn->send_queue.empty()) {
                 const string& front = conn->send_queue.front();
                 if (!batch.empty() &&
-                    batch.size() + front.size() > kSendBatchBytes)
+                    batch.size() + front.size() > send_batch_bytes)
                     break;   // 本批已够大，留在队列里下一轮再发
                 batch += front;
+                conn->queued_send_bytes -= front.size();
                 conn->send_queue.pop_front();
             }
 
             ssize_t n = write(conn->sock, batch.data(), batch.size());
             if (n > 0) {
+                conn->last_active_us = Metrics::now_us();
                 if ((size_t)n < batch.size()) {
                     // 半截写走：剩余部分整体放回队首，等 EPOLLOUT 继续。
-                    conn->send_queue.push_front(batch.substr(n));
+                    string rest = batch.substr(n);
+                    conn->queued_send_bytes += rest.size();
+                    conn->send_queue.push_front(std::move(rest));
                     blocked = true;
                     break;
                 }
                 continue;
             } else {
                 if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                    conn->queued_send_bytes += batch.size();
                     conn->send_queue.push_front(std::move(batch));
                     blocked = true;
                     break;
@@ -308,7 +401,7 @@ void Reactor::close_client(shared_ptr<Internalconnection> conn) {
     if (log_) log_->info("conn=" + std::to_string(conn->sock) + " closed");
     if (metrics_) metrics_->on_conn_close();
     lock_guard<mutex> lock(conn_mutex_);
-    connections_.erase(conn->sock);
+    connections_.erase(conn->reactor_conn_id);
 }
 
 void Reactor::event_loop() {
@@ -319,13 +412,15 @@ void Reactor::event_loop() {
         if (n < 0) { if (errno == EINTR) continue; break; }
 
         for (int i = 0; i < n; i++) {
-            if (events_[i].data.fd == wake_fd_) {
+            const uint64_t token = events_[i].data.u64;
+            if (token == wake_event_id) {
                 uint64_t one = 0;
                 read(wake_fd_, &one, sizeof(one));
                 if (!running_) break;                 // 停机信号优先，不再处理发送
 
                 process_pending_close();              // 先处理跨线程关闭请求
                 process_pending_resume();             // 再恢复因背压暂停的连接
+                process_divide_retry();               // 解析池低水位后重试暂存消息
 
                 vector<weak_ptr<Internalconnection>> bucket;
                 {
@@ -338,11 +433,10 @@ void Reactor::event_loop() {
                 continue;
             }
 
-            auto* raw = (Internalconnection*)events_[i].data.ptr;
             shared_ptr<Internalconnection> conn;
             {
                 lock_guard<mutex> lock(conn_mutex_);
-                auto it = connections_.find(raw->sock);
+                auto it = connections_.find(token);
                 if (it != connections_.end()) conn = it->second;
             }
             if (!conn) continue;
@@ -380,7 +474,7 @@ void Reactor::start() {
 
     epoll_event wev{};
     wev.events = EPOLLIN;
-    wev.data.fd = wake_fd_;
+    wev.data.u64 = wake_event_id;
     epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, wake_fd_, &wev);
 
     running_ = true;

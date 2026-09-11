@@ -10,8 +10,8 @@
 using Work = std::function<void()>;
 
 class RouteClassifier;
-class DbCreditGate;
-class DbWaitingAdmission;
+class DB_credit_gate;
+class DB_waiting_queue;
 class IReactorControl;
 
 class Handler_epoll_make : public Handler_epoll {
@@ -21,8 +21,8 @@ private:
     std::shared_ptr<Handler_divide> divide_handler_;       // 业务分发器
     std::shared_ptr<connect_book> book_;                   // 连接名册生命周期回调
     RouteClassifier* route_ = nullptr;                     // 协议层路由分类
-    DbCreditGate* db_gate_ = nullptr;                      // DB 准入额度
-    DbWaitingAdmission* waiting_ = nullptr;                // DB 等待队列
+    DB_credit_gate* db_credit_gate_ = nullptr;                      // DB 准入额度
+    DB_waiting_queue* db_waiting_queue_ = nullptr;                // DB 等待队列
     IReactorControl* reactor_control_ = nullptr;           // Reactor 控制接口
 
 public:
@@ -31,14 +31,14 @@ public:
                        std::shared_ptr<Handler_divide> c,
                        std::shared_ptr<connect_book> book,
                        RouteClassifier* route = nullptr,
-                       DbCreditGate* db_gate = nullptr,
-                       DbWaitingAdmission* waiting = nullptr,
+                       DB_credit_gate* db_credit_gate = nullptr,
+                       DB_waiting_queue* db_waiting_queue = nullptr,
                        IReactorControl* reactor_control = nullptr)
         : divide_work(a), divide_pool_(p), divide_handler_(c),
-          book_(std::move(book)), route_(route), db_gate_(db_gate),
-          waiting_(waiting), reactor_control_(reactor_control) {}
+          book_(std::move(book)), route_(route), db_credit_gate_(db_credit_gate),
+          db_waiting_queue_(db_waiting_queue), reactor_control_(reactor_control) {}
 
-    PushResult on_message(std::shared_ptr<Internalconnection> conn,
+    push_result on_message(std::shared_ptr<Internalconnection> conn,
                           const std::string& msg) override;
     void on_connect(std::shared_ptr<Internalconnection> conn) override;
     void on_disconnect(std::shared_ptr<Internalconnection> conn) override;
@@ -51,8 +51,8 @@ private:
     std::shared_ptr<Handler_divide> divide_handler_;
     std::shared_ptr<connect_book> book_;
     RouteClassifier* route_ = nullptr;
-    DbCreditGate* db_gate_ = nullptr;
-    DbWaitingAdmission* waiting_ = nullptr;
+    DB_credit_gate* db_credit_gate_ = nullptr;
+    DB_waiting_queue* db_waiting_queue_ = nullptr;
     IReactorControl* reactor_control_ = nullptr;
 
 public:
@@ -61,12 +61,12 @@ public:
                                std::shared_ptr<Handler_divide> c,
                                std::shared_ptr<connect_book> book,
                                RouteClassifier* route = nullptr,
-                               DbCreditGate* db_gate = nullptr,
-                               DbWaitingAdmission* waiting = nullptr,
+                               DB_credit_gate* db_credit_gate = nullptr,
+                               DB_waiting_queue* db_waiting_queue = nullptr,
                                IReactorControl* reactor_control = nullptr)
         : divide_work(a), divide_pool_(p), divide_handler_(c),
-          book_(std::move(book)), route_(route), db_gate_(db_gate),
-          waiting_(waiting), reactor_control_(reactor_control) {}
+          book_(std::move(book)), route_(route), db_credit_gate_(db_credit_gate),
+          db_waiting_queue_(db_waiting_queue), reactor_control_(reactor_control) {}
 
     Handler_epoll* create_handler() override;
 };

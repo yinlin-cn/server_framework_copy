@@ -20,20 +20,24 @@ private:
     Handler_metrics* metrics_ = nullptr;   // 指标埋点接口，可空
     Handler_log* log_ = nullptr;           // 日志接口，可空
 
-    std::atomic<int> active_{0};              // 在途任务计数
+    std::size_t unfinished_task_count_ = 0;                 // 已入队但未完成的任务数
     std::mutex idle_mutex_;
     std::condition_variable idle_cv_;
+    std::function<void()> low_water_callback_;
+
+    void finish_task();
 public:
     divide_pool(int N=8);
     ~divide_pool();
     void worker();
-    void add_task(divide_task funtion);
-    PushResult try_add_task(divide_task funtion);
+    push_result add_task(divide_task funtion);
+    push_result try_add_task(divide_task funtion);
     void set_error_handler(ErrorHandler h) { error_handler_ = std::move(h); }
     void set_metrics(Handler_metrics* m) { metrics_ = m; }
     void set_log(Handler_log* l) { log_ = l; }
+    void set_low_water_callback(std::function<void()> callback);
     void shutdown();                                                      // 置 stop + notify
-    bool wait_idle(const std::chrono::milliseconds& timeout);             // 等 active 归零
+    bool wait_idle(const std::chrono::milliseconds& timeout);             // 等队列和在途任务归零
     std::size_t queue_size() const { return tasks_.size(); }
     std::size_t queue_high() const { return tasks_.high_water(); }
     std::size_t queue_low() const { return tasks_.low_water(); }

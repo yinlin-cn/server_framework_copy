@@ -37,7 +37,7 @@ Server::Server(DivideWork divide_work,
       parse_threads_(parse_threads),
       work_threads_(work_threads),
       reactor_count_(reactor_count),
-      db_gate_(std::make_unique<DbCreditGate>(4096)),
+      db_credit_gate_(std::make_unique<DB_credit_gate>(4096)),
       route_(std::make_unique<RouteClassifier>()) {}
 
 Server::~Server() {
@@ -67,7 +67,7 @@ bool Server::start() {
 
     // DB 额度按真实连接池容量收紧，触发 pending 等待路径。
     if (has_db_)
-        db_gate_ = std::make_unique<DbCreditGate>(
+        db_credit_gate_ = std::make_unique<DB_credit_gate>(
             std::max(4, db_cfg_.connections));
 
     // 业务工作池。
@@ -100,23 +100,25 @@ bool Server::start() {
     parse_pool_ = std::make_shared<divide_pool>(parse_threads_);
     parse_pool_->set_error_handler(error_handler_);
     reactor_control_ = std::make_unique<ReactorControl>();
-    db_waiting_ = std::make_shared<DbWaitingAdmission>(
-        db_gate_.get(),
+    db_waiting_queue_ = std::make_shared<DB_waiting_queue>(
+        db_credit_gate_.get(),
         [this](std::shared_ptr<Internalconnection> conn,
-               const std::string& msg) {
+               const std::string& msg,
+               std::shared_ptr<DB_credit_token> credit) {
             auto parse = [this, msg]() -> std::function<void()> {
                 return divide_work_(msg);
             };
-            // drain() 里已经 try_acquire 成功，这里用令牌持有到业务流程结束。
-            auto credit = std::make_shared<DbCreditToken>(db_gate_.get());
-            parse_pool_->add_task(
+            push_result r = parse_pool_->add_task(
                 divide_task{parse, conn, divide_handler_, credit});
+            if (r != push_result::Ok)
+                return false;
             if (reactor_control_ && conn)
                 reactor_control_->schedule_resume(conn);
+            return true;
         });
     factory_ = std::make_unique<Handler_epoll_Factory_make>(
         divide_work_, parse_pool_, divide_handler_, connect_book_,
-        route_.get(), db_gate_.get(), db_waiting_.get(),
+        route_.get(), db_credit_gate_.get(), db_waiting_queue_.get(),
         reactor_control_.get());
 
     // 批处理模块：攒 Reactor 待发信号，定时统一唤醒。
@@ -150,14 +152,14 @@ bool Server::start() {
                     d->queue_full_count()};
             });
         metrics_->register_db_sampler([this]() {
-            return DbMetricsSnapshot{
+            return DB_metrics_snapshot{
                 db_pool_ ? db_pool_->queue_size() : 0,
                 db_pool_ ? db_pool_->queue_high() : 0,
                 db_pool_ ? db_pool_->queue_low() : 0,
                 db_pool_ ? db_pool_->queue_full_count() : 0,
-                db_waiting_ ? db_waiting_->size() : 0,
-                db_gate_ ? db_gate_->available() : 0,
-                db_gate_ ? db_gate_->limit() : 0,
+                db_waiting_queue_ ? db_waiting_queue_->waiting_task_count() : 0,
+                db_credit_gate_ ? db_credit_gate_->available() : 0,
+                db_credit_gate_ ? db_credit_gate_->limit() : 0,
                 db_pool_ ? db_pool_->active_queries() : 0};
         });
     }
@@ -176,6 +178,9 @@ bool Server::start() {
     network_->set_batch_handler(batch_handler_.get());
     network_->set_metrics(metrics_.get());
     network_->set_log(logger_.get());
+    parse_pool_->set_low_water_callback([this] {
+        if (network_) network_->retry_paused();
+    });
     framework_call_->set_close_handler(
         [this](std::shared_ptr<Internalconnection> conn,
                const std::string& reason) {
@@ -194,12 +199,14 @@ void Server::stop() {
     if (network_) network_->stop_accept();           // 1. 关闸：停 accept
     parse_pool_->shutdown();                         // 2. 解析关闸
     parse_pool_->wait_idle(5s);                      //    解析排干
-    work_pool_->shutdown();                          // 3. 业务关闸
-    work_pool_->wait_idle(5s);                       // 4. 业务排干（DB 保持可用）
-    settle_pending();                                // 5. 兜底取消
-    work_pool_->wait_idle(5s);                       //    等取消任务跑完
+    if (db_pool_) db_pool_->wait_idle(5s);            // 3. 已投递 DB 任务排干
+    settle_pending();                                // 4. 结算尚未恢复的协程
+    work_pool_->shutdown();                          // 5. 业务关闸
+    work_pool_->wait_idle(5s);                       //    业务排干（DB 保持可用）
     if (batch_sender_) batch_sender_->flush_and_stop();  // 5.5 排空批处理模块
     if (network_) network_->stop();                  // 6. 停 Reactor 并断连接
+    if (db_credit_gate_) db_credit_gate_->shutdown();              // 唤醒等待额度中的 drain 线程
+    if (db_waiting_queue_) db_waiting_queue_->shutdown();        // 停 DB 等待队列协调线程
     if (connect_book_) connect_book_->shutdown();    // 唤醒可能的版本等待者
     if (db_pool_) db_pool_->shutdown();              // 7. DB 最后关
     if (metrics_) metrics_->stop_sampler();          // 7.5 停指标采样线程
@@ -216,6 +223,8 @@ void Server::settle_pending() {
     auto pending = work_pool_->get_queue().take_all();
     for (auto& t : pending) {
         if (t.box) t.box->cancelled = true;
-        work_pool_->add_task(std::move(t.funtion));   // 重新投递，协程恢复后自己收尾
+        push_result r = work_pool_->add_task(std::move(t.funtion));
+        if (r == push_result::Closed && logger_)
+            logger_->error("settle_pending: work pool already closed");
     }
 }

@@ -5,6 +5,7 @@
 #include "Box.h"
 using namespace std;
 thread_local std::shared_ptr<Internalconnection> tls_current_conn;
+thread_local std::exception_ptr tls_coroutine_exception;
 work_pool* g_work_pool = nullptr;
 Handler_DB* g_db_handler = nullptr;
 FrameworkCall* g_framework_call = nullptr;

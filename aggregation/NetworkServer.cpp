@@ -11,6 +11,8 @@ NetworkServer::~NetworkServer() {
 
 bool NetworkServer::start() {
     if (started_) return false;
+    if (reactor_count_ <= 0)
+        return false;
 
     for (int i = 0; i < reactor_count_; i++) {
         auto r = std::make_shared<Reactor>(max_events_, factory_);
@@ -23,7 +25,12 @@ bool NetworkServer::start() {
 
     acceptor_ = std::make_unique<Acceptor>(
         port_, reactors_, factory_, backlog_);
-    acceptor_->start();
+    if (!acceptor_->start()) {
+        for (auto& r : reactors_) r->stop();
+        reactors_.clear();
+        acceptor_.reset();
+        return false;
+    }
 
     started_ = true;
     return true;
@@ -35,6 +42,11 @@ void NetworkServer::set_batch_handler(Handler_batch* handler) {
 
 void NetworkServer::stop_accept() {
     if (acceptor_) acceptor_->stop();
+}
+
+void NetworkServer::retry_paused() {
+    for (auto& reactor : reactors_)
+        if (reactor) reactor->retry_pending();
 }
 
 void NetworkServer::request_close(

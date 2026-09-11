@@ -16,7 +16,7 @@ struct QueueMetricsSnapshot {
     uint64_t full = 0;
 };
 
-struct DbMetricsSnapshot {
+struct DB_metrics_snapshot {
     std::size_t queue_size = 0;
     std::size_t queue_high = 0;
     std::size_t queue_low = 0;
@@ -52,10 +52,10 @@ public:
     void on_task_dequeued(PoolId pool) override;
 
     using QueueSampler = std::function<QueueMetricsSnapshot()>;
-    using DbSampler = std::function<DbMetricsSnapshot()>;
+    using DB_sampler = std::function<DB_metrics_snapshot()>;
 
     void register_queue_sampler(PoolId pool, QueueSampler sampler);
-    void register_db_sampler(DbSampler sampler);
+    void register_db_sampler(DB_sampler sampler);
 
     static uint64_t now_us();   // 模块埋点计时用
 
@@ -84,7 +84,7 @@ private:
     std::atomic<int> conns_{0};
     std::array<std::atomic<int64_t>, POOL_COUNT> queue_depth_{};
     std::array<QueueSampler, POOL_COUNT> queue_samplers_{};
-    DbSampler db_sampler_;
+    DB_sampler db_sampler_;
 
     // 窗口采样需要的"上次"值
     uint64_t last_requests_ = 0;
