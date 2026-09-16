@@ -149,7 +149,11 @@ bool framework_call(const std::string& cmd,
                     const std::vector<std::string>& args); // bind/单发/组播/分组/关闭
 EventAwaiter query_db(const std::string& sql,
                       std::vector<std::string> params = {}); // 参数化查询，co_await 使用
+virtual_conn_info get_current_virtual_conn();          // 当前连接的 virtual_fd / group
+std::vector<uint64_t> get_group_info(int group_name);  // 组内有效 virtual_fd 快照
 ```
+
+两个查询接口只暴露 `virtual_fd`，不暴露 `Internalconnection`：`get_current_virtual_conn()` 依赖业务 worker 的 `tls_current_conn`，失败时返回 `valid = false`；`get_group_info()` 返回快照，已断开的成员会被跳过。拿到标识后再交给 `framework_call` 做单发/组播/关闭。
 
 注意：早期文档中的 `get_user_data/set_user_data` 目前没有实现（`Internalconnection` 上也没有 user_data 字段）。当前“连接级业务状态”尚未真正落地；如果业务需要，下一步应重新加回 user_data 与 context 包装。
 
@@ -265,7 +269,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 | 解析层 | 路由分类、消息 → 业务闭包 | `divide_pool` / `Handler_divide_make` |
 | 业务层 | 执行业务闭包、协程挂起/恢复 | `work_pool` / `thread_pool` / `blockingqueue` / `EventAwaiter` |
 | 数据库层 | 参数化执行、结果写 Box、唤醒协程 | `DB_pool` / `connect_pool` / `Handler_DB_make` |
-| 框架调用层 | virtual_fd 映射、分组、单发/组播/关闭 | `connect_book` / `FrameworkCall` / `ConnectionSession` |
+| 框架调用层 | virtual_fd 映射、分组、查询、单发/组播/关闭 | `connect_book` / `FrameworkCall` / `ConnectionSession` |
 | 运维层 | 指标采样、日志写入、错误回调 | `Metrics` / `Logger` / `ErrorHandler` |
 | 集成层 | 组装各层、控制启动/优雅退出 | `Server` / `NetworkServer` / `ReactorControl` |
 
@@ -310,7 +314,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 | `work_task.h` | 业务 | fn + conn + is_business |
 | `blockedtask.h` / `blockingqueue.*` | 业务 | 挂起协程登记表：wait_key → blockedtask（resume 闭包 + Box） |
 | `EventTask.h` / `EventAwaiter.*` | 协程 | TLS 挂起标志；await_suspend 登记 + submit DB；await_resume 转 DBResult |
-| `context.h/.cpp` | 业务接口 | send / framework_call / query_db；TLS 白板与全局入口 |
+| `context.h/.cpp` | 业务接口 | send / framework_call / query_db / get_current_virtual_conn / get_group_info；TLS 白板与全局入口 |
 | `thread_context.h` | 共享 | tls_current_conn、g_work_pool、g_db_handler、g_framework_call |
 | `DB_pool.h/.cpp` | DB | worker 循环、连接池借还、参数化执行、写 Box、投 resume（额度由业务 worker 归还） |
 | `connect_pool.h/.cpp` | DB | N 条 MariaDB 连接借/还/显式 shutdown |
@@ -320,7 +324,7 @@ if (!res.ok)       { ... return; }   // res.err 有描述
 | `backpressure.h` | 背压 | RouteClassifier / DB_credit_gate / DB_waiting_queue |
 | `bounded_task_queue.h` | 背压 | 有界队列：push/try_push、高低水位、Full 计数、close |
 | `ConnectionFlow.h` | 背压 | 每连接窗口状态机 |
-| `connect_book.h/.cpp` | 框架调用 | virtual_fd/组/版本号/变更缓存/条件变量等待 |
+| `connect_book.h/.cpp` | 框架调用 | virtual_fd/组/版本号/变更缓存/条件变量等待；连接与分组的只读查询 |
 | `FrameworkCall.h/.cpp` | 框架调用 | 命令分发：bind/send_to_sb/send_to_gp/divide_gp/close_conn |
 | `ConnectionSession.h/.cpp` | 框架调用 | 框架外独立线程的会话句柄 |
 | `Metrics.*` / `MetricsConfig.h` | 运维 | 原子埋点 + 每秒快照（公式见第九章） |
@@ -471,6 +475,8 @@ worker 对任务执行包 try/catch，异常不会导致进程崩溃；catch 后
 - **FrameworkCall**：命令分发入口，内置 bind/send_to_sb/send_to_gp/divide_gp/close_conn；
 - **ConnectionSession**：给框架外独立长连接线程使用的会话句柄，可通过版本号条件变量等待名册变化。
 
+业务侧查询入口（`context.h`）：`get_current_virtual_conn()` 反查当前业务连接的 `virtual_fd`/`group_name`，`get_group_info(group_name)` 取组内有效 `virtual_fd` 快照；两者都不暴露 `Internalconnection`。
+
 ```text
 业务代码 / 独立长连接线程 / 未来运维管理
         │
@@ -493,6 +499,7 @@ conn->send_function(...) 或 network_->request_close(...)
 Handler::on_connect     → connect_book::on_connection(conn)    // 先以 sock 为临时 virtual_fd
 Handler::on_disconnect  → connect_book::dis_connection(conn)   // 反查并清理
 业务主动关闭            → FrameworkCall::close_conn → Reactor::request_close
+业务查询                → context::get_current_virtual_conn / get_group_info
 ```
 
 名册关键设计：

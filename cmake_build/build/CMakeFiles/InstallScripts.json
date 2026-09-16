@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/yinglin/server_framework/build/cmake_install.cmake",
+		"/home/yinglin/server_framework/build/lib/cmake_install.cmake",
+		"/home/yinglin/server_framework/build/lib/body/cmake_install.cmake",
+		"/home/yinglin/server_framework/build/lib/head/cmake_install.cmake",
+		"/home/yinglin/server_framework/build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

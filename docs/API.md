@@ -154,11 +154,19 @@ server.start();
 业务代码只应包含此头文件：
 
 ```cpp
+struct virtual_conn_info {
+    bool valid = false;        // 查询是否成功
+    uint64_t virtual_fd = 0;   // 当前连接的业务虚拟标识
+    int group_name = -1;       // 当前连接所属组，-1 表示未入组
+};
+
 bool send(const std::string& data);
 EventAwaiter query_db(const std::string& sql,
                       std::vector<std::string> params = {});
 bool framework_call(const std::string& cmd,
                     const std::vector<std::string>& args);
+virtual_conn_info get_current_virtual_conn();
+std::vector<uint64_t> get_group_info(int group_name);
 ```
 
 ### 4.1 send
@@ -203,6 +211,52 @@ bool framework_call(const std::string& cmd,
 - 业务层便捷入口，只返回是否成功。
 - 命令与参数见第 7 节。
 - 需要拿到具体错误文本时，应持有 `FrameworkCall` 对象调用 `call()`，得到 `call_result`。
+
+### 4.4 get_current_virtual_conn / get_group_info
+
+```cpp
+struct virtual_conn_info {
+    bool valid = false;
+    uint64_t virtual_fd = 0;
+    int group_name = -1;
+};
+
+virtual_conn_info get_current_virtual_conn();
+std::vector<uint64_t> get_group_info(int group_name);
+```
+
+业务层想对“自己”或“某个组”发起框架调用时，先用这两个接口拿到虚拟连接标识，再把它交给 `framework_call`。返回的都是 `virtual_fd`，不会暴露内部 `Internalconnection` 指针。
+
+`get_current_virtual_conn()`：
+
+- 读取 worker 白板 `tls_current_conn`，再在连接名册里反查当前连接的 `virtual_fd` 和 `group_name`。
+- 只能在业务 worker 上下文里调用；脱离业务线程（或没有当前连接）时返回 `valid == false`。
+- 查询失败时保持默认值：`valid = false`、`virtual_fd = 0`、`group_name = -1`。
+- `connection_info()` 用引用输出参数返回结果，`bool` 只表示查询是否成功。
+
+`get_group_info(int group_name)`：
+
+- 返回该组当前有效连接的 `virtual_fd` 快照（`std::vector<uint64_t>`）。
+- 返回的是快照而不是实时视图；调用后组成员变化不会反映到已返回的容器里。
+- 名册里已断开的成员会被跳过（内部持 `weak_ptr`，锁定失败即视为无效）。
+- 组不存在或组内没有有效连接时返回空 vector。
+
+示例：
+
+```cpp
+// 当前连接的虚拟标识与组号
+auto self = get_current_virtual_conn();
+if (self.valid) {
+    framework_call("send_to_sb",
+                   {std::to_string(self.virtual_fd), "hello"});
+}
+
+// 向整个组广播
+auto members = get_group_info(7);
+for (uint64_t fd : members) {
+    framework_call("send_to_sb", {std::to_string(fd), "hello"});
+}
+```
 
 ## 5. 协程与 EventTask
 
@@ -413,6 +467,12 @@ call_result close_conn(uint64_t virtual_fd, const std::string& reason = "");
 - `版本号 + 最近 4096 条 net_changer 变更记录`
 
 业务代码不应直接持有连接名册操作；框架内部通过名册保证发送时连接已断不会悬垂。名册变化命令包括 `add`、`remove`、`rebind`、`set_group`、`divide_gp`，每次变化版本号 `+1`。
+
+名册对外查询方法（由 `context.h` 包装后提供给业务层）：
+
+- `connection_info(conn, virtual_fd, group_name)`：反查连接当前的虚拟标识与组号，`bool` 表示查询是否成功，结果通过引用输出。
+- `group_virtual_fds(group_name)`：返回组内当前有效连接的 `virtual_fd` 快照，已断开的成员会被跳过。
+- `all_virtual_fds()`：返回名册内全部有效连接的 `virtual_fd` 快照。
 
 ### 9.2 ConnectionSession（框架外长连接线程）
 

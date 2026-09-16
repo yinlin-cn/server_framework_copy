@@ -1,0 +1,152 @@
+[
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/main.cpp.o -c /home/yinglin/server_framework_copy/aggregation/main.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/main.cpp",
+  "output": "CMakeFiles/server.dir/main.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Server.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Server.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Server.cpp",
+  "output": "CMakeFiles/server.dir/Server.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/ReactorControl.cpp.o -c /home/yinglin/server_framework_copy/aggregation/ReactorControl.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/ReactorControl.cpp",
+  "output": "CMakeFiles/server.dir/ReactorControl.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/epoll.cpp.o -c /home/yinglin/server_framework_copy/aggregation/epoll.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/epoll.cpp",
+  "output": "CMakeFiles/server.dir/epoll.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/divide_pool.cpp.o -c /home/yinglin/server_framework_copy/aggregation/divide_pool.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/divide_pool.cpp",
+  "output": "CMakeFiles/server.dir/divide_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/work_pool.cpp.o -c /home/yinglin/server_framework_copy/aggregation/work_pool.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/work_pool.cpp",
+  "output": "CMakeFiles/server.dir/work_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/thread_pool.cpp.o -c /home/yinglin/server_framework_copy/aggregation/thread_pool.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/thread_pool.cpp",
+  "output": "CMakeFiles/server.dir/thread_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/blockingqueue.cpp.o -c /home/yinglin/server_framework_copy/aggregation/blockingqueue.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/blockingqueue.cpp",
+  "output": "CMakeFiles/server.dir/blockingqueue.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/EventAwaiter.cpp.o -c /home/yinglin/server_framework_copy/aggregation/EventAwaiter.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/EventAwaiter.cpp",
+  "output": "CMakeFiles/server.dir/EventAwaiter.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/context.cpp.o -c /home/yinglin/server_framework_copy/aggregation/context.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/context.cpp",
+  "output": "CMakeFiles/server.dir/context.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Handler_epoll_make.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Handler_epoll_make.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Handler_epoll_make.cpp",
+  "output": "CMakeFiles/server.dir/Handler_epoll_make.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Handler_divide_make.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Handler_divide_make.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Handler_divide_make.cpp",
+  "output": "CMakeFiles/server.dir/Handler_divide_make.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Handler_DB_make.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Handler_DB_make.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Handler_DB_make.cpp",
+  "output": "CMakeFiles/server.dir/Handler_DB_make.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/DB_pool.cpp.o -c /home/yinglin/server_framework_copy/aggregation/DB_pool.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/DB_pool.cpp",
+  "output": "CMakeFiles/server.dir/DB_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/connect_pool.cpp.o -c /home/yinglin/server_framework_copy/aggregation/connect_pool.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/connect_pool.cpp",
+  "output": "CMakeFiles/server.dir/connect_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Logger.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Logger.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Logger.cpp",
+  "output": "CMakeFiles/server.dir/Logger.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Metrics.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Metrics.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Metrics.cpp",
+  "output": "CMakeFiles/server.dir/Metrics.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/BatchSender.cpp.o -c /home/yinglin/server_framework_copy/aggregation/BatchSender.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/BatchSender.cpp",
+  "output": "CMakeFiles/server.dir/BatchSender.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Handler_batch_make.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Handler_batch_make.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Handler_batch_make.cpp",
+  "output": "CMakeFiles/server.dir/Handler_batch_make.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/NetworkServer.cpp.o -c /home/yinglin/server_framework_copy/aggregation/NetworkServer.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/NetworkServer.cpp",
+  "output": "CMakeFiles/server.dir/NetworkServer.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Reactor.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Reactor.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Reactor.cpp",
+  "output": "CMakeFiles/server.dir/Reactor.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/Acceptor.cpp.o -c /home/yinglin/server_framework_copy/aggregation/Acceptor.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/Acceptor.cpp",
+  "output": "CMakeFiles/server.dir/Acceptor.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/connect_book.cpp.o -c /home/yinglin/server_framework_copy/aggregation/connect_book.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/connect_book.cpp",
+  "output": "CMakeFiles/server.dir/connect_book.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/FrameworkCall.cpp.o -c /home/yinglin/server_framework_copy/aggregation/FrameworkCall.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/FrameworkCall.cpp",
+  "output": "CMakeFiles/server.dir/FrameworkCall.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework_copy/aggregation",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework_copy/aggregation -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/ConnectionSession.cpp.o -c /home/yinglin/server_framework_copy/aggregation/ConnectionSession.cpp",
+  "file": "/home/yinglin/server_framework_copy/aggregation/ConnectionSession.cpp",
+  "output": "CMakeFiles/server.dir/ConnectionSession.cpp.o"
+}
+]

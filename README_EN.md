@@ -110,7 +110,22 @@ The framework provides a framework-facing API:
 - `FrameworkCall`: command dispatch for send/broadcast/group/close
 - `ConnectionSession`: session handle for long-lived threads outside pools
 
-Business code uses:
+Business code can query its own virtual identifier and the members of a group:
+
+```cpp
+virtual_conn_info self = get_current_virtual_conn();
+// self.valid, self.virtual_fd, self.group_name
+
+std::vector<uint64_t> members = get_group_info(7);
+```
+
+`get_current_virtual_conn()` reads the worker's `tls_current_conn` and looks it
+up in the connection registry; it returns `valid == false` outside a business
+worker context. `get_group_info()` returns a snapshot of currently valid
+`virtual_fd` values, skipping disconnected members. Neither API exposes the
+internal `Internalconnection` pointer.
+
+Business code uses these identifiers for framework calls:
 
 ```cpp
 framework_call("send_to_sb", virtual_fd, "message");

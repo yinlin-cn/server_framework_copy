@@ -1,0 +1,152 @@
+[
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Server.cpp.o -c /home/yinglin/server_framework/lib/body/Server.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Server.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Server.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/ReactorControl.cpp.o -c /home/yinglin/server_framework/lib/body/ReactorControl.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/ReactorControl.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/ReactorControl.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/epoll.cpp.o -c /home/yinglin/server_framework/lib/body/epoll.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/epoll.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/epoll.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/divide_pool.cpp.o -c /home/yinglin/server_framework/lib/body/divide_pool.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/divide_pool.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/divide_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/work_pool.cpp.o -c /home/yinglin/server_framework/lib/body/work_pool.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/work_pool.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/work_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/thread_pool.cpp.o -c /home/yinglin/server_framework/lib/body/thread_pool.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/thread_pool.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/thread_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/blockingqueue.cpp.o -c /home/yinglin/server_framework/lib/body/blockingqueue.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/blockingqueue.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/blockingqueue.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/EventAwaiter.cpp.o -c /home/yinglin/server_framework/lib/body/EventAwaiter.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/EventAwaiter.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/EventAwaiter.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/context.cpp.o -c /home/yinglin/server_framework/lib/body/context.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/context.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/context.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Handler_epoll_make.cpp.o -c /home/yinglin/server_framework/lib/body/Handler_epoll_make.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Handler_epoll_make.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Handler_epoll_make.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Handler_divide_make.cpp.o -c /home/yinglin/server_framework/lib/body/Handler_divide_make.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Handler_divide_make.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Handler_divide_make.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Handler_DB_make.cpp.o -c /home/yinglin/server_framework/lib/body/Handler_DB_make.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Handler_DB_make.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Handler_DB_make.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/DB_pool.cpp.o -c /home/yinglin/server_framework/lib/body/DB_pool.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/DB_pool.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/DB_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/connect_pool.cpp.o -c /home/yinglin/server_framework/lib/body/connect_pool.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/connect_pool.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/connect_pool.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Logger.cpp.o -c /home/yinglin/server_framework/lib/body/Logger.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Logger.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Logger.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Metrics.cpp.o -c /home/yinglin/server_framework/lib/body/Metrics.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Metrics.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Metrics.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/BatchSender.cpp.o -c /home/yinglin/server_framework/lib/body/BatchSender.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/BatchSender.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/BatchSender.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Handler_batch_make.cpp.o -c /home/yinglin/server_framework/lib/body/Handler_batch_make.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Handler_batch_make.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Handler_batch_make.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/NetworkServer.cpp.o -c /home/yinglin/server_framework/lib/body/NetworkServer.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/NetworkServer.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/NetworkServer.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Reactor.cpp.o -c /home/yinglin/server_framework/lib/body/Reactor.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Reactor.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Reactor.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/Acceptor.cpp.o -c /home/yinglin/server_framework/lib/body/Acceptor.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/Acceptor.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/Acceptor.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/connect_book.cpp.o -c /home/yinglin/server_framework/lib/body/connect_book.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/connect_book.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/connect_book.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/FrameworkCall.cpp.o -c /home/yinglin/server_framework/lib/body/FrameworkCall.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/FrameworkCall.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/FrameworkCall.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/lib/body",
+  "command": "/usr/bin/c++ -Dserver_framework_EXPORTS -I/home/yinglin/server_framework/lib/body/../head -I/home/yinglin/server_framework/lib/body -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fPIC -fcoroutines -o CMakeFiles/server_framework.dir/ConnectionSession.cpp.o -c /home/yinglin/server_framework/lib/body/ConnectionSession.cpp",
+  "file": "/home/yinglin/server_framework/lib/body/ConnectionSession.cpp",
+  "output": "lib/body/CMakeFiles/server_framework.dir/ConnectionSession.cpp.o"
+},
+{
+  "directory": "/home/yinglin/server_framework/build/src",
+  "command": "/usr/bin/c++  -I/home/yinglin/server_framework/src/../lib/head -I/home/yinglin/server_framework/src -I/home/yinglin/server_framework/lib/body/../head -isystem /usr/include/mariadb -O3 -DNDEBUG -std=c++20 -fcoroutines -o CMakeFiles/server.dir/main.cpp.o -c /home/yinglin/server_framework/src/main.cpp",
+  "file": "/home/yinglin/server_framework/src/main.cpp",
+  "output": "src/CMakeFiles/server.dir/main.cpp.o"
+}
+]

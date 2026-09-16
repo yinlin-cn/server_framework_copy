@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/server.dir/link.d CMakeFiles/server.dir/main.cpp.o -o server  -Wl,-rpath,/home/yinglin/server_framework/build/lib/body: ../lib/body/libserver_framework.so /usr/lib/x86_64-linux-gnu/libmariadb.so

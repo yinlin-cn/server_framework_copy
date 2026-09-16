@@ -1,0 +1,2 @@
+/home/yinglin/server_framework/bin/server
+/home/yinglin/server_framework/bin/libserver_framework.so
